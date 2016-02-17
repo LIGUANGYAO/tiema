@@ -1,0 +1,571 @@
+<!DOCTYPE html><html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no"/> <meta name="author" content="47tz"> 
+<title>儿童成长表</title>
+<link rel="stylesheet" type="text/css" href="templates/kalendar/static/css/v1/min.duba.touch.css" /> 
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+		    <script type="text/javascript">
+	document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+    WeixinJSBridge.call('hideOptionMenu');
+    });
+    </script>
+</head>
+<style type="text/css">
+<!--
+	.tabel1
+        {
+            width: 100%;
+            border-collapse: collapse;
+            border: none;
+          
+        }
+        .tabel1 th
+        {
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #c6c6c7;
+             color: #7b7b79;
+             
+        }
+      .tabel1 td
+        {
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border: 1px solid #c6c6c7;
+            color: #7b7b79;
+            
+        }
+        
+        .tabel2
+        {
+            width: 100%;
+            border-collapse: collapse;
+            border: none;
+          
+        }
+        .tabel2 th
+        {
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #c6c6c7;
+             color: #7b7b79;
+             
+        }
+        .tabel2 tr{
+            margin: 5px;
+        }
+        
+      .tabel2 td
+        {
+            height: 20px;
+            line-height: 20px;
+            padding: 5px;
+            text-indent:1em;
+            text-align: left;
+            border: 1px solid #c6c6c7;
+            color: #7b7b79;
+          
+            
+        }
+        
+        
+        .tabel3
+        {
+            width: 100%;
+            border-collapse: collapse;
+            border: none;
+          
+        }
+        .tabel3 th
+        {
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #c6c6c7;
+             color: #7b7b79;
+             
+        }
+        .tabel3 tr{
+            margin: 5px;
+        }
+        
+      .tabel3 td
+        {
+            height: 20px;
+            line-height: 20px;
+            padding: 5px 0 5px 0;
+            
+            text-align: center;
+            border: 1px solid #c6c6c7;
+            color: #7b7b79;
+          
+            
+        }
+        
+         .tabel1 th p{margin:0px 0 0 0;padding:0;text-indent:0em;line-height:150%;}
+       .tabel1 td p{margin:0px 0 0 0;padding:0;text-indent:0em;line-height:150%;}
+       
+       
+       <!-- -->
+       .alert{filter:alpha(opacity=20); /* IE */ -moz-opacity:0.2; /* Moz + FF */ opacity: 0.2; width:100%; background:; left:0%; top:0%;margin-top:-0px;margin-left:-0px;position:absolute;z-index:99; text-align:center; padding:0px;}
+	   #leavemsg{left:0;top:0;margin-top:-0px;margin-left:-0px;position:absolute;z-index:99; text-align:center; padding:0px;
+    	width:100%;
+    	height:300px;
+    	border:0px solid #008800;}
+        
+   
+        
+        
+        
+        .alert2{filter:alpha(opacity=20); /* IE */ -moz-opacity:0.2; /* Moz + FF */ opacity: 0.2; width:100%; background:; left:0%; top:0%;margin-top:-0px;margin-left:-0px;position:absolute;z-index:99; text-align:center; padding:0px;}
+	   #leavemsg2{left:5%;top:5%;margin-top:-0px;margin-left:-0px;position:absolute;z-index:99; text-align:center; padding:0px;
+    	width:90%;
+    	height:300px;
+    	border:0px solid #008800;}
+        
+        
+         .alert3{filter:alpha(opacity=20); /* IE */ -moz-opacity:0.2; /* Moz + FF */ opacity: 0.2; width:100%; background:; left:0%; top:0%;margin-top:-0px;margin-left:-0px;position:absolute;z-index:99; text-align:center; padding:0px;}
+	   #leavemsg3{left:0;top:0;margin-top:-0px;margin-left:-0px;position:absolute;z-index:99; text-align:center; padding:0px;
+    	width:90%;
+    	height:300px;
+    	border:0px solid #008800;}
+-->
+</style>
+<body>
+
+
+
+<div class="sec"  style=" padding: 0;margin: 3px;">
+<div class="list list_four"   >
+<input  type="hidden" value="{$taday}" id="taday"/>
+<!--<h3 class="st" style="background-color: #749c18; margin: 0;  font-size: 16px;padding:10px;">-->
+<h3 class="st" style="background-color: #5942b4; margin: 0;  font-size: 16px;padding:10px;">
+<input type="hidden" value="{$openid}" id="openid"/>
+<span style="width: 30%;text-align: left;"  id="week_now"   week="{$growth_List.week}">第{$growth_List.week}周</span><span style="width: 33%; text-align: center;" onclick="location.href='mcenter.php?openid={$openid}'" >儿童成长表</span> <span id="guize" style="width: 30%;  text-align: right; height: 20px;text-decoration:underline ;" >规则说明</span>
+
+</h3>
+<h3 class="st" style="background-color: #f2f1f1; margin: 0; border-bottom:2px solid #c6c6c7; padding: 8px;"><span style="color: #3d3d40; width: 30%;text-align: left;" onClick="location='wxgrowth.php?m=dea2&openid={$openid}&week={$growth_List.weekjian}'" >〈上周</span><span style="color: #3d3d40;width: 34%; color: green;" >{$growth_List.week_start}/{$growth_List.week_end}</span><span style="color: #3d3d40;width: 30%;  text-align: right;" onClick="location='wxgrowth.php?m=dea2&openid={$openid}&week={$growth_List.weekjia}'" >下周〉</span></h3>
+
+<table class="tabel1" >
+<tr><th style="color: #9a0a0b;">科目</th><th><p>起床</p><p>时间</p></th><th><p>早餐</p><p>时间</p></th><th><p>晚餐</p><p>时间</p></th><th><p>作业</p><p>时间</p></th><th><p>礼仪</p><p>表现</p></th><th><p>睡觉</p><p>时间</p></th><th style="color: #4977c1;">表现</th></tr>
+{foreach from=$growth_List.mx item=growthmx}
+<tr class="week"   day="{$growthmx.day}">
+<td  style="color: #9a0a0b;height: 50px;">
+{if $growthmx.day==1}周一{elseif $growthmx.day==2}周二{elseif $growthmx.day==3}周三{elseif $growthmx.day==4}周四{elseif $growthmx.day==5}周五{elseif $growthmx.day==6}周六{elseif $growthmx.day==7}周日{else}{/if}
+
+</td>
+
+<td >{if $growthmx.xm1==1}<img code="{$growthmx.day},xm1" class="xmimg"  src="templates/kalendar/static/images/smiley-star.png"/>{else}<img  code="{$growthmx.day},xm1"  class="xmimg" src="templates/kalendar/static/images/null-star.png"/>{/if}</td>
+<td >{if $growthmx.xm2==1}<img code="{$growthmx.day},xm2" class="xmimg"    src="templates/kalendar/static/images/smiley-star.png"/>{else}<img code="{$growthmx.day},xm2" class="xmimg"   src="templates/kalendar/static/images/null-star.png"/>{/if}</td>
+<td >{if $growthmx.xm3==1}<img code="{$growthmx.day},xm3" class="xmimg"    src="templates/kalendar/static/images/smiley-star.png"/>{else}<img code="{$growthmx.day},xm3" class="xmimg"   src="templates/kalendar/static/images/null-star.png"/>{/if}</td>
+<td >{if $growthmx.xm4==1}<img code="{$growthmx.day},xm4" class="xmimg"  src="templates/kalendar/static/images/smiley-star.png"/>{else}<img  code="{$growthmx.day},xm4" class="xmimg"   src="templates/kalendar/static/images/null-star.png"/>{/if}</td>
+<td >{if $growthmx.xm5==1}<img code="{$growthmx.day},xm5" class="xmimg"    src="templates/kalendar/static/images/smiley-star.png"/>{else}<img code="{$growthmx.day},xm5" class="xmimg"  src="templates/kalendar/static/images/null-star.png"/>{/if}</td>
+<td >{if $growthmx.xm6==1}<img code="{$growthmx.day},xm6" class="xmimg"   src="templates/kalendar/static/images/smiley-star.png"/>{else}<img code="{$growthmx.day},xm6" class="xmimg"   src="templates/kalendar/static/images/null-star.png"/>{/if}</td>
+
+<td style="color: #4977c1;height: 50px;" id="day_sl">{$growthmx.c_sl}</td>
+
+
+</tr>
+{/foreach }
+
+
+
+
+<tr><td  style="color: #9a0a0b;height: 50px;">统计</td><td style="color: #4977c1;" id="xm1_sum">{$growth_sum.xm1}</td><td style="color: #4977c1;" id="xm2_sum">{$growth_sum.xm2}</td><td style="color: #4977c1;" id="xm3_sum">{$growth_sum.xm3}</td><td style="color: #4977c1;" id="xm4_sum">{$growth_sum.xm4}</td><td style="color: #4977c1;" id="xm5_sum">{$growth_sum.xm5}</td><td style="color: #4977c1;" id="xm6_sum">{$growth_sum.xm6}</td><td style="color: #4977c1;height: 50px;">
+{if $growth_sum.c_sl >33}
+<p style="color:#4977c1 ;" id="growth_sum">{$growth_sum.c_sl}</p><p style="color:#4977c1 ;" id="pingjia">(优)</p>
+{else}
+<p style="color:#4977c1 ;" id="growth_sum">{$growth_sum.c_sl}</p><p style="color:#4977c1 ;" id="pingjia"></p>
+{/if}
+
+
+
+</td></tr>
+
+<tr><td  style="color: #9a0a0b;height: 60px;"><p>备注</p><p>(评语)</p></td><td colspan="7" style="line-height: 1em; padding: 3px;text-align: left;"><textarea style=" height: 80px;width: 250px;" id="g_bz" name="bz">{$growth_List.bz}</textarea></td></tr>
+
+<tr><td  style="color: ;height: 60px;"><p >数学</p><p >考试</p></td><td >
+<input  class="result" type="text" name="result_1" style="line-height: 40px;height: 40px;width: 40px;text-align: center; " maxlength="5"  value="{$growth_List.result_1}"/>
+</td>
+<td><p >语文</p><p >考试</p></td><td>
+<input class="result" type="text" name="result_2"  style="line-height: 40px;height: 40px;width: 40px;text-align: center;" maxlength="5" value="{$growth_List.result_2}" />
+</td>
+<td><p >英语</p><p >考试</p></td><td>
+<input class="result" type="text" name="result_3"  style="line-height: 40px;height: 40px;width: 40px;text-align: center;" maxlength="5" value="{$growth_List.result_3}"/>
+</td>
+<td><p >体育</p><p >考试</p></td><td>
+<input class="result" type="text" name="result_4"  style="line-height: 40px;height: 40px;width: 40px;text-align: center;" maxlength="5" value="{$growth_List.result_4}"/>
+</td>
+</tr>
+
+<tr><td  style="color: ;height: 60px;"><p >美术</p><p >考试</p></td><td>
+<input class="result" type="text" name="result_5"  style="line-height: 40px;height: 40px;width: 40px;text-align: center;" maxlength="5" value="{$growth_List.result_5}"/>
+</td>
+<td><p >音乐</p><p >考试</p></td><td>
+<input class="result"  type="text" name="result_6"  style="line-height: 40px;height: 40px;width: 40px;text-align: center;" maxlength="5" value="{$growth_List.result_6}"/>
+</td>
+<td><p >自然</p><p >考试</p></td><td>
+<input class="result" type="text" name="result_7"  style="line-height: 40px;height: 40px;width: 40px;text-align: center;" maxlength="5" value="{$growth_List.result_7}"/>
+</td>
+<td><p >社会</p><p >考试</p></td><td>
+<input class="result" type="text" name="result_8"  style="line-height: 40px;height: 40px;width: 40px;text-align: center;" maxlength="5" value="{$growth_List.result_8}"/>
+</td>
+</tr>
+
+
+<tr>
+<td><p >身高</p><p >(cm)</p></td><td>
+<input class="result" type="text" name="shengao"  style="line-height: 40px;height: 40px;width: 40px;text-align: center;" maxlength="5" value="{$growth_List.shengao}"/>
+</td>
+<td><p >体重</p><p >(公斤)</p></td><td>
+<input class="result" type="text" name="weight"  style="line-height: 40px;height: 40px;width: 40px;text-align: center;" maxlength="5" value="{$growth_List.weight}"/>
+</td>
+<td><p >生病</p><p >次数</p></td>
+
+<td>
+<input class="result" type="text" name="jiankang"  style="line-height: 40px;height: 40px;width: 40px;text-align: center;" maxlength="5" value="{$growth_List.jiankang}" onkeypress = 'return /^\d$/.test(String.fromCharCode(event.keyCode))'
+oninput= 'this.value = this.value.replace(/\D+/g, "")'
+onpropertychange='if(!/\D+/.test(this.value)){return;};this.value=this.value.replace(/\D+/g, "")'
+onblur = 'this.value = this.value.replace(/\D+/g, "")'/>
+</td>
+
+</tr>
+
+<tr><td  style="color: ;height: 60px;" id="shengri"><p >生日</p></td><td colspan="7"><input class="result" type="text" name="birthday"  style="line-height: 40px;width: 250px;text-align: center; height: 40px;" maxlength="20" value="{$growth_List.birthday}"/></td>
+</tr>
+
+<tr>
+<td  style="color: #4977c1;height: 40px; width: 90%;" colspan="8" id="zongjie" >年度总结</td>
+</tr>
+<!--
+<tr>
+<td  style="color: #4977c1;height: 40px; width: 90%;" colspan="8" id="duizhao" >儿童成长标准</td>
+</tr>
+-->
+
+</table>
+
+</div>
+</div>
+
+
+
+
+
+<!--弹出层 -->
+<div class="alert" style="display:none;">
+
+</div>
+<div id="leavemsg" style="display:none;">
+<div class="sec"  style=" padding: 0;margin: 3px;">
+<div class="list list_four"   >
+
+<h3 class="st" style="background-color: #5942b4; margin: 0;  font-size: 16px;padding:10px;" >
+
+<span style="text-align: left;" >规则说明</span>
+
+</h3>
+<table class="tabel2" >
+<tr><td>
+
+<p>1、本表格为加强儿童教育，规范儿童行为，方便家长管理儿童学习、生活中的表现，给予积极的鼓励与肯定；</p>				
+<p>2、本表格适用于3~12周岁儿童	</p>					
+<p>3、每个表格可填充一颗星，如星期一起床时间表现良好，给予奖励一颗星，如果不好则留空，一周总数量42颗星；</p>				
+<p>4、详细规则：</p>						
+<p>起床时间：从起床时间的准确度、刷牙等行为的优良给予评分；</p>						
+<p>早餐时间/晚餐时间：时间的长度、食用量、餐桌礼仪、礼貌表现、餐桌整洁度、是否浪费等维度给予评分；如有帮忙做家务等行为可适度提高评分；</p>	
+<p>作业时间：作业完成时间、完成程度、准确率、学习态度等方面给予评分；</p>						
+<p>睡觉时间：依据规定的时间、洗漱情况、睡前读书等环节给予评分；</p>						
+<p>其他表现：根据学校表现情况以及周末家庭或学校组织活动、评选等方面的表现给予评分；</p>						
+<p>备注部分是父母对本周儿童各方面综合表现给予评语；</p>						
+<p>身高、体重、健康情况每周日必填，每周填一次；考试分数根据学校考试进度进行填写，不必每周填写！</p>
+			
+					
+
+</td></tr></table>
+<h3 class="st" style="background-color: #f2f1f1 ; margin: 0;  font-size: 16px;padding:10px;" >
+
+<span style="text-align: left;color: #3d3d40;" >已了解</span>
+
+</h3>
+</div></div>
+
+</div>
+
+
+<!--弹出层 -->
+<div class="alert2" style="display:none;">
+
+</div>
+<div id="leavemsg2" style="display:none;">
+<div class="sec"  style=" padding: 0;margin: 3px;">
+<div class="list list_four"   >
+
+<h3 class="st" style="background-color: #749c18; margin: 0;  font-size: 16px;padding:10px;" >
+
+<span style="text-align: left;" >往周记录</span>
+
+</h3>
+<table class="tabel2" >
+{foreach from=$sum_w item=sum_w}
+<tr style="height: 50px;line-height: 50px;" onClick="location='wxgrowth.php?m=dea2&openid={$openid}&week={$sum_w.week}'">
+
+
+<td >
+   
+    第{$sum_w.week}周
+   
+					
+</td></tr>
+{/foreach}
+<tr><td>第&nbsp;<input  type="text" value=""  id="jizhou"  style="width: 30px; text-align: center;"/>周</td></tr>
+</table>
+<h3 class="st" style="background-color: #f2f1f1 ; margin: 0;  font-size: 16px;padding:10px;" id="quxiao" >
+
+<span style="text-align: left;color: #3d3d40;"  >已了解</span>
+
+</h3>
+</div></div>
+
+</div>
+
+
+
+</body>
+</html> 
+<script type="text/javascript">
+<!--
+	//alert($("#ddd").text());
+  
+    $("#leavemsg").click(function(){
+          $(".alert").fadeTo(100,0);
+        $("#leavemsg").fadeTo(100,0,function(){
+            $("#leavemsg").hide();
+        });
+        
+    })
+    
+    $("#guize").click(function(){
+        $(".alert").fadeTo(100,1);
+        $("#leavemsg").fadeTo(100,1);
+    })
+    
+    
+    $("#week_now").click(function(){
+        
+       
+        $(".alert2").fadeTo(100,1);
+        $("#leavemsg2").fadeTo(100,1);
+    })
+    
+    
+     $("#quxiao").click(function(){
+        
+          $(".alert2").fadeTo(100,0);
+        $("#leavemsg2").fadeTo(100,0,function(){
+            $("#leavemsg2").hide();
+        });
+        
+    })
+    
+    
+   
+  
+    $("#duizhao").click(function(){
+        location='wxgrowth.php?m=duizhao&openid='+$("#openid").val();
+    })
+	 $("#zongjie").click(function(){
+        location='wxgrowth.php?m=zongjie&openid='+$("#openid").val();
+    })
+    
+    
+    //笑脸
+    $(".xmimg").each(function(){
+      //alert($(this).attr("code"));  
+      $(this).click(function(){
+                
+           //$(this).live("click",function(){    
+                
+                
+                if($(this).attr("src")=="templates/kalendar/static/images/smiley-star.png")
+                {
+                    $(this).attr("src","templates/kalendar/static/images/null-star.png");
+                }
+                else if($(this).attr("src")=="templates/kalendar/static/images/null-star.png")
+                {
+                    $(this).attr("src","templates/kalendar/static/images/smiley-star.png");
+                }
+                
+               //  if(all_change==1)
+//                {
+//                    $(this).attr("src","templates/kalendar/static/images/smiley-star.png");
+//                    
+//                }
+//                else if(all_change==0)
+//                {
+//                    $(this).attr("src","templates/kalendar/static/images/null-star.png");
+//                }
+                var all_change='';
+                var sl1="";
+                var sl2="";
+                var sl3="";
+                var xm_code="";
+                htmlobj=$.ajax({
+                type:"POST",
+                dataType: "json", 
+                url:"wxgrowth_2.php?m=exXm",
+                data:{"code":$(this).attr("code"),"week":$("#week_now").attr("week"),"openid":$("#openid").val()},async:false,
+                beforeSend:function(XMLHttpRequest){
+                    
+                   
+                    },
+                    success:function(data,textStatus){
+                            all_change=data.val;
+                            sl1=data.sl1;
+                            sl2=data.sl2;
+                            sl3=data.sl3;
+                            xm_code=data.sl2_xm;
+                            //alert(xm_code);
+                    //alert(data);
+                    //window.location.reload();
+                    },
+                    complete:function(XMLHttpRequest,textStatus){
+                    // alert('远程调用成功，状态文本值：'+textStatus);
+                   
+                   // $("#load_img").empty();
+                 
+                  
+                    },
+                    error:function(XMLHttpRequest,textStatus,errorThrown){
+                    // alert('error...状态文本值：'+textStatus+" 异常信息："+errorThrown);
+                    //$("#load_img").empty();
+                    }
+                
+                
+                
+                });
+                
+               
+               $(this).parent().parent().find("#day_sl").text(sl1);
+                var cc="#"+xm_code+"_sum";
+                $(cc).text(sl2);
+                if(sl3>33)
+                {
+                    $("#pingjia").css("color","#4977c1");
+                    $("#growth_sum").css("color","#4977c1");
+                    $("#pingjia").text("(优)");
+                }
+                $("#growth_sum").text(sl3);
+                
+      })
+
+    })
+    
+    
+    $(".week").each(function(){
+        
+        if($(this).attr("day")==$("#taday").val())
+        {
+            $(this).css("background-color","#83b7de");
+        }
+   
+    })
+    
+   
+    $("#jizhou").keyup(function(event){
+      if(event.keyCode ==13){
+        location='wxgrowth.php?week='+$(this).val();
+    }
+        });
+        
+      //  $("#g_bz").blur(function(){
+            
+          $("#g_bz").live("blur",function(){   
+            
+             htmlobj3=$.ajax({
+                type:"POST",
+                //dataType: "json", 
+                url:"wxgrowth_2.php?m=exResult",
+                data:{"type1":$(this).attr("name"),"val":$(this).val(),"week":$("#week_now").attr("week"),"openid":$("#openid").val()},async:false,
+                beforeSend:function(XMLHttpRequest){
+                    
+                   
+                    },
+                    success:function(data,textStatus){
+                           
+                            //alert(data);
+                    //alert(data);
+                    //window.location.reload();
+                    },
+                    complete:function(XMLHttpRequest,textStatus){
+                    // alert('远程调用成功，状态文本值：'+textStatus);
+                   
+                   // $("#load_img").empty();
+                 
+                  
+                    },
+                    error:function(XMLHttpRequest,textStatus,errorThrown){
+                    // alert('error...状态文本值：'+textStatus+" 异常信息："+errorThrown);
+                    //$("#load_img").empty();
+                    }
+                
+                
+                
+                });
+        })
+        
+ 
+    $(".result").each(function ()
+    {
+      
+     $(this).blur(function(){
+        //alert(1);
+           
+            //alert($(this).val());
+            
+            //修改记录
+            htmlobj2=$.ajax({
+                type:"POST",
+                //dataType: "json", 
+                url:"wxgrowth_2.php?m=exResult",
+                data:{"type1":$(this).attr("name"),"val":$(this).val(),"week":$("#week_now").attr("week"),"openid":$("#openid").val()},async:false,
+                beforeSend:function(XMLHttpRequest){
+                    
+                   
+                    },
+                    success:function(data,textStatus){
+                           
+                            //alert(data);
+                    //alert(data);
+                    //window.location.reload();
+                    },
+                    complete:function(XMLHttpRequest,textStatus){
+                    // alert('远程调用成功，状态文本值：'+textStatus);
+                   
+                   // $("#load_img").empty();
+                 
+                  
+                    },
+                    error:function(XMLHttpRequest,textStatus,errorThrown){
+                    // alert('error...状态文本值：'+textStatus+" 异常信息："+errorThrown);
+                    //$("#load_img").empty();
+                    }
+                
+                
+                
+                });
+            
+            
+            
+        })
+    
+        
+    })
+    
+    -->
+    
+    
+   
+   
+ -->
+</script>

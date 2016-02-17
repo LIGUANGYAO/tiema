@@ -1,0 +1,1 @@
+UPDATE action SET action_code='tbhome_appid.php' WHERE action_id=21 AND action_name='公众号';

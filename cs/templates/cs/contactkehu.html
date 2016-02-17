@@ -1,0 +1,41 @@
+<!Doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<title>联系客服</title>
+<link type="text/css" rel="stylesheet" href='css/base.css?1445927979' />
+<link type="text/css" rel="stylesheet" href='css/style.css?1445927979' />
+<link type="text/css" rel="stylesheet" href='css/layout.css?1445927979' />
+<script src="js/zepto.min.js?1445927979" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function(){             //加载文档
+   $(window).on("load",function(){       //window的load加载事件
+		$('body').on('touchmove', function (event) {
+			event.preventDefault();
+			//return false;
+		});
+   });
+   $("img").on('click',function(){
+	   history.back(-1);
+   });
+});
+</script>
+</head>
+<body>
+<div> 
+<div class="mcheck">
+<div class="mctxt">
+进群请加蚂蚁梦想汇官方客服：蚂蚁•VIP财富05群；06群<br>
+长按识别图中二维码，添加客服为好友
+</div>
+    <div> 
+        <img src="images/custom.jpg?444"/>
+    </div>
+</div>
+</div>
+</body>
+</html>

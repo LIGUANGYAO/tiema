@@ -1,0 +1,179 @@
+<!DOCTYPE html><html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no"/> <meta name="author" content="47tz"> 
+<title></title>
+<link rel="stylesheet" type="text/css" href="templates/kalendar/static/css/v1/min.duba.touch.css" /> 
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+
+</head>
+<style type="text/css">
+<!--
+	.tabel1
+        {
+            width: 100%;
+            border-collapse: collapse;
+            border: none;
+          
+        }
+        .tabel1 th
+        {
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #c6c6c7;
+             color: #7b7b79;
+             
+        }
+      .tabel1 td
+        {
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border: 1px solid #c6c6c7;
+            color: #7b7b79;
+            
+        }
+        
+        .tabel2
+        {
+            width: 100%;
+            border-collapse: collapse;
+            border: none;
+          
+        }
+        .tabel2 th
+        {
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #c6c6c7;
+             color: #7b7b79;
+             
+        }
+        .tabel2 tr{
+            margin: 5px;
+        }
+        
+      .tabel2 td
+        {
+            height: 20px;
+            line-height: 20px;
+            padding: 5px;
+            text-indent:1em;
+            text-align: left;
+            border: 1px solid #c6c6c7;
+            color: #7b7b79;
+          
+            
+        }
+        
+        
+        .tabel3
+        {
+            width: 100%;
+            border-collapse: collapse;
+            border: none;
+          
+        }
+        .tabel3 th
+        {
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #c6c6c7;
+             color: #7b7b79;
+             
+        }
+        .tabel3 tr{
+            margin: 5px;
+        }
+        
+      .tabel3 td
+        {
+            height: 20px;
+            line-height: 20px;
+            padding: 5px 0 5px 0;
+            
+            text-align: center;
+            border: 1px solid #c6c6c7;
+            color: #7b7b79;
+          
+            
+        }
+        
+         .tabel1 th p{margin:0px 0 0 0;padding:0;text-indent:0em;line-height:150%;}
+       .tabel1 td p{margin:0px 0 0 0;padding:0;text-indent:0em;line-height:150%;}
+       
+       
+       <!-- -->
+       .alert{filter:alpha(opacity=20); /* IE */ -moz-opacity:0.2; /* Moz + FF */ opacity: 0.2; width:100%; background:; left:0%; top:0%;margin-top:-0px;margin-left:-0px;position:absolute;z-index:99; text-align:center; padding:0px;}
+	   #leavemsg{left:5%;top:5%;margin-top:-0px;margin-left:-0px;position:absolute;z-index:99; text-align:center; padding:0px;
+    	width:90%;
+    	height:300px;
+    	border:0px solid #008800;}
+        
+        
+        .alert2{filter:alpha(opacity=20); /* IE */ -moz-opacity:0.2; /* Moz + FF */ opacity: 0.2; width:100%; background:; left:0%; top:0%;margin-top:-0px;margin-left:-0px;position:absolute;z-index:99; text-align:center; padding:0px;}
+        #leavemsg2{left:0%; top:0%;margin-top:-0px;margin-left:-0px;position:absolute;z-index:99; text-align:center; padding:0px;
+    	width:100%;
+    	height:300px;
+    	border:0px solid #008800;}
+-->
+</style>
+<body>
+
+
+<div class="sec"  style=" padding: 0;margin: 3px;">
+<div class="list list_four"   >
+
+<h3 class="st" style="background-color: #f2f1f1; margin: 0;  font-size: 16px;padding:10px;text-align: center" >
+
+<span style="text-align: center;color: #4977c1;height: 20px; width: 90%;" onclick="location='wxgrowth.php?m=dea2&openid={$openid}'" >儿童成长身高体重对照表</span>
+
+</h3>
+<table class="tabel3" >
+
+
+ <tr>
+    <td rowspan="2">月龄</td>
+    <td colspan="2">体重(单位kg)</td>
+      <td colspan="2">身高(单位cm)</td>
+  </tr>
+   <tr>
+      <td>男</td><td>女</td>
+      <td>男</td><td>女</td>
+   </tr>
+   
+   <tr><td>01月</td><td>3.6-5.0</td><td>2.7-3.6</td><td>48.2-52.8</td><td>47.7-52.0</td></tr>
+   <tr><td>02月</td><td>4.3-6.0</td><td>3.4-4.5</td><td>52.1-57.0</td><td>51.2-55.8</td></tr>
+   <tr><td>03月</td><td>5.0-6.9</td><td>4.0-5.4</td><td>55.5-60.7</td><td>54.4-59.2</td></tr>
+   <tr><td>04月</td><td>5.7-7.6</td><td>4.7-6.2</td><td>58.5-63.7</td><td>57.1-59.5</td></tr>
+   <tr><td>05月</td><td>6.3-8.2</td><td>5.3-6.9</td><td>61.0-66.4</td><td>59.4-64.5</td></tr>
+   <tr><td>06月</td><td>6.9-8.8</td><td>6.3-8.1</td><td>65.1-70.5</td><td>63.3-68.6</td></tr>
+   <tr><td>08月</td><td>7.8-9.8</td><td>7.2-9.1</td><td>68.3-73.6</td><td>66.4-71.8</td></tr>
+   <tr><td>10月</td><td>8.6-10.6</td><td>7.9-9.9</td><td>71.0-76.3</td><td>69.0-74.5</td></tr>
+   <tr><td>12月</td><td>9.1-11.3</td><td>8.5-10.6</td><td>73.4-78.8</td><td>71.5-77.1</td></tr>
+   <tr><td>15月</td><td>9.8-12.0</td><td>9.1-11.3</td><td>76.6-82.3</td><td>74.8-80.7</td></tr>
+   <tr><td>18月</td><td>10.3-12.7</td><td>9.7-12.0</td><td>79.4-85.4</td><td>77.9-84.0</td></tr>
+   <tr><td>21月</td><td>10.8-13.3</td><td>10.2-12.6</td><td>81.9-88.4</td><td>80.6-87.0</td></tr>
+   <tr><td>2岁</td><td>11.2-14.0</td><td>10.6-13.2</td><td>84.3-91.0</td><td>83.3-89.8</td></tr>
+   <tr><td>2.5岁</td><td>12.1-15.3</td><td>11.7-14.7</td><td>88.9-95.8</td><td>87.9-94.7</td></tr>
+   <tr><td>3岁</td><td>13.0-16.4</td><td>12.6-16.1</td><td>91.1-98.7</td><td>90.2-98.1</td></tr>
+   <tr><td>3.5岁</td><td>13.9-17.6</td><td>13.5-17.2</td><td>95.0-103.1</td><td>94.0-101.8</td></tr>
+   <tr><td>4岁</td><td>14.8-18.7</td><td>14.3-18.3</td><td>98.7-107.2</td><td>97.6-105.7</td></tr>
+   <tr><td>4.5岁</td><td>15.7-19.9</td><td>15.0-19.4</td><td>102.1-111.0</td><td>100.9-109.3</td></tr>
+   <tr><td>5岁</td><td>16.6-21.1</td><td>15.7-20.4</td><td>105.3-114.5</td><td>104.0-112.8</td></tr>
+   <tr><td>5.5岁</td><td>17.4-22.3</td><td>16.5-21.6</td><td>108.4-117.8</td><td>106.9-116.2</td></tr>
+   <tr><td>6岁</td><td>18.4-23.6</td><td>17.3-22.9</td><td>111.2-121.0</td><td>109.7-119.6</td></tr>
+   <tr><td>7岁</td><td>20.2-26.5</td><td>19.1-26.0</td><td>116.6-126.8</td><td>115.1-126.2</td></tr>
+   <tr><td>8岁</td><td>22.2-30.0</td><td>21.4-30.2</td><td>121.6-132.2</td><td>120.4-132.4</td></tr>
+   <tr><td>9岁</td><td>24.3-34.0</td><td>24.1-35.3</td><td>126.5-137.8</td><td>125.7-138.7</td></tr>
+   <tr><td>10岁</td><td>26.8-38.7</td><td>27.2-40.9</td><td>131.4-143.6</td><td>131.5-145.1</td></tr>
+  
+   
+</table>
+<h3 class="st" style="background-color: f2f1f1 ; margin: 0;  font-size: 16px;padding:10px;text-align: center" >
+
+<span style="text-align: center;color: #3d3d40;height: 20px; width: 90%;" onclick="location='wxgrowth.php?m=dea2&openid={$openid}'" >返回成长管理表</span>
+
+</h3>
+</div></div>
+</body>
+</html> 

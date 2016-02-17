@@ -1,0 +1,9 @@
+@charset "utf-8";
+/* CSS Document */
+.img img{ width:100%; height:100%; display:block; clear:both;}
+.img_index{ background:#e63348;}
+/*
+.img_index .payto_i1{height:45%;}
+.img_index .payto_i2{height:27%;}
+.img_index .payto_i3{height:28%; }*/
+.payto_i2 ul li{float:left;width:12%;display:block;border:1px solid #ddd; height:40px; margin:6% 0 6% 3.5%; background:#fde567; border-radius:6px; text-align:center; line-height:40px; color:#bc1c28; font-size:18px; font-weight:bolder;}

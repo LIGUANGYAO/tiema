@@ -1,0 +1,141 @@
+
+#left_citie_small { 
+    height:30px;width: 500px; background:#FFFFFF;
+    
+    }
+    
+#left_citie_small_mx { 
+    height:300px; width: 700px; background:#FFFFFF;
+    overflow:auto;
+    
+    }
+
+#left_citie_small_mx_1 { 
+    height:30px; width: 700px; background:#FFFFFF;
+    overflow:auto;
+    
+    }
+#left_citie_small_mx_2 { 
+    height:270px; width: 700px; background:#FFFFFF;
+    overflow:auto;
+    
+    }
+
+#rightsidebar_citie_small_mx {   background:#ffffff; margin-left:10px !important; margin-left:15px;}    
+
+
+#citie_small { margin-left:5px !important; margin-left:5px; 
+margin-top:2.5px !important; margin-top:2.5px;
+margin-bottom:2.5px !important; margin-bottom:2.5px;
+margin-right:5px !important; margin-right:5px;
+box-shadow: 1px 1px 3px 0 #222222;
+border-radius: 0px;
+text-align:left;
+float:left;
+word-wrap: break-word;
+
+word-break: break-all;
+word-spacing: normal;
+ width: 50px; background:#00c13f;}
+
+#citie_small_null { margin-left:5px !important; margin-left:5px; 
+margin-top:2.5px !important; margin-top:2.5px;
+margin-bottom:2.5px !important; margin-bottom:2.5px;
+margin-right:5px !important; margin-right:5px;
+box-shadow: 1px 1px 3px 0 #222222;
+border-radius: 0px;
+text-align:left;
+float:left;
+word-wrap: break-word;
+
+word-break: break-all;
+word-spacing: normal;
+ width: 550px; background:#00c13f;}
+ 
+
+
+#citie_small_checkbox { margin-left:5px !important; margin-left:5px; 
+margin-top:2.5px !important; margin-top:2.5px;
+margin-bottom:2.5px !important; margin-bottom:2.5px;
+margin-right:5px !important; margin-right:5px;
+box-shadow: 1px 1px 3px 0 #222222;
+border-radius: 0px;
+text-align:left;
+float:left;
+ width: 25px; background:#00c13f;}
+
+#citie_small_inputtext{
+    width: 200px;
+}
+
+
+#citie_middle { margin-left:5px !important; margin-left:5px; 
+margin-top:2.5px !important; margin-top:2.5px;
+margin-bottom:2.5px !important; margin-bottom:2.5px;
+margin-right:5px !important; margin-right:5px;
+box-shadow: 1px 1px 3px 0 #222222;
+border-radius: 0px;
+text-align:left;
+float:left;
+word-wrap: break-word;
+
+word-break: break-all;
+word-spacing: normal;
+
+ width: 110px; background:#00c13f;}
+
+#citie_samll_font { margin-left:5px !important; margin-left:5px;  margin-bottom:2.5px !important; margin-bottom:2.5px;
+margin-right:5px !important; margin-right:5px;
+margin-top:5px !important; margin-top:5px;
+ line-height: 20px;
+ 
+font-weight: bold;font-size: 15px;color: white;
+}
+#citie_samll_mx_font { margin-left:0px !important; margin-left:0px;  margin-bottom:0px !important; margin-bottom:0px;
+margin-right:0px !important; margin-right:0px;
+margin-top:0px !important; margin-top:0px;
+ line-height: 20px;
+ 
+font-weight: bold;font-size: 13px;color: white;
+}
+
+
+#citie_Smiddle_mx { margin-left:5px !important; margin-left:5px; 
+margin-top:5px !important; margin-top:5px;
+margin-bottom:5px !important; margin-bottom:5px;
+margin-right:5px !important; margin-right:5px;
+box-shadow: 1px 1px 3px 0 #222222;
+border-radius: 0px;
+text-align:left;
+float:left;
+height:25px; width: 110px; background:#00c13f;}
+
+
+#citie_middle2_mx { margin-left:5px !important; margin-left:5px; 
+margin-top:5px !important; margin-top:5px;
+margin-bottom:5px !important; margin-bottom:5px;
+margin-right:5px !important; margin-right:5px;
+box-shadow: 1px 1px 3px 0 #222222;
+border-radius: 0px;
+text-align:left;
+float:left;
+height:25px; width: 110px; background:#00c13f;}
+
+
+#citie_Ssmall_mx { margin-left:5px !important; margin-left:5px; 
+margin-top:5px !important; margin-top:5px;
+margin-bottom:5px !important; margin-bottom:5px;
+margin-right:5px !important; margin-right:5px;
+box-shadow: 1px 1px 3px 0 #222222;
+border-radius: 0px;
+text-align:left;
+float:left;
+
+height:25px; width: 25px; background:#00c13f;}
+#citie_Ssamll_mx_font { margin-left:5px !important; margin-left:5px;  margin-bottom:2.5px !important; margin-bottom:2.5px;
+margin-right:5px !important; margin-right:5px;
+margin-top:5px !important; margin-top:5px;
+ line-height: 15px;
+ 
+font-weight: bold;font-size: 15px;color: white;
+}

@@ -1,0 +1,1 @@
+D:\php\xampp\php\php.exe -q  D:\php\xampp\htdocs\news/auto_task_cli.php

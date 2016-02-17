@@ -1,0 +1,235 @@
+{include file="cs/head.html"}
+
+
+{if $wx_pay==1}
+
+
+<body id="bd" style="width: 757px; height: 673px; border: 0px solid red; overflow: hidden;">
+<div class="payto"> 
+	<div class="pay_top">
+        <div class="left">
+        	<div class="centerY">
+       		<img src="{$userInfo.headimgurl}">
+            </div>
+        </div>
+        <div class="right">
+        	<div class="name"><font color="#000" size="+1">我 是</font>&nbsp;[{$userInfo.nick_name}]</div>
+            <div class="explain">送您财神卡祝好运天天来</div>
+        </div>
+    </div>
+    <div class="push">
+    	<div class="top">
+        	<img src="images/code_mid.jpg">
+        </div>
+        <div class="mid">
+        	<img src="{$tg_img}">
+        </div>
+         <div class="bom">
+        	<div class="line_one">长按识别二维码</div>
+            <div class="line_two">财运加倍</div>
+        </div>
+    </div>  
+</div>
+<script type="text/javascript">
+window.onload = function(){                                       //页面刚加载时启动
+   	var width=document.documentElement.clientWidth;
+	var height = document.documentElement.clientHeight;
+	var bd = document.getElementById("bd");
+	//console.log(bd);
+	bd.style.cssText="width:"+width+"px;height:"+height+"px;border:0px solid red;overflow:hidden;"; 
+	
+	var dataForWeixin = {
+		title: '{$userInfo.nick_name}送您的微卡',
+		link: '{$nurl}',
+		imgUrl: "{$userInfo.headimgurl}", // 分享图标
+		desc:'',
+	};
+	weixin(dataForWeixin);
+}
+
+
+</script>
+
+
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+/*
+	微信js接口    demo:http://demo.open.weixin.qq.com/jssdk/
+*/
+wx.config({
+	//debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+	appId: '{$signPackage.appId}',
+	timestamp: '{$signPackage.timestamp}',
+	nonceStr: '{$signPackage.nonceStr}',
+	signature: '{$signPackage.signature}',
+   // 所有要调用的 API 都要加到这个列表中
+	jsApiList: [
+        'checkJsApi',
+        'onMenuShareTimeline',
+        'onMenuShareAppMessage',
+        'onMenuShareQQ',
+        'onMenuShareWeibo',
+        'hideMenuItems',
+        'showMenuItems',
+        'hideAllNonBaseMenuItem',
+        'showAllNonBaseMenuItem',
+        'translateVoice',
+        'startRecord',
+        'stopRecord',
+        'onRecordEnd',
+        'playVoice',
+        'pauseVoice',
+        'stopVoice',
+        'uploadVoice',
+        'downloadVoice',
+        'chooseImage',
+        'previewImage',
+        'uploadImage',
+        'downloadImage',
+        'getNetworkType',
+        'openLocation',
+        'getLocation',
+        'hideOptionMenu',
+        'showOptionMenu',
+        'closeWindow',
+        'scanQRCode',
+        //'chooseWXPay',
+        'openProductSpecificView',
+        'addCard',
+        'chooseCard',
+        'openCard'
+      ]
+});
+
+var weixin = function (dataForWeixin){
+	wx.ready(function () {
+		if(dataForWeixin != ''){
+			wx.onMenuShareTimeline(dataForWeixin);
+			wx.onMenuShareAppMessage(dataForWeixin);
+			wx.onMenuShareQQ(dataForWeixin);
+			wx.onMenuShareWeibo(dataForWeixin);			
+		}	  
+	});	
+};
+
+//wx.ready(function () {
+	// 在这里调用 API
+	//判断当前客户端版本是否支持指定JS接口      checkJsApi接口是客户端6.0.2新引入的一个预留接口，第一期开放的接口均可不使用checkJsApi来检测。
+	/*wx.checkJsApi({
+	  jsApiList: [
+		'onMenuShareTimeline',
+		'onMenuShareAppMessage'
+	  ],
+	  success: function (res) {
+		//alert(JSON.stringify(res));
+	  }
+	});*/
+
+	//获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
+	/*wx.onMenuShareTimeline({
+		title: dataForWeixin.title, // 分享标题
+		link: dataForWeixin.link, // 分享链接
+		imgUrl: dataForWeixin.imgUrl, // 分享图标
+		desc: dataForWeixin.desc,
+		trigger: function (res) {
+			//alert('用户点击分享到朋友圈');
+		},
+		success: function (res) {
+			//alert('已分享');
+		},
+		cancel: function (res) {
+			//alert('已取消');
+		},
+		fail: function (res) {
+			//alert(JSON.stringify(res));
+		}
+	});*/
+	
+	//分享到朋友圈
+	//wx.onMenuShareTimeline(dataForWeixin);
+	//发送给朋友
+	//wx.onMenuShareAppMessage(dataForWeixin);
+	//分享到QQ
+	//wx.onMenuShareQQ(dataForWeixin);
+	//分享到微博
+	//wx.onMenuShareWeibo(dataForWeixin);
+	
+	//隐藏右上角菜单
+	//wx.hideOptionMenu();
+	//显示右上角菜单
+	//wx.showOptionMenu();
+	
+	//批量隐藏菜单项
+	/*wx.hideMenuItems({
+		menuList: [
+			'menuItem:readMode', // 阅读模式
+			'menuItem:share:timeline', // 分享到朋友圈
+			'menuItem:copyUrl' // 复制链接
+		],
+		success: function (res) {
+			//alert('已隐藏“阅读模式”，“分享到朋友圈”，“复制链接”等按钮');
+		},
+		fail: function (res) {
+			//alert(JSON.stringify(res));
+		}
+	});*/
+	
+	//关闭当前窗口
+	//wx.closeWindow();
+//});
+
+wx.error(function(res){
+	// config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+	alert(res.errMsg);
+});
+</script>
+
+</body><iframe id="__WeixinJSBridgeIframe_SetResult" style="display: none;"></iframe><iframe id="__WeixinJSBridgeIframe" style="display: none;"></iframe></html>
+
+
+{else}
+<script src="js/zepto.min.js?1445937793" type="text/javascript"></script>
+<script src="js/layer.m.js?1445937793" type="text/javascript"></script>
+<script src="js/iscroll.js?1445937793" type="text/javascript"></script>
+<script src="js/validate.js?1445937793" type="text/javascript"></script>
+
+<body id="bd" style="width: 757px; height: 673px; border: 0px solid red; overflow: hidden;">
+
+<script type="text/javascript">
+window.onload = function(){                                       //页面刚加载时启动
+   	var width=document.documentElement.clientWidth;
+	var height = document.documentElement.clientHeight;
+	var bd = document.getElementById("bd");
+	//console.log(bd);
+	bd.style.cssText="width:"+width+"px;height:"+height+"px;border:0px solid red;overflow:hidden;"; 
+	
+	var dataForWeixin = {
+		title: '{$userInfo.nick_name}的推广二维码',
+		link: '{$nurl}',
+		imgUrl: "{$userInfo.headimgurl}", // 分享图标
+		desc:'',
+	};
+	weixin(dataForWeixin);
+}
+
+
+</script>
+
+
+
+
+
+</body>
+
+<script type="text/javascript">
+	layer.open({
+						content:'您还没有购书，暂时无分享二维码。',
+						btn:['购书'],
+						yes:function(){
+							location.href = 'bookbuy.php';
+						}
+					});	
+</script>
+
+{/if}

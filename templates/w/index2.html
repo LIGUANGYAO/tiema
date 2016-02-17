@@ -1,0 +1,81 @@
+{include file="w/head.html"}
+
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+
+<script type="text/javascript" src="js/jquery.md5.js"></script>
+<script type="text/javascript" src="js/m.shop.js"></script>
+
+<form name="login" id="login" method="post" action="login.html" enctype="multipart/form-data">  
+<div class="ui-form">
+<div class="ui-form-item ui-form-item-l ui-border-b" style="text-align: center;">
+        <b>登陆CRM</b>
+            
+
+        
+        
+</div>
+
+
+
+<div class="ui-form-item ui-form-item-l ui-border-b">
+        <label class="ui-border-r">
+            登陆名
+        </label>
+        <input type="text" placeholder="请输入登陆名" name="us_name" id="username"/>
+        
+        
+</div>
+<div class="ui-form-item ui-form-item-l ui-border-b">
+        <label class="ui-border-r">
+            密&nbsp;&nbsp;&nbsp;&nbsp;码
+        </label>
+        <input type="password" placeholder="请输入密码"  name="psword" id="password" type="text" />
+        
+      
+</div>
+
+
+
+<div class="ui-btn-wrap">
+    <button class="ui-btn-lg ui-btn-primary" id="btn1">
+        确定
+    </button>
+</div>
+
+
+
+</form>
+
+
+<script type="text/javascript">
+
+    
+
+$("#btn1").click(function(){
+    
+    if(jQuery.trim($("#username").attr("value"))==''){
+        $("#username").focus();
+        return false;
+    }else if(jQuery.trim($("#password").attr("value"))==''){
+        $("#password").focus();return false;
+    }
+    else
+    {
+        var password = $('#password').val().replace(/\s*/, ""); 
+              
+          md_login();    
+    
+    }
+       
+    
+    
+          
+})
+
+    
+</script>
+
+
+
+    </body>
+</html>

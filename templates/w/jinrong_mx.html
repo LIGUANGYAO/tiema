@@ -1,0 +1,63 @@
+{include file="w/head.html"}
+
+{if $fall==edit} 
+        {include file="w/title.html"}
+        <div class="content"><p><div  class="ui-searchbar-wrap ui-border-b">
+    
+   <table class="ui-table ui-border-tb">
+    <thead>
+        <tr><th colspan="3"><b>金融产品信息</b></th></tr>
+    </thead>
+    <tbody>
+     
+        <tr><td style="width: 100px;">金融产品代码</td><td><a >{$jinrong_mx.jinrong_sn}</a></td></tr>
+        <tr><td>金融产品名称</td><td><a >{$jinrong_mx.jinrong_name}</a></td></tr>
+       
+</table>
+
+
+</div>
+</div>
+
+     <div class="content" style="width: 100%;">
+        
+<h3 class="title" style="background-color: #f5f5f5;"><b>备注</b></h3>
+<li class="ui-border-t" style="padding: 10px;">
+        <div  style="width: 100%;overflow:hidden">
+           {$jinrong_mx.bz}
+        </div>
+    </li>
+</div>
+
+
+<div class="ui-btn-wrap">
+    <button class="ui-btn-lg ui-btn-danger" onclick="location.href='jinrong.html'" >
+        返回金融产品搜索
+    </button>
+</div>
+{/if}
+
+
+{if $fall==tuwenxinxi} 
+        {include file="w/title.html"}
+        <div class="content">
+        
+<h3 class="title" style="background-color: #f5f5f5;"><b>图文信息</b></h3>
+<li class="ui-border-t" style="padding: 10px;">
+        <div >
+           {$jinrong_mx.tuwen}
+        </div>
+    </li>
+</div>
+<div class="ui-btn-wrap">
+    <button class="ui-btn-lg ui-btn-danger" onclick="javascript:history.go(-1)" >
+        返回
+    </button>
+</div>
+{/if}
+<script src="frozenjs/1.0.1/frozen.js"></script>
+<script type="text/javascript">
+
+</script> 
+    </body>
+</html>

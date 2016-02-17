@@ -1,0 +1,50 @@
+{include file="w/head.html"}
+
+{if $fall==edit} 
+        {include file="w/title.html"}
+        <div class="content"><p><div  class="ui-searchbar-wrap ui-border-b">
+    
+   <table class="ui-table ui-border-tb">
+    <thead>
+        <tr><th colspan="3"><b>评估信息</b></th></tr>
+    </thead>
+    <tbody>
+     
+        <tr><td style="width: 100px;">评估代码</td><td><a >{$pinggu_mx.pinggu_sn}</a></td></tr>
+        <tr><td>评估名称</td><td><a >{$pinggu_mx.pinggu_name}</a></td></tr>
+        <tr><td>评估对象</td><td><a >{$pinggu_mx.pinggu_obj}</a></td></tr>
+        <tr><td>客户id</td><td><a >{$kehu_id_select.name}</a></td></tr>
+        <tr><td>客户电话</td><td><a href="tel:{$kehu_id_select.tel}">{$kehu_id_select.tel}</a></td></tr>
+        <tr><td>客户名称</td><td><a >{$pinggu_mx.kehu_name}</a></td></tr>
+        <tr><td>建筑面积</td><td><a>{$pinggu_mx.jianzhumianji}</a></td></tr>
+        <tr><td>评估单价</td><td><a >{$pinggu_mx.danjia}</a></td></tr>
+        <tr><td>市场总价</td><td><a >{$pinggu_mx.shichangzongjia}</a></td></tr> 
+        <tr><td>收费</td><td><a >{$pinggu_mx.shoufei}</a></td></tr> 
+        <tr><td>评估公司</td><td><a >{$gongsi_id_select.name}</a></td></tr> 
+        <tr><td>评估日期</td><td><a >{$pinggu_mx.pinggu_time}</a></td></tr>
+        <tr><td>银行</td><td><a >{$yinhang_id_select.name}</a></td></tr> 
+        
+        <tr><td>银行联系人</td><td><a >{$pinggu_mx.yinhang_lianxiren}</a></td></tr>
+         <tr><td>银行联系人电话</td><td><a href="tel:{$pinggu_mx.yinhang_lxr_tel}">{$pinggu_mx.yinhang_lxr_tel}</a></td></tr>
+         
+        <tr><td>拿报告1时间</td><td><a >{$pinggu_mx.naben1_time}</a></td></tr>
+        <tr><td>拿报告2时间</td><td><a >{$pinggu_mx.naben2_time}</a></td></tr>
+        <tr><td>拿报告3时间</td><td><a >{$pinggu_mx.naben3_time}</a></td></tr>
+    </tbody>
+</table>
+
+
+</div>
+</div>
+<div class="ui-btn-wrap">
+    <button class="ui-btn-lg ui-btn-danger" onclick="location.href='pinggu.html'" >
+        返回评估搜索
+    </button>
+</div>
+{/if}
+<script src="frozenjs/1.0.1/frozen.js"></script>
+<script type="text/javascript">
+
+</script> 
+    </body>
+</html>

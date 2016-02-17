@@ -1,0 +1,193 @@
+<!DOCTYPE html><html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0,user-scalable=no"/> <meta name="author" content="47tz"> 
+<title></title>
+<link rel="stylesheet" type="text/css" href="templates/kalendar/static/css/v1/min.duba.touch.css" /> 
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+
+</head>
+<style type="text/css">
+<!--
+	.tabel1
+        {
+            width: 100%;
+            border-collapse: collapse;
+            border: none;
+          
+        }
+        .tabel1 th
+        {
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #c6c6c7;
+             color: #7b7b79;
+             
+        }
+      .tabel1 td
+        {
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border: 1px solid #c6c6c7;
+            color: #7b7b79;
+            
+        }
+        
+        .tabel2
+        {
+            width: 100%;
+            border-collapse: collapse;
+            border: none;
+          
+        }
+        .tabel2 th
+        {
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #c6c6c7;
+             color: #7b7b79;
+             
+        }
+        .tabel2 tr{
+            margin: 5px;
+        }
+        
+      .tabel2 td
+        {
+            height: 20px;
+            line-height: 20px;
+            padding: 5px;
+            text-indent:1em;
+            text-align: left;
+            border: 1px solid #c6c6c7;
+            color: #7b7b79;
+          
+            
+        }
+        
+        
+        .tabel3
+        {
+            width: 100%;
+            border-collapse: collapse;
+            border: none;
+          
+        }
+        .tabel3 th
+        {
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #c6c6c7;
+             color: #7b7b79;
+             
+        }
+        .tabel3 tr{
+            margin: 5px;
+        }
+        
+      .tabel3 td
+        {
+            height: 20px;
+            line-height: 20px;
+            padding: 5px 0 5px 0;
+            
+            text-align: center;
+            border: 1px solid #c6c6c7;
+            color: #7b7b79;
+          
+            
+        }
+        
+         .tabel1 th p{margin:0px 0 0 0;padding:0;text-indent:0em;line-height:150%;}
+       .tabel1 td p{margin:0px 0 0 0;padding:0;text-indent:0em;line-height:150%;}
+       
+       
+       <!-- -->
+       .alert{filter:alpha(opacity=20); /* IE */ -moz-opacity:0.2; /* Moz + FF */ opacity: 0.2; width:100%; background:; left:0%; top:0%;margin-top:-0px;margin-left:-0px;position:absolute;z-index:99; text-align:center; padding:0px;}
+	   #leavemsg{left:5%;top:5%;margin-top:-0px;margin-left:-0px;position:absolute;z-index:99; text-align:center; padding:0px;
+    	width:90%;
+    	height:300px;
+    	border:0px solid #008800;}
+        
+        
+        .alert2{filter:alpha(opacity=20); /* IE */ -moz-opacity:0.2; /* Moz + FF */ opacity: 0.2; width:100%; background:; left:0%; top:0%;margin-top:-0px;margin-left:-0px;position:absolute;z-index:99; text-align:center; padding:0px;}
+        #leavemsg2{left:0%; top:0%;margin-top:-0px;margin-left:-0px;position:absolute;z-index:99; text-align:center; padding:0px;
+    	width:100%;
+    	height:300px;
+    	border:0px solid #008800;}
+-->
+</style>
+<body>
+
+
+<div class="sec"  style=" padding: 0;margin: 3px;">
+<div class="list list_four"   >
+
+<h3 class="st" style="background-color: #f2f1f1; margin: 0;  font-size: 14px;text-align: center" >
+
+<span style="text-align:center;color: #4977c1;height: 20px; width: 90%;" onClick="location='wxgrowth.php?m=dea2&openid={$openid}'" >年度表现总结(截止目前总获得星星{$zxx}颗)</span></h3>
+<table class="tabel3" >
+
+<tr>
+   <td >年星星总和</td>
+   <td>{$zxx}</td>
+</tr>
+<tr>
+   <td>年身高增长(cm)</td>
+ <td>{$shengao}</td>
+</tr>
+<tr>    
+   <td>年体重增加(kg)</td>
+   <td>{$weight}</td>
+</tr>
+<tr>
+    <td>生病次数</td>
+	<td>{$jiankang}</td>
+</tr>
+
+<tr>
+    <td  colspan="2">各科平均成绩</td>
+</tr>   
+
+<tr>
+    <td>数学</td>
+	 <td>{$shuxue}</td>
+</tr>     
+ <tr>
+    <td>语文</td>
+	 <td>{$yuwen}</td>
+</tr>
+ <tr>
+    <td>英语</td>
+	 <td>{$yingyu}</td>
+</tr>
+ <tr>
+    <td>体育</td>
+	 <td>{$tiyu}</td>
+</tr>
+ <tr>
+    <td>美术</td>
+	 <td>{$meishu}</td>
+</tr>
+ <tr>
+    <td>音乐</td>
+	 <td>{$yinyue}</td>
+</tr>
+ <tr>
+    <td>自然</td>
+	 <td>{$ziran}</td>
+</tr>
+ <tr>
+    <td>社会</td>
+	 <td>{$shehui}</td>
+</tr>   
+   
+   
+   
+</table>
+<h3 class="st" style="background-color: f2f1f1 ; margin: 0;  font-size: 16px;padding:10px;text-align: center" >
+<span style="text-align: center;color: #3d3d40;height: 20px; width: 90%;" onClick="location='wxgrowth.php?m=dea2&openid={$openid}'" >返回成长管理表</span>
+</h3>
+</div></div>
+</body>
+</html> 

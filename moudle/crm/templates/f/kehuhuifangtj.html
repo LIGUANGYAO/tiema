@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>客户回访统计</title>
+<link href="css/menu.css" rel="stylesheet" type="text/css" />
+<link href="css/module.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/jq.mshop.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+
+<script type="text/javascript" src="js/adddate.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+  <div class="content">
+    <div class="botable">
+
+{if $fall==1}  
+<table class="table" width="100%" border="0" style="margin-bottom: 7px;">
+    <form>
+        <tr>
+            <th style="text-align: left;border-right-style:none"></th><th style="text-align: right; border-left-style:none">
+                 <input  type="text"  id="key" name="key"  placeholder="本页搜索" />&nbsp;<input  type="text"  placeholder="关键字"  id="m_key" name="m_key"/>&nbsp;<input  value="搜索" type="submit" />&nbsp;&nbsp;&nbsp;&nbsp;<input  type="button" value="刷新"   onclick="location='kehuhuifangtj.html'" />&nbsp;</th>
+        </tr>
+    </form>
+</table>
+
+
+<table class="table" width="100%" border="0">
+    <tr>
+        <th>操作人</th>
+        <th>客户</th>
+        <th>备注</th>
+        <th>添加时间</th>
+    </tr>
+    
+<tbody  id="table_t">
+{foreach from=$kehuhuifangtj_list item=kehuhuifangtj_list}
+    <tr>
+            <td >{$kehuhuifangtj_list.user_name}</td>
+            <td >{$kehuhuifangtj_list.kehu_name}</td>
+            <td >{$kehuhuifangtj_list.bz}</td>
+            <td >{$kehuhuifangtj_list.add_time}</td>
+    
+    </tr>
+{foreachelse}
+    <tr>
+        <td style="width:70px" colspan="20">无记录</td>
+    </tr>
+{/foreach}
+
+</tbody>
+</table>
+
+
+<table class="table" width="100%" border="0">
+    <tr>
+        <td style="text-align: right;">{include file="foot.tpl"}</td>
+    </tr> 
+</table>
+
+
+{/if}
+<script type="text/javascript">
+$("#m_key").val("{$m_key}");
+        $("#m_key").focus();
+        
+</script>
+    </div>
+   <!-- end .content --></div>
+<!-- end .container --></div>
+
+<input  type="hidden" value="0" id="lbxs_open"/>
+<input  type="hidden" value="58982214ec06b0c80" id="g_e"/>
+<input  type="hidden" value="b806a8231bf91af11" id="g_d"/>
+<input  type="hidden" value="231afa78738a94f78" id="g_xs"/>
+<input  type="hidden" value="msgsend_sn" id="bianjisetf1"/>
+
+
+
+
+
+</div>
+
+</body>
+</html>
+<script type="text/javascript">
+<!--
+$(document).ready(function ()
+{      
+        $("#import_excel").click(function(){
+            $(".alert").fadeIn();
+            $("#leavemsg").fadeIn();
+        })
+        $("#msgquxiao").click(function(){
+             $(".alert").fadeOut();
+             $("#leavemsg").fadeOut();
+        })
+
+        
+        
+        $("img[id='edit']").each(function (){
+           var  lbxs_open=$("#lbxs_open").val();
+           var  g_e=$("#g_e").val();
+           var  bianjisetf1=$("#bianjisetf1").val();
+           
+           $(this).click(function (){
+            if(lbxs_open==0)
+            {
+                window.location='kehuhuifangtj.html?g='+g_e+'&'+bianjisetf1+'='+encodeURI(encodeURI($(this).attr("name")));
+            }else
+            {
+                window.open('kehuhuifangtj.html?g='+g_e+'&'+bianjisetf1+'='+encodeURI(encodeURI($(this).attr("name"))));
+            }         
+           
+        })
+        })
+        
+        var  bianjisetf1=$("#bianjisetf1").val();
+         $("img[id='delete_code']").each(function (){
+            var  g_d=$("#g_d").val();
+            
+            $(this).click(function (){
+        
+            
+              if(confirm("删除"+$(this).attr("name")+"")){
+               htmlobj=$.ajax({url:"kehuhuifangtj.html?g="+g_d+"&"+bianjisetf1+"="+encodeURI(encodeURI($(this).attr("name"))),async:false});
+              //alert(htmlobj.responseText);
+              if(htmlobj.responseText==1)
+              {
+                window.location.reload();
+              }
+              else
+              {
+                alert('删除失败,存在关联数据');
+              }
+              
+              
+            }else return false;
+            
+            })
+        })
+        
+      
+        
+        var  g_xs=$("#g_xs").val();
+        $("img[id='tzsy_jy']").each(function (){
+            
+           $(this).click(function (){
+        
+           //if(confirm("禁用"+$(this).attr("name")+"")){
+             
+              htmlobj=$.ajax({url:"kehuhuifangtj.html?g="+g_xs+"&"+bianjisetf1+"="+encodeURI(encodeURI($(this).attr("name")))+"&alt=1",async:false});
+              //alert(htmlobj.responseText);
+              window.location.reload();
+            //}else return false;
+            
+          //alert($(this).attr("title"));
+           //$("#hide_img").colorToggle(200);
+           
+           
+        })
+        })
+        $("img[id='tzsy_qy']").each(function (){
+            
+           $(this).click(function (){
+        
+           //if(confirm("启用"+$(this).attr("name")+"")){
+             
+              htmlobj=$.ajax({url:"kehuhuifangtj.html?g="+g_xs+"&"+bianjisetf1+"="+encodeURI(encodeURI($(this).attr("name")))+"&alt=0",async:false});
+              //alert(htmlobj.responseText);
+              window.location.reload();
+            //}else return false;
+            
+          //alert($(this).attr("title"));
+           //$("#hide_img").colorToggle(200);
+           
+           
+        })
+        })
+         
+         
+         $("img[id='fuzhi']").each(function (){
+                
+                $(this).click(function(){
+                    
+                      window.clipboardData.setData("Text",$(this).attr("name"));
+                     
+                })
+               
+         })
+        
+        
+          $("img[id='yulan']").each(function (){
+                
+                $(this).click(function(){
+                   window.open($(this).attr("name"))
+                })
+               
+         })
+        
+        
+        
+
+    
+})
+-->
+</script>

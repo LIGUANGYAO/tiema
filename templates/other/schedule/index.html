@@ -1,0 +1,451 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<meta name="format-detection" content="telephone=no" />
+<title>包房预订</title>
+<link rel="stylesheet" type="text/css" href="templates/other/schedule/css/wei_dialog.css" />
+<link rel="stylesheet" type="text/css" href="templates/other/schedule/css/wei_ktv.css" />
+
+<script src="templates/other/schedule/js/zepto.js"></script>
+<script src="templates/other/schedule/js/wei_webapp_v2_common1.js"></script>
+<script src="templates/other/schedule/js/wei_dialog_v1.9.4.js"></script>
+</head>
+<body id="page_BFbook">
+<header>
+	<h1>预订信息</h1>
+</header>
+<form action="" method="post">
+	<fieldset>
+		<p>
+			<label>手机号码</label>
+    <input name="ko_tel" placeholder="请输入" type="tel" autocomplete="off" value="" maxlength="11" />
+		</p>
+		
+		<p>
+			<label>用户姓名</label>
+    <input name="ko_name" placeholder="请输入" type="text" autocomplete="off" value="" />
+		</p>
+		
+
+		<p>
+			<label>预订时间</label>
+			<input name="ko_time" type="datetime" autocomplete="off" />
+			<span class="time_fake ph">请选择</span>		</p>
+		<p>
+			<label>欢唱时间</label>
+			<select name="ko_num" autocomplete="off">
+				<option value="1">1小时</option>
+				<option value="2">2小时</option>
+				<option value="3">3小时</option>
+				<option value="4">4小时</option>
+				<option value="5">5小时</option>
+				<option value="6">6小时</option>
+				<option value="7">7小时</option>
+				<option value="8">8小时</option>
+				<option value="9">9小时</option>
+				<option value="10">10小时</option>
+			</select>
+			<span class="num_fake ph">请选择</span></p>
+		<div class="p">
+			<label>包房类型</label>
+			<ul id="kr_id" class="list1">
+							<li kr_id="1025">小包<span>适合4人使用</span></li>
+							<li kr_id="1026">中包<span>适合6人使用</span></li>
+							<li kr_id="1027">大包<span>适合8人使用</span></li>
+							<li kr_id="1028">VIP包<span>适合10人使用</span></li>
+							<li kr_id="1029">商务包<span>适合12人使用</span></li>
+							<li kr_id="1030">总统包<span>适合18人使用</span></li>
+		  </ul>
+			<div style="clear:both;"></div>
+		</div>
+		<p>
+			<label>备注说明</label>
+			<input name="ko_remark" type="text" autocomplete="off" />
+		</p>
+		
+		<div class="p">
+			<label>支付方式</label>
+			<ul id="ko_paytype" class="list1">
+				<li ko_paytype="0" class="cur">到店付款</li>
+				
+			</ul>
+		<div style="clear:both;"><span style="font-size:12px; color:#f00;">请选择到店支付进行包房预定。</span></div>	
+		</div>
+
+		<p style="padding:25px 10px 15px 10px;">
+		<input type='hidden' id='errorTip' value='0' />
+		<input type="submit" value="立即预订" id="submitBtn" />
+		</p>
+	</fieldset>
+</form>
+<footer>我们将会尽快与您联系，确认预订结果</footer>
+<script type="text/javascript"> 
+
+ 
+var businessHour ="12：00-02：00-10：30-22：00";
+var businessStart = businessHour ? businessHour.split("-")[0] : '';
+var businessEnd = businessHour ? businessHour.split("-")[1] : '';
+var k_id = "18";
+ 
+ 
+_onPageLoaded(function(){
+/********************************* 业务逻辑配置 begin *********************************/
+	var timeConfig = {
+		rangeDays: 31, //时间范围的业务逻辑为: 今天至30天后
+		shopOpenHour: 8, //范围最后边界的小时
+		noticeMin: '请选择晚于当前的时间!',
+		noticeMax: '请选择30天以内的时间!',
+		androidLib: 'templates/other/schedule/js/wei_webapp_android_datetime_v1.6.2.js',
+		androidStyle: 'templates/other/schedule/css/wei_webapp_android_datetime_v1.5.6.css'
+	};
+	_q('form').onsubmit = function(e){ //提交时的前端验证等
+	
+		var ko_time = _q('input[name=ko_time]'),
+			ko_num = _q('select[name=ko_num]'),
+			ko_name = _q('input[name=ko_name]'),
+			//ko_sex = _q('input[name=ko_sex]'),
+			ko_tel = _q('input[name=ko_tel]'),
+			ko_remark = _q('input[name=ko_remark]');
+		var kr_id = $("#kr_id li.cur").attr("kr_id");
+       // var ko_paytype = $("#ko_paytype li.cur").attr("ko_paytype");
+        //var ko_price = $("#tipInfo").text();
+ 
+ 
+        var re = /^1[3|4|5|8][0-9]\d{8}$/gi;
+        if ( !re.test(ko_tel.value) ){
+            alert('请填写正确的手机号!');
+            return false;
+        }
+		if (ko_name.value === ''){
+			alert('请填写姓名!');
+			return false;
+		}
+ 
+		if (!check1(ko_time)){
+			alert('请选择预订时间!');
+			return false;
+		}
+/*        if (_q('#errorTip').value == 1) {
+            alert('预订时间需在营业时间范围内');
+            return false;
+        }*/
+		
+		if (!check1(ko_num)){
+			alert('请选择欢唱时间!');
+			return false;
+		}
+		if (!kr_id){
+			alert('请选择包房类型!');
+			return false;
+		}
+ 
+        //转换时间
+        var d = new Date(ko_time.value);
+        var year = d.getFullYear() + '-' + formateTime(d.getMonth() + 1) + '-' + formateTime(d.getDate());
+        var voUseDate = year + ' ' + formateTime(d.getHours()) + ':' + formateTime(d.getMinutes());
+ 
+        //ajax 提交表单
+        var params = {
+			//'k_id' : k_id,
+			'kr_id' : kr_id,
+			'ko_name' : ko_name.value,
+			//'ko_sex' : ko_sex.checked ? 1 : 2,
+			'ko_tel' : ko_tel.value,
+			'ko_num' : ko_num.value,
+			'ko_remark' : ko_remark.value,
+			//'ko_paytype' : ko_paytype,
+			'ko_time' : voUseDate
+		};
+ 
+        _q('#submitBtn').disabled = true;
+        _doAjax('orders.php?act=submit&k_id=18&wxid=ojAemjg7OBVFhjTxhD_Rsno96U8k', 'POST', params, function(ret) {
+ 
+            if (ret['code'] <= 0) {
+                MDialog.alert(
+                    ret['message'], null, null,
+                    '确定', null, null,
+                    null, true, false
+                );
+                _q('#submitBtn').disabled = false;
+                return;
+            } else {
+ 
+                MDialog.notice(ret['message'], MDialog.ICON_TYPE_SUCC, 2000);
+            //    setTimeout(00, 2000);
+            }
+        });
+ 
+        return false;
+       
+	};
+/********************************* 业务逻辑配置 end *********************************/
+	var timeIpt = _q('input[name=ko_time]'),
+		fake = _q('.time_fake'),
+		d_today = new Date,
+		d_min = d_today,
+		d_max = (function(){ 
+			var t = new Date; 
+			t.setHours(timeConfig['shopOpenHour']);
+			t.setMinutes(0);
+			t.setSeconds(0);
+			t.setTime(t.getTime() + timeConfig['rangeDays']* 24 * 60 * 60 * 1000); 
+			return t;
+		}()),
+       ensureNum = function(n){
+			if ( !isFinite(n) || isNaN(n) ){
+				n = "";
+			}else{
+				n = n.toString();
+			}
+			if (n.length < 2) return "0" + n;
+			return n;
+		},
+        timezone = (new Date).getTimezoneOffset(),
+        getFixedIOSDate = function(isoStr){ //IOS系统无法直接转换isostring
+            var s = isoStr.replace('T', ' ').replace('Z', '').replace(/\-/g, '/').replace(/\..*$/, '');
+            var d = new Date(s);
+            d.setHours( d.getHours() - parseInt(timezone/60) ); //修正时区
+            return d;
+        },
+        updateTime = function(e){
+            var d1 = null;
+            if (!timeIpt.value.length){
+                d1 = d_today;
+            }else{
+                d1 = _env.ios
+                        ? getFixedIOSDate(timeIpt.value)
+                        : new Date(timeIpt.value);
+                if (d1.getTime() + 1 * 60 * 1000 < d_today.getTime()){
+                    d1 = d_today;
+                    timeIpt.value = d1.toISOString();
+                    timeIpt.blur();
+                    if ('_hideAndroidDTPanel' in window) _hideAndroidDTPanel();
+                    alert(timeConfig['noticeMin']);
+                }else if(d1.getTime() > d_max.getTime()){
+                    d1 = d_max;
+                    timeIpt.value = d1.toISOString();
+                    timeIpt.blur();
+                    if ('_hideAndroidDTPanel' in window) _hideAndroidDTPanel();
+                    alert(timeConfig['noticeMax']);
+                }
+            }
+            MData(timeIpt, 'selected', 1);
+            _removeClass(fake, 'ph');
+ 
+            fake.innerHTML = [
+                d1.getMonth() + 1, '月',
+                d1.getDate(), '日',
+                ' ',
+                ensureNum(d1.getHours()), ':', ensureNum(d1.getMinutes())
+            ].join('');
+ 
+            getPrice();
+        };
+     timeIpt.value = d_today;
+	//updateTime();
+	//① IOS基本采用默认行为, 但Mobile Safari并不原生支持min/max属性 一 一+
+    // * 土豪金等IOS7根本不支持这个datetime了 ˉ﹃ˉ
+    if(_env.ios && _env.version < 7)
+	{ 
+        timeIpt.min = d_min;
+        timeIpt.max = d_max;
+        timeIpt.addEventListener('change', updateTime);
+        if (_env.version < 6){
+            timeIpt.addEventListener('focus', updateTime);
+            timeIpt.addEventListener('blur', updateTime);
+        } else if (_env.version >= 7){
+            timeIpt.addEventListener('click', updateTime);
+        }
+	}
+	//② 其他(主要是安卓)默认datetime控件可能不正常
+	else
+	{
+		timeIpt.type = 'hidden';
+		
+		var js2 = document.createElement('script');
+		js2.onload = function(){
+			fake.addEventListener('click', function(e){
+				_showAndroidDTPanel(d_today, timeConfig['rangeDays'], function callback(value){
+                    timeIpt.value = value.toISOString();
+					updateTime();
+				});
+			});
+		};
+		js2.src = timeConfig['androidLib'];
+		document.body.appendChild(js2);
+		
+		var css2 = document.createElement('link');
+		css2.rel = 'stylesheet';
+		css2.href = timeConfig['androidStyle'];
+		document.body.appendChild(css2);
+	}
+});
+ 
+_onPageLoaded(function(){
+	var typeSel2 = _q('select[name=ko_num]'),
+		fake2 = _q('.num_fake'),
+		updateType2 = function(e){
+			MData(typeSel2, 'selected', 1);
+			_removeClass(fake2, 'ph');
+			fake2.innerHTML = typeSel2.children[typeSel2.selectedIndex].innerHTML;
+		};
+    typeSel2.addEventListener('change', updateType2);
+    typeSel2.addEventListener('focus', updateType2);
+    typeSel2.addEventListener('blur', updateType2);
+    if(_env.ios && _env.version >= 7) {
+        typeSel2.addEventListener('click', updateType2);
+    }
+    typeSel2.style.top = parseInt(.5*(55 - typeSel2.clientHeight)) + 'px';
+    typeSel2.style.top = parseInt(.5*(55 - typeSel2.clientHeight)) + 'px';
+});
+ 
+function _fixInputsWidth(){
+	_forEach(_qConcat(_qAll('input[type=tel]'), _qAll('input[type=text]'), _qAll('input[type=datetime]'),  _qAll('.time_fake'),  _qAll('select')), function(ipt, idx, arr){
+		ipt.style.width = (ipt.parentNode.clientWidth - 90) + 'px';
+	});
+}
+//_onPageLoaded(_fixInputsWidth);
+window.addEventListener('orientationchange', function(e){
+	_fixInputsWidth();
+}, false);
+ 
+
+ 
+var check1 = function(obj){
+    return parseInt(MData(obj, 'selected')) === 1;
+};
+var formateTime = function(i) {
+    if (i < 10) {
+        i = "0" + i;
+    }
+    return i;
+};
+ 
+$(".list1 li").click(function(){
+	$(this).addClass("cur").siblings("li").removeClass("cur");
+});
+</script>
+
+<script type="text/javascript"> 
+		$(document).ready(function () { 
+			$("#show1").click(function () { 
+				var btn = $(this);
+				var lyname = $("#lyname1").val();
+				if (lyname  == '') {
+					alert("请输入昵称");
+					return;
+				}
+				var info = $("#info1").val();
+					if (info == '') {
+					alert("请输入内容");
+					return;
+				}
+				var submitData = {
+					nickname:lyname,
+					info: info,
+					action: "setly"
+				};
+				$.post('ly.php?openid=o-RAFj_HzZ_OARo2-Syye9QiAB_s', submitData,
+					function(data) {
+					 if (data.success == true) {
+							alert(data.msg);
+							setTimeout('window.location.href=location.href',1000);
+						return;
+					} else {}
+				},
+				"json")
+			}); 
+			//
+			$("#show2").click(function () { 
+				var btn = $(this);
+				var lyname = $("#lyname2").val();
+					if (lyname  == '') {
+					alert("请输入昵称");
+					return;
+				}
+				var info = $("#info2").val();
+					if (info == '') {
+					alert("请输入内容");
+					return;
+				}
+				var submitData = {
+					nickname:lyname,
+					info: info,
+					action: "setly"
+				};
+				$.post('ly.php?openid=o-RAFj_HzZ_OARo2-Syye9QiAB_s', submitData,
+					function(data) {
+					if (data.success == true) {
+						alert(data.msg);
+						setTimeout('window.location.href=location.href',1000);
+						return;
+					} else {}
+				},
+				"json")
+			});  
+			
+			
+			//
+			$(".hhsubmit").click(function () { 
+				var objid = $(this).attr("date");
+				var info = $("#hly"+objid).val();
+					if (info == '') {
+					alert("请输入内容");
+					return;
+				}
+				var submitData = {
+					nickname:'',
+					fid:objid,
+					info:info,
+					action: "setly"
+				};
+				$.post('ly.php?openid=o-RAFj_HzZ_OARo2-Syye9QiAB_s', submitData,
+				function(data) {
+					if (data.success == true) {
+						alert(data.msg);
+						setTimeout('window.location.href=location.href',1000);
+						return;
+					} else {}
+				},
+				"json")
+			});  
+			//
+			$(".hfinfo").click(function () { 
+				var objid = $(this).attr("date");
+				$(".hhly"+objid).slideToggle();
+			}); 
+			//
+			$(".hhbt").click(function () { 
+				var objid = $(this).attr("date");
+				$(".hhly"+objid).slideToggle();
+			});
+			//
+			$("#windowclosebutton").click(function () { 
+				$("#windowcenter").slideUp(500);
+			});
+			//
+			$("#alertclose").click(function () { 
+				$("#windowcenter").slideUp(500);
+			});
+		}); 
+		//
+		function alert(title){ 
+			window.scrollTo(0, -1);
+			$("#windowcenter").slideToggle("slow"); 
+			$("#txt").html(title);
+			//setTimeout(function(){$("#windowcenter").slideUp(500);},4000);
+		}
+		//
+		$(document).ready(function(){
+			$(".first1").click(function(){
+				$(".ly1").slideToggle();
+			});
+			$(".first2").click(function(){
+				$(".ly2").slideToggle();
+			});
+		});
+	</script> 
+</body>
+</html>

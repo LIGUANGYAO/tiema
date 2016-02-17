@@ -1,0 +1,196 @@
+      body{
+            margin:0 auto; 
+            padding: 5px;
+          
+            }
+        #form_1 {
+            border: 1px solid #B1CDE3;   
+           padding:0; 
+           width: 99%; 
+           font-size:16px; 
+           background: #e5effe;
+           margin-bottom: 5px;
+           margin-top: 0px;
+          
+        }
+        #table_1 {   
+           border: 1px solid #B1CDE3;   
+             padding: 0px;
+            border-collapse: collapse;
+            padding-left: 10px;    
+        }   
+        
+       
+         #table_1 thead{
+      
+            height: 30px;
+            margin: 0;
+          } 
+         #table_1 thead tr td{
+           
+    
+    	background-color: #e5effe;
+	text-align: left;
+	height: 30px;
+
+	margin: 0px;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 30px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 5px;
+          }
+       #table_1 td {   
+            border: 1px solid #B1CDE3;   
+           background: #fff;   
+            font-size:12px;   
+            padding:0;    
+           margin:0 auto;
+          color: #4f6b72;   
+          height: 30px;
+           padding-left: 5px;  
+           
+        }   
+        
+        
+        #table_1 thead tr th {
+	background-color: #e5effe;
+	text-align: left;
+	height: 30px;
+	border: 1px solid #e2e2e2;
+	margin: 0px;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 30px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 5px;
+}
+        
+        
+         #table_2 {   
+           border: 1px solid #B1CDE3;   
+           padding: 5px;
+           border-collapse: collapse; 
+           width: 99%;   
+        }   
+         #table_2 thead{
+      
+            height: 30px;
+            margin: 0;
+          } 
+         #table_2 thead tr td{
+            background: #fafafa;
+          }
+       #table_2 td {   
+            border: 1px solid #B1CDE3;   
+           background: #fff;   
+            font-size:12px;   
+            padding:0;    
+           margin:0 auto;
+          color: #4f6b72;   
+        }   
+        #table_2 input{
+       
+        }
+        #tfoot
+        {
+            width: 99%;
+            height: 30px;
+            border: 1px solid #B1CDE3; 
+            
+            text-align: right;
+            
+        }
+         #tfoot a
+        {
+            TEXT-DECORATION:none;
+        }
+        #form_div{
+          
+        }
+        #page_foot
+        {
+            
+            font-size:12px;  
+            text-decoration: none;
+        }
+        #page_foot a {
+            text-decoration: none;
+        }
+        #table_1 .li_bg1 {
+        background:#e5effe;
+        }
+        #table_1 .li_bg2 {
+        background:#fff;
+        }
+         #table_2 .li_bg1 {
+        background:#e5effe;
+        }
+        #table_2 .li_bg2 {
+        background:#FFF;
+        }
+        
+        
+        
+        
+        .table {
+	border-collapse:collapse;border-spacing:0;border-left:0px solid #888;border-top:0px solid #888;background:#fff;
+}
+.table tr th {
+	background-color: #e5effe;
+	text-align: left;
+	height: 30px;
+	border: 1px solid #e2e2e2;
+	margin: 0px;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 30px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 5px;
+}
+.table tr td {
+	background-color: #FFF;
+	text-align: left;
+	height: 30px;
+	border: 1px solid #e2e2e2;
+	margin: 0px;
+	font-size: 12px;
+	font-weight: normal;
+	line-height: 30px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 5px;
+}
+.table tr td p{margin:0px 0 0 0;padding:0;text-indent:0em;line-height:150%;}
+
+.table tr a{
+text-decoration:none;
+}
+
+
+a img { /* 此选择器将删除某些浏览器中显示在图像周围的默认蓝色边框（当该图像包含在链接中时） */
+	border: none;
+}
+/* ~~ 站点链接的样式必须保持此顺序，包括用于创建悬停效果的选择器组在内。 ~~ */
+a:link {
+	color: #42413C;
+	text-decoration: underline; /* 除非将链接设置成极为独特的外观样式，否则最好提供下划线，以便可从视觉上快速识别 */
+}
+a:visited {
+	color: #6E6C64;
+	text-decoration: underline;
+}
+a:hover, a:active, a:focus { /* 此组选择器将为键盘导航者提供与鼠标使用者相同的悬停体验。 */
+	text-decoration: none;
+}
+
+
+
+

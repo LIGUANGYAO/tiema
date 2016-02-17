@@ -1,0 +1,24 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+#    RewriteCond %{REQUEST_FILENAME} !-f
+#    RewriteRule ^([a-zA-Z]+)\/([a-zA-Z0-9]+)\.shtml/([a-zA-Z0-9]+)\.shtml$ $1.php?f=MTNmZWFmOWVmOTNhNzRhMjAxNDQ0MDA5NDM2OGE5NGM=&id=$2&name=$3 [L] 
+    
+    
+     
+    
+#    RewriteCond %{REQUEST_FILENAME} !-f
+#    RewriteRule ^([a-zA-Z0-9]+)\/(.*)$ $1.php?f=MTNmZWFmOWVmOTNhNzRhMjAxNDQ0MDA5NDM2OGE5NGM=&$2 [L] 
+    
+#    RewriteCond %{REQUEST_FILENAME} !-f
+#    RewriteRule ^([a-zA-Z0-9]+)\.do/(.*)$ $1.php?f=MTNmZWFmOWVmOTNhNzRhMjAxNDQ0MDA5NDM2OGE5NGM=&$2 [L] 
+    
+#    RewriteCond %{REQUEST_FILENAME} !-f
+#    RewriteRule ^([a-zA-Z0-9]+)\.do(.*)$ $1.php?f=MTNmZWFmOWVmOTNhNzRhMjAxNDQ0MDA5NDM2OGE5NGM=&$2 [L] 
+    
+    RewriteCond %{REQUEST_FILENAME} !-f    
+    RewriteRule ^([a-zA-Z0-9_]+)\.html(.*)$ $1.php [L] 
+    
+
+
+</IfModule>

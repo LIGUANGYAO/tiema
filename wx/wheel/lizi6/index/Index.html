@@ -1,0 +1,189 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+<meta content="no-cache" http-equiv="pragma">
+<title>周大生微官网</title>
+<!-- 通用样式 -->
+<link type="text/css" rel="stylesheet" href="font-awesome.css" />
+<link type="text/css" rel="stylesheet" href="reset.css" />
+<link type="text/css" rel="stylesheet" href="common.css" />
+<link type="text/css" rel="stylesheet" href="css.css" />
+<!-- 模版使用的样式 -->
+<link type="text/css" rel="stylesheet" href="HomeTheme008.css" />
+<!-- 通用JS -->
+<script type="text/javascript" src="jQuery.js"></script>
+<script type="text/javascript" src="swipe.js"></script>
+<script type="text/javascript" src="alert.js"></script>
+<script type="text/javascript" src="hideWeixinJSBridge.js"></script>
+<style type="text/css">
+    #loadDiv {
+        position:fixed;
+        z-index:999;
+        width:expression(document.body.clientWidth);
+        height:expression(document.body.clientHeight);
+        background-color:#FFFFFF;
+        width:100%;
+        height:100%;
+    }
+    .loadDiv-fix
+    {
+        position:absolute;
+        width:64px;
+        height:64px;
+        text-align:center;
+        margin:-32px 0 0 -32px;
+        top:50%;
+        left:50%;
+    }
+</style>
+<script>
+
+	function isHasLoad(){
+		var status = document.readyState;
+		if(status == "complete") {
+			var loadDiv = document.getElementById('loadDiv');
+			loadDiv.style.display='none';
+		}
+	}
+
+</script>
+</head>
+<body onselectstart="return true;" ondragstart="return false;" id="cate12"  onload="isHasLoad()">
+
+<div id="loadDiv">
+	<div class="loadDiv-fix">
+	<img src="/home/img/loading.gif"><br>Loading..
+	</div>
+</div> 
+
+<div class="main_body">
+	<!-- 幻灯片管理 -->
+		<div id="banner_box" class="box_swipe">
+		<ul>
+                                            <li>
+                    <a href="#">
+                        <img src="http://localhost:8081/news/wheel/lizi6/index/wkd_166_1390463832.jpg" >
+                    </a>
+                </li>
+				                   <li>
+                    <a href="#">
+                        <img src="http://localhost:8081/news/wheel/lizi6/index/wkd_166_1390463832.jpg" >
+                    </a>
+                </li>
+				
+				<li>
+                    <a href="#">
+                        <img src="http://localhost:8081/news/wheel/lizi6/index/wkd_166_1390463832.jpg" />
+                    </a>
+                </li>
+            		</ul>
+    	<ol>
+						<li></li>  
+						<li></li>      
+						<li></li>
+      		    	</ol>
+  	</div>
+  	<script>
+		$(function(){
+			new Swipe(document.getElementById('banner_box'), {
+				speed:500,
+				auto:3000,
+				callback: function(){
+					var lis = $(this.element).next("ol").children();
+					lis.removeClass("on").eq(this.index).addClass("on");
+				}
+			});
+
+			$('ol li:first').addClass("on");
+		});
+	</script>
+		<!-- 用户分类管理 -->
+		<section>
+		<ul class="list_font">
+						<li>
+				<a href="#">
+					<div>
+						<span class="icon-home"></span>
+					</div>
+					<div>
+						<p>微官网</p>
+					</div>
+				</a>
+			</li>
+						<li>
+				<a href="#">
+					<div>
+						<span class="icon-thumbs-up"></span>
+					</div>
+					<div>
+						<p>梦想成真</p>
+					</div>
+				</a>
+			</li>
+						<li>
+				<a href="#">
+					<div>
+						<span class="icon-book"></span>
+					</div>
+					<div>
+						<p>行业资讯</p>
+					</div>
+				</a>
+			</li>
+						<li>
+				<a href="#">
+					<div>
+						<span class="icon-bullhorn"></span>
+					</div>
+					<div>
+						<p>微活动</p>
+					</div>
+				</a>
+			</li>
+						<li>
+				<a href="#">
+					<div>
+						<span class="icon-comments-alt"></span>
+					</div>
+					<div>
+						<p>企业新闻</p>
+					</div>
+				</a>
+			</li>
+						<li>
+				<a href="#">
+					<div>
+						<span class="icon-trophy"></span>
+					</div>
+					<div>
+						<p>关于我们</p>
+					</div>
+				</a>
+			</li>
+					</ul>
+	</section>
+	</div><div class="footer">
+	<ul class="footer_list">
+		<li>
+			<a id="more_btn" class="more_btn bd"><i class="icon-reorder"></i> </a>
+			<ul class="sub_menu hide">
+				<li><a href="javascript:javascript:history.go(1);">前进</a></li>
+				<li><a href="javascript:history.back();">后退</a></li>
+				<li><a href="#">首页</a></li>
+				<li><a href="javascript:window.location.reload();">刷新</a>
+				<div class="sub_bg"></div>
+				</li>
+			</ul>
+		</li>
+		
+			<li><a  class="bd" href="#">微官网</a></li>
+			<li><a class="bd" href="javascript:;">梦想成真</a><ul class="sub_menu hide"><li><a  href="#">梦想成真</a></li><li><a  href="#">优惠券</a></li><li><a href="#">大转盘</a><div class="sub_bg"></div></li></ul></li><li><a  class="bd" href="#">个人中心</a></li>		
+	
+		<div class="clear"></div>
+	</ul>
+</div>
+<script type="text/javascript" src="foot_menu.js"></script></body>
+</html>

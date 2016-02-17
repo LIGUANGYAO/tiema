@@ -1,0 +1,232 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta content="#" name="Keywords">
+	<meta content="#" name="Description">
+	<meta content="no-cache" http-equiv="pragma">
+	<meta content="0" http-equiv="expires">
+	<meta content="telephone=no, address=no" name="format-detection">
+	<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+  <link type="text/css" rel="stylesheet" href="templates/mb/2/wiying/Tpl/Wap/wiying/common/message.css"/>
+  <script type="text/javascript" src="templates/mb/2/wiying/Tpl/Wap/wiying/common/jquery_min.js"></script>
+<title>留言板</title>
+<script type="text/javascript"> 
+		$(document).ready(function () { 
+			$("#show1").click(function () { 
+				var btn = $(this);
+				var lyname = $("#lyname1").val();
+				if (lyname  == '') {
+					alert("请输入昵称");
+					return;
+				}
+				var info = $("#info1").val();
+					if (info == '') {
+					alert("请输入内容");
+					return;
+				}
+				var submitData = {
+					nickname:lyname,
+					info: info,
+					action: "setly"
+				};
+				$.post('ly.php?openid=o-RAFj_HzZ_OARo2-Syye9QiAB_s', submitData,
+					function(data) {
+					 if (data.success == true) {
+							alert(data.msg);
+							setTimeout('window.location.href=location.href',1000);
+						return;
+					} else {}
+				},
+				"json")
+			}); 
+			//
+			$("#show2").click(function () { 
+				var btn = $(this);
+				var lyname = $("#lyname2").val();
+					if (lyname  == '') {
+					alert("请输入昵称");
+					return;
+				}
+				var info = $("#info2").val();
+					if (info == '') {
+					alert("请输入内容");
+					return;
+				}
+				var submitData = {
+					nickname:lyname,
+					info: info,
+					action: "setly"
+				};
+				$.post('ly.php?openid=o-RAFj_HzZ_OARo2-Syye9QiAB_s', submitData,
+					function(data) {
+					if (data.success == true) {
+						alert(data.msg);
+						setTimeout('window.location.href=location.href',1000);
+						return;
+					} else {}
+				},
+				"json")
+			});  
+			
+			
+			//
+			$(".hhsubmit").click(function () { 
+				var objid = $(this).attr("date");
+				var info = $("#hly"+objid).val();
+					if (info == '') {
+					alert("请输入内容");
+					return;
+				}
+				var submitData = {
+					nickname:'',
+					fid:objid,
+					info:info,
+					action: "setly"
+				};
+				$.post('ly.php?openid=o-RAFj_HzZ_OARo2-Syye9QiAB_s', submitData,
+				function(data) {
+					if (data.success == true) {
+						alert(data.msg);
+						setTimeout('window.location.href=location.href',1000);
+						return;
+					} else {}
+				},
+				"json")
+			});  
+			//
+			$(".hfinfo").click(function () { 
+				var objid = $(this).attr("date");
+				$(".hhly"+objid).slideToggle();
+			}); 
+			//
+			$(".hhbt").click(function () { 
+				var objid = $(this).attr("date");
+				$(".hhly"+objid).slideToggle();
+			});
+			//
+			$("#windowclosebutton").click(function () { 
+				$("#windowcenter").slideUp(500);
+			});
+			//
+			$("#alertclose").click(function () { 
+				$("#windowcenter").slideUp(500);
+			});
+		}); 
+		//
+		function alert(title){ 
+			window.scrollTo(0, -1);
+			$("#windowcenter").slideToggle("slow"); 
+			$("#txt").html(title);
+			//setTimeout(function(){$("#windowcenter").slideUp(500);},4000);
+		}
+		//
+		$(document).ready(function(){
+			$(".first1").click(function(){
+				$(".ly1").slideToggle();
+			});
+			$(".first2").click(function(){
+				$(".ly2").slideToggle();
+			});
+		});
+	</script> 
+</head>
+ <body id="message" onselectstart="return true;" ondragstart="return false;">
+	<div class="container">
+	  
+		  	<a href="javascript:history.go(-1);">
+		  		<img src="templates/mb/2/wiying/Tpl/Wap/wiying/common/mpic.jpg" style="width:100%;" />
+		  	</a>
+	  
+		<div class="cardexplain">
+			<div class="window" id="windowcenter">
+				
+				<div class="content">
+					<div id="txt"></div>
+				</div>
+			</div>
+ 
+			<div class="history">
+				<div class="history-date">
+					<ul>
+						<a><h2 class="first first1" style="position: relative;">点击留言</h2></a>
+						<li class="green bounceInDown nob ly1" style="display:none">
+							<dl>
+								<dt>
+									<input name="lyname" type="text" class="px" id="lyname1" value="" placeholder="请输入您的昵称">
+								</dt>
+								<dt>
+									<textarea name="info" class="pxtextarea" style=" height:60px;" id="info1" placeholder="请输入留言"></textarea>
+								</dt>
+								<dt><a id="show1" class="submit" href="javascript:void(0)">提交留言</a></dt>
+							</dl>
+						</li>			
+												
+									
+													
+							<li class="green bounceInDown">
+							{foreach from=$ly item=ly}
+							<h3>{$ly.ly_name}<span>{$ly.add_time}</span><div class="clr"></div></h3>
+							<dl>
+							<dt class="hfinfo" date="{$ly.id}">{$ly.ly_info}</dt>
+							</dl>
+							
+							<dl class="huifu">
+								<dt>
+									<span>
+									<a class="hhbt czan" date="{$ly.id}" href="javascript:void(0)">回复</a>
+										<p style="display:none;" class="hhly{$ly.id}">
+											<textarea name="info" class="pxtextarea" id="hly{$ly.id}" ></textarea>
+										<a class="hhsubmit submit" date="{$ly.id}" href="javascript:void(0)">确定</a>
+										</p>
+									</span>
+								</dt>
+							</dl>
+							{foreach from=$relay item=relay}
+							{if $ly.id==$relay.relay_id}
+							<dl class="huifu"><dt><span>回复：{$relay.relay_info}</span></dt></dl>
+							{/if}
+							{/foreach} 
+							 
+							{/foreach}  
+							
+							
+							
+								
+								
+								
+							</li>
+													
+													
+							
+												<li class="green bounceInDown nob ly2" style="display:none">
+							<dl>
+								<dt>
+									<input name="lyname" type="text" class="px" id="lyname2" value="" placeholder="请输入您的昵称">
+								</dt>
+								<dt>
+									<textarea name="info" class="pxtextarea" style=" height:60px;" id="info2" placeholder="请输入留言"></textarea>
+								</dt>
+								<dt>
+									<a id="show2" class="submit" href="javascript:void(0)">提交留言</a>
+								</dt>
+							</dl>
+						</li>
+                        <a>
+                        <h2 class="first first2" style="position: relative;">点击留言</h2>
+                        </a>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+
+
+
+
+</html>
+

@@ -1,0 +1,90 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+
+
+    <title>会员中心</title>
+
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    
+    <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript">
+	document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+    WeixinJSBridge.call('hideOptionMenu');
+    });
+    </script>
+    <link rel="stylesheet" href="templates/other/xc/css/index.css"/>
+ 
+<!--[if IE]><style>.cui-slide-nav-item{float:left; width:50%;}.cui-slide-nav-item:last-child{width:50%;}</style><![endif]
+</head>-->
+<body >
+    <!--遮罩层-->
+<div style=" background-color: #e2e7ea;  width:100%;padding-top:30px ; margin-top: -35px;">
+   
+   <div style=" display:block; margin:0 auto;margin-bottom: -15px; margin-top: -10px; margin-left: 2%; margin-right: 2%;  width:96%;" id="headimgurl" >
+
+<!--20150325店铺中心-->
+
+
+<img width="100%" src="images/member/mcenter/2.png" />
+
+<b style="position: relative; left:34%; bottom:28px; margin-bottom: -7px; color: white; ">VIP卡:{$openid.users_sn}</b>
+
+
+</div>
+ </div>  
+  
+    <head class="tool-box" >
+        <div class="tool-cn" onClick="location='mcenter.php?openid={$op}'" >
+            
+            <a  class="link-mc">会员中心</a>
+        </div>
+      
+    </head>
+    <nav id="nav">
+         <ul class="nav-list">
+         
+              <li onClick="location.href='mcenter.php?act=list2&openid={$op}'" mcss="{$arr.3}"><div><a >会员信息</a></div></li>
+              
+               <li onClick="location.href='wxgrowth.php?m=dea2&openid={$op}'" mcss="{$arr.3}"><div><a >儿童成长日记</a></div></li>
+             <li onClick="location.href='mcenter.php?act=order_search&openid={$op}'" mcss="{$arr.3}"><div><a >积分查询</a></div></li>
+            <li onClick="location.href='mcenter.php?act=ewm&openid={$op}&is_active=1'"  mcss="{$arr.1}"><div><a >抵用券</a></div></li>
+            <li onClick="location.href='mcenter.php?act=ewm2&openid={$op}&is_active=1'" mcss="{$arr.2}"><div><a >实物券</a></div></li>
+           <!--
+            <li onclick="location.href='mcenter.php?act=order_search&openid={$op}'"  mcss="{$arr.4}"><div><a >订单查询</a></div></li>-->
+            
+            {if $djuser=='1'}
+            <li onClick="location.href='mcenter.php?act=duijiang&openid={$op}'" mcss="{$arr.6}"><div><a >兑奖中心</a></div></li>
+            {/if}
+            
+          
+            
+            <li onClick="location.href='mcenter.php?act=dhreal&openid={$op}'" mcss="{$arr.7}"><div><a >积分商城</a></div></li>
+            {if $fenxiao==0}
+            <li onClick="location.href='mcenter.php?act=jiameng&openid={$op}'" mcss="{$arr.5}"><div><a >我要加盟</a></div></li>
+            {elseif $fenxiao==1}
+              <li onClick="location.href='mcenter.php?act=fxfc&openid={$op}'" mcss="{$arr.7}"><div><a >推广二维码</a></div></li>
+            <li onClick="location.href='mcenter.php?act=fxfc2&openid={$op}'" mcss="{$arr.8}"><div><a >分销商信息</a></div></li>
+            {/if}
+         </ul>
+    </nav>
+   
+
+</body>
+</html>
+
+
+<script type="text/javascript">
+$(".nav-list li").each(function()
+{
+   
+   var mcss=$(this).attr("mcss");
+   $(this).addClass(mcss);
+   
+})
+</script>

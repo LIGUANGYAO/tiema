@@ -1,0 +1,177 @@
+{include file="w/head.html"}
+
+{if $fall==edit} 
+        {include file="w/title_3.html"}
+        <div class="content"><p><div  class="ui-searchbar-wrap ui-border-b">
+    
+   <table class="ui-table ui-border-tb">
+    <thead>
+        <tr><th colspan="3"><b>客户信息</b></th></tr>
+    </thead>
+    <tbody>
+     
+        <tr><td style="width: 100px;">客户代码</td><td><a >{$kehu_mx.kehu_sn}</a></td></tr>
+        <tr><td>客户名称</td><td><a >{$kehu_mx.kehu_name}</a></td></tr>
+        <tr><td>固定电话</td><td><a href="tel:{$kehu_mx.tel}">{$kehu_mx.tel}</a></td></tr>
+        <tr><td>移动电话</td><td><a href="tel:{$kehu_mx.mobile}">{$kehu_mx.mobile}</a></td></tr>
+        <tr><td>备注</td><td><a  >{$kehu_mx.bz}</a></td></tr>
+        <tr><td>客户类型</td><td><a >{if $kehu_mx.khlx=='0'}普通客户{elseif $kehu_mx.khlx=='1'}vip客户{elseif $kehu_mx.khlx=='2'}潜在客户{elseif $kehu_mx.khlx=='3'}失效客户{else}普通客户{/if}</a></td></tr>
+        
+        
+        <tr><td colspan="2" onclick="location.href='msgsend.html?kehu_sn={$kehu_mx.kehu_sn}'" ><a >查看回访记录</a></td></tr>
+
+    </tbody>
+</table>
+<input  type="text" value="{$g_e}"/>
+
+</div>
+</div>
+<div class="ui-btn-wrap">
+    <button class="ui-btn-lg ui-btn-danger" onclick="location.href='kehu.html'" >
+        返回客户搜索
+    </button>
+</div>
+
+
+<script type="text/javascript">
+
+</script>
+{/if} 
+
+
+
+
+
+{if $fall==add_list} 
+        {include file="w/title.html"}
+      
+<link href="templates/w/time/common.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="templates/w/time/jquery-1.9.1.js" ></script>
+<script type="text/javascript" src="templates/w/time/date.js" ></script>
+<script type="text/javascript" src="templates/w/time/iscroll.js" ></script>
+<script type="text/javascript">
+$(function(){
+	$('#beginTime').date();
+	$('#endTime').date({theme:"datetime"});
+});
+</script>
+
+
+
+<div class="ui-form">
+<div class="ui-form-item ui-form-item-l ui-border-b" style="text-align: center;">
+        <b>添加回访记录</b>
+            
+
+        
+        
+</div>
+<input  type="hidden" name="kehu_id" id="kehu_id" value="{$kehu.id}"/>
+<input  type="hidden" name="huifang_time" id="huifang_time" value="{$huifang_time}"/>
+
+<div class="ui-form-item ui-form-item-l ui-border-b">
+        <label class="ui-border-r">
+            客户
+        </label>
+        <input type="text" name="kehu_name" style="" id="kehu_name" disabled="disabled"  value="{$kehu.kehu_name}"/>
+        
+        
+</div>
+<div class="ui-form-item ui-form-item-l ui-border-b">
+        <label class="ui-border-r">
+            添加时间
+        </label>
+        <input type="text"   disabled="disabled" value="{$msgsend_time}"  id="msgsend_time" name="msgsend_time"/>
+        
+        
+</div>
+
+<div class="ui-form-item ui-form-item-l ui-border-b">
+        <label class="ui-border-r">
+            提醒时间
+        </label>
+        <input type="text"  id="endTime" name="send_time"/>
+        
+        
+</div>
+
+<div class="ui-form-item ui-form-item-l ui-border-b">
+        <label class="ui-border-r">
+            备注
+        </label>
+        <input type="text"  id="bz" name="bz"/>
+        
+        
+</div>
+<!--{if $kehu_mx.khlx=='1'}checked="checked" {/if}-->
+<ul class="ui-list ui-list-text ui-list-radio">
+    <li class="ui-border-t">
+        <label class="ui-radio" for="radio">
+            <input type="radio" name="fasongleixing" value="1"   checked="checked"/>
+        </label>
+        <p>
+            邮件
+        </p>
+    </li>
+    <li class="ui-border-t">
+        <label class="ui-radio" for="radio">
+            <input type="radio"  name="fasongleixing"  value="2"  />
+        </label>
+        <p>
+            短信
+        </p>
+    </li>
+    
+</ul>
+    <input type="hidden" id="khlx_v" value="{$kehu_mx.khlx}" />
+
+
+
+<div class="ui-btn-group-tiled ui-btn-wrap">
+    <button class="ui-btn-lg"  onclick="location.href='msgsend.html?kehu_id={$kehu.id}'"  >
+        取消
+    </button>
+    <button class="ui-btn-lg ui-btn-primary" id="btn1">
+        确认
+    </button>
+</div>
+
+
+<div style="height:220px;"></div>
+
+<div id="datePlugin"></div>
+
+
+
+<script type="text/javascript">
+$("#btn1").click(function(){
+    
+     if($("#endTime").val()=='')
+    {
+        $("#endTime").focus();
+    }
+    else
+    {
+       
+    
+    
+        var kehu_id=$("#kehu_id").val();
+
+        var msgsend_time=$("#msgsend_time").val();
+
+        var send_time=$("#endTime").val();
+
+        var bz=$("#bz").val();
+        var huifang_time=$("#huifang_time").val();
+        
+
+        var fasongleixing=$('input[name="fasongleixing"]:checked').val();
+        location.href='msgsend.html?g=803ea018b35b4f164&kehu_id='+kehu_id+'&msgsend_time='+msgsend_time+'&send_time='+send_time+'&bz='+bz+'&fasongleixing='+fasongleixing+'&huifang_time='+huifang_time;
+    }
+})
+</script>
+
+{/if} 
+    </body>
+</html>

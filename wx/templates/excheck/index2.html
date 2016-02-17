@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>OPENSHOP微兑奖</title>
+<link href="templates/excheck/share/images/favicon.ico" rel="shortcut icon"/>
+<link href="templates/excheck/share/css/share.css" rel="stylesheet" type="text/css"/>
+<link href="templates/excheck/admin/css/default/login.css" rel="stylesheet" type="text/css"  />
+<link href="templates/excheck/admin/css/default/share.css" rel="stylesheet" type="text/css"  />
+<script src="templates/excheck/share/js/jquery-1.11.0.js"></script>
+<script src="templates/excheck/admin/js/login.js"></script>
+
+</head>
+
+<body id="loginBody">
+<div id="loginBezel">
+<div id="loginChildBottom">
+
+<table cellpadding="0" cellspacing="0" width="100%" height="75%" border="0">
+<tr>
+<td align="right" width="35%">当前登录用户：</td>
+<td align="left" width="35%">{$user_id}</td>
+  
+<td align="left" width="30%"><a  href="openshop2.php?m=log_out">注销</a> </td>
+</tr>
+<tr>
+<td align="right" width="35%">请输入抵用券代码  </td>
+<td align="left" width="65%" colspan="2"><input type="text" id="account" name="user_name"  class="inputUP"/></td>
+</tr>
+<tr style="display: none1;">
+
+<td align="right" width="100%"style="color: red; text-align: left;" id="errmsg" colspan="3"></td>
+</tr>
+
+
+<tr>
+<td align="center" colspan=""><input type="submit"  class="btn1"  id="toLogin" value="查询抵用券"/> </td>
+<td align="center" colspan=""><input type="button"  id="toLogin"  value="查询兑换记录" onClick="location='openshop2.php?m=select'"/> </td>
+
+<td align="center" colspan=""><input type="button"  id="toLogin"  value="关注者列表" onClick="location='openshop2.php?m=select2'"/> </td>
+<td align="center" colspan=""><input type="submit" style="display: none;"  class="btn2" id="toLogin" value="兑 奖"/> </td>
+</tr> 
+</table>
+</div>
+</div>
+{if $fall==select}
+<div id="loginBezel">
+<div id="loginChildBottom">
+<table cellpadding="0" cellspacing="0" width="100%"  border="1">
+<tr>
+<td width="35%" colspan="3">查询兑换记录</td>
+
+</tr>
+{foreach from=$list item=list}
+<tr>
+
+<td align="center" >{$list.user_id}</td>
+<td align="center" >{$list.card_sn}</td>
+<td align="center" >{$list.add_time}</td>
+</tr> 
+{/foreach}
+</table>
+</div>
+</div>
+{/if}
+
+
+{if $fall==select2}
+<div id="loginBezel">
+<div id="loginChildBottom">
+<table cellpadding="0" cellspacing="0" width="100%"  border="1">
+<tr>
+<td width="35%" colspan="3">关注者列表</td>
+
+</tr>
+{foreach from=$list item=list}
+<tr>
+
+<td align="center" >{$list.user_id}</td>
+<td align="center" >{$list.card_sn}</td>
+<td align="center" >{$list.add_time}</td>
+</tr> 
+{/foreach}
+</table>
+</div>
+</div>
+{/if}
+
+
+</body>
+</html>
+<script type="text/javascript">
+<!--
+var err="";
+var tel="";
+var je="";
+    $(".btn1").click(function(){
+        	$.ajax({
+        						url: "openshop2.php?m=check",
+        						dataType: "json",
+                                async:false,
+        						data: {
+                                    "code":$("#account").val(),
+  
+        						},
+        						beforeSend: function() {
+        						
+        						},
+        						success: function(data) {
+                                    err=data.err;
+                                    tel=data.tel;
+                                    je=data.je;
+                                    if(err==0)
+                                    {
+                                        $("#errmsg").text("该券绑定手机为"+tel+",金额￥:"+je);
+                                        $(".btn2").show();
+                                        
+                                    }
+                                 //   else if(err==9)
+//                                    {
+//                                        window.location.href="openshop.php";                                        
+//                                     
+//                                    }
+                                    else
+                                    {
+                                         $("#errmsg").text("抵用券不存在或者已经使用过,请确认是否输入错误");
+                                    }
+                                    
+                                        
+                                    
+        						},
+        						error: function() {
+        						   window.location.href="openshop.php";  
+        						  //alert(2);return;
+        						},
+        						
+        					})
+                            
+                            
+            
+    })
+    $(".btn2").click(function(){
+        	$.ajax({
+        						url: "openshop2.php?m=check2",
+        						//dataType: "json",
+                                async:false,
+        						data: {
+                                    "code":$("#account").val(),
+  
+        						},
+        						beforeSend: function() {
+        						
+        						},
+        						success: function(data) {
+                                    
+                                    $("#errmsg").text(data);
+                                    
+                                      
+                                    
+        						},
+        						error: function() {
+        						   window.location.href="openshop.php";  
+        						  //alert(1);
+        						  //alert(2);return;
+        						},
+        						
+        					})
+                            
+                            
+            
+    })
+    
+-->
+</script>

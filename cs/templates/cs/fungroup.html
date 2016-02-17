@@ -1,0 +1,262 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<title></title>
+<link type="text/css" rel="stylesheet" href="css/base.css?1445578366">
+<link type="text/css" rel="stylesheet" href="css/layout.css?1445578366">
+<link type="text/css" rel="stylesheet" href="css/style.css?1445578366">
+<link type="text/css" rel="stylesheet" href="css/scrollBar.css?1445578366">
+<script src="js/zepto.min.js?1445578366" type="text/javascript"></script>
+<script src="js/layer.m.js?1445578366" type="text/javascript"></script>
+<script src="js/iscroll.js?1445578366" type="text/javascript"></script>
+<script src="js/validate.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function(){
+	if (window.history && window.history.pushState) {
+
+		$(window).on('popstate', function () {
+		var hashLocation = location.hash;
+		var hashSplit = hashLocation.split("#!/");
+		var hashName = hashSplit[1];
+		if (hashName !== '') {
+		var hash = window.location.hash;
+		if (hash === '') {
+			$('.qt img').attr('src','images/quan.gif?1445578366');
+			$(".qt").hide();
+			$("#bodyDiv").show();
+		}
+		}
+		});
+		
+	}
+})
+</script>
+</head><iframe id="__WeixinJSBridgeIframe_SetResult" style="display: none;"></iframe><iframe id="__WeixinJSBridgeIframe" style="display: none;"></iframe>
+<body> 
+<div class="qt" style="width:100%;height:100%;display:none;"> 
+ <div class="mcheck">
+    <div> 
+        <img src="images/quan.gif?1445578366" onclick="$('.qt img').attr('src','images/quan.jpg');$('.qt').hide();$('#bodyDiv').show();history.go(-1);">
+    </div>
+</div>
+</div>
+
+<div id="bodyDiv">
+<!--顶部bar-->
+<div class="index_bar">
+	<a href="/fanGroup/search">
+		<div class="sousuo"><i class="icon-fdj">&nbsp;&nbsp;搜索</i></div>
+	</a>
+	<!--<a href="javascript:;" onclick="report();">
+		<div class="index_hongbao">
+			<div class="red">
+			<label>举报</label></div>
+		</div>
+	</a>-->
+</div>
+<!--顶部bar结束-->
+<div id="wrapper" style="top: 42px; bottom: 50px; overflow: hidden;">
+	<div id="scroller" style="transition: transform 0ms; -webkit-transition: transform 0ms; transform-origin: 0px 0px 0px; transform: translate(0px, 0px) translateZ(0px);">
+	    	<div id="data_list">
+            </div>
+		<div id="pullUp">
+			<span class="pullUpIcon"></span><span class="pullUpLabel">上拉加载更多...</span>
+		</div>
+	</div>
+</div>
+
+
+
+{include file="cs/foot.html"}
+
+</div>
+
+<script type="text/javascript">
+var myScroll,
+	pullDownEl, pullDownOffset,
+	pullUpEl, pullUpOffset,
+	page = 1,
+	pagesize = 10,
+	datas,
+	j = 0,
+	baseUrl = "",
+	cHeight = document.documentElement.clientHeight,
+	index_barH = $(".index_bar").get(0).offsetHeight,
+	navigation_barH = $(".navigation_bar_abs").get(0).offsetHeight,
+	pullUpH = $("#pullUp").get(0).offsetHeight,
+	infolineH,
+	wapperH = cHeight-index_barH-navigation_barH,
+	hasDiv,
+	randInt = parseInt(2000*Math.random());   //取0-2000的随机整数;
+
+pullUpAction();
+
+/**
+ * 滚动翻页 （自定义实现此方法）
+ * myScroll.refresh();		// 数据加载完成后，调用界面更新方法
+ */
+function pullUpAction () {
+	//setTimeout(function () {	// <-- Simulate network congestion, remove setTimeout from production!
+		$.ajax({
+			url: baseUrl + "fungroup.php",
+			type: "post",
+			data: {'randInt':randInt,'cpage':page,'pagesize':pagesize,'g':'getlist'},
+			dataType: 'json',
+			success:function(data){
+				//if(page === 1)
+					//$("#data_list").html("");
+			    datas = data.results;
+				if(datas.length != 0){
+					var html = '';
+					for(var i in datas)
+					{
+						var sex_class = datas[i].sex == 1 ? 'icon-man' : 'icon-women';
+						var btn_class = datas[i].is_add == 1 ? 'addbtn_t' : 'addbtn';
+						var place = (datas[i].province+datas[i].city).subByte(0,20);
+						var temp_j = parseInt(j)+parseInt(i)+1;
+						html += '<div class="infoline" j='+temp_j+'><div class="infopic"><img src="'+datas[i].headimgurl+'" onerror="javascript:this.src=\'/images/default.jpg\'"/></div><div class="infotxt"><div class="name"><i class="'+sex_class+'"></i>&nbsp;'+datas[i].nickname.subByte(0,10)+'</div><div class="locat"><i class="icon-location"></i>&nbsp;'+place+'</div></div><a href="javascript:;" onclick="add_friend(\''+datas[i].user_id+'\');"><div id="'+datas[i].user_id+'" class="'+btn_class+'"><i class="icon-add"></i> 添加</div></a></div>';
+					}
+					$("#data_list").append(html);
+					infolineH = $(".infoline").get(0).offsetHeight;
+					hasDiv = Math.ceil((wapperH-pullUpH)/infolineH);   //有多少个DIV可以显示
+					
+					page += 1;
+					j = $("div.infoline").last().attr('j');
+					myScroll.refresh();
+				}else{
+					//没数据继续从头开始加载
+					randInt = 0;
+					page = 1;
+					pullUpAction();			
+				}			
+			}
+		});
+	//}, 1000);	// <-- Simulate network congestion, remove setTimeout from production!
+}
+
+/**
+ * 初始化iScroll控件
+ */
+function loaded() {
+	pullUpEl = document.getElementById('pullUp');	
+	pullUpOffset = pullUpEl.offsetHeight;
+	
+	myScroll = new iScroll('wrapper', {
+		//scrollbarClass: 'myScrollbar', /* 滚动条样式 */
+		bounce:true,    //是否超过实际位置反弹
+		vScrollbar:false,    //不显示垂直滚动条
+		//useTransition: false, /* 此属性不知用意，本人从true改为false */
+		//topOffset: pullDownOffset,
+		onRefresh: function () {
+
+		},
+		onScrollMove: function () {
+
+		},
+		onScrollEnd: function () {
+			//拉到最底部自动加载  40:头部 50:底部 40:上拉刷新DIV高度   51:iscroll计算的每个单位DIV高度				
+			if (Math.abs(this.y) > ((j-hasDiv)*infolineH) && pullUpEl.querySelector('.pullUpLabel').innerHTML != '没数据咯...') {
+				pullUpEl.className = 'loading';
+				pullUpEl.querySelector('.pullUpLabel').innerHTML = '加载中...';				
+				pullUpAction();	// Execute custom function (ajax call?)
+			}
+		}
+	});
+}
+
+//初始化绑定iScroll控件 
+document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+document.addEventListener('DOMContentLoaded', loaded, false); 
+
+//加为好友 显示微信二维码 并记录加好友日志
+function add_friend(user_id)
+{
+    
+    
+    $.get(baseUrl+'fungroup.php?g=queryaddfriend&user_id='+user_id,function(data){
+				if(data == 1){
+	//加入了粉丝团或者成为了赞助商，都可以无限量加好友
+						$.ajax({
+            				url: baseUrl + "fungroup.php",
+            				type: "get",
+            				data: {'user_id':user_id,'type':'2','g':'jsonewmshow'},
+            				dataType: 'json',
+            				success:function(data){
+            					if(data.length > 100){
+            						if(data[4] == 4)
+            						{
+            							//加好友限制
+            							layer.open({
+            								content:data[1],
+            								shadeClose: false,
+            								btn: ['知道了'],
+            								yes:function(){
+            									$.post("/notice/offUpdate/type/"+data[4],function(data){
+            										layer.closeAll();
+            										$(".qt").show();
+            									},'json');
+            								}
+            							});
+            						}else{
+            							layer.open({
+            								content:data[1],
+            								btn: ['以后不再提醒','确定'],
+            								yes:function(){
+            									$.post("/notice/offUpdate/type/"+data[4],function(data){
+            										layer.closeAll();
+            									},'json');
+            								}
+            								,no:function(){
+            									layer.closeAll();
+            								}
+            							});	
+            							$(".qt").show();
+            						}						
+            					}else{
+            						$(".qt").show();
+            					}
+            					window.history.pushState('forward', null, '#forward');
+            					$("#bodyDiv").hide();
+            					//显示图片
+            					$(".mcheck img").attr("src",data[5]);
+            					
+            					//把列表页的按钮样式改为灰色
+            					$("#"+user_id).removeClass();
+            					$("#"+user_id).addClass('addbtn_t');
+            				},
+            			});	
+            
+            
+            	}else{
+					layer.open({
+						content:'您还没有购书，您无权在“粉丝团”添加好友。',
+						btn:['购书'],
+						yes:function(){
+							location.href = 'bookbuy.php';
+						}
+					});				
+				} 
+            //
+//            //加入了粉丝团或者成为了赞助商，都可以无限量加好友
+//						layer.open({
+//				content:'对不起，您还没有上传二维码，请先上传自己的微信二维码。',
+//				btn:['上传二维码'],
+//				yes:function(){
+//					location.href = '/me/uploadCode';
+//				}
+//			});	
+            
+            
+			})
+}
+//举报 
+function report()
+{
+	layer.open({content:'涉嫌欺诈，色情，谣言，违法，侵权等请拨打<a href="tel:15067995220">15067995220</a>举报'});
+}
+</script>
+
+</body></html>

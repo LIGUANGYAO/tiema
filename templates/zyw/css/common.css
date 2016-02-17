@@ -1,0 +1,147 @@
+﻿@charset "utf-8";
+/* CSS Document */
+/*css reset*/
+body, nav, dl, dt, dd, p, h1, h2, h3, h4, ul, ol, li, input, button, textarea, footer, fieldset, legend { margin:0; padding:0 }
+body { font: normal 100% Helvetica, Arial, sans-serif; color:#333; background:#fff; -webkit-text-size-adjust: none; min-width:320px; }
+h1, h2, h3, h4, h5, h6 { font-size:100% }
+form { display:inline }
+ul, ol { list-style:none }
+a { text-decoration:none; color:#1a1a1a }
+a:hover, a:active, a:focus { color:#1c5aa2; text-decoration: none; }
+a:active { color:#aaa; }
+img { vertical-align:middle; border:0; -ms-interpolation-mode:bicubic; }
+button, input, select, textarea { font-size:100%; vertical-align:middle; outline:none; }
+textarea { resize:none }
+button, input[type="button"], input[type="reset"], input[type="submit"] { cursor:pointer; -webkit-appearance:button; -moz-appearance:button }
+input:focus:-moz-placeholder, input:focus::-webkit-input-placeholder {color:transparent}
+button::-moz-focus-inner, input::-moz-focus-inner {padding:0;border:0}
+table { border-collapse:collapse; border-spacing:0 }
+.fl { float:left; }
+.fr { float:right; }
+.hide { display:none; }
+.show { display: block; }
+.ellipsis { white-space:nowrap; text-overflow:ellipsis; overflow:hidden }
+.break { word-break:break-all; word-wrap:break-word }
+header, footer, article, section, nav, menu, hgroup { display: block; clear:all; }
+/*margin*/
+.mt10 { margin-top:10px }
+.ml10 { margin-left:10px }
+.mr10 { margin-right:10px }
+.mb10 { margin-bottom:10px }
+.mt5 { margin-top:5px }
+.ml5 { margin-left:5px }
+.mr5 { margin-right:5px }
+.mb5 { margin-bottom:5px }
+/*首页*/
+footer { text-align:center; padding-bottom:10px; background:#f5f5f5; border-top:1px solid #ddd; border-bottom:1px solid #ddd; ; float:left; width:100%; padding-top:10px }
+footer p { line-height:24px; font-size:14px }
+header { background: url("../images/header-background.jpg") repeat-x scroll center top #2C2C2C; height: 47px; width: 100%; position:fixed; z-index:10 }
+.controls {box-shadow: 0 1px 1px 0 #000000 inset; padding: 3px; position:absolute; right:10px; top:6px }
+.controls a, .controls img { display: block; }
+.controls img { width: 22px; }
+.controls a { background: url("../images/controls.jpg") repeat-x scroll center top #212121; border-top: 1px solid #5C5C5C; cursor: pointer; padding: 4px 6px 2px; }
+.controls a.login { font-size:14px; color:#fff; padding:5px 10px }
+.controls a.login:active { padding:5px 10px }
+.controls a:active { opacity: 0.65; }
+.controls.active img { opacity: 0.35; }
+header .back { background-image: url(../images/back.png); background-position: center center; background-repeat: no-repeat; background-size: 12px 20px; height: 47px; left: 5px; position: absolute; width: 30px; display: block;  cursor:pointer;  }
+header .title , header a { color:#fff; line-height:47px; text-align:center; font-size:18px; overflow: hidden; display: block; }
+.ico { background:url(../images/logo2014.png) no-repeat 10px center; padding-left:50px; float:left }
+.block47 { height:47px; width:100% }
+.index_item { float:left; width:100%; margin:10px 0 10px 0 }
+.index_item fieldset { border:none; border-top:1px solid #ccc; margin:0 0 5px 0 }
+.index_item fieldset legend { width:24%; margin-left:38%; text-align:center }
+.index_item li { height:90px; background:#F93; float:left; width:24%; margin:1% 0 0 1%; position:relative; border-radius:2px; text-align:center }
+.index_item a {width:100%;display: block;}
+.index_item li span { width:100%; position:absolute; bottom:0; left:0; text-align:center; line-height:20px; font-size:14px; color:#330000; text-shadow: 1px 1px 2px #999; }
+.index_item li img { height:60px; width:60px; margin-top:8px; }
+/*色块*/
+li.color_1 { background:#ffa453 }
+li.color_2 { background:#ffccff }
+li.color_3 { background:#d391f5 }
+li.color_4 { background:#8EC5F0 }
+li.color_5 { background:#FBD640 }
+li.color_6 { background:#A4E1C2 }
+li.color_7 { background:#fea182 }
+li.color_8 { background:#D8FCC7 }
+li.color_9 { background: #DBDBDB }
+.search { height:52px; float:left; width:100%; margin-bottom:5px }
+.search .inner { border:1px solid #ddd; margin:10px; height:32px; line-height:32px; box-shadow: 0 1px 1px 0 #f2f2f2 inset; position:relative }
+.search .inner ul.up { position:absolute; left:-1px; bottom:32px; background:#fff; border:1px solid #ddd; width:80px; box-shadow: 3px -3px 3px rgba(0, 0, 0, 0.2); z-index:5; display:none }
+.search .inner ul.down { top:32px; position:absolute; left:-1px; top:32px; background:#fff; border:1px solid #ddd; width:80px; box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2); z-index:5; display:none }
+.search .inner ul li { line-height:28px; text-align:center; font-size:14px }
+.search .inner span { float:left; font-size:14px; line-height:32px; margin:0 5px; width:
+}
+.search .inner span:after { border-color: #777 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0); border-style: solid; border-width: 6px; content: ""; display: inline-block; height: 0; margin: 2px 0 0 2px; overflow: hidden; vertical-align: middle; width: 0; }
+.search .inner span.open:after { border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #777; border-style: solid; border-width: 6px; content: ""; display: inline-block; height: 0; margin: 0 0 10px 2px; overflow: hidden; vertical-align: middle; width: 0; }
+.search .inner .text { width:70%; float:left; height:24px; border:none; line-height:14px; background:#fff; font-size:14px; margin:4px 0; text-indent:5px; padding:2px 0 }
+.search .inner .searchbtn { border: 0; width: 30px; height: 30px; background: url(../images/search.png) no-repeat; background-position: 8px 9px; background-size: 14px; position:absolute; right:1px; top:1px; z-index:5 }
+/*list*/
+.crumbs { height:30px; line-height:30px; background:#f5f5f5; border-bottom:1px solid #ddd; padding-left:5px; overflow: hidden; }
+.crumbs span { margin:0 5px }
+.list_item li { line-height:40px; background:#eee; margin:10px 10px 0 10px; padding-left:10px; position:relative }
+.list_item li span { position:absolute; right:10px; top:7px; height:30px; line-height:30px; color:#555 }
+
+/*详细页面*/
+.detail { padding:10px;  line-height:35px;}
+.detail  h1{ height:47px; width:100%   line-height:47px; text-align:center;}
+.detail img { max-width:100%; min-height:100px; background:url(../images/loading.gif) no-repeat center }
+.detail p { margin-bottom:5px; line-height:35px;}
+/*谜语*/
+.mi { padding:10px; line-height:35px; border: 1px solid #FFF2BF; background-color: #FFFFDF; margin-top: 10px; margin-right: 5px; margin-left: 5px; }
+.mi span { display: block; width: 100%; clear: both; float: left; }
+/*推荐阅读*/
+.recommend { padding:10px; margin-bottom:10px }
+.recommend h1 { background:#eee; border-left:5px solid #F69; line-height:30px; padding-left:10px }
+.recommend li { border-bottom:1px dotted #ccc; padding:10px 0 3px 0 }
+.list { padding:10px }
+.list li { border-bottom:1px dotted #ccc; width:100%; position:relative; line-height:40px; overflow: hidden; }
+.list a { color:#06C }
+.list span { position:absolute; right:0px; top:0; background:#fff; line-height:40pxpadding-left:10px
+}
+.list span font { color: #F60 }
+/*.page{ height:30px; background:#f5f5f5; border-top:1px solid #ddd;border-bottom:1px solid #ddd; margin-bottom:10px; line-height:30px}
+*/
+.page span { float:left; text-align:center }
+.page .num { width:30px; height:30px; border:1px solid #ccc; background:#fff; margin-right:2px }
+.page .nums .go { border:1px solid #ccc; background:url(../images/arrow.png) no-repeat center; width:16px; }
+.clear { clear:both; height:1px; width:100% }
+.list_pic { padding:10px; }
+.list_pic li.line { height:1px; background:#ccc; margin:0; padding:0 }
+.list_pic li { height:60px; width:100%; margin:15px 0 15px 0; background: url(../images/bg04.png) no-repeat; background-position: 95% center; background-size: 12px 24px; }
+.list_pic li span { float:left; height:60px; width:60px; margin-right:10px; background:url(../images/loading.gif) no-repeat center }
+.list_pic li span img { height:60px; width:60px; }
+.list_pic li h1 { line-height:20px; padding-top:8px }
+.list_pic li p { line-height:28px; color:#777 }
+.list_video { float:left; width:100% }
+.list_video li { height:105px; float:left; font-size:14px; width:44%; margin-left:4%; text-align:center; margin-top:4%; }
+.list_video li span { height:65px; width:100%; margin-right:10px; display:block }
+.list_video li span img { height:65px; width:80px; }
+.list_video li h1 { line-height:20px }
+.list_video li p { line-height:20px; color:#777 }
+.videopage { height:30px; background:#f5f5f5; border-top:1px solid #ddd; border-bottom:1px solid #ddd; margin-bottom:10px; line-height:30px; position:relative }
+.videopage span { position:absolute; }
+.videopage .prev { left:0; padding-left:10px }
+.videopage .next { right:0; padding-right:10px }
+.reg { margin:30px 20px; }
+.reg p { width:100%; position:relative; margin-top:10px }
+.reg p button { position:absolute; right:4px; top:6px; }
+.reg input.text { border:1px solid #ccc; border-radius:5px; width:100%; margin-bottom:10px; text-indent:10px; padding:10px 0; background:#f5f5f5 }
+/*button样式*/
+button { border:solid 1px #aaa; text-decoration: none; color: #555; background-color: #eee; background-image: linear-gradient(#eeeeee, #cccccc); border-radius:4px; padding:4px 8px; margin-bottom:10px; font-weight:bold; }
+.loginbtn { width:70%; margin:0 15%; margin-bottom:20px; line-height:30px }
+/*comment*/
+.comment p.look { line-height:30px; border:1px solid #ccc; border-radius:5px; margin:10px; text-align:center; background:#f5f5f5 }
+.comment p.look a { display:block; height:100%; width:100%; font-size:14px }
+.comment p.text { margin:10px; border:1px solid #ccc; padding:5px }
+.comment p.text textarea { display:block; width:100%; height:50px; border:none; }
+.comment p.error { color:#F00; font-size:14px; text-align:center; display:none }
+.comment p.btn { margin:10px; text-align: center }
+.comment p.btn input { border:solid 1px #aaa; text-decoration: none; color: #555; background-color: #eee; background-image: linear-gradient(#eeeeee, #cccccc); border-radius:4px; padding:4px 8px; margin-bottom:10px; font-weight:bold; width:70%; margin:0 15%; margin-bottom:20px; line-height:30px }
+.commentlist { margin:10px; font-size:14px; border:1px solid #ccc; background:#f5f5f5; padding:10px }
+.commentlist li { margin-top:10px; border-bottom:1px dotted #ccc; padding-bottom:5px }
+.commentlist li span { }
+.commentlist li span.user { float:left; color:#06C }
+.commentlist li span.date { float:right; color:#888 }
+.commentlist li p { clear:both; padding-top:5px; font-size:16px }
+

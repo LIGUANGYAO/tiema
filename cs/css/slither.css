@@ -1,0 +1,72 @@
+﻿
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;}
+body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
+
+
+.chk_1,.chk_2,.chk_3,.chk_4 {
+    display: none;
+}
+
+
+/*******STYLE 4*******/
+.chk_4 + label {
+	background-color: #FFF;
+	border-radius:50px;
+	display: inline-block;
+	position: relative;
+	margin-right: 0px;
+	background: #c7c7c7;
+	width: 85px;
+	height:24px;
+/*	box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1), 0 0 10px rgba(221, 221, 221, 0.4);*/
+}
+
+.chk_4 + label:before {
+	content: ' ';
+	position: absolute;
+	background: #FFF;
+	top: 1px;
+	z-index: 99999;
+	left:1px;
+	width: 32px;
+	color: #FFF;
+	height: 22px;
+	border-radius:50px;
+/*	box-shadow: 0 0 1px rgba(0,0,0,0.6);*/
+}
+
+.chk_4 + label:after {
+	content: '隐身';	
+	position: absolute;
+	font-size: 1.2em;
+	color: white;
+	font-weight: bold;
+	left:0px;
+	padding:2px 0 0 10px;
+	top:0px;
+	border-radius: 50px;
+}
+
+.chk_4:checked + label {
+	background: #cc3534;
+	/*box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1), 0 0 10px rgba(258, 68, 0, 0.4);*/
+}
+
+.chk_4:checked + label:after {
+	content: '在线';
+	left: 2px;
+}
+
+.chk_4:checked + label:before {
+	content: ' ';
+	position: absolute;
+	z-index: 99999;
+	left: 52px;
+}
+
+
+.chk_4 + label:after {
+	left: 35px;	
+}	
+

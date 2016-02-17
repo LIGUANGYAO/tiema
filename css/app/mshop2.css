@@ -1,0 +1,64 @@
+      body{
+            margin:0 auto; 
+            padding: 0;
+            }
+       #form_1 {
+            border: 1px solid #B1CDE3;   
+           padding:0; 
+           width: 99%; 
+           font-size:16px; 
+           background: #f1fedd;
+           margin-bottom: 5px;
+           margin-top: 0px;
+        }
+        #table_1 {   
+           border: 1px solid #B1CDE3;   
+            padding:0;    
+           margin:0 auto;   
+            border-collapse: collapse;    
+        }   
+         #table_1 thead{
+      
+            height: 30px;
+            margin: 0;
+          } 
+         #table_1 thead tr td{
+            background: #fafafa;
+          }
+       #table_1 td {   
+            border: 1px solid #B1CDE3;   
+           background: #fff;   
+            font-size:13px;   
+            padding:0;    
+           margin:0 auto;
+          color: #4f6b72;   
+        }   
+        
+        #tfoot
+        {
+            width: 99%;
+            height: 23px;
+            border: 1px solid #B1CDE3; 
+            background: #fafafa;
+            text-align: right;
+            
+        }
+        #form_div{
+          
+        }
+        #page_foot
+        {
+            
+            font-size:12px;  
+            text-decoration: none;
+        }
+        #page_foot a {
+            text-decoration: none;
+        }
+        #table_1 .li_bg1 {
+        background:#FFF;
+        }
+        #table_1 .li_bg2 {
+        background:#efefef;
+        }
+        

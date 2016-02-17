@@ -1,0 +1,396 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title></title>
+<link href="css/menu.css?a=" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+
+<script type="text/javascript" src="js/adddate.js"></script>
+<script charset="utf-8" src="kindeditor/kindeditor.js"></script>
+<script charset="utf-8" src="kindeditor/lang/zh_CN.js"></script>
+<script src="http://api.map.baidu.com/api?v=1.5&ak=ULZzR8MYgQwHvkOeFTk0Or0l"></script>
+<script>
+        var editor;
+        KindEditor.ready(function(K) {
+                                
+        });
+</script>
+
+</head>
+<style type="text/css">
+<!--
+
+.demo {
+	width:98%;
+margin-top:0px;
+  
+}
+.demo h2 {
+	font-size:16px;
+	height:44px;
+	color:#3366cc;
+	margin-top:0px;
+}
+.demo dl dt {
+	font-size:14px;
+	color:#ff6600;
+	margin-top:0px;
+	font-weight:800;
+}
+.demo dl dt, .demo dl dd {
+	line-height:22px;
+}
+	.tabbtn {
+	list-style-type:none;
+	height:30px;
+	background:url(images/tabbg.gif) repeat-x;
+	border-left:solid 1px #ddd;
+	border-right:solid 1px #ddd;
+}
+.tabbtn li {
+	float:left;
+	position:relative;
+	margin:0 0 0 -1px;
+}
+.tabbtn li a {
+	display:block;
+	float:left;
+	height:30px;
+	line-height:30px;
+	overflow:hidden;
+	width:108px;
+	text-align:center;
+	font-size:12px;
+	cursor:pointer;
+}
+.tabbtn li.current {
+	border-left:solid 1px #d5d5d5;
+	border-right:solid 1px #d5d5d5;
+	border-top:solid 1px #c5c5c5;
+}
+.tabbtn li.current a {
+	border-top:solid 2px #ff6600;
+	height:27px;
+	line-height:27px;
+	background:#fff;
+	color:#3366cc;
+	font-weight:800;
+}
+/* tabcon */
+.tabcon {
+	border-width:0 1px 1px 1px;
+	border-color:#ddd;
+	border-style:solid;
+	position:relative;/*必要元素*/
+	
+
+  
+}
+.tabcon .subbox {
+	position:absolute;/*必要元素*/
+	left:0;
+	top:0;
+}
+.tabcon .sublist {
+	padding:0px 0px;
+
+}
+
+  .table_img {   
+          border: 1px solid #B1CDE3;   
+            padding:0;    
+           margin:0 auto;   
+            border-collapse: collapse;   
+       }   
+         
+    .table_img   td {   
+            border: 1px solid #B1CDE3;   
+           background: #fff;   
+            font-size:12px;   
+           padding: 3px 3px 3px 8px;   
+          color: #4f6b72;   
+        }   
+-->
+</style>
+<body  style=" margin-top: 10px;margin-left: 5px;  padding-top: 0px;"> 
+
+
+{if $fall==edit}
+<div class="demo">	
+<form name="myform" method="post" action="msgsend.html?g=d0acefdbac72d3832" enctype="multipart/form-data">
+<div class="tabcon" id="leftcon"  >  
+    <div  id="m1">
+    <table class="table" width="100%" border="0"  style="margin-bottom: 15px;">
+        <th colspan="10">编辑信息提醒</th>
+        <tr>
+            <td style="width: 200px;">发送代码:</td><td><input disabled="true" style=""  type="text" value="{$msgsend_mx.msgsend_sn}" /><input name="msgsend_sn" id="msgsend_sn"   type="hidden" value="{$msgsend_mx.msgsend_sn}" /><a style="color:red;">*</a></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">操作人:</td><td><input  name="user_name" style="" id="user_name" type="text" value="{$msgsend_mx.user_name}" /></td>
+        </tr>
+        <tr>
+            <td>发送时间:</td><td>
+            <input type="text" name="send_time" id="send_time" value="{$msgsend_mx.send_time}"  onclick="SelectDate(this,'yyyy-MM-dd hh:mm:ss')" /></td>
+        </tr>
+        <tr>
+            <td>添加时间:</td><td>
+            <input type="text" name="msgsend_time" id="msgsend_time" value="{$msgsend_mx.msgsend_time}"  onclick="SelectDate(this,'yyyy-MM-dd hh:mm:ss')" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">备注:</td><td><input  name="bz" style="" id="bz" type="text" value="{$msgsend_mx.bz}" /></td>
+        </tr>
+        <tr>
+            <td>发送类型:</td><td>
+            <input type="radio" name="fasongleixing" class="fasongleixing" value="1"  title="邮件" checked />邮件
+                 <input type="radio" name="fasongleixing" class="fasongleixing" value="2"  title="短信"  />短信
+                 
+        <input type="hidden" id="fasongleixing_v" value="{$msgsend_mx.fasongleixing}" /></td>
+        </tr>
+        
+
+
+
+
+
+
+<tr><td colspan="2"  style="text-align: center;"><input  type="submit"  id="btn_queren2" value="确认" />&nbsp;<input  type="button" onclick="location='msgsend.html'" value="返回" /></td></tr>
+
+</table>
+
+
+
+</div>
+
+
+</div>
+
+
+
+</form>
+
+
+
+</div><!--tabbox end-->
+
+
+
+
+
+
+
+{/if}
+
+{if $fall==post}
+
+<table class="table" width="100%" border="0" style="margin-top:10px;">
+ <tr><td colspan="1"><b>编辑信息提醒</b></td></tr>
+
+ <tr><td>修改成功<a href="msgsend.html">返回</a>&nbsp;<a style="color:red;">1秒后返回</a></td></tr>
+
+</table>
+
+<script type="text/javascript">
+<!--
+	$(document).ready(function ()
+{       
+    var timer = setTimeout(function(){
+      window.location="msgsend.html";
+    }, 500);
+   
+})
+-->
+</script>
+{/if}
+{if $fall==post2}
+
+<table class="table" width="100%" border="0" style="margin-top:10px;">
+ <tr><td colspan="1"><b>添加信息提醒</b></td></tr>
+
+ <tr><td>添加成功<a href="msgsend.html">返回</a>&nbsp;<a style="color:red;">1秒后返回</a></td></tr>
+
+</table>
+
+<script type="text/javascript">
+<!--
+	$(document).ready(function ()
+{       
+    var timer = setTimeout(function(){
+      window.location="msgsend.html";
+    }, 500);
+   
+})
+-->
+</script>
+{/if}
+
+{if $fall==fs}
+
+<table class="table" width="100%" border="0" style="margin-top:10px;">
+ <tr><td colspan="1"><b>添加失败</b></td></tr>
+
+ <tr><td>代码已存在<a href="msgsend.html">返回</a>&nbsp;<a style="color:red;">1秒后返回</a></td></tr>
+
+</table>
+
+<script type="text/javascript">
+<!--
+	$(document).ready(function ()
+{       
+    var timer = setTimeout(function(){
+      window.location="msgsend.html";
+    }, 1000);
+   
+})
+-->
+</script>
+{/if}
+
+{if $fall==add_list}
+<div class="demo">	
+<form name="myform" method="post" action="msgsend.html?g=803ea018b35b4f164" enctype="multipart/form-data">   
+   <div class="tabcon" id="leftcon"  >
+    <div  id="m1"><table class="table" width="100%" border="0" >
+ <th colspan="2">添加信息提醒</th>
+        <tr>
+            <td style="width: 200px;">发送代码:</td><td><input  style=""  type="text"  value="系统自动生成"  disabled="disabled" /><input  style=""  type="hidden" name="msgsend_sn" id="msgsend_sn"  value="系统自动生成"  /><a style="color:red;">*</a></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">操作人:</td><td><input  name="user_name" style="" id="user_name" type="text"  /></td>
+        </tr>
+        <tr>
+            <td>发送时间:</td><td>
+            <input type="text" name="send_time" id="send_time" value="{$msgsend_mx.send_time}"  onclick="SelectDate(this,'yyyy-MM-dd hh:mm:ss')" /></td>
+        </tr>
+        <tr>
+            <td>添加时间:</td><td>
+            <input type="text" name="msgsend_time" id="msgsend_time" value="{$msgsend_mx.msgsend_time}"  onclick="SelectDate(this,'yyyy-MM-dd hh:mm:ss')" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">备注:</td><td><input  name="bz" style="" id="bz" type="text"  /></td>
+        </tr>
+        <tr>
+            <td>发送类型:</td><td>
+            <input type="radio" name="fasongleixing" class="fasongleixing" value="1"  title="邮件" checked />邮件
+                 <input type="radio" name="fasongleixing" class="fasongleixing" value="2"  title="短信"  />短信
+                 
+        <input type="hidden" id="fasongleixing_v" value="{$msgsend_mx.fasongleixing}" /></td>
+        </tr>
+
+ 
+<tr><td colspan="2"  style="text-align: center;"><input  type="submit"  id="btn_queren2" value="确认" />&nbsp;<input  type="button" onclick="location='msgsend.html'" value="返回" /></td></tr>
+  
+</table>
+    
+    
+    
+    </div>
+
+    
+    
+    
+	</form>
+
+
+	
+</div><!--tabbox end-->
+
+
+
+
+
+{/if}	
+<input  type="hidden" value="msgsend_sn" id="bianjisetf1"/>
+
+</body>  
+</html>
+
+<script type="text/javascript">
+       
+      
+    
+    var i=2;
+   $("#add_images").click(function (){
+        
+        
+        $("#m2").append('&nbsp;图片'+i+':<input type="file" name="pic'+i+'"/>  &nbsp;<br />');
+        i++;
+
+        //alert(1);
+   })
+
+      $("img[id='img_mx']").each(function (){
+            
+           $(this).dblclick(function (){
+           //alert($(this).attr("name"));
+           //$("#hide_img").colorToggle(200);
+           
+           
+        })
+        })
+          $("img[id='delete_z_sn']").each(function (){
+            
+           $(this).click(function (){
+        
+           if(confirm("是否删除图片"+$(this).attr("title"))){
+             
+              htmlobj=$.ajax({url:"color.php?act=delete&img_code="+encodeURI(encodeURI($(this).attr("title"))),async:false});
+              alert(htmlobj.responseText);
+             window.location.reload();
+            }else return false;
+            
+          //alert($(this).attr("title"));
+           //$("#hide_img").colorToggle(200);
+           
+           
+        })
+        })
+        
+            $("img[id='img_jy']").each(function (){
+            
+           $(this).click(function (){
+        
+           if(confirm("禁用"+$(this).attr("title")+"图片？")){
+             
+              htmlobj=$.ajax({url:"color.php?act=img_xs&img_code="+encodeURI(encodeURI($(this).attr("title")))+"&alt="+$(this).attr("alt"),async:false});
+              alert(htmlobj.responseText);
+             window.location.reload();
+            }else return false;
+            
+          //alert($(this).attr("title"));
+           //$("#hide_img").colorToggle(200);
+           
+           
+        })
+        })
+         $("img[id='img_xs']").each(function (){
+            
+           $(this).click(function (){
+        
+           if(confirm("显示"+$(this).attr("title")+"图片？")){
+             
+              htmlobj=$.ajax({url:"color.php?act=img_xs&img_code="+encodeURI(encodeURI($(this).attr("title")))+"&alt="+$(this).attr("alt"),async:false});
+              alert(htmlobj.responseText);
+             window.location.reload();
+            }else return false;
+            
+          //alert($(this).attr("title"));
+           //$("#hide_img").colorToggle(200);
+           
+           
+        })
+        })
+       
+       
+       
+       var  msgsend_sn=$("#msgsend_sn").val();
+        $("#msgsend_sn").focus();
+        $("#btn_queren2").click(function(){
+        if(jQuery.trim($("#msgsend_sn").attr("value"))==''){
+        $("#msgsend_sn").focus();return false;}
+        else{if(confirm("确认修改")){}else{return false;}}})
+             var fasongleixing_v=$('#fasongleixing_v').val();   
+             $('input:radio[name="fasongleixing"][value="'+fasongleixing_v+'"]').prop('checked', true);        
+</script>

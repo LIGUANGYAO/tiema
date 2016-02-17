@@ -1,0 +1,62 @@
+ 
+<!doctype HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>儿童资源大全</title>
+<link href="templates/zyw/css/css.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/zyw/js/zepto.min.js"></script>
+</head>
+ 
+<body>
+<header>
+<div class="back" onClick="history.go(-1)" ></div>
+<div class="title">{$wxfloor_name}</div>
+<div class="controls"> <a href="zywindex.php"><img src="templates/zyw/images/icon-toggle.png"></a> </div> 
+<script type="text/javascript">
+<!--
+function MM_popupMsg(msg) { //v1.0
+  alert(msg);
+}
+//-->
+</script>
+</header>
+<div class="block47"></div>
+<!--<div class="crumbs"><a href="/">首页</a><span>&gt;</span>动物类谜语</div>-->
+<div class="list">
+ {foreach from=$wxriddle_list item=wxriddle_list}		
+<div class="mi">
+		<b>谜面：</b>{$wxriddle_list.title}</br>
+  		<img src="templates/zyw/images/da.gif" alt="点击后查看正确答案！" onClick="MM_popupMsg('正确答案是：“{$wxriddle_list.wxriddle_note_2}”你猜对了吗？')" />
+</div>
+{/foreach}
+
+ 
+</div>
+ 
+ 
+<!-- 
+<div class="page">
+ 
+<div class="prev"><a href="javascript:;" class="disable">∧</a></div> <div class="block"></div><div class="nums">共1/7页   跳至 <input type="text" class="num"><input type="button" value="" class="go"> 页 </div><div class="block"></div><div class="next"><a href="/list.php?page=1&amp;style=0&amp;classid=279&amp;bclassid=0&amp;totalnum=201">∨</a></div>  -->
+    <script>
+    
+    $(function(){
+ 
+    	$('.writecomment').on('click', function(){
+    		$('.text').toggle();
+    		$('.btn').toggle();
+	});
+	$(".list li").click(function(){
+		location =$(this).find('a').attr('href');
+	})
+    });
+ </script>
+</div>
+ 
+
+</body>
+</html>
+	
+

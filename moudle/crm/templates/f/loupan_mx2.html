@@ -1,0 +1,1143 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title></title>
+<link href="css/menu.css?a=" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script src="http://api.map.baidu.com/api?v=1.5&ak=ULZzR8MYgQwHvkOeFTk0Or0l"></script>
+<script type="text/javascript" src="js/adddate.js"></script>
+<script charset="utf-8" src="kindeditor/kindeditor.js"></script>
+<script charset="utf-8" src="kindeditor/lang/zh_CN.js"></script>
+<script>
+        var editor;
+        KindEditor.ready(function(K) {
+                editor = K.create('#tuwen_html',{
+					resizeType : 1,
+					allowPreviewEmoticons : true,
+					allowImageUpload : true,
+					items : [
+						'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+						'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+						'insertunorderedlist', '|', 'emoticons', 'image', 'link']
+				});
+                editor = K.create('#tuwen_html',{
+					resizeType : 1,
+					allowPreviewEmoticons : true,
+					allowImageUpload : true,
+					items : [
+						'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+						'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+						'insertunorderedlist', '|', 'emoticons', 'image', 'link']
+				});
+                                
+        });
+</script>
+
+</head>
+<style type="text/css">
+<!--
+
+.demo {
+	width:98%;
+margin-top:5px;
+  
+}
+.demo h2 {
+	font-size:16px;
+	height:44px;
+	color:#3366cc;
+	margin-top:0px;
+}
+.demo dl dt {
+	font-size:14px;
+	color:#ff6600;
+	margin-top:0px;
+	font-weight:800;
+}
+.demo dl dt, .demo dl dd {
+	line-height:22px;
+}
+	.tabbtn {
+	list-style-type:none;
+	height:30px;
+	background:url(images/tabbg.gif) repeat-x;
+	border-left:solid 1px #ddd;
+	border-right:solid 1px #ddd;
+}
+.tabbtn li {
+	float:left;
+	position:relative;
+	margin:0 0 0 -1px;
+}
+.tabbtn li a {
+	display:block;
+	float:left;
+	height:30px;
+	line-height:30px;
+	overflow:hidden;
+	width:108px;
+	text-align:center;
+	font-size:12px;
+	cursor:pointer;
+}
+.tabbtn li.current {
+	border-left:solid 1px #d5d5d5;
+	border-right:solid 1px #d5d5d5;
+	border-top:solid 1px #c5c5c5;
+}
+.tabbtn li.current a {
+	border-top:solid 2px #ff6600;
+	height:27px;
+	line-height:27px;
+	background:#fff;
+	color:#3366cc;
+	font-weight:800;
+}
+/* tabcon */
+.tabcon {
+	border-width:0 1px 1px 1px;
+	border-color:#ddd;
+	border-style:solid;
+	position:relative;/*必要元素*/
+	
+
+  
+}
+.tabcon .subbox {
+	position:absolute;/*必要元素*/
+	left:0;
+	top:0;
+}
+.tabcon .sublist {
+	padding:0px 0px;
+
+}
+
+  .table_img {   
+          border: 1px solid #B1CDE3;   
+            padding:0;    
+           margin:0 auto;   
+            border-collapse: collapse;   
+       }   
+         
+    .table_img   td {   
+            border: 1px solid #B1CDE3;   
+           background: #fff;   
+            font-size:12px;   
+           padding: 3px 3px 3px 8px;   
+          color: #4f6b72;   
+        }   
+-->
+</style>
+<body  style=" margin-top: 10px;margin-left: 5px;  padding-top: 0px;"> 
+
+
+{if $fall==edit}
+<div class="demo">	
+<form name="myform" method="post" action="loupan.html?g=daef51349a07f02bc" enctype="multipart/form-data">
+<div class="tabcon" id="leftcon"  >  
+    <div  id="m1">
+    <table class="table" width="100%" border="0"  style="margin-bottom: 15px;">
+        <th colspan="10">编辑楼盘</th>
+        <tr>
+            <td style="width: 200px;">楼盘代码:</td><td><input disabled="true" style=""  type="text" value="{$loupan_mx.loupan_sn}" /><input name="loupan_sn" id="loupan_sn"   type="hidden" value="{$loupan_mx.loupan_sn}" /><a style="color:red;">*</a></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">楼盘名称:</td><td><input  name="loupan_name" style="" id="loupan_name" type="text" value="{$loupan_mx.loupan_name}" /></td>
+        </tr>
+        <tr>
+            <td>楼盘用户:</td><td>
+            <input type="radio" name="yongtu" class="yongtu" value="1"  title="住宅" checked />住宅
+                 <input type="radio" name="yongtu" class="yongtu" value="2"  title="商业"  />商业
+                 
+        <input type="hidden" id="yongtu_v" value="{$loupan_mx.yongtu}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">土地级别及类型:</td><td><input  name="tudijb_lb" style="" id="tudijb_lb" type="text" value="{$loupan_mx.tudijb_lb}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">位置状况:</td><td><input  name="weizhi" style="" id="weizhi" type="text" value="{$loupan_mx.weizhi}" /></td>
+        </tr>
+        <tr>
+            <td>位置评价:</td><td>
+            <input type="radio" name="weizhi_pj" class="weizhi_pj" value="1"  title="优" checked />优
+                 <input type="radio" name="weizhi_pj" class="weizhi_pj" value="2"  title="较优"  />较优
+                 <input type="radio" name="weizhi_pj" class="weizhi_pj" value="3"  title="普通"  />普通
+                 <input type="radio" name="weizhi_pj" class="weizhi_pj" value="4"  title="较劣"  />较劣
+                 <input type="radio" name="weizhi_pj" class="weizhi_pj" value="5"  title="劣"  />劣
+                 
+        <input type="hidden" id="weizhi_pj_v" value="{$loupan_mx.weizhi_pj}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">住宅聚集水平:</td><td><input  name="zhuzhaijuji" style="" id="zhuzhaijuji" type="text" value="{$loupan_mx.zhuzhaijuji}" /></td>
+        </tr>
+        <tr>
+            <td>住宅聚集水平取值:</td><td>
+            <input type="radio" name="zhuzhaijuji_pj" class="zhuzhaijuji_pj" value="1"  title="高" checked />高
+                 <input type="radio" name="zhuzhaijuji_pj" class="zhuzhaijuji_pj" value="2"  title="较高"  />较高
+                 <input type="radio" name="zhuzhaijuji_pj" class="zhuzhaijuji_pj" value="3"  title="普通"  />普通
+                 <input type="radio" name="zhuzhaijuji_pj" class="zhuzhaijuji_pj" value="4"  title="较低"  />较低
+                 <input type="radio" name="zhuzhaijuji_pj" class="zhuzhaijuji_pj" value="5"  title="低"  />低
+                 
+        <input type="hidden" id="zhuzhaijuji_pj_v" value="{$loupan_mx.zhuzhaijuji_pj}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">交通状况:</td><td><input  name="jiaotong" style="" id="jiaotong" type="text" value="{$loupan_mx.jiaotong}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">交通状况取值:</td><td><input  name="jiaotong_pj" style="" id="jiaotong_pj" type="text" value="{$loupan_mx.jiaotong_pj}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">城市基础及公共服务配套设施:</td><td><input  name="peitao" style="" id="peitao" type="text" value="{$loupan_mx.peitao}" /></td>
+        </tr>
+        <tr>
+            <td>配套取值:</td><td>
+            <input type="radio" name="peitao_pj" class="peitao_pj" value="1"  title="完善" checked />完善
+                 <input type="radio" name="peitao_pj" class="peitao_pj" value="2"  title="较完善"  />较完善
+                 <input type="radio" name="peitao_pj" class="peitao_pj" value="3"  title="普通"  />普通
+                 <input type="radio" name="peitao_pj" class="peitao_pj" value="4"  title="较不完善"  />较不完善
+                 <input type="radio" name="peitao_pj" class="peitao_pj" value="5"  title="不完善"  />不完善
+                 
+        <input type="hidden" id="peitao_pj_v" value="{$loupan_mx.peitao_pj}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">环境和景观:</td><td><input  name="huanjing" style="" id="huanjing" type="text" value="{$loupan_mx.huanjing}" /></td>
+        </tr>
+        <tr>
+            <td>环境取值:</td><td>
+            <input type="radio" name="huanjing_pj" class="huanjing_pj" value="1"  title="好" checked />好
+                 <input type="radio" name="huanjing_pj" class="huanjing_pj" value="2"  title="较好"  />较好
+                 <input type="radio" name="huanjing_pj" class="huanjing_pj" value="3"  title="普通"  />普通
+                 <input type="radio" name="huanjing_pj" class="huanjing_pj" value="4"  title="较差"  />较差
+                 <input type="radio" name="huanjing_pj" class="huanjing_pj" value="5"  title="差"  />差
+                 
+        <input type="hidden" id="huanjing_pj_v" value="{$loupan_mx.huanjing_pj}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">楼层:</td><td><input  name="loucengshu" style="" id="loucengshu" type="text" value="{$loupan_mx.loucengshu}" /></td>
+        </tr>
+        <tr>
+            <td>坐向:</td><td>
+            <input type="radio" name="chaoxiang" class="chaoxiang" value="1"  title="坐北朝南" checked />坐北朝南
+                 <input type="radio" name="chaoxiang" class="chaoxiang" value="2"  title="坐南朝北"  />坐南朝北
+                 
+        <input type="hidden" id="chaoxiang_v" value="{$loupan_mx.chaoxiang}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">重点学校:</td><td><input  name="zhongdianxuexiao" style="" id="zhongdianxuexiao" type="text" value="{$loupan_mx.zhongdianxuexiao}" /></td>
+        </tr>
+        <tr>
+            <td>有无重点学校:</td><td>
+            <input type="radio" name="zhongdianxuexiao_pj" class="zhongdianxuexiao_pj" value="1"  title="无" checked />无
+                 <input type="radio" name="zhongdianxuexiao_pj" class="zhongdianxuexiao_pj" value="2"  title="有"  />有
+                 
+        <input type="hidden" id="zhongdianxuexiao_pj_v" value="{$loupan_mx.zhongdianxuexiao_pj}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">房屋权利性质:</td><td><input  name="fangwuquanli" style="" id="fangwuquanli" type="text" value="{$loupan_mx.fangwuquanli}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">他项权利设定情况:</td><td><input  name="fangwuquanli_qt" style="" id="fangwuquanli_qt" type="text" value="{$loupan_mx.fangwuquanli_qt}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">物业管理及安防系统:</td><td><input  name="wuyeguanli" style="" id="wuyeguanli" type="text" value="{$loupan_mx.wuyeguanli}" /></td>
+        </tr>
+        <tr>
+            <td>物业评价:</td><td>
+            <input type="radio" name="wuyeguanli_pj" class="wuyeguanli_pj" value="1"  title="好" checked />好
+                 <input type="radio" name="wuyeguanli_pj" class="wuyeguanli_pj" value="2"  title="较好"  />较好
+                 <input type="radio" name="wuyeguanli_pj" class="wuyeguanli_pj" value="3"  title="普通"  />普通
+                 <input type="radio" name="wuyeguanli_pj" class="wuyeguanli_pj" value="4"  title="较差"  />较差
+                 <input type="radio" name="wuyeguanli_pj" class="wuyeguanli_pj" value="5"  title="差"  />差
+                 
+        <input type="hidden" id="wuyeguanli_pj_v" value="{$loupan_mx.wuyeguanli_pj}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">成新率:</td><td><input  name="chengxinlv" style="" id="chengxinlv" type="text" value="{$loupan_mx.chengxinlv}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">外观及外墙面饰材:</td><td><input  name="waiguan" style="" id="waiguan" type="text" value="{$loupan_mx.waiguan}" /></td>
+        </tr>
+        <tr>
+            <td>外观评价:</td><td>
+            <input type="radio" name="waiguan_pj" class="waiguan_pj" value="1"  title="好" checked />好
+                 <input type="radio" name="waiguan_pj" class="waiguan_pj" value="2"  title="较好"  />较好
+                 <input type="radio" name="waiguan_pj" class="waiguan_pj" value="3"  title="普通"  />普通
+                 <input type="radio" name="waiguan_pj" class="waiguan_pj" value="4"  title="较差"  />较差
+                 <input type="radio" name="waiguan_pj" class="waiguan_pj" value="5"  title="差"  />差
+                 
+        <input type="hidden" id="waiguan_pj_v" value="{$loupan_mx.waiguan_pj}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">结构质式:</td><td><input  name="jiegouzhishi" style="" id="jiegouzhishi" type="text" value="{$loupan_mx.jiegouzhishi}" /></td>
+        </tr>
+        <tr>
+            <td>电梯:</td><td>
+            <input type="radio" name="dianti" class="dianti" value="1"  title="无" checked />无
+                 <input type="radio" name="dianti" class="dianti" value="2"  title="有"  />有
+                 
+        <input type="hidden" id="dianti_v" value="{$loupan_mx.dianti}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">建筑面积(㎡）:</td><td><input  name="jianzhumianji" style="" id="jianzhumianji" type="text" value="{$loupan_mx.jianzhumianji}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">所处小区位置:</td><td><input  name="suochuxiaoquweizhi" style="" id="suochuxiaoquweizhi" type="text" value="{$loupan_mx.suochuxiaoquweizhi}" /></td>
+        </tr>
+        <tr>
+            <td>小区位置评价:</td><td>
+            <input type="radio" name="suochuxiaoquweizhi_pj" class="suochuxiaoquweizhi_pj" value="1"  title="好" checked />好
+                 <input type="radio" name="suochuxiaoquweizhi_pj" class="suochuxiaoquweizhi_pj" value="2"  title="较好"  />较好
+                 <input type="radio" name="suochuxiaoquweizhi_pj" class="suochuxiaoquweizhi_pj" value="3"  title="普通"  />普通
+                 <input type="radio" name="suochuxiaoquweizhi_pj" class="suochuxiaoquweizhi_pj" value="4"  title="较差"  />较差
+                 <input type="radio" name="suochuxiaoquweizhi_pj" class="suochuxiaoquweizhi_pj" value="5"  title="差"  />差
+                 
+        <input type="hidden" id="suochuxiaoquweizhi_pj_v" value="{$loupan_mx.suochuxiaoquweizhi_pj}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">小区环境景观:</td><td><input  name="xiaoquhuanjingjingguan" style="" id="xiaoquhuanjingjingguan" type="text" value="{$loupan_mx.xiaoquhuanjingjingguan}" /></td>
+        </tr>
+        <tr>
+            <td>小区环境评价:</td><td>
+            <input type="radio" name="xiaoquhuanjingjingguan_pj" class="xiaoquhuanjingjingguan_pj" value="1"  title="好" checked />好
+                 <input type="radio" name="xiaoquhuanjingjingguan_pj" class="xiaoquhuanjingjingguan_pj" value="2"  title="较好"  />较好
+                 <input type="radio" name="xiaoquhuanjingjingguan_pj" class="xiaoquhuanjingjingguan_pj" value="3"  title="普通"  />普通
+                 <input type="radio" name="xiaoquhuanjingjingguan_pj" class="xiaoquhuanjingjingguan_pj" value="4"  title="较差"  />较差
+                 <input type="radio" name="xiaoquhuanjingjingguan_pj" class="xiaoquhuanjingjingguan_pj" value="5"  title="差"  />差
+                 
+        <input type="hidden" id="xiaoquhuanjingjingguan_pj_v" value="{$loupan_mx.xiaoquhuanjingjingguan_pj}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">小区内配套设施:</td><td><input  name="xiaoqupeitao" style="" id="xiaoqupeitao" type="text" value="{$loupan_mx.xiaoqupeitao}" /></td>
+        </tr>
+        <tr>
+            <td>小区内配套评价:</td><td>
+            <input type="radio" name="xiaoqupeitao_pj" class="xiaoqupeitao_pj" value="1"  title="完善" checked />完善
+                 <input type="radio" name="xiaoqupeitao_pj" class="xiaoqupeitao_pj" value="2"  title="较完善"  />较完善
+                 <input type="radio" name="xiaoqupeitao_pj" class="xiaoqupeitao_pj" value="3"  title="普通"  />普通
+                 <input type="radio" name="xiaoqupeitao_pj" class="xiaoqupeitao_pj" value="4"  title="较不完善"  />较不完善
+                 <input type="radio" name="xiaoqupeitao_pj" class="xiaoqupeitao_pj" value="5"  title="不完善"  />不完善
+                 
+        <input type="hidden" id="xiaoqupeitao_pj_v" value="{$loupan_mx.xiaoqupeitao_pj}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">空间格局:</td><td><input  name="kongjianbuju" style="" id="kongjianbuju" type="text" value="{$loupan_mx.kongjianbuju}" /></td>
+        </tr>
+        <tr>
+            <td>空间格局评价:</td><td>
+            <input type="radio" name="kongjianbuju_pj" class="kongjianbuju_pj" value="1"  title="好" checked />好
+                 <input type="radio" name="kongjianbuju_pj" class="kongjianbuju_pj" value="2"  title="较好"  />较好
+                 <input type="radio" name="kongjianbuju_pj" class="kongjianbuju_pj" value="3"  title="普通"  />普通
+                 <input type="radio" name="kongjianbuju_pj" class="kongjianbuju_pj" value="4"  title="较差"  />较差
+                 <input type="radio" name="kongjianbuju_pj" class="kongjianbuju_pj" value="5"  title="差"  />差
+                 
+        <input type="hidden" id="kongjianbuju_pj_v" value="{$loupan_mx.kongjianbuju_pj}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">采光通风:</td><td><input  name="caiguangtongfeng" style="" id="caiguangtongfeng" type="text" value="{$loupan_mx.caiguangtongfeng}" /></td>
+        </tr>
+        <tr>
+            <td>采光通风评价:</td><td>
+            <input type="radio" name="caiguangtongfeng_pj" class="caiguangtongfeng_pj" value="1"  title="好" checked />好
+                 <input type="radio" name="caiguangtongfeng_pj" class="caiguangtongfeng_pj" value="2"  title="较好"  />较好
+                 <input type="radio" name="caiguangtongfeng_pj" class="caiguangtongfeng_pj" value="3"  title="普通"  />普通
+                 <input type="radio" name="caiguangtongfeng_pj" class="caiguangtongfeng_pj" value="4"  title="较差"  />较差
+                 <input type="radio" name="caiguangtongfeng_pj" class="caiguangtongfeng_pj" value="5"  title="差"  />差
+                 
+        <input type="hidden" id="caiguangtongfeng_pj_v" value="{$loupan_mx.caiguangtongfeng_pj}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">土地级别及类型（商业）:</td><td><input  name="tudijibie_leixing" style="" id="tudijibie_leixing" type="text" value="{$loupan_mx.tudijibie_leixing}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">商业繁华程度:</td><td><input  name="fanhuachengdu" style="" id="fanhuachengdu" type="text" value="{$loupan_mx.fanhuachengdu}" /></td>
+        </tr>
+        <tr>
+            <td>商业繁华程度取值:</td><td>
+            <input type="radio" name="fanhuachengdu_pj" class="fanhuachengdu_pj" value="1"  title="高" checked />高
+                 <input type="radio" name="fanhuachengdu_pj" class="fanhuachengdu_pj" value="2"  title="较高"  />较高
+                 <input type="radio" name="fanhuachengdu_pj" class="fanhuachengdu_pj" value="3"  title="普通"  />普通
+                 <input type="radio" name="fanhuachengdu_pj" class="fanhuachengdu_pj" value="4"  title="较低"  />较低
+                 <input type="radio" name="fanhuachengdu_pj" class="fanhuachengdu_pj" value="5"  title="低"  />低
+                 
+        <input type="hidden" id="fanhuachengdu_pj_v" value="{$loupan_mx.fanhuachengdu_pj}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">位置状况:</td><td><input  name="weizhizhuangkuang" style="" id="weizhizhuangkuang" type="text" value="{$loupan_mx.weizhizhuangkuang}" /></td>
+        </tr>
+        <tr>
+            <td>位置状况评价:</td><td>
+            <input type="radio" name="weizhizhuangkuang_pj" class="weizhizhuangkuang_pj" value="1"  title="优" checked />优
+                 <input type="radio" name="weizhizhuangkuang_pj" class="weizhizhuangkuang_pj" value="2"  title="较优"  />较优
+                 <input type="radio" name="weizhizhuangkuang_pj" class="weizhizhuangkuang_pj" value="3"  title="普通"  />普通
+                 <input type="radio" name="weizhizhuangkuang_pj" class="weizhizhuangkuang_pj" value="4"  title="较劣"  />较劣
+                 <input type="radio" name="weizhizhuangkuang_pj" class="weizhizhuangkuang_pj" value="5"  title="劣"  />劣
+                 
+        <input type="hidden" id="weizhizhuangkuang_pj_v" value="{$loupan_mx.weizhizhuangkuang_pj}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">临街状况:</td><td><input  name="linjiezhuangkuang" style="" id="linjiezhuangkuang" type="text" value="{$loupan_mx.linjiezhuangkuang}" /></td>
+        </tr>
+        <tr>
+            <td>临街状况评价:</td><td>
+            <input type="radio" name="linjiezhuangkuang_pj" class="linjiezhuangkuang_pj" value="1"  title="优" checked />优
+                 <input type="radio" name="linjiezhuangkuang_pj" class="linjiezhuangkuang_pj" value="2"  title="较优"  />较优
+                 <input type="radio" name="linjiezhuangkuang_pj" class="linjiezhuangkuang_pj" value="3"  title="普通"  />普通
+                 <input type="radio" name="linjiezhuangkuang_pj" class="linjiezhuangkuang_pj" value="4"  title="较劣"  />较劣
+                 <input type="radio" name="linjiezhuangkuang_pj" class="linjiezhuangkuang_pj" value="5"  title="劣"  />劣
+                 
+        <input type="hidden" id="linjiezhuangkuang_pj_v" value="{$loupan_mx.linjiezhuangkuang_pj}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">市场专业度:</td><td><input  name="shichangzhuanyedu" style="" id="shichangzhuanyedu" type="text" value="{$loupan_mx.shichangzhuanyedu}" /></td>
+        </tr>
+        <tr>
+            <td>市场专业度评价:</td><td>
+            <input type="radio" name="shichangzhuanyedu_pj" class="shichangzhuanyedu_pj" value="1"  title="高" checked />高
+                 <input type="radio" name="shichangzhuanyedu_pj" class="shichangzhuanyedu_pj" value="2"  title="普通"  />普通
+                 
+        <input type="hidden" id="shichangzhuanyedu_pj_v" value="{$loupan_mx.shichangzhuanyedu_pj}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">店面配套设施:</td><td><input  name="dianmianpeitao" style="" id="dianmianpeitao" type="text" value="{$loupan_mx.dianmianpeitao}" /></td>
+        </tr>
+        <tr>
+            <td>店面配套评价:</td><td>
+            <input type="radio" name="dianmianpeitao_pj" class="dianmianpeitao_pj" value="1"  title="好" checked />好
+                 <input type="radio" name="dianmianpeitao_pj" class="dianmianpeitao_pj" value="2"  title="较好"  />较好
+                 <input type="radio" name="dianmianpeitao_pj" class="dianmianpeitao_pj" value="3"  title="普通"  />普通
+                 <input type="radio" name="dianmianpeitao_pj" class="dianmianpeitao_pj" value="4"  title="较差"  />较差
+                 <input type="radio" name="dianmianpeitao_pj" class="dianmianpeitao_pj" value="5"  title="差"  />差
+                 
+        <input type="hidden" id="dianmianpeitao_pj_v" value="{$loupan_mx.dianmianpeitao_pj}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">多层住宅均价:</td><td><input  name="duocengzhuzhai_junjia" style="" id="duocengzhuzhai_junjia" type="text" value="{$loupan_mx.duocengzhuzhai_junjia}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">住宅调整幅度:</td><td><input  name="tiaozhengfudu" style="" id="tiaozhengfudu" type="text" value="{$loupan_mx.tiaozhengfudu}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">主街店面均价:</td><td><input  name="zhudianmianjunjia" style="" id="zhudianmianjunjia" type="text" value="{$loupan_mx.zhudianmianjunjia}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">店面调整幅度:</td><td><input  name="dmtiaozhengfudu" style="" id="dmtiaozhengfudu" type="text" value="{$loupan_mx.dmtiaozhengfudu}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">多层:</td><td><input  name="duoceng" style="" id="duoceng" type="text" value="{$loupan_mx.duoceng}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">高层:</td><td><input  name="gaoceng" style="" id="gaoceng" type="text" value="{$loupan_mx.gaoceng}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">备注:</td><td><input  name="bz" style="" id="bz" type="text" value="{$loupan_mx.bz}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">经度:</td><td><input  name="lbsjd" style="" id="lbsjd" type="text" value="{$loupan_mx.lbsjd}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">纬度:</td><td><input  name="lbswd" style="" id="lbswd" type="text" value="{$loupan_mx.lbswd}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">地址:</td><td><input  name="dizhi" style="" id="dizhi" type="text" value="{$loupan_mx.dizhi}" /></td>
+        </tr>
+        <tr>
+            <td>图文信息:</td><td><textarea  name="tuwen" style="height:300px;" id="tuwen_html" >{$loupan_mx.tuwen}</textarea></td>
+        </tr>
+        
+         <tr>
+   <td>地址定位:</td>
+   <td>
+			<input type="text" value="{$shop.lbsaddress}" name="lbsaddress" id="lbsaddress"  size="50"/><input id="locate-btn"  value="定位" type="button"/>
+				<span class="maroon">*</span><br>
+				<span class="help-inline">输入地址后，点击“自动定位”按钮可以在地图上定位。</span><br>
+				<span class="help-inline">（如果输入地址后无法定位，请在地图上直接点击选择地点）</span><br>
+                <span> <input  type="text" id="lbsweizhi"/></span>
+               
+			</td>
+   </tr>
+
+   <tr style="display: none1;" id="ditu"><td >定位：</td><td>
+<div id="map" style="width:800px;height:500px;"></div></td></tr>
+  
+
+
+
+
+
+
+<tr><td colspan="2"  style="text-align: center;"><input  type="submit"  id="btn_queren2" value="确认" />&nbsp;<input  type="button" onclick="javascript:history.back(-1);" value="返回" /></td></tr>
+
+</table>
+
+
+
+</div>
+
+
+</div>
+
+
+
+</form>
+
+
+
+</div><!--tabbox end-->
+
+
+
+
+
+
+
+{/if}
+
+{if $fall==post}
+
+<table class="table" width="100%" border="0" style="margin-top:10px;">
+ <tr><td colspan="1"><b>编辑楼盘</b></td></tr>
+
+ <tr><td>修改成功<a href="loupan.html">返回</a>&nbsp;<a style="color:red;">1秒后返回</a></td></tr>
+
+</table>
+
+<script type="text/javascript">
+<!--
+	$(document).ready(function ()
+{       
+    var timer = setTimeout(function(){
+      window.location="loupan.html";
+    }, 500);
+   
+})
+-->
+</script>
+{/if}
+{if $fall==post2}
+
+<table class="table" width="100%" border="0" style="margin-top:10px;">
+ <tr><td colspan="1"><b>添加楼盘</b></td></tr>
+
+ <tr><td>添加成功<a href="loupan.html">返回</a>&nbsp;<a style="color:red;">1秒后返回</a></td></tr>
+
+</table>
+
+<script type="text/javascript">
+<!--
+	$(document).ready(function ()
+{       
+    var timer = setTimeout(function(){
+      window.location="loupan.html";
+    }, 500);
+   
+})
+-->
+</script>
+{/if}
+
+{if $fall==fs}
+
+<table class="table" width="100%" border="0" style="margin-top:10px;">
+ <tr><td colspan="1"><b>添加失败</b></td></tr>
+
+ <tr><td>代码已存在<a href="loupan.html">返回</a>&nbsp;<a style="color:red;">1秒后返回</a></td></tr>
+
+</table>
+
+<script type="text/javascript">
+<!--
+	$(document).ready(function ()
+{       
+    var timer = setTimeout(function(){
+      window.location="loupan.html";
+    }, 1000);
+   
+})
+-->
+</script>
+{/if}
+
+{if $fall==add_list}
+<div class="demo">	
+<form name="myform" method="post" action="loupan.html?g=dc40ca082438cffc3" enctype="multipart/form-data">   
+   <div class="tabcon" id="leftcon"  >
+    <div  id="m1"><table class="table" width="100%" border="0" >
+ <th colspan="2">添加楼盘</th>
+        <tr>
+            <td style="width: 200px;">楼盘代码:</td><td><input  style=""  type="text"  value="系统自动生成"  disabled="disabled" /><input  style=""  type="hidden" name="loupan_sn" id="loupan_sn"  value="系统自动生成"  /><a style="color:red;">*</a></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">楼盘名称:</td><td><input  name="loupan_name" style="" id="loupan_name" type="text"  /></td>
+        </tr>
+        <tr>
+            <td>楼盘用户:</td><td>
+            <input type="radio" name="yongtu" class="yongtu" value="1"  title="住宅" checked />住宅
+                 <input type="radio" name="yongtu" class="yongtu" value="2"  title="商业"  />商业
+                 
+        <input type="hidden" id="yongtu_v" value="{$loupan_mx.yongtu}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">土地级别及类型:</td><td><input  name="tudijb_lb" style="" id="tudijb_lb" type="text"  /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">位置状况:</td><td><input  name="weizhi" style="" id="weizhi" type="text"  /></td>
+        </tr>
+        <tr>
+            <td>位置评价:</td><td>
+            <input type="radio" name="weizhi_pj" class="weizhi_pj" value="1"  title="优" checked />优
+                 <input type="radio" name="weizhi_pj" class="weizhi_pj" value="2"  title="较优"  />较优
+                 <input type="radio" name="weizhi_pj" class="weizhi_pj" value="3"  title="普通"  />普通
+                 <input type="radio" name="weizhi_pj" class="weizhi_pj" value="4"  title="较劣"  />较劣
+                 <input type="radio" name="weizhi_pj" class="weizhi_pj" value="5"  title="劣"  />劣
+                 
+        <input type="hidden" id="weizhi_pj_v" value="{$loupan_mx.weizhi_pj}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">住宅聚集水平:</td><td><input  name="zhuzhaijuji" style="" id="zhuzhaijuji" type="text"  /></td>
+        </tr>
+        <tr>
+            <td>住宅聚集水平取值:</td><td>
+            <input type="radio" name="zhuzhaijuji_pj" class="zhuzhaijuji_pj" value="1"  title="高" checked />高
+                 <input type="radio" name="zhuzhaijuji_pj" class="zhuzhaijuji_pj" value="2"  title="较高"  />较高
+                 <input type="radio" name="zhuzhaijuji_pj" class="zhuzhaijuji_pj" value="3"  title="普通"  />普通
+                 <input type="radio" name="zhuzhaijuji_pj" class="zhuzhaijuji_pj" value="4"  title="较低"  />较低
+                 <input type="radio" name="zhuzhaijuji_pj" class="zhuzhaijuji_pj" value="5"  title="低"  />低
+                 
+        <input type="hidden" id="zhuzhaijuji_pj_v" value="{$loupan_mx.zhuzhaijuji_pj}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">交通状况:</td><td><input  name="jiaotong" style="" id="jiaotong" type="text"  /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">交通状况取值:</td><td><input  name="jiaotong_pj" style="" id="jiaotong_pj" type="text"  /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">城市基础及公共服务配套设施:</td><td><input  name="peitao" style="" id="peitao" type="text"  /></td>
+        </tr>
+        <tr>
+            <td>配套取值:</td><td>
+            <input type="radio" name="peitao_pj" class="peitao_pj" value="1"  title="完善" checked />完善
+                 <input type="radio" name="peitao_pj" class="peitao_pj" value="2"  title="较完善"  />较完善
+                 <input type="radio" name="peitao_pj" class="peitao_pj" value="3"  title="普通"  />普通
+                 <input type="radio" name="peitao_pj" class="peitao_pj" value="4"  title="较不完善"  />较不完善
+                 <input type="radio" name="peitao_pj" class="peitao_pj" value="5"  title="不完善"  />不完善
+                 
+        <input type="hidden" id="peitao_pj_v" value="{$loupan_mx.peitao_pj}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">环境和景观:</td><td><input  name="huanjing" style="" id="huanjing" type="text"  /></td>
+        </tr>
+        <tr>
+            <td>环境取值:</td><td>
+            <input type="radio" name="huanjing_pj" class="huanjing_pj" value="1"  title="好" checked />好
+                 <input type="radio" name="huanjing_pj" class="huanjing_pj" value="2"  title="较好"  />较好
+                 <input type="radio" name="huanjing_pj" class="huanjing_pj" value="3"  title="普通"  />普通
+                 <input type="radio" name="huanjing_pj" class="huanjing_pj" value="4"  title="较差"  />较差
+                 <input type="radio" name="huanjing_pj" class="huanjing_pj" value="5"  title="差"  />差
+                 
+        <input type="hidden" id="huanjing_pj_v" value="{$loupan_mx.huanjing_pj}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">楼层:</td><td><input  name="loucengshu" style="" id="loucengshu" type="text"  /></td>
+        </tr>
+        <tr>
+            <td>坐向:</td><td>
+            <input type="radio" name="chaoxiang" class="chaoxiang" value="1"  title="坐北朝南" checked />坐北朝南
+                 <input type="radio" name="chaoxiang" class="chaoxiang" value="2"  title="坐南朝北"  />坐南朝北
+                 
+        <input type="hidden" id="chaoxiang_v" value="{$loupan_mx.chaoxiang}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">重点学校:</td><td><input  name="zhongdianxuexiao" style="" id="zhongdianxuexiao" type="text"  /></td>
+        </tr>
+        <tr>
+            <td>有无重点学校:</td><td>
+            <input type="radio" name="zhongdianxuexiao_pj" class="zhongdianxuexiao_pj" value="1"  title="无" checked />无
+                 <input type="radio" name="zhongdianxuexiao_pj" class="zhongdianxuexiao_pj" value="2"  title="有"  />有
+                 
+        <input type="hidden" id="zhongdianxuexiao_pj_v" value="{$loupan_mx.zhongdianxuexiao_pj}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">房屋权利性质:</td><td><input  name="fangwuquanli" style="" id="fangwuquanli" type="text"  /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">他项权利设定情况:</td><td><input  name="fangwuquanli_qt" style="" id="fangwuquanli_qt" type="text"  /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">物业管理及安防系统:</td><td><input  name="wuyeguanli" style="" id="wuyeguanli" type="text"  /></td>
+        </tr>
+        <tr>
+            <td>物业评价:</td><td>
+            <input type="radio" name="wuyeguanli_pj" class="wuyeguanli_pj" value="1"  title="好" checked />好
+                 <input type="radio" name="wuyeguanli_pj" class="wuyeguanli_pj" value="2"  title="较好"  />较好
+                 <input type="radio" name="wuyeguanli_pj" class="wuyeguanli_pj" value="3"  title="普通"  />普通
+                 <input type="radio" name="wuyeguanli_pj" class="wuyeguanli_pj" value="4"  title="较差"  />较差
+                 <input type="radio" name="wuyeguanli_pj" class="wuyeguanli_pj" value="5"  title="差"  />差
+                 
+        <input type="hidden" id="wuyeguanli_pj_v" value="{$loupan_mx.wuyeguanli_pj}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">成新率:</td><td><input  name="chengxinlv" style="" id="chengxinlv" type="text"  /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">外观及外墙面饰材:</td><td><input  name="waiguan" style="" id="waiguan" type="text"  /></td>
+        </tr>
+        <tr>
+            <td>外观评价:</td><td>
+            <input type="radio" name="waiguan_pj" class="waiguan_pj" value="1"  title="好" checked />好
+                 <input type="radio" name="waiguan_pj" class="waiguan_pj" value="2"  title="较好"  />较好
+                 <input type="radio" name="waiguan_pj" class="waiguan_pj" value="3"  title="普通"  />普通
+                 <input type="radio" name="waiguan_pj" class="waiguan_pj" value="4"  title="较差"  />较差
+                 <input type="radio" name="waiguan_pj" class="waiguan_pj" value="5"  title="差"  />差
+                 
+        <input type="hidden" id="waiguan_pj_v" value="{$loupan_mx.waiguan_pj}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">结构质式:</td><td><input  name="jiegouzhishi" style="" id="jiegouzhishi" type="text"  /></td>
+        </tr>
+        <tr>
+            <td>电梯:</td><td>
+            <input type="radio" name="dianti" class="dianti" value="1"  title="无" checked />无
+                 <input type="radio" name="dianti" class="dianti" value="2"  title="有"  />有
+                 
+        <input type="hidden" id="dianti_v" value="{$loupan_mx.dianti}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">建筑面积(㎡）:</td><td><input  name="jianzhumianji" style="" id="jianzhumianji" type="text"  /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">所处小区位置:</td><td><input  name="suochuxiaoquweizhi" style="" id="suochuxiaoquweizhi" type="text"  /></td>
+        </tr>
+        <tr>
+            <td>小区位置评价:</td><td>
+            <input type="radio" name="suochuxiaoquweizhi_pj" class="suochuxiaoquweizhi_pj" value="1"  title="好" checked />好
+                 <input type="radio" name="suochuxiaoquweizhi_pj" class="suochuxiaoquweizhi_pj" value="2"  title="较好"  />较好
+                 <input type="radio" name="suochuxiaoquweizhi_pj" class="suochuxiaoquweizhi_pj" value="3"  title="普通"  />普通
+                 <input type="radio" name="suochuxiaoquweizhi_pj" class="suochuxiaoquweizhi_pj" value="4"  title="较差"  />较差
+                 <input type="radio" name="suochuxiaoquweizhi_pj" class="suochuxiaoquweizhi_pj" value="5"  title="差"  />差
+                 
+        <input type="hidden" id="suochuxiaoquweizhi_pj_v" value="{$loupan_mx.suochuxiaoquweizhi_pj}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">小区环境景观:</td><td><input  name="xiaoquhuanjingjingguan" style="" id="xiaoquhuanjingjingguan" type="text"  /></td>
+        </tr>
+        <tr>
+            <td>小区环境评价:</td><td>
+            <input type="radio" name="xiaoquhuanjingjingguan_pj" class="xiaoquhuanjingjingguan_pj" value="1"  title="好" checked />好
+                 <input type="radio" name="xiaoquhuanjingjingguan_pj" class="xiaoquhuanjingjingguan_pj" value="2"  title="较好"  />较好
+                 <input type="radio" name="xiaoquhuanjingjingguan_pj" class="xiaoquhuanjingjingguan_pj" value="3"  title="普通"  />普通
+                 <input type="radio" name="xiaoquhuanjingjingguan_pj" class="xiaoquhuanjingjingguan_pj" value="4"  title="较差"  />较差
+                 <input type="radio" name="xiaoquhuanjingjingguan_pj" class="xiaoquhuanjingjingguan_pj" value="5"  title="差"  />差
+                 
+        <input type="hidden" id="xiaoquhuanjingjingguan_pj_v" value="{$loupan_mx.xiaoquhuanjingjingguan_pj}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">小区内配套设施:</td><td><input  name="xiaoqupeitao" style="" id="xiaoqupeitao" type="text"  /></td>
+        </tr>
+        <tr>
+            <td>小区内配套评价:</td><td>
+            <input type="radio" name="xiaoqupeitao_pj" class="xiaoqupeitao_pj" value="1"  title="完善" checked />完善
+                 <input type="radio" name="xiaoqupeitao_pj" class="xiaoqupeitao_pj" value="2"  title="较完善"  />较完善
+                 <input type="radio" name="xiaoqupeitao_pj" class="xiaoqupeitao_pj" value="3"  title="普通"  />普通
+                 <input type="radio" name="xiaoqupeitao_pj" class="xiaoqupeitao_pj" value="4"  title="较不完善"  />较不完善
+                 <input type="radio" name="xiaoqupeitao_pj" class="xiaoqupeitao_pj" value="5"  title="不完善"  />不完善
+                 
+        <input type="hidden" id="xiaoqupeitao_pj_v" value="{$loupan_mx.xiaoqupeitao_pj}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">空间格局:</td><td><input  name="kongjianbuju" style="" id="kongjianbuju" type="text"  /></td>
+        </tr>
+        <tr>
+            <td>空间格局评价:</td><td>
+            <input type="radio" name="kongjianbuju_pj" class="kongjianbuju_pj" value="1"  title="好" checked />好
+                 <input type="radio" name="kongjianbuju_pj" class="kongjianbuju_pj" value="2"  title="较好"  />较好
+                 <input type="radio" name="kongjianbuju_pj" class="kongjianbuju_pj" value="3"  title="普通"  />普通
+                 <input type="radio" name="kongjianbuju_pj" class="kongjianbuju_pj" value="4"  title="较差"  />较差
+                 <input type="radio" name="kongjianbuju_pj" class="kongjianbuju_pj" value="5"  title="差"  />差
+                 
+        <input type="hidden" id="kongjianbuju_pj_v" value="{$loupan_mx.kongjianbuju_pj}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">采光通风:</td><td><input  name="caiguangtongfeng" style="" id="caiguangtongfeng" type="text"  /></td>
+        </tr>
+        <tr>
+            <td>采光通风评价:</td><td>
+            <input type="radio" name="caiguangtongfeng_pj" class="caiguangtongfeng_pj" value="1"  title="好" checked />好
+                 <input type="radio" name="caiguangtongfeng_pj" class="caiguangtongfeng_pj" value="2"  title="较好"  />较好
+                 <input type="radio" name="caiguangtongfeng_pj" class="caiguangtongfeng_pj" value="3"  title="普通"  />普通
+                 <input type="radio" name="caiguangtongfeng_pj" class="caiguangtongfeng_pj" value="4"  title="较差"  />较差
+                 <input type="radio" name="caiguangtongfeng_pj" class="caiguangtongfeng_pj" value="5"  title="差"  />差
+                 
+        <input type="hidden" id="caiguangtongfeng_pj_v" value="{$loupan_mx.caiguangtongfeng_pj}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">土地级别及类型（商业）:</td><td><input  name="tudijibie_leixing" style="" id="tudijibie_leixing" type="text"  /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">商业繁华程度:</td><td><input  name="fanhuachengdu" style="" id="fanhuachengdu" type="text"  /></td>
+        </tr>
+        <tr>
+            <td>商业繁华程度取值:</td><td>
+            <input type="radio" name="fanhuachengdu_pj" class="fanhuachengdu_pj" value="1"  title="高" checked />高
+                 <input type="radio" name="fanhuachengdu_pj" class="fanhuachengdu_pj" value="2"  title="较高"  />较高
+                 <input type="radio" name="fanhuachengdu_pj" class="fanhuachengdu_pj" value="3"  title="普通"  />普通
+                 <input type="radio" name="fanhuachengdu_pj" class="fanhuachengdu_pj" value="4"  title="较低"  />较低
+                 <input type="radio" name="fanhuachengdu_pj" class="fanhuachengdu_pj" value="5"  title="低"  />低
+                 
+        <input type="hidden" id="fanhuachengdu_pj_v" value="{$loupan_mx.fanhuachengdu_pj}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">位置状况:</td><td><input  name="weizhizhuangkuang" style="" id="weizhizhuangkuang" type="text"  /></td>
+        </tr>
+        <tr>
+            <td>位置状况评价:</td><td>
+            <input type="radio" name="weizhizhuangkuang_pj" class="weizhizhuangkuang_pj" value="1"  title="优" checked />优
+                 <input type="radio" name="weizhizhuangkuang_pj" class="weizhizhuangkuang_pj" value="2"  title="较优"  />较优
+                 <input type="radio" name="weizhizhuangkuang_pj" class="weizhizhuangkuang_pj" value="3"  title="普通"  />普通
+                 <input type="radio" name="weizhizhuangkuang_pj" class="weizhizhuangkuang_pj" value="4"  title="较劣"  />较劣
+                 <input type="radio" name="weizhizhuangkuang_pj" class="weizhizhuangkuang_pj" value="5"  title="劣"  />劣
+                 
+        <input type="hidden" id="weizhizhuangkuang_pj_v" value="{$loupan_mx.weizhizhuangkuang_pj}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">临街状况:</td><td><input  name="linjiezhuangkuang" style="" id="linjiezhuangkuang" type="text"  /></td>
+        </tr>
+        <tr>
+            <td>临街状况评价:</td><td>
+            <input type="radio" name="linjiezhuangkuang_pj" class="linjiezhuangkuang_pj" value="1"  title="优" checked />优
+                 <input type="radio" name="linjiezhuangkuang_pj" class="linjiezhuangkuang_pj" value="2"  title="较优"  />较优
+                 <input type="radio" name="linjiezhuangkuang_pj" class="linjiezhuangkuang_pj" value="3"  title="普通"  />普通
+                 <input type="radio" name="linjiezhuangkuang_pj" class="linjiezhuangkuang_pj" value="4"  title="较劣"  />较劣
+                 <input type="radio" name="linjiezhuangkuang_pj" class="linjiezhuangkuang_pj" value="5"  title="劣"  />劣
+                 
+        <input type="hidden" id="linjiezhuangkuang_pj_v" value="{$loupan_mx.linjiezhuangkuang_pj}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">市场专业度:</td><td><input  name="shichangzhuanyedu" style="" id="shichangzhuanyedu" type="text"  /></td>
+        </tr>
+        <tr>
+            <td>市场专业度评价:</td><td>
+            <input type="radio" name="shichangzhuanyedu_pj" class="shichangzhuanyedu_pj" value="1"  title="高" checked />高
+                 <input type="radio" name="shichangzhuanyedu_pj" class="shichangzhuanyedu_pj" value="2"  title="普通"  />普通
+                 
+        <input type="hidden" id="shichangzhuanyedu_pj_v" value="{$loupan_mx.shichangzhuanyedu_pj}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">店面配套设施:</td><td><input  name="dianmianpeitao" style="" id="dianmianpeitao" type="text"  /></td>
+        </tr>
+        <tr>
+            <td>店面配套评价:</td><td>
+            <input type="radio" name="dianmianpeitao_pj" class="dianmianpeitao_pj" value="1"  title="好" checked />好
+                 <input type="radio" name="dianmianpeitao_pj" class="dianmianpeitao_pj" value="2"  title="较好"  />较好
+                 <input type="radio" name="dianmianpeitao_pj" class="dianmianpeitao_pj" value="3"  title="普通"  />普通
+                 <input type="radio" name="dianmianpeitao_pj" class="dianmianpeitao_pj" value="4"  title="较差"  />较差
+                 <input type="radio" name="dianmianpeitao_pj" class="dianmianpeitao_pj" value="5"  title="差"  />差
+                 
+        <input type="hidden" id="dianmianpeitao_pj_v" value="{$loupan_mx.dianmianpeitao_pj}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">多层住宅均价:</td><td><input  name="duocengzhuzhai_junjia" style="" id="duocengzhuzhai_junjia" type="text"  /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">住宅调整幅度:</td><td><input  name="tiaozhengfudu" style="" id="tiaozhengfudu" type="text"  /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">主街店面均价:</td><td><input  name="zhudianmianjunjia" style="" id="zhudianmianjunjia" type="text"  /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">店面调整幅度:</td><td><input  name="dmtiaozhengfudu" style="" id="dmtiaozhengfudu" type="text"  /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">多层:</td><td><input  name="duoceng" style="" id="duoceng" type="text"  /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">高层:</td><td><input  name="gaoceng" style="" id="gaoceng" type="text"  /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">备注:</td><td><input  name="bz" style="" id="bz" type="text"  /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">经度:</td><td><input  name="lbsjd" style="" id="lbsjd" type="text"  /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">纬度:</td><td><input  name="lbswd" style="" id="lbswd" type="text"  /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">地址:</td><td><input  name="dizhi" style="" id="dizhi" type="text"  /></td>
+        </tr>
+        <tr>
+            <td>图文信息:</td><td><textarea  name="tuwen" style="height:300px;" id="tuwen_html" >{$loupan_mx.tuwen}</textarea></td>
+        </tr>
+        
+        
+        <tr>
+   <td>地址定位:</td>
+   <td>
+			<input type="text" value="{$shop.lbsaddress}" name="lbsaddress" id="lbsaddress"  size="50"/><input  id="locate-btn"  value="定位"/>
+				<span class="maroon">*</span><br>
+				<span class="help-inline">输入地址后，点击“自动定位”按钮可以在地图上定位。</span><br>
+				<span class="help-inline">（如果输入地址后无法定位，请在地图上直接点击选择地点）</span>
+			</td>
+   </tr>
+   
+   <tr style="display: none;" id="ditu"><td >定位：</td><td>
+<div id="map" style="width:800px;height:500px;"></div><input type="text" value = "{$shop.lbsjd}" name="lbsjd" id="lbsjd" onfocus="this.blur()" /><input type="text" value = "{$shop.lbswd}" name="lbswd" id="lbswd" onfocus="this.blur()"/></td></tr>
+  
+  
+        
+ 
+<tr><td colspan="2"  style="text-align: center;"><input  type="submit"  id="btn_queren2" value="确认" />&nbsp;<input  type="button" onclick="javascript:history.back(-1);" value="返回" /></td></tr>
+  
+</table>
+    
+    
+    
+    </div>
+
+    
+    
+    
+	</form>
+
+
+	
+</div><!--tabbox end-->
+
+
+
+
+
+{/if}	
+<input  type="hidden" value="loupan_sn" id="bianjisetf1"/>
+
+</body>  
+</html>
+
+<script type="text/javascript">
+// <input type="text" value = "118.628209" name="lbsjd" id="lbsjd2" onfocus="this.blur()" />
+//<input type="text" value = "24.873773" name="lbswd" id="lbswd2" onfocus="this.blur()"/>
+       
+    //是否从未保存过定位信息，如果从未保存过，并且有填地址信息，那么进入页面后自动定位
+var located = true;
+//定位坐标
+var destPoint = new BMap.Point($('#lbsjd').val(),$('#lbswd').val());
+$(function(){
+	/**开始处理百度地图**/
+	var map = new BMap.Map("map");
+	map.centerAndZoom(new BMap.Point(destPoint.lng, destPoint.lat), 18);//初始化地图
+	map.enableScrollWheelZoom();
+	map.addControl(new BMap.NavigationControl());
+	var marker = new BMap.Marker(destPoint);
+	map.addOverlay(marker);//添加标注
+	map.addEventListener("click", function(e){
+		if(confirm("确认选择这个位置？")){
+			destPoint = e.point;
+			$('#lbsjd').val(destPoint.lng);
+			$('#lbswd').val(destPoint.lat);
+            $('#lbsweizhi').val(destPoint.lng+','+destPoint.lat)
+			map.clearOverlays();
+			var marker1 = new BMap.Marker(destPoint);  // 创建标注
+			map.addOverlay(marker1); 
+		}
+	});
+	
+	
+	
+	var myValue;
+ 
+	var local;
+	function setPlace(){
+	    map.clearOverlays();    //清除地图上所有覆盖物
+	    local = new BMap.LocalSearch(map, { //智能搜索
+	      renderOptions:{ map: map}
+	    });
+	    located = true;
+	    local.setMarkersSetCallback(callback);
+	    local.search(myValue);
+	}
+	
+	function addEventListener(marker){
+		marker.addEventListener("click", function(data){
+			destPoint = data.target.getPosition(0);
+		});
+	}
+	function callback(posi){
+		$("#locate-btn").removeAttr("disabled");
+		for(var i=0;i<posi.length;i++){
+			if(i==0){
+				destPoint = posi[0].point;
+			}
+			posi[i].marker.addEventListener("click", function(data){
+				destPoint = data.target.getPosition(0);
+			});  
+		}
+	}
+	
+	$("#lbsl_xianqu").change(function(){
+		$("#locate-btn").attr("disabled","disabled");
+		local = new BMap.LocalSearch(map, { //智能搜索
+			renderOptions:{ map: map}
+		});
+		located = true;
+		local.setMarkersSetCallback(callback);
+		local.search($("#lbsl_xianqu").find('option:selected').text());
+		return false;
+	});
+	$("#lbsl_shi").change(function(){
+		$("#locate-btn").attr("disabled","disabled");
+		local = new BMap.LocalSearch(map, { //智能搜索
+			renderOptions:{ map: map}
+		});
+		located = true;
+		local.setMarkersSetCallback(callback);
+		local.search($("#lbsl_shi").find('option:selected').text());
+		return false;
+	});
+	$("#locate-btn").click(function(){
+	   
+       $("#ditu").show();
+		if($("#lbsaddress").val() == ""){
+			alert("请输入门店地址！");
+			return false;
+		}
+		$("#locate-btn").attr("disabled","disabled");
+		local = new BMap.LocalSearch(map, { //智能搜索
+			renderOptions:{ map: map}
+		});
+		located = true;
+		local.setMarkersSetCallback(callback);
+		local.search($("#lbsaddress").val());
+		return false;
+	});
+	/**结束百度地图处理**/
+});
+    
+      
+    
+    
+    
+    var i=2;
+   $("#add_images").click(function (){
+        
+        
+        $("#m2").append('&nbsp;图片'+i+':<input type="file" name="pic'+i+'"/>  &nbsp;<br />');
+        i++;
+
+        //alert(1);
+   })
+
+      $("img[id='img_mx']").each(function (){
+            
+           $(this).dblclick(function (){
+           //alert($(this).attr("name"));
+           //$("#hide_img").colorToggle(200);
+           
+           
+        })
+        })
+          $("img[id='delete_z_sn']").each(function (){
+            
+           $(this).click(function (){
+        
+           if(confirm("是否删除图片"+$(this).attr("title"))){
+             
+              htmlobj=$.ajax({url:"color.php?act=delete&img_code="+encodeURI(encodeURI($(this).attr("title"))),async:false});
+              alert(htmlobj.responseText);
+             window.location.reload();
+            }else return false;
+            
+          //alert($(this).attr("title"));
+           //$("#hide_img").colorToggle(200);
+           
+           
+        })
+        })
+        
+            $("img[id='img_jy']").each(function (){
+            
+           $(this).click(function (){
+        
+           if(confirm("禁用"+$(this).attr("title")+"图片？")){
+             
+              htmlobj=$.ajax({url:"color.php?act=img_xs&img_code="+encodeURI(encodeURI($(this).attr("title")))+"&alt="+$(this).attr("alt"),async:false});
+              alert(htmlobj.responseText);
+             window.location.reload();
+            }else return false;
+            
+          //alert($(this).attr("title"));
+           //$("#hide_img").colorToggle(200);
+           
+           
+        })
+        })
+         $("img[id='img_xs']").each(function (){
+            
+           $(this).click(function (){
+        
+           if(confirm("显示"+$(this).attr("title")+"图片？")){
+             
+              htmlobj=$.ajax({url:"color.php?act=img_xs&img_code="+encodeURI(encodeURI($(this).attr("title")))+"&alt="+$(this).attr("alt"),async:false});
+              alert(htmlobj.responseText);
+             window.location.reload();
+            }else return false;
+            
+          //alert($(this).attr("title"));
+           //$("#hide_img").colorToggle(200);
+           
+           
+        })
+        })
+       
+       
+       
+       var  loupan_sn=$("#loupan_sn").val();
+        $("#loupan_sn").focus();
+        $("#btn_queren2").click(function(){
+        if(jQuery.trim($("#loupan_sn").attr("value"))==''){
+        $("#loupan_sn").focus();return false;}
+        else{if(confirm("确认修改")){}else{return false;}}})
+             var yongtu_v=$('#yongtu_v').val();   
+             $('input:radio[name="yongtu"][value="'+yongtu_v+'"]').prop('checked', true);
+             var weizhi_pj_v=$('#weizhi_pj_v').val();   
+             $('input:radio[name="weizhi_pj"][value="'+weizhi_pj_v+'"]').prop('checked', true);
+             var zhuzhaijuji_pj_v=$('#zhuzhaijuji_pj_v').val();   
+             $('input:radio[name="zhuzhaijuji_pj"][value="'+zhuzhaijuji_pj_v+'"]').prop('checked', true);
+             var peitao_pj_v=$('#peitao_pj_v').val();   
+             $('input:radio[name="peitao_pj"][value="'+peitao_pj_v+'"]').prop('checked', true);
+             var huanjing_pj_v=$('#huanjing_pj_v').val();   
+             $('input:radio[name="huanjing_pj"][value="'+huanjing_pj_v+'"]').prop('checked', true);
+             var chaoxiang_v=$('#chaoxiang_v').val();   
+             $('input:radio[name="chaoxiang"][value="'+chaoxiang_v+'"]').prop('checked', true);
+             var zhongdianxuexiao_pj_v=$('#zhongdianxuexiao_pj_v').val();   
+             $('input:radio[name="zhongdianxuexiao_pj"][value="'+zhongdianxuexiao_pj_v+'"]').prop('checked', true);
+             var wuyeguanli_pj_v=$('#wuyeguanli_pj_v').val();   
+             $('input:radio[name="wuyeguanli_pj"][value="'+wuyeguanli_pj_v+'"]').prop('checked', true);
+             var waiguan_pj_v=$('#waiguan_pj_v').val();   
+             $('input:radio[name="waiguan_pj"][value="'+waiguan_pj_v+'"]').prop('checked', true);
+             var dianti_v=$('#dianti_v').val();   
+             $('input:radio[name="dianti"][value="'+dianti_v+'"]').prop('checked', true);
+             var suochuxiaoquweizhi_pj_v=$('#suochuxiaoquweizhi_pj_v').val();   
+             $('input:radio[name="suochuxiaoquweizhi_pj"][value="'+suochuxiaoquweizhi_pj_v+'"]').prop('checked', true);
+             var xiaoquhuanjingjingguan_pj_v=$('#xiaoquhuanjingjingguan_pj_v').val();   
+             $('input:radio[name="xiaoquhuanjingjingguan_pj"][value="'+xiaoquhuanjingjingguan_pj_v+'"]').prop('checked', true);
+             var xiaoqupeitao_pj_v=$('#xiaoqupeitao_pj_v').val();   
+             $('input:radio[name="xiaoqupeitao_pj"][value="'+xiaoqupeitao_pj_v+'"]').prop('checked', true);
+             var kongjianbuju_pj_v=$('#kongjianbuju_pj_v').val();   
+             $('input:radio[name="kongjianbuju_pj"][value="'+kongjianbuju_pj_v+'"]').prop('checked', true);
+             var caiguangtongfeng_pj_v=$('#caiguangtongfeng_pj_v').val();   
+             $('input:radio[name="caiguangtongfeng_pj"][value="'+caiguangtongfeng_pj_v+'"]').prop('checked', true);
+             var fanhuachengdu_pj_v=$('#fanhuachengdu_pj_v').val();   
+             $('input:radio[name="fanhuachengdu_pj"][value="'+fanhuachengdu_pj_v+'"]').prop('checked', true);
+             var weizhizhuangkuang_pj_v=$('#weizhizhuangkuang_pj_v').val();   
+             $('input:radio[name="weizhizhuangkuang_pj"][value="'+weizhizhuangkuang_pj_v+'"]').prop('checked', true);
+             var linjiezhuangkuang_pj_v=$('#linjiezhuangkuang_pj_v').val();   
+             $('input:radio[name="linjiezhuangkuang_pj"][value="'+linjiezhuangkuang_pj_v+'"]').prop('checked', true);
+             var shichangzhuanyedu_pj_v=$('#shichangzhuanyedu_pj_v').val();   
+             $('input:radio[name="shichangzhuanyedu_pj"][value="'+shichangzhuanyedu_pj_v+'"]').prop('checked', true);
+             var dianmianpeitao_pj_v=$('#dianmianpeitao_pj_v').val();   
+             $('input:radio[name="dianmianpeitao_pj"][value="'+dianmianpeitao_pj_v+'"]').prop('checked', true);        
+</script>

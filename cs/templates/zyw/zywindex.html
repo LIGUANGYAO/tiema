@@ -1,0 +1,110 @@
+{if $wx_pay==1}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<title>信用卡使用及提额宝典</title>
+<link href="templates/zyw/css/css.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/zyw/js/zepto.min.js"></script>
+
+<!--
+	<script type="text/javascript">
+	document.addEventListener('WeixinJSBridgeReady', function onBridgeReady() {
+    WeixinJSBridge.call('hideOptionMenu');
+    });
+    </script>-->
+</head>
+
+
+<body>
+
+<header>
+<!--<div class="back"></div>-->
+<div class="title ico">信用卡使用及提额宝典</div>
+<div class="controls"><a href="index.php"><img src="templates/zyw/images/icon-toggle.png"></a></div> 
+</header>
+<div class="block47"></div>
+
+
+<div class="index_item" style="background-color:#fff;">
+
+<a href="zywlist1.php">
+<img src="templates/zyw/images/1.jpg" width="100%">
+<img src="templates/zyw/images/2.jpg" width="100%">
+</a>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
+	
+
+
+
+{else}
+
+
+{include file="cs/head.html"}
+
+
+<script src="js/zepto.min.js?1445937793" type="text/javascript"></script>
+<script src="js/layer.m.js?1445937793" type="text/javascript"></script>
+<script src="js/iscroll.js?1445937793" type="text/javascript"></script>
+<script src="js/validate.js?1445937793" type="text/javascript"></script>
+
+<body id="bd" style="width: 757px; height: 673px; border: 0px solid red; overflow: hidden;">
+
+<script type="text/javascript">
+window.onload = function(){                                       //页面刚加载时启动
+   	var width=document.documentElement.clientWidth;
+	var height = document.documentElement.clientHeight;
+	var bd = document.getElementById("bd");
+	//console.log(bd);
+	bd.style.cssText="width:"+width+"px;height:"+height+"px;border:0px solid red;overflow:hidden;"; 
+	
+	var dataForWeixin = {
+		title: '{$userInfo.nick_name}的推广二维码',
+		link: '{$nurl}',
+		imgUrl: "{$userInfo.headimgurl}", // 分享图标
+		desc:'',
+	};
+	weixin(dataForWeixin);
+}
+
+
+</script>
+
+
+
+
+
+</body>
+
+<script type="text/javascript">
+	layer.open({
+						content:'您还没有购书，暂时无法阅读。',
+						btn:['购书'],
+						yes:function(){
+							location.href = 'bookbuy.php';
+						}
+					});	
+</script>
+{/if}

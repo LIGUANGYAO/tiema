@@ -1,0 +1,1081 @@
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+{literal}
+<script type="text/javascript">
+//屏蔽js报错
+/*
+  function killerrors() {
+          return true;
+  }
+  window.onerror = killerrors;
+  
+ */
+</script> 
+{/literal}
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+<!--
+        table {   
+          border: 1px solid #B1CDE3;   
+            padding:0;    
+           margin:0 auto;   
+            border-collapse: collapse;   
+       }   
+         
+       td {   
+            border: 1px solid #B1CDE3;   
+           background: #fff;   
+            font-size:12px;   
+           padding: 3px 3px 3px 8px;   
+          color: #4f6b72;   
+        }   
+        #hide_img
+        {
+            width: 300px;
+            
+            position:  absolute;
+            left: 100px;
+            top: 50px;
+            background: #ffffff;
+            display: none;
+             filter:alpha(opacity:100);opacity:1;
+        }
+-->
+</style>
+<!-- paste this code into your webpage -->
+
+
+<link href="css/app/lanrenzhijia.css" type="text/css" rel="stylesheet" />
+<!-- <script type="text/javascript" src="js/tablecloth.js"></script>-->
+<script type="text/javascript" src="js/app/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/app/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="js/app/jquery.Search.js"></script>
+<script type="text/javascript" src="js/app/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/app/jquery.tabso_yeso.js"></script>
+<script type="text/javascript" src="js/app/jq.mshop.js"></script>
+<script type="text/javascript" src="js/app/Calendar3.js"></script>
+<script charset="utf-8" src="kindeditor/kindeditor.js"></script>
+<script charset="utf-8" src="kindeditor/lang/zh_CN.js"></script>
+<script>
+        var editor;
+        KindEditor.ready(function(K) {
+                editor = K.create('#editor_id',{
+					resizeType : 1,
+					allowPreviewEmoticons : true,
+					allowImageUpload : true,
+					items : [
+						'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+						'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+						'insertunorderedlist', '|', 'emoticons', 'image', 'link']
+				});
+             
+        });
+</script>
+
+<!-- end -->
+</head>
+ 
+
+</head>  
+<body  style=" margin-top: 0px;margin-left: 10px;  padding-top: 0px;">  
+<!--
+<div id="dataLoad" style="display:block">
+   <table width="100%" height="100%" border="0" align="center" >
+    <tr height="50%"><td align="center">&nbsp;</td></tr>
+    `
+    <tr><td align="center">数据载入中，请稍后......</td></tr>
+    <tr height="50%"><td align="center">&nbsp;</td></tr>
+   </table>
+  </div>
+-->
+{if $fall==edit}
+<div class="demo">	
+	
+
+	
+
+	<ul class="tabbtn" id="move-animate-left">
+		<li class="current" id="sub1"><a >商品信息</a></li>
+        
+	
+        <li id="sub4"><a >颜色</a></li>
+        <li id="sub5"><a >尺码</a></li>
+         <li id="sub3"><a >价格</a></li>
+       	<li id="sub2"><a >图片信息</a></li>
+        <li id="sub7"><a >宝贝描述</a></li>
+      
+	
+	</ul><!--tabbtn end-->
+
+    <form name="myform" method="post" action="goods.php?act=post" enctype="multipart/form-data">   
+	<div class="tabcon" id="leftcon"  >
+    <div  id="m1"><table  border="1">
+    <table width="100%">
+    <tr  ><td width="180">商品代码<a style="color: red;">&nbsp;(代码默认无法修改)</a></td><td><input  name="goods_sn" type="hidden" value="{$goods_mx.goods_sn}"/>{$goods_mx.goods_sn}</td></tr>
+    <tr><td width="150">商品名称</td><td><textarea  name="goods_name" style="width: 300px; height: 50px;">{$goods_mx.goods_name}</textarea></td></tr>
+    <tr><td width="150">外部名称</td><td><textarea  name="goods_outer_name" style="width: 300px; height: 50px;">{$goods_mx.goods_outer_name}</textarea></td></tr>
+        <tr><td width="150">商品属性</td>
+       <td >
+            <select  name="goodstype_sn" id="goodstype_sn" style="width: 200px;"> 
+            {foreach from=$goodstype item=goodstype}
+             <option  value ="{$goodstype.goodstype_sn}">{$goodstype.goodstype_name}</option>    
+            {/foreach}
+            </select>
+        </td>
+        
+        </tr>
+        <tr><td width="150">重量</td><td><input  name="goods_weight" type="text" value="{$goods_mx.goods_weight}"/></td></tr>
+        <tr><td width="150">单位</td><td><input  name="dw" type="text" value="{$goods_mx.dw}"/></td></tr>
+          <tr><td width="150">礼品</td><td>
+          {if $goods_mx.is_gift==0}<img id="is_gift" alt="1" title="{$goods_mx.goods_sn}"  src="images/no.gif"/>{else}<img  title="{$goods_mx.goods_sn}" id="gift_2"  alt="0" src="images/yes.gif"/>{/if}
+          </td></tr>
+           <tr><td width="150">参与统计</td><td>
+          {if $goods_mx.is_gift_allow_count==0}<img id="is_gift_allow_count" alt="1" title="{$goods_mx.goods_sn}"  src="images/no.gif"/>{else}<img  title="{$goods_mx.goods_sn}" id="is_gift_allow_count2"  alt="0" src="images/yes.gif"/>{/if}
+          </td></tr>
+           
+           
+            <tr><td width="150">上架</td><td>
+          {if $goods_mx.allow_sj==0}<img id="allow_sj" alt="1" title="{$goods_mx.goods_sn}"  src="images/no.gif"/>{else}<img  title="{$goods_mx.goods_sn}" id="allow_sj2"  alt="0" src="images/yes.gif"/>{/if}
+          </td></tr>
+         
+ 
+       <tr><td width="150">排序</td><td><input  name="sort_no" type="text" value="{$goods_mx.sort_no}"/></td></tr>
+    
+    <tr><td width="150">最后修改时间/修改人</td><td>{$goods_mx.last_update}</td></tr>
+   
+    
+     <tr><td width="150">备注1</td><td><textarea  name="goods_note_1" style="width: 300px; height: 50px;">{$goods_mx.goods_note_1}</textarea></td></tr>
+     <tr><td width="150">备注2</td><td><textarea  name="goods_note_2" style="width: 300px; height: 50px;">{$goods_mx.goods_note_2}</textarea></td></tr>
+     
+
+    </table>
+    
+    
+    
+    </div>
+	<div  style="display: none;" id="m2">
+    {foreach from=$goods_imgs item=goods_imgs}
+      <table width="100%">
+    <tr>
+    <td> <img  id="img_mx"  src="{$goods_imgs.s_img_url}" title="图片{$goods_imgs.0}"/></td>
+    <td><table style="width: 400px;height: 100px; text-align: left; padding: 0px;margin: 0px;"><tr style="height: 40px;"><td>图片编码:&nbsp;&nbsp;&nbsp;{$goods_imgs.img_outer_id}&nbsp;&nbsp;&nbsp;&nbsp;添加时间:&nbsp;&nbsp;&nbsp;{$goods_imgs.add_time}</td></tr>
+<tr style="height: 40px;">
+<td>操作:&nbsp;&nbsp;&nbsp;<img id="delete_z_sn"   name="{$goods.goods_sn}" title="{$goods_imgs.img_outer_id}" src="images/icon_drop.gif"/>&nbsp;&nbsp;&nbsp;
+是否显示在APP：&nbsp;&nbsp;&nbsp;{if $goods_imgs.ss==1}<img id="img_jy"   name="{$goods.goods_sn}" title="{$goods_imgs.img_outer_id}" alt="0" src="images/yes.gif"/>{else}
+<img id="img_xs"  alt="1"  name="{$goods.goods_sn}" title="{$goods_imgs.img_outer_id}" src="images/no.gif"/>{/if}</td>
+</tr>
+<tr style="height: 30px;"><td>url指向:&nbsp;<textarea  name="img_action_url[]" style="width: 300px; height: 40px;">{$goods_imgs.img_action_url}</textarea></td></tr>
+<tr style="height: 30px;"><td>备注1:&nbsp;&nbsp;&nbsp;<textarea  name="img_note_1[]" style="width: 300px; height: 40px;">{$goods_imgs.img_note_1}</textarea></td></tr>
+<tr style="height: 30px;"><td>备注2:&nbsp;&nbsp;&nbsp;<textarea  name="img_note_2[]" style="width: 300px; height: 40px;">{$goods_imgs.img_note_2}</textarea></td></tr>
+<tr style="height: 30px;"><td>备注3:&nbsp;&nbsp;&nbsp;<textarea  name="img_note_3[]" style="width: 300px; height: 40px;">{$goods_imgs.img_note_3}</textarea></td></tr>
+<tr style="height: 30px;"><td>最后更新时间:&nbsp;&nbsp;&nbsp;{$goods_imgs.last_update}</td></tr>
+    </table><input  type="hidden" name="img_code[]" value="{$goods_imgs.img_outer_id}"/></td>
+    
+    </tr>
+    </table>
+ 
+
+<!--
+<div   id="hide_img" align="center" >
+<table width="100%">
+ <tr  ></tr>
+<tr  ><td width="180">图片信息</td><td>{$goods_imgs.img_goods_sn}_{$goods_imgs.0}</td></tr>
+<tr><td width="150">备注</td><td><textarea  name="goods_note" style="width: 200px; height: 100px;">{$goods_mx.goods_note}</textarea></td></tr>
+</table>
+
+</div>
+-->
+    {/foreach }
+
+
+        <br />
+    &nbsp;图片1:<input  type="file" name="pic1"/>  &nbsp;<img  id="add_images" src="images/icon_add.gif" title="增加图片"/><br />
+    
+     <input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
+     
+    
+    
+    </div>
+    
+     <div  style="display: none;" id="m3">
+   
+      <table width="100%">
+            <tr><td width="150">标准价</td><td><input  name="bzsj" type="text" value="{$goods_mx.bzsj}"/></td></tr>
+   <tr><td width="150">单价1</td><td><input  name="dj" type="text" value="{$goods_mx.dj}"/></td></tr>
+    <tr><td width="150">单价2</td><td><input  name="dj2" type="text" value="{$goods_mx.dj2}"/></td></tr>
+     <tr><td width="150">单价3</td><td><input  name="dj3" type="text" value="{$goods_mx.dj3}"/></td></tr>
+      <tr><td width="150">单价4</td><td><input  name="dj4" type="text" value="{$goods_mx.dj4}"/></td></tr>
+       <tr><td width="150">单价5</td><td><input  name="dj5" type="text" value="{$goods_mx.dj5}"/></td></tr>
+  
+         <tr><td width="150">进价1</td><td><input  name="jj" type="text" value="{$goods_mx.jj}"/></td></tr>
+          <tr><td width="150">进价2</td><td><input  name="jj2" type="text" value="{$goods_mx.jj2}"/></td></tr>
+           <tr><td width="150">进价3</td><td><input  name="jj3" type="text" value="{$goods_mx.jj3}"/></td></tr>
+            <tr><td width="150">进价4</td><td><input  name="jj4" type="text" value="{$goods_mx.jj4}"/></td></tr>
+             <tr><td width="150">进价5</td><td><input  name="jj5" type="text" value="{$goods_mx.jj5}"/></td></tr>
+    </table>
+    
+    </tr>
+    </table>
+    </div>
+     <div  style="display: none;" id="m4">
+   <table width="100%" border="0" cellpadding="0" cellspacing="1" id="color_spec-table" align="center" style="background-color:#cce1e4;">
+<!--  //create by fillbag at 2009-03-24  -->
+  <tr style="background-color:#ffffff;">
+	<td colspan="3" style="padding-left:5px; padding-bottom:5px;">
+	  <img src="images/icon_search.gif" width="16" height="16" border="0" alt="search" />
+	  颜色
+	  <input type="text"  id="b_ysss" name="color_keyword"/>
+	  <input type="button" value=" 搜索 " id="ysss" class="button" />            
+	</td>
+  </tr>
+   <tr>
+            <th align="center" style="font-weight:bold;">颜色</th>
+            <th align="center" style="font-weight:bold;">操作</th>
+            <th align="center" style="font-weight:bold;">选项</th>
+   </tr>
+  
+  <tr>
+       		<td width="45%" align="left">
+                 <div id="source_color_list" style="width:100%;height:240px;border:#cad7d0 solid 1px;overflow:scroll;"> 
+                             
+                 </div>
+            </td>
+            <td align="center">
+ <!--           	<p>
+            	<input type="button" value=">>" onclick="add_color_spec(true,'add_color_list')" style="width:60px;"/>
+            	</p>
+				<p><input type="button" value="&nbsp;>&nbsp;" onclick="add_color_spec(false,'add_color_list')" style="width:60px;"/></p>
+				<p>
+				<input type="button" value="&nbsp;<&nbsp;" onclick="drop_color_spec(false,'add_color_list')" style="width:60px;"/>
+				</p>
+				<p><input type="button" value="<<" onclick="drop_color_spec(true,'add_color_list')" style="width:60px;"/></p>
+                -->
+            </td>
+            <td width="50%" align="left">
+				<div  id="target_color_list" style="width:99%;height:240px;border:#cad7d0 solid 1px;overflow:scroll;">
+                
+	          		{foreach from=$color_list item=color}
+	               <div ondblclick="$(this).remove();">
+	                 <input name="color_ids_sn[]" type="hidden" id="aaddd2"  value="{$color.color_sn}"/>
+	                 {$color.color_name}({$color.color_sn})
+                     </div>
+	                 
+	                 {/foreach}    		
+				</div>            
+            </td>
+    </tr>
+	          
+</table>
+    </div>
+     <div  style="display: none;" id="m5">
+   
+ <table width="100%" border="0" cellpadding="0" cellspacing="1" id="color_spec-table" align="center" style="background-color:#cce1e4;">
+<!--  //create by fillbag at 2009-03-24  -->
+  <tr style="background-color:#ffffff;">
+	<td colspan="3" style="padding-left:5px; padding-bottom:5px;">
+	  <img src="images/icon_search.gif" width="16" height="16" border="0" alt="search" />
+	  尺码
+	  <input type="text"  id="b_ysss2" name="size_keyword"/>
+	  <input type="button" value=" 搜索 " id="ysss2" class="button" />            
+	</td>
+  </tr>
+   <tr>
+            <th align="center" style="font-weight:bold;">尺码</th>
+            <th align="center" style="font-weight:bold;">操作</th>
+            <th align="center" style="font-weight:bold;">选项</th>
+   </tr>
+  
+  <tr>
+       		<td width="45%" align="left">
+                 <div id="source_size_list" style="width:100%;height:240px;border:#cad7d0 solid 1px;overflow:scroll;"> 
+                             
+                 </div>
+            </td>
+            <td align="center">
+ <!--           	<p>
+            	<input type="button" value=">>" onclick="add_color_spec(true,'add_color_list')" style="width:60px;"/>
+            	</p>
+				<p><input type="button" value="&nbsp;>&nbsp;" onclick="add_color_spec(false,'add_color_list')" style="width:60px;"/></p>
+				<p>
+				<input type="button" value="&nbsp;<&nbsp;" onclick="drop_color_spec(false,'add_color_list')" style="width:60px;"/>
+				</p>
+				<p><input type="button" value="<<" onclick="drop_color_spec(true,'add_color_list')" style="width:60px;"/></p>
+                -->
+            </td>
+            <td width="50%" align="left">
+				<div  id="target_size_list" style="width:99%;height:240px;border:#cad7d0 solid 1px;overflow:scroll;">
+                
+	          		{foreach from=$size_list item=size}
+	               <div ondblclick="$(this).remove();">
+	                 <input name="size_ids_sn[]" type="hidden" id="size_ids_sn"  value="{$size.size_sn}"/>
+	                 {$size.size_name}({$size.size_sn})
+                     </div>
+	                 
+	                 {/foreach}    		
+				</div>            
+            </td>
+    </tr>
+	          
+</table>
+    </div>
+    
+      <div  style="display: none;" id="m7">
+       <table width="100%" border="0" cellpadding="0" cellspacing="1" id="color_spec-table" align="center" style="background-color:#cce1e4;">
+       <tr><td>  <textarea id="editor_id"name="note"   style="width:620px;height:410px;">{$goods_mx.note}</textarea> </td></tr>
+       </table>
+      </div>
+    <!--图层 -->
+    <div align="center" style="padding: 10px;"><input  type="submit"  id="btn_queren" value="确认" />&nbsp;<input  type="button" onclick="location='goods.php'" value="返回" /></div>
+	</div>
+    
+    
+    
+	</form>
+
+
+	
+</div><!--tabbox end-->
+
+
+
+
+
+{/if}
+	
+{if $fall==post}
+<div class="demo">	
+	
+
+
+
+	<table class="table" width="99%" border="0">
+ <tr><td colspan="1"><b>修改成功</b></td></tr>
+ <tr><td>修改成功<a href="goods.php">返回</a></td></tr>
+</table>
+    
+
+
+	
+</div><!--tabbox end-->
+
+{/if}
+{if $fall==add_goods_list}
+<div class="demo">	
+	
+
+	
+
+	<ul class="tabbtn" id="move-animate-left">
+		<li class="current" id="sub1"><a >商品信息</a></li>
+        
+	
+        <li id="sub4"><a >颜色</a></li>
+        <li id="sub5"><a >尺码</a></li>
+         <li id="sub3"><a >价格</a></li>
+       	
+	
+	</ul><!--tabbtn end-->
+
+    <form name="myform" method="post" action="goods.php?act=post_add" enctype="multipart/form-data">   
+	<div class="tabcon" id="leftcon"  >
+    <div  id="m1"><table  border="1">
+    <table width="100%">
+    <tr  ><td width="180">商品代码<a style="color: red;">&nbsp;(代码默认无法修改)</a></td><td><input name="goods_sn"  type="text"/></td></tr>
+    <tr><td width="150">商品名称</td><td><textarea  name="goods_name" style="width: 300px; height: 50px;"></textarea></td></tr>
+    <tr><td width="150">外部名称</td><td><textarea  name="goods_outer_name" style="width: 300px; height: 50px;"></textarea></td></tr>
+         <tr><td width="150">商品属性</td>
+       <td >
+            <select  name="goodstype_sn" id="goodstype_sn" style="width: 200px;"> 
+            {foreach from=$goodstype item=goodstype}
+             <option  value ="{$goodstype.goodstype_sn}">{$goodstype.goodstype_name}</option>    
+            {/foreach}
+            </select>
+        </td>
+        
+        </tr>
+        
+        <tr><td width="150">重量</td><td><input  name="goods_weight" type="text" /></td></tr>
+        <tr><td width="150">单位</td><td><input  name="dw" type="text" /></td></tr>
+          <tr><td width="150">礼品</td><td>
+          {if $goods_mx.is_gift==0}<img id="is_gift" alt="1" title="{$goods_mx.goods_sn}"  src="images/no.gif"/>{else}<img  title="{$goods_mx.goods_sn}" id="gift_2"  alt="0" src="images/yes.gif"/>{/if}
+          </td></tr>
+           <tr><td width="150">参与统计</td><td>
+          {if $goods_mx.is_gift_allow_count==0}<img id="is_gift_allow_count" alt="1" title="{$goods_mx.goods_sn}"  src="images/no.gif"/>{else}<img  title="{$goods_mx.goods_sn}" id="is_gift_allow_count2"  alt="0" src="images/yes.gif"/>{/if}
+          </td></tr>
+           
+           
+            <tr><td width="150">上架</td><td>
+          {if $goods_mx.allow_sj==0}<img id="allow_sj" alt="1" title="{$goods_mx.goods_sn}"  src="images/no.gif"/>{else}<img  title="{$goods_mx.goods_sn}" id="allow_sj2"  alt="0" src="images/yes.gif"/>{/if}
+          </td></tr>
+         
+ 
+       <tr><td width="150">排序</td><td><input  name="sort_no" type="text""/></td></tr>
+    
+    <tr><td width="150">最后修改时间/修改人</td><td></td></tr>
+   
+    
+     <tr><td width="150">备注1</td><td><textarea  name="goods_note_1" style="width: 300px; height: 50px;"></textarea></td></tr>
+     <tr><td width="150">备注2</td><td><textarea  name="goods_note_2" style="width: 300px; height: 50px;"></textarea></td></tr>
+     
+
+    </table>
+    
+    
+    
+    </div>
+	<div  style="display: none;" id="m2">
+    {foreach from=$goods_imgs item=goods_imgs}
+      <table width="100%">
+    <tr>
+    <td> <img  id="img_mx"  src="{$goods_imgs.s_img_url}" title="图片{$goods_imgs.0}"/></td>
+    <td><table style="width: 400px;height: 100px; text-align: left; padding: 0px;margin: 0px;"><tr style="height: 40px;"><td>图片编码:&nbsp;&nbsp;&nbsp;{$goods_imgs.img_outer_id}&nbsp;&nbsp;&nbsp;&nbsp;添加时间:&nbsp;&nbsp;&nbsp;{$goods_imgs.add_time}</td></tr>
+<tr style="height: 40px;">
+<td>操作:&nbsp;&nbsp;&nbsp;<img id="delete_z_sn"   name="{$goods.goods_sn}" title="{$goods_imgs.img_outer_id}" src="images/icon_drop.gif"/>&nbsp;&nbsp;&nbsp;
+是否显示在APP：&nbsp;&nbsp;&nbsp;{if $goods_imgs.ss==1}<img id="img_jy"   name="{$goods.goods_sn}" title="{$goods_imgs.img_outer_id}" alt="0" src="images/yes.gif"/>{else}
+<img id="img_xs"  alt="1"  name="{$goods.goods_sn}" title="{$goods_imgs.img_outer_id}" src="images/no.gif"/>{/if}</td>
+</tr>
+<tr style="height: 30px;"><td>url指向:&nbsp;<textarea  name="img_action_url[]" style="width: 300px; height: 40px;">{$goods_imgs.img_action_url}</textarea></td></tr>
+<tr style="height: 30px;"><td>备注1:&nbsp;&nbsp;&nbsp;<textarea  name="img_note_1[]" style="width: 300px; height: 40px;">{$goods_imgs.img_note_1}</textarea></td></tr>
+<tr style="height: 30px;"><td>备注2:&nbsp;&nbsp;&nbsp;<textarea  name="img_note_2[]" style="width: 300px; height: 40px;">{$goods_imgs.img_note_2}</textarea></td></tr>
+<tr style="height: 30px;"><td>备注3:&nbsp;&nbsp;&nbsp;<textarea  name="img_note_3[]" style="width: 300px; height: 40px;">{$goods_imgs.img_note_3}</textarea></td></tr>
+<tr style="height: 30px;"><td>最后更新时间:&nbsp;&nbsp;&nbsp;{$goods_imgs.last_update}</td></tr>
+    </table><input  type="hidden" name="img_code[]" value="{$goods_imgs.img_outer_id}"/></td>
+    
+    </tr>
+    </table>
+ 
+
+<!--
+<div   id="hide_img" align="center" >
+<table width="100%">
+ <tr  ></tr>
+<tr  ><td width="180">图片信息</td><td>{$goods_imgs.img_goods_sn}_{$goods_imgs.0}</td></tr>
+<tr><td width="150">备注</td><td><textarea  name="goods_note" style="width: 200px; height: 100px;">{$goods_mx.goods_note}</textarea></td></tr>
+</table>
+
+</div>
+-->
+    {/foreach }
+
+
+        <br />
+    &nbsp;图片1:<input  type="file" name="pic1"/>  &nbsp;<img  id="add_images" src="images/icon_add.gif" title="增加图片"/><br />
+    
+     <input type="hidden" name="MAX_FILE_SIZE" value="2000000" />
+     
+    
+    
+    </div>
+    
+     <div  style="display: none;" id="m3">
+   
+      <table width="100%">
+            <tr><td width="150">标准价</td><td><input  name="bzsj" type="text"/></td></tr>
+   <tr><td width="150">单价1</td><td><input  name="dj" type="text"/></td></tr>
+    <tr><td width="150">单价2</td><td><input  name="dj2" type="text" /></td></tr>
+     <tr><td width="150">单价3</td><td><input  name="dj3" type="text" /></td></tr>
+      <tr><td width="150">单价4</td><td><input  name="dj4" type="text" /></td></tr>
+       <tr><td width="150">单价5</td><td><input  name="dj5" type="text" /></td></tr>
+  
+         <tr><td width="150">进价1</td><td><input  name="jj" type="text" /></td></tr>
+          <tr><td width="150">进价2</td><td><input  name="jj2" type="text"/></td></tr>
+           <tr><td width="150">进价3</td><td><input  name="jj3" type="text" /></td></tr>
+            <tr><td width="150">进价4</td><td><input  name="jj4" type="text" /></td></tr>
+             <tr><td width="150">进价5</td><td><input  name="jj5" type="text" /></td></tr>
+    </table>
+    
+    </tr>
+    </table>
+    </div>
+     <div  style="display: none;" id="m4">
+   <table width="100%" border="0" cellpadding="0" cellspacing="1" id="color_spec-table" align="center" style="background-color:#cce1e4;">
+<!--  //create by fillbag at 2009-03-24  -->
+  <tr style="background-color:#ffffff;">
+	<td colspan="3" style="padding-left:5px; padding-bottom:5px;">
+	  <img src="images/icon_search.gif" width="16" height="16" border="0" alt="search" />
+	  颜色
+	  <input type="text"  id="b_ysss" name="color_keyword"/>
+	  <input type="button" value=" 搜索 " id="ysss" class="button" />            
+	</td>
+  </tr>
+   <tr>
+            <th align="center" style="font-weight:bold;">颜色</th>
+            <th align="center" style="font-weight:bold;">操作</th>
+            <th align="center" style="font-weight:bold;">选项</th>
+   </tr>
+  
+  <tr>
+       		<td width="45%" align="left">
+                 <div id="source_color_list" style="width:100%;height:240px;border:#cad7d0 solid 1px;overflow:scroll;"> 
+                             
+                 </div>
+            </td>
+            <td align="center">
+ <!--           	<p>
+            	<input type="button" value=">>" onclick="add_color_spec(true,'add_color_list')" style="width:60px;"/>
+            	</p>
+				<p><input type="button" value="&nbsp;>&nbsp;" onclick="add_color_spec(false,'add_color_list')" style="width:60px;"/></p>
+				<p>
+				<input type="button" value="&nbsp;<&nbsp;" onclick="drop_color_spec(false,'add_color_list')" style="width:60px;"/>
+				</p>
+				<p><input type="button" value="<<" onclick="drop_color_spec(true,'add_color_list')" style="width:60px;"/></p>
+                -->
+            </td>
+            <td width="50%" align="left">
+				<div  id="target_color_list" style="width:99%;height:240px;border:#cad7d0 solid 1px;overflow:scroll;">
+                
+	          		{foreach from=$color_list item=color}
+	               <div ondblclick="$(this).remove();">
+	                 <input name="color_ids_sn[]" type="hidden" id="aaddd2"  value="{$color.color_sn}"/>
+	                 {$color.color_name}({$color.color_sn})
+                     </div>
+	                 
+	                 {/foreach}    		
+				</div>            
+            </td>
+    </tr>
+	          
+</table>
+    </div>
+     <div  style="display: none;" id="m5">
+   
+ <table width="100%" border="0" cellpadding="0" cellspacing="1" id="color_spec-table" align="center" style="background-color:#cce1e4;">
+<!--  //create by fillbag at 2009-03-24  -->
+  <tr style="background-color:#ffffff;">
+	<td colspan="3" style="padding-left:5px; padding-bottom:5px;">
+	  <img src="images/icon_search.gif" width="16" height="16" border="0" alt="search" />
+	  尺码
+	  <input type="text"  id="b_ysss2" name="size_keyword"/>
+	  <input type="button" value=" 搜索 " id="ysss2" class="button" />            
+	</td>
+  </tr>
+   <tr>
+            <th align="center" style="font-weight:bold;">尺码</th>
+            <th align="center" style="font-weight:bold;">操作</th>
+            <th align="center" style="font-weight:bold;">选项</th>
+   </tr>
+  
+  <tr>
+       		<td width="45%" align="left">
+                 <div id="source_size_list" style="width:100%;height:240px;border:#cad7d0 solid 1px;overflow:scroll;"> 
+                             
+                 </div>
+            </td>
+            <td align="center">
+ <!--           	<p>
+            	<input type="button" value=">>" onclick="add_color_spec(true,'add_color_list')" style="width:60px;"/>
+            	</p>
+				<p><input type="button" value="&nbsp;>&nbsp;" onclick="add_color_spec(false,'add_color_list')" style="width:60px;"/></p>
+				<p>
+				<input type="button" value="&nbsp;<&nbsp;" onclick="drop_color_spec(false,'add_color_list')" style="width:60px;"/>
+				</p>
+				<p><input type="button" value="<<" onclick="drop_color_spec(true,'add_color_list')" style="width:60px;"/></p>
+                -->
+            </td>
+            <td width="50%" align="left">
+				<div  id="target_size_list" style="width:99%;height:240px;border:#cad7d0 solid 1px;overflow:scroll;">
+                
+	          		{foreach from=$size_list item=size}
+	               <div ondblclick="$(this).remove();">
+	                 <input name="size_ids_sn[]" type="hidden" id="size_ids_sn"  value="{$size.size_sn}"/>
+	                 {$size.size_name}({$size.size_sn})
+                     </div>
+	                 
+	                 {/foreach}    		
+				</div>            
+            </td>
+    </tr>
+	          
+</table>
+    </div>
+    
+    
+    
+     <div  style="display: none;" id="m7">
+       <table width="100%" border="0" cellpadding="0" cellspacing="1" id="color_spec-table" align="center" style="background-color:#cce1e4;">
+       <tr><td>  <textarea id="editor_id"name="note"   style="width:620px;height:410px;">{$goods_mx.note}</textarea></td></tr>
+       </table>
+      </div>
+    <!--图层 -->
+    <div align="center" style="padding: 10px;"><input  type="submit"  id="btn_queren" value="确认" />&nbsp;<input  type="button" onclick="location='goods.php'" value="返回" /></div>
+	</div>
+    
+    
+    
+	</form>
+
+
+	
+</div>
+
+
+
+
+
+{/if}
+
+
+
+{if $fall==fs}
+<div class="demo">	
+	
+
+
+
+	
+    
+
+	<table class="table" width="99%" border="0">
+ <tr><td colspan="1"><b>商品代码已存在</b></td></tr>
+ <tr><td>商品代码已存在<a href="goods.php">返回</a></td></tr>
+</table>
+
+	
+</div><!--tabbox end-->
+{/if}
+
+</body>  
+</html>
+{literal}
+<script type="text/javascript">
+    $("#btn_queren2").click(function (){
+        
+        if(jQuery.trim($("#goods_sn").attr('value'))=='' )
+        {
+            alert("商品代码不能为空");
+            return false;
+        }
+        else if(jQuery.trim($("#control_date").attr('value'))=='')
+        {
+            alert("开始时间不能为空");
+            return false;
+        }
+        else if(jQuery.trim($("#control_date2").attr('value'))=='')
+        {
+            alert("结束时间不能为空");
+            return false;
+        } 
+        else
+        {
+            
+            if(confirm("确认修改")){
+                
+            }
+            else
+            {
+                return false;
+            }
+        }
+     
+        
+        
+        
+    })
+     $("#btn_queren").click(function (){
+        
+       
+            if(confirm("确认修改")){
+                
+            }
+            else
+            {
+                return false;
+            }
+        
+    })
+
+    
+    var i=2;
+   $("#add_images").click(function (){
+        
+        $("#m2").append('&nbsp;图片'+i+':<input type="file" name="pic'+i+'"/>  &nbsp;<br />');
+        i++;
+
+        //alert(1);
+   })
+	$("#sub1").click(function (){
+	   $("#m2").hide();
+       $("#m3").hide();
+        $("#m4").hide();
+         $("#m5").hide();
+       $("#m1").show();
+        $("#m7").hide();
+	})
+    $("#sub2").click(function (){
+	    $("#m1").hide();
+       $("#m2").show();
+       $("#m3").hide();
+       $("#m4").hide();
+       $("#m5").hide();
+        $("#m7").hide();
+	})
+     $("#sub3").click(function (){
+	    $("#m1").hide();
+       $("#m3").show();
+       $("#m2").hide();
+       $("#m4").hide();
+       $("#m5").hide();
+        $("#m7").hide();
+	})
+     $("#sub4").click(function (){
+	    $("#m1").hide();
+       $("#m4").show();
+       $("#m3").hide();
+       $("#m2").hide();
+       $("#m5").hide();
+        $("#m7").hide();
+	})
+     $("#sub5").click(function (){
+	    $("#m1").hide();
+       $("#m5").show();
+       $("#m2").hide();
+       $("#m3").hide();
+       $("#m4").hide();
+         $("#m7").hide();
+	})
+    
+      $("#sub7").click(function (){
+	    $("#m7").show();
+        $("#m1").hide();
+       $("#m5").hide();
+       $("#m2").hide();
+       $("#m3").hide();
+       $("#m4").hide();
+	})
+    
+	//上下滑动选项卡切换
+	$("#move-animate-top").tabso({
+		cntSelect:"#topcon",
+		tabEvent:"mouseover",
+		tabStyle:"move-animate",
+		direction : "top"
+	});
+	
+	//左右滑动选项卡切换
+	$("#move-animate-left").tabso({
+		cntSelect:"#leftcon",
+		tabEvent:"click",
+		tabStyle:"move-animate",
+		direction : "left"
+	});
+	
+	//淡隐淡现选项卡切换
+	$("#fadetab").tabso({
+		cntSelect:"#fadecon",
+		tabEvent:"mouseover",
+		tabStyle:"fade"
+	});
+	
+	//默认选项卡切换
+	$("#normaltab").tabso({
+		cntSelect:"#normalcon",
+		tabEvent:"mouseover",
+		tabStyle:"normal"
+	});
+	
+      $("img[id='img_mx']").each(function (){
+            
+           $(this).dblclick(function (){
+           //alert($(this).attr("name"));
+           //$("#hide_img").slideToggle(200);
+           
+           
+        })
+        })
+          $("img[id='delete_z_sn']").each(function (){
+            
+           $(this).click(function (){
+        
+           if(confirm("是否删除图片"+$(this).attr("title"))){
+             
+              htmlobj=$.ajax({url:"goods.php?act=delete&img_code="+encodeURI(encodeURI($(this).attr("title"))),async:false});
+              alert(htmlobj.responseText);
+             window.location.reload();
+            }else return false;
+            
+          //alert($(this).attr("title"));
+           //$("#hide_img").slideToggle(200);
+           
+           
+        })
+        })
+        
+            $("img[id='img_jy']").each(function (){
+            
+           $(this).click(function (){
+        
+           if(confirm("禁用"+$(this).attr("title")+"图片？")){
+             
+              htmlobj=$.ajax({url:"goods.php?act=img_xs&img_code="+encodeURI(encodeURI($(this).attr("title")))+"&alt="+$(this).attr("alt"),async:false});
+              alert(htmlobj.responseText);
+             window.location.reload();
+            }else return false;
+            
+          //alert($(this).attr("title"));
+           //$("#hide_img").slideToggle(200);
+           
+           
+        })
+        })
+         $("img[id='img_xs']").each(function (){
+            
+           $(this).click(function (){
+        
+           if(confirm("显示"+$(this).attr("title")+"图片？")){
+             
+              htmlobj=$.ajax({url:"goods.php?act=img_xs&img_code="+encodeURI(encodeURI($(this).attr("title")))+"&alt="+$(this).attr("alt"),async:false});
+              alert(htmlobj.responseText);
+             window.location.reload();
+            }else return false;
+            
+          //alert($(this).attr("title"));
+           //$("#hide_img").slideToggle(200);
+           
+           
+        })
+        })
+        
+        
+    
+    
+         
+            
+           $("#is_gift").click(function (){
+        
+           if(confirm("设置为礼品?")){
+             //alert(1);
+              htmlobj=$.ajax({url:"goods.php?act=gift&goods_sn="+encodeURI(encodeURI($(this).attr("title")))+"&alt="+$(this).attr("alt"),async:false});
+              alert(htmlobj.responseText);
+             window.location.reload();
+            }else return false;
+            
+          //alert($(this).attr("title"));
+           //$("#hide_img").slideToggle(200);
+           
+           
+        })
+         $("#gift_2").click(function (){
+        
+           if(confirm("设置为非礼品?")){
+             //alert(1);
+              htmlobj=$.ajax({url:"goods.php?act=gift&goods_sn="+encodeURI(encodeURI($(this).attr("title")))+"&alt="+$(this).attr("alt"),async:false});
+              alert(htmlobj.responseText);
+             window.location.reload();
+            }else return false;
+            
+          //alert($(this).attr("title"));
+           //$("#hide_img").slideToggle(200);
+           
+           
+        })
+        
+        
+        
+        
+            $("#is_gift_allow_count").click(function (){
+        
+           if(confirm("设置为参与统计?")){
+             //alert(1);
+              htmlobj=$.ajax({url:"goods.php?act=gift_count&goods_sn="+encodeURI(encodeURI($(this).attr("title")))+"&alt="+$(this).attr("alt"),async:false});
+              alert(htmlobj.responseText);
+             window.location.reload();
+            }else return false;
+            
+          //alert($(this).attr("title"));
+           //$("#hide_img").slideToggle(200);
+           
+           
+        })
+         $("#is_gift_allow_count2").click(function (){
+        
+           if(confirm("设置为不参与统计?")){
+             //alert(1);
+              htmlobj=$.ajax({url:"goods.php?act=gift_count&goods_sn="+encodeURI(encodeURI($(this).attr("title")))+"&alt="+$(this).attr("alt"),async:false});
+              alert(htmlobj.responseText);
+             window.location.reload();
+            }else return false;
+            
+          //alert($(this).attr("title"));
+           //$("#hide_img").slideToggle(200);
+           
+           
+        })
+        
+          $("#allow_sj").click(function (){
+        
+           if(confirm("设置为可上架?")){
+             //alert(1);
+              htmlobj=$.ajax({url:"goods.php?act=allow_sj&goods_sn="+encodeURI(encodeURI($(this).attr("title")))+"&alt="+$(this).attr("alt"),async:false});
+              alert(htmlobj.responseText);
+             window.location.reload();
+            }else return false;
+            
+          //alert($(this).attr("title"));
+           //$("#hide_img").slideToggle(200);
+           
+           
+        })
+         $("#allow_sj2").click(function (){
+        
+           if(confirm("设置为不可上架?")){
+             //alert(1);
+              htmlobj=$.ajax({url:"goods.php?act=allow_sj&goods_sn="+encodeURI(encodeURI($(this).attr("title")))+"&alt="+$(this).attr("alt"),async:false});
+              alert(htmlobj.responseText);
+             window.location.reload();
+            }else return false;
+            
+          //alert($(this).attr("title"));
+           //$("#hide_img").slideToggle(200);
+           
+           
+        })
+        
+        
+         function geta(a,b)
+        {
+            var sss=a;
+            var sss2=b
+            var allow_app=0;
+            //alert(sss);
+            
+
+            $("input[id='aaddd2']").each(function ()
+            {
+                //alert($(this).val());
+                 //alert(sss ==$(this).val());
+                 //alert(sss+$(this).val());
+                if(sss ==$(this).val())
+                {
+                   
+                   allow_app=1;
+                }
+              
+            })
+            //alert(allow_app);
+            if(allow_app==0)
+            {
+                 $("#target_color_list").append(
+                    "<div id="+"aaddd"+"   value="+sss+"  ondblclick="+"$(this).remove();"+"> <input name="+"color_ids_sn[]"+" id="+"aaddd2"+"  type="+"hidden"+" value="+sss+">"+sss2+"("+sss+")</div>" );
+            }
+         
+                    
+                    
+          //alert($("#target_color_list").length);
+          
+        }
+        
+        
+        $("#ysss").click(function ()
+        {
+            
+            
+          if($("#b_ysss").val()=='')
+          {
+           
+            $("#b_ysss").val("all");
+          }
+           
+            htmlobj=$.ajax({url:"goods.php?act=ysss&color_sn="+encodeURI(encodeURI($("#b_ysss").val())),async:false,dataType: 'json'});
+          // var html=$("#source_color_list").load("goods.php?act=ysss",{"color_sn":$("#b_ysss").val()});
+        $("#source_color_list").html("");
+         ///alert(htmlobj.responseText);
+            //$("#source_color_list").html(htmlobj.responseText);
+            json = $.parseJSON(htmlobj.responseText); 
+            
+            //json = eval(htmlobj.responseText)
+            //var json = eval("(" + htmlobj.responseText + ")");
+                
+            $.each( json, function (i, o) {
+            //alert("text:" + o.color_sn + ", value:"  + o.color_name);
+             $("#source_color_list").append(
+                    "<div name="+ o.color_sn+" ondblclick="+"geta('"+o.color_sn+"','"+o.color_name+"')"+" >"+ o.color_name +"(" + o.color_sn +")<br></div>" );
+            });
+   
+
+          
+       
+           $("#b_ysss").val("");
+        })
+        
+       
+ 
+       // $("#source_color_list").html(" <div >aaa<br /></div><div>aaa<br /></div>");
+  
+     
+ 
+  function getb(a,b)
+        {
+            var sss=a;
+            var sss2=b
+            var allow_app=0;
+            //alert(sss);
+            
+
+            $("input[id='size_ids_sn']").each(function ()
+            {
+                //alert($(this).val());
+                 //alert(sss ==$(this).val());
+                 //alert(sss+$(this).val());
+                if(sss ==$(this).val())
+                {
+                   
+                   allow_app=1;
+                }
+              
+            })
+            //alert(allow_app);
+            if(allow_app==0)
+            {
+                 $("#target_size_list").append(
+                    "<div id="+"aaddd"+"   value="+sss+"  ondblclick="+"$(this).remove();"+"> <input name="+"size_ids_sn[]"+" id="+"size_ids_sn"+"  type="+"hidden"+" value="+sss+">"+sss2+"("+sss+")</div>" );
+            }
+         
+                    
+                    
+          //alert($("#target_color_list").length);
+          
+        }
+        
+        
+        $("#ysss2").click(function ()
+        {
+            
+            
+          if($("#b_ysss2").val()=='')
+          {
+           
+            $("#b_ysss2").val("all");
+          }
+           
+            htmlobj=$.ajax({url:"goods.php?act=ysss2&size_sn="+encodeURI(encodeURI($("#b_ysss2").val())),async:false,dataType: 'json'});
+
+        $("#source_size_list").html("");
+        
+            json = $.parseJSON(htmlobj.responseText); 
+            
+        
+
+            $.each( json, function (i, o) {
+           
+             $("#source_size_list").append(
+                    "<div name="+ o.size_sn+" ondblclick="+"getb('"+o.size_sn+"','"+o.size_name+"')"+" >"+ o.size_name +"("+ o.size_sn +")<br></div>" );
+            });
+   
+
+          
+       
+           $("#b_ysss2").val("");
+        })
+        
+       
+ 
+ $("#goodstype_sn").val("{$goods_mx.goodstype_sn}");
+// alert( $("#goodstype_sn").val());
+   // goodstype_sn
+     
+</script>
+
+{/literal}

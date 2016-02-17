@@ -1,0 +1,432 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title></title>
+<link href="css/menu.css?a=" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+
+<script type="text/javascript" src="js/adddate.js"></script>
+<script charset="utf-8" src="kindeditor/kindeditor.js"></script>
+<script charset="utf-8" src="kindeditor/lang/zh_CN.js"></script>
+<script src="http://api.map.baidu.com/api?v=1.5&ak=ULZzR8MYgQwHvkOeFTk0Or0l"></script>
+<script>
+        var editor;
+        KindEditor.ready(function(K) {
+                                
+        });
+</script>
+
+</head>
+<style type="text/css">
+<!--
+
+.demo {
+	width:98%;
+margin-top:0px;
+  
+}
+.demo h2 {
+	font-size:16px;
+	height:44px;
+	color:#3366cc;
+	margin-top:0px;
+}
+.demo dl dt {
+	font-size:14px;
+	color:#ff6600;
+	margin-top:0px;
+	font-weight:800;
+}
+.demo dl dt, .demo dl dd {
+	line-height:22px;
+}
+	.tabbtn {
+	list-style-type:none;
+	height:30px;
+	background:url(images/tabbg.gif) repeat-x;
+	border-left:solid 1px #ddd;
+	border-right:solid 1px #ddd;
+}
+.tabbtn li {
+	float:left;
+	position:relative;
+	margin:0 0 0 -1px;
+}
+.tabbtn li a {
+	display:block;
+	float:left;
+	height:30px;
+	line-height:30px;
+	overflow:hidden;
+	width:108px;
+	text-align:center;
+	font-size:12px;
+	cursor:pointer;
+}
+.tabbtn li.current {
+	border-left:solid 1px #d5d5d5;
+	border-right:solid 1px #d5d5d5;
+	border-top:solid 1px #c5c5c5;
+}
+.tabbtn li.current a {
+	border-top:solid 2px #ff6600;
+	height:27px;
+	line-height:27px;
+	background:#fff;
+	color:#3366cc;
+	font-weight:800;
+}
+/* tabcon */
+.tabcon {
+	border-width:0 1px 1px 1px;
+	border-color:#ddd;
+	border-style:solid;
+	position:relative;/*必要元素*/
+	
+
+  
+}
+.tabcon .subbox {
+	position:absolute;/*必要元素*/
+	left:0;
+	top:0;
+}
+.tabcon .sublist {
+	padding:0px 0px;
+
+}
+
+  .table_img {   
+          border: 1px solid #B1CDE3;   
+            padding:0;    
+           margin:0 auto;   
+            border-collapse: collapse;   
+       }   
+         
+    .table_img   td {   
+            border: 1px solid #B1CDE3;   
+           background: #fff;   
+            font-size:12px;   
+           padding: 3px 3px 3px 8px;   
+          color: #4f6b72;   
+        }   
+-->
+</style>
+<body  style=" margin-top: 10px;margin-left: 5px;  padding-top: 0px;"> 
+
+
+{if $fall==edit}
+<div class="demo">	
+<form name="myform" method="post" action="kehu.html?g=bdff1a21dce686827" enctype="multipart/form-data">
+<div class="tabcon" id="leftcon"  >  
+    <div  id="m1">
+    <table class="table" width="100%" border="0"  style="margin-bottom: 15px;">
+        <th colspan="10">编辑客户</th>
+        <tr>
+            <td style="width: 200px;">客户代码:</td><td><input disabled="true" style=""  type="text" value="{$kehu_mx.kehu_sn}" /><input name="kehu_sn" id="kehu_sn"   type="hidden" value="{$kehu_mx.kehu_sn}" /><a style="color:red;">*</a></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">客户名称:</td><td><input  name="kehu_name" style="" id="kehu_name" type="text" value="{$kehu_mx.kehu_name}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">固定电话:</td><td><input  name="tel" style="" id="tel" type="text" value="{$kehu_mx.tel}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">移动电话:</td><td><input  name="mobile" style="" id="mobile" type="text" value="{$kehu_mx.mobile}" /></td>
+        </tr>
+        <tr>
+            <td>客户备注:</td><td><textarea  name="bz" style="width:300px;height:100px;" id="bz" >{$kehu_mx.bz}</textarea></td>
+        </tr>
+        <tr>
+            <td>公司单位:</td><td><textarea  name="gongsimingcheng" style="width:300px;height:100px;" id="gongsimingcheng" >{$kehu_mx.gongsimingcheng}</textarea></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">职位:</td><td><input  name="zhiwei" style="" id="zhiwei" type="text" value="{$kehu_mx.zhiwei}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">email:</td><td><input  name="email" style="" id="email" type="text" value="{$kehu_mx.email}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">传真号:</td><td><input  name="chuanzhen" style="" id="chuanzhen" type="text" value="{$kehu_mx.chuanzhen}" /></td>
+        </tr>
+        <tr>
+            <td>客户类型:</td><td>
+            <input type="radio" name="khlx" class="khlx" value="0"  title="普通客户" checked />普通客户
+                 <input type="radio" name="khlx" class="khlx" value="1"  title="vip客户"  />vip客户
+                 <input type="radio" name="khlx" class="khlx" value="2"  title="潜在客户"  />潜在客户
+                 <input type="radio" name="khlx" class="khlx" value="3"  title="失效客户"  />失效客户
+                 
+        <input type="hidden" id="khlx_v" value="{$kehu_mx.khlx}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">行业:</td><td><input  name="hangye" style="" id="hangye" type="text" value="{$kehu_mx.hangye}" /></td>
+        </tr>
+        <tr>
+            <td>行业描述:</td><td><textarea  name="hangye_bz" style="width:300px;height:100px;" id="hangye_bz" >{$kehu_mx.hangye_bz}</textarea></td>
+        </tr>
+        
+
+
+
+
+
+
+<tr><td colspan="2"  style="text-align: center;"><input  type="submit"  id="btn_queren2" value="确认" />&nbsp;<input  type="button" onclick="location='kehu.html'" value="返回" /></td></tr>
+
+</table>
+
+
+
+</div>
+
+
+</div>
+
+
+
+</form>
+
+
+
+</div><!--tabbox end-->
+
+
+
+
+
+
+
+{/if}
+
+{if $fall==post}
+
+<table class="table" width="100%" border="0" style="margin-top:10px;">
+ <tr><td colspan="1"><b>编辑客户</b></td></tr>
+
+ <tr><td>修改成功<a href="kehu.html">返回</a>&nbsp;<a style="color:red;">1秒后返回</a></td></tr>
+
+</table>
+
+<script type="text/javascript">
+<!--
+	$(document).ready(function ()
+{       
+    var timer = setTimeout(function(){
+      window.location="kehu.html";
+    }, 500);
+   
+})
+-->
+</script>
+{/if}
+{if $fall==post2}
+
+<table class="table" width="100%" border="0" style="margin-top:10px;">
+ <tr><td colspan="1"><b>添加客户</b></td></tr>
+
+ <tr><td>添加成功<a href="kehu.html">返回</a>&nbsp;<a style="color:red;">1秒后返回</a></td></tr>
+
+</table>
+
+<script type="text/javascript">
+<!--
+	$(document).ready(function ()
+{       
+    var timer = setTimeout(function(){
+      window.location="kehu.html";
+    }, 500);
+   
+})
+-->
+</script>
+{/if}
+
+{if $fall==fs}
+
+<table class="table" width="100%" border="0" style="margin-top:10px;">
+ <tr><td colspan="1"><b>添加失败</b></td></tr>
+
+ <tr><td>代码已存在<a href="kehu.html">返回</a>&nbsp;<a style="color:red;">1秒后返回</a></td></tr>
+
+</table>
+
+<script type="text/javascript">
+<!--
+	$(document).ready(function ()
+{       
+    var timer = setTimeout(function(){
+      window.location="kehu.html";
+    }, 1000);
+   
+})
+-->
+</script>
+{/if}
+
+{if $fall==add_list}
+<div class="demo">	
+<form name="myform" method="post" action="kehu.html?g=95665e3855fc466fb" enctype="multipart/form-data">   
+   <div class="tabcon" id="leftcon"  >
+    <div  id="m1"><table class="table" width="100%" border="0" >
+ <th colspan="2">添加客户</th>
+        <tr>
+            <td style="width: 200px;">客户代码:</td><td><input  style=""  type="text"  value="系统自动生成"  disabled="disabled" /><input  style=""  type="hidden" name="kehu_sn" id="kehu_sn"  value="系统自动生成"  /><a style="color:red;">*</a></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">客户名称:</td><td><input  name="kehu_name" style="" id="kehu_name" type="text"  /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">固定电话:</td><td><input  name="tel" style="" id="tel" type="text"  /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">移动电话:</td><td><input  name="mobile" style="" id="mobile" type="text"  /></td>
+        </tr>
+        <tr>
+            <td>客户备注:</td><td><textarea  name="bz" style="width:300px;height:100px;" id="bz" >{$kehu_mx.bz}</textarea></td>
+        </tr>
+        <tr>
+            <td>公司单位:</td><td><textarea  name="gongsimingcheng" style="width:300px;height:100px;" id="gongsimingcheng" >{$kehu_mx.gongsimingcheng}</textarea></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">职位:</td><td><input  name="zhiwei" style="" id="zhiwei" type="text"  /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">email:</td><td><input  name="email" style="" id="email" type="text"  /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">传真号:</td><td><input  name="chuanzhen" style="" id="chuanzhen" type="text"  /></td>
+        </tr>
+        <tr>
+            <td>客户类型:</td><td>
+            <input type="radio" name="khlx" class="khlx" value="0"  title="普通客户" checked />普通客户
+                 <input type="radio" name="khlx" class="khlx" value="1"  title="vip客户"  />vip客户
+                 <input type="radio" name="khlx" class="khlx" value="2"  title="潜在客户"  />潜在客户
+                 <input type="radio" name="khlx" class="khlx" value="3"  title="失效客户"  />失效客户
+                 
+        <input type="hidden" id="khlx_v" value="{$kehu_mx.khlx}" /></td>
+        </tr>
+        <tr>
+            <td style="width: 200px;">行业:</td><td><input  name="hangye" style="" id="hangye" type="text"  /></td>
+        </tr>
+        <tr>
+            <td>行业描述:</td><td><textarea  name="hangye_bz" style="width:300px;height:100px;" id="hangye_bz" >{$kehu_mx.hangye_bz}</textarea></td>
+        </tr>
+
+ 
+<tr><td colspan="2"  style="text-align: center;"><input  type="submit"  id="btn_queren2" value="确认" />&nbsp;<input  type="button" onclick="location='kehu.html'" value="返回" /></td></tr>
+  
+</table>
+    
+    
+    
+    </div>
+
+    
+    
+    
+	</form>
+
+
+	
+</div><!--tabbox end-->
+
+
+
+
+
+{/if}	
+<input  type="hidden" value="kehu_sn" id="bianjisetf1"/>
+
+</body>  
+</html>
+
+<script type="text/javascript">
+       
+      
+    
+    var i=2;
+   $("#add_images").click(function (){
+        
+        
+        $("#m2").append('&nbsp;图片'+i+':<input type="file" name="pic'+i+'"/>  &nbsp;<br />');
+        i++;
+
+        //alert(1);
+   })
+
+      $("img[id='img_mx']").each(function (){
+            
+           $(this).dblclick(function (){
+           //alert($(this).attr("name"));
+           //$("#hide_img").colorToggle(200);
+           
+           
+        })
+        })
+          $("img[id='delete_z_sn']").each(function (){
+            
+           $(this).click(function (){
+        
+           if(confirm("是否删除图片"+$(this).attr("title"))){
+             
+              htmlobj=$.ajax({url:"color.php?act=delete&img_code="+encodeURI(encodeURI($(this).attr("title"))),async:false});
+              alert(htmlobj.responseText);
+             window.location.reload();
+            }else return false;
+            
+          //alert($(this).attr("title"));
+           //$("#hide_img").colorToggle(200);
+           
+           
+        })
+        })
+        
+            $("img[id='img_jy']").each(function (){
+            
+           $(this).click(function (){
+        
+           if(confirm("禁用"+$(this).attr("title")+"图片？")){
+             
+              htmlobj=$.ajax({url:"color.php?act=img_xs&img_code="+encodeURI(encodeURI($(this).attr("title")))+"&alt="+$(this).attr("alt"),async:false});
+              alert(htmlobj.responseText);
+             window.location.reload();
+            }else return false;
+            
+          //alert($(this).attr("title"));
+           //$("#hide_img").colorToggle(200);
+           
+           
+        })
+        })
+         $("img[id='img_xs']").each(function (){
+            
+           $(this).click(function (){
+        
+           if(confirm("显示"+$(this).attr("title")+"图片？")){
+             
+              htmlobj=$.ajax({url:"color.php?act=img_xs&img_code="+encodeURI(encodeURI($(this).attr("title")))+"&alt="+$(this).attr("alt"),async:false});
+              alert(htmlobj.responseText);
+             window.location.reload();
+            }else return false;
+            
+          //alert($(this).attr("title"));
+           //$("#hide_img").colorToggle(200);
+           
+           
+        })
+        })
+       
+       
+       
+       var  kehu_sn=$("#kehu_sn").val();
+        $("#kehu_sn").focus();
+        $("#btn_queren2").click(function(){
+        if(jQuery.trim($("#kehu_sn").attr("value"))==''){
+        $("#kehu_sn").focus();return false;}
+        else{if(confirm("确认修改")){}else{return false;}}})
+             var khlx_v=$('#khlx_v').val();   
+             $('input:radio[name="khlx"][value="'+khlx_v+'"]').prop('checked', true);        
+</script>

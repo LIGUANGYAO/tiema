@@ -1,0 +1,225 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>客户回访记录</title>
+<link href="css/menu.css" rel="stylesheet" type="text/css" />
+<link href="css/module.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/jq.mshop.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+
+<script type="text/javascript" src="js/adddate.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+  <div class="content">
+    <div class="botable">
+
+{if $fall==1}  
+<table class="table" width="100%" border="0" style="margin-bottom: 7px;">
+    <form>
+        <tr>
+            <th style="text-align: left;border-right-style:none"></th><th style="text-align: right; border-left-style:none">
+            回访时间&nbsp<input type='text' name='huifang_time_1' id='huifang_time_1' onclick="SelectDate(this,'yyyy-MM-dd')" />&nbsp~&nbsp<input type='text' name='huifang_time_2' id='huifang_time_2' onclick="SelectDate(this,'yyyy-MM-dd')" />     <input  type="text"  id="key" name="key"  placeholder="本页搜索" />&nbsp;<input  type="text"  placeholder="关键字"  id="m_key" name="m_key"/>&nbsp;<input  value="搜索" type="submit" />&nbsp;<input  value="excel导出" type="button" id="excel" />&nbsp;&nbsp;&nbsp;<input  type="button" value="刷新"   onclick="location='kehuhuifang.html'" />&nbsp;</th>
+        </tr>
+    </form>
+</table>
+
+
+<table class="table" width="100%" border="0">
+    <tr>
+        <th>回访代码</th>
+        <th>所属客户id</th>
+        <th>回访时间</th>
+        <th>备注</th>
+        <th>登陆用户</th>
+        <th>用户id</th>
+    </tr>
+    
+<tbody  id="table_t">
+{foreach from=$kehuhuifang_list item=kehuhuifang_list}
+    <tr>
+            <td >{$kehuhuifang_list.kehuhuifang_sn}</td>
+            <td >{$kehuhuifang_list.kehu_id}</td>
+            <td >{$kehuhuifang_list.huifang_time}</td>
+            <td >{$kehuhuifang_list.bz}</td>
+            <td >{$kehuhuifang_list.user_name}</td>
+            <td >{$kehuhuifang_list.user_id}</td>
+    
+    </tr>
+{foreachelse}
+    <tr>
+        <td style="width:70px" colspan="20">无记录</td>
+    </tr>
+{/foreach}
+
+</tbody>
+</table>
+
+
+<table class="table" width="100%" border="0">
+    <tr>
+        <td style="text-align: right;">{include file="foot.tpl"}</td>
+    </tr> 
+</table>
+
+
+{/if}
+<script type="text/javascript">
+
+        $("#huifang_time_1").val("{$huifang_time_1}");
+        $("#huifang_time_2").val("{$huifang_time_2}");
+        $("#m_key").val("{$m_key}");
+        $("#m_key").focus();
+         
+        $("#excel").click(function (){
+            var huifang_time =$("#huifang_time").val();
+	
+            window.open("excel.php?m=kehuhuifang&huifang_time="+huifang_time+""); 
+        })
+
+</script>
+    </div>
+   <!-- end .content --></div>
+<!-- end .container --></div>
+
+<input  type="hidden" value="0" id="lbxs_open"/>
+<input  type="hidden" value="32c7eadc74d1d436a" id="g_e"/>
+<input  type="hidden" value="021caa622ee125612" id="g_d"/>
+<input  type="hidden" value="5c2c3c68c013d0ca3" id="g_xs"/>
+<input  type="hidden" value="kehuhuifang_sn" id="bianjisetf1"/>
+
+
+
+
+
+</div>
+
+</body>
+</html>
+<script type="text/javascript">
+<!--
+$(document).ready(function ()
+{      
+        $("#import_excel").click(function(){
+            $(".alert").fadeIn();
+            $("#leavemsg").fadeIn();
+        })
+        $("#msgquxiao").click(function(){
+             $(".alert").fadeOut();
+             $("#leavemsg").fadeOut();
+        })
+
+        
+        
+        $("img[id='edit']").each(function (){
+           var  lbxs_open=$("#lbxs_open").val();
+           var  g_e=$("#g_e").val();
+           var  bianjisetf1=$("#bianjisetf1").val();
+           
+           $(this).click(function (){
+            if(lbxs_open==0)
+            {
+                window.location='kehuhuifang.html?g='+g_e+'&'+bianjisetf1+'='+encodeURI(encodeURI($(this).attr("name")));
+            }else
+            {
+                window.open('kehuhuifang.html?g='+g_e+'&'+bianjisetf1+'='+encodeURI(encodeURI($(this).attr("name"))));
+            }         
+           
+        })
+        })
+        
+        var  bianjisetf1=$("#bianjisetf1").val();
+         $("img[id='delete_code']").each(function (){
+            var  g_d=$("#g_d").val();
+            
+            $(this).click(function (){
+        
+            
+              if(confirm("删除"+$(this).attr("name")+"")){
+               htmlobj=$.ajax({url:"kehuhuifang.html?g="+g_d+"&"+bianjisetf1+"="+encodeURI(encodeURI($(this).attr("name"))),async:false});
+              //alert(htmlobj.responseText);
+              if(htmlobj.responseText==1)
+              {
+                window.location.reload();
+              }
+              else
+              {
+                alert('删除失败,存在关联数据');
+              }
+              
+              
+            }else return false;
+            
+            })
+        })
+        
+      
+        
+        var  g_xs=$("#g_xs").val();
+        $("img[id='tzsy_jy']").each(function (){
+            
+           $(this).click(function (){
+        
+           //if(confirm("禁用"+$(this).attr("name")+"")){
+             
+              htmlobj=$.ajax({url:"kehuhuifang.html?g="+g_xs+"&"+bianjisetf1+"="+encodeURI(encodeURI($(this).attr("name")))+"&alt=1",async:false});
+              //alert(htmlobj.responseText);
+              window.location.reload();
+            //}else return false;
+            
+          //alert($(this).attr("title"));
+           //$("#hide_img").colorToggle(200);
+           
+           
+        })
+        })
+        $("img[id='tzsy_qy']").each(function (){
+            
+           $(this).click(function (){
+        
+           //if(confirm("启用"+$(this).attr("name")+"")){
+             
+              htmlobj=$.ajax({url:"kehuhuifang.html?g="+g_xs+"&"+bianjisetf1+"="+encodeURI(encodeURI($(this).attr("name")))+"&alt=0",async:false});
+              //alert(htmlobj.responseText);
+              window.location.reload();
+            //}else return false;
+            
+          //alert($(this).attr("title"));
+           //$("#hide_img").colorToggle(200);
+           
+           
+        })
+        })
+         
+         
+         $("img[id='fuzhi']").each(function (){
+                
+                $(this).click(function(){
+                    
+                      window.clipboardData.setData("Text",$(this).attr("name"));
+                     
+                })
+               
+         })
+        
+        
+          $("img[id='yulan']").each(function (){
+                
+                $(this).click(function(){
+                   window.open($(this).attr("name"))
+                })
+               
+         })
+        
+        
+        
+
+    
+})
+-->
+</script>

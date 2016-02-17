@@ -1,0 +1,1 @@
+E:\xampp177\php\php.exe -q  E:/baisonwork/new_efast/auto_task_cli.php

@@ -1,0 +1,78 @@
+
+{include file="w/head.html"}
+
+{if $fall==1} 
+         
+<h2 class="title ui-border-b">
+    <a>CRM客户管理</a>
+    <a class="ui-btn" href="msgsend.html?g=6b584733e1168f160&kehu_id={$kehu.id}" style="margin-right: 70px;">添加提醒信息</a>
+    <a class="ui-btn" href="privilege.html" style="">返回</a>
+</h2>
+        <div class="content">
+        <p><ul class="ui-list ui-list-text ui-list-link ui-border-b">
+
+     
+        {foreach from=$msgsend_list item=msgsend_list}
+        <li class="ui-border-t">
+        <h4>
+        <p>客户名称:{$kehu.kehu_name}</p>
+        <p style="">提醒时间:{$msgsend_list.send_time}</p>
+        <p style="">提醒类型:{if $msgsend_list.fasongleixing=='1'}邮件{elseif $msgsend_list.fasongleixing=='2'}短信{/if}</p>
+        <p style="">发送状态:{if $msgsend_list.is_send==1}<a style="color: green;">已发送</a>{else}<a style="color: red;">未发送</a>{/if}</p>
+        <p>备注:</p>
+        <p>{$msgsend_list.bz}</p>
+        
+        
+        </h4>
+        <div class="ui-badge">{$msgsend_list.user_name}</div>
+    </li>
+   
+    {foreachelse}
+    <li class="ui-border-t">
+        <h4>
+        无记录
+        
+        </h4>
+        
+    </li>
+    {/foreach}
+</ul></p>
+        
+        
+        
+</div>
+<div class="ui-btn-wrap">
+    <button class="ui-btn-lg ui-btn-danger" onclick="location.href='kehu.html?g=d8864aff1b52fa689&kehu_sn={$kehu.kehu_sn}'" >
+        返回客户信息
+    </button>
+</div>
+
+
+
+{/if}
+
+<script type="text/javascript">
+$('.ui-searchbar').tap(function(){
+    $('.ui-searchbar-wrap').addClass('focus');
+    $('.ui-searchbar-input input').focus();
+});
+//$('.ui-searchbar-cancel').tap(function(){
+//    $('.ui-searchbar-wrap').removeClass('focus');
+//});
+
+$('.ui-icon-close').tap(function(){
+    $("#m_key").val("");
+})
+$('.ui-searchbar-cancel').tap(function(){
+    location.href='?m_key='+$("#m_key").val();
+    
+})
+
+
+
+    
+   
+    
+</script> </div>
+    </body>
+</html>

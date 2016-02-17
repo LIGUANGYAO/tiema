@@ -1,0 +1,119 @@
+<!DOCTYPE html><html><head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<title></title>
+<link type="text/css" rel="stylesheet" href="css/base.css?1446516674">
+<link type="text/css" rel="stylesheet" href="css/style.css?1446516674">
+<link type="text/css" rel="stylesheet" href="css/layout.css?1446516674">
+<script src="js/zepto.min.js?1446516674" type="text/javascript"></script>
+<script src="js/layer.m.js?1446516674" type="text/javascript"></script>
+</head><iframe id="__WeixinJSBridgeIframe_SetResult" style="display: none;"></iframe><iframe id="__WeixinJSBridgeIframe" style="display: none;"></iframe>
+<body> 
+   <div class="buy_text">
+   {$bookjj}
+   </div>
+   <div class="bookimg"><img src="images/buybook.png?111"></div>
+
+
+	 <div class="buy_submit">点击购买 </div> 
+	
+
+{include file="cs/foot.html"}
+
+
+<script type="text/javascript">
+var baseUrl = '';
+var bookMoney = 99;
+var bookStock = -7807;
+var alreadyBuy = {$pay};
+
+$(function(){
+	$(".buy_submit").on('click',function(){
+		//库存为0时，提示
+		if(bookStock == 0)
+		{
+			layer.open({
+				content:'亲，您手慢了。印刷厂玩命赶货中，请留意库存数量。',
+				btn:['确定'],
+				yes:function(){
+					layer.closeAll();
+				}
+			});
+			return false;
+		}
+		//已经购买过，提示
+		if(alreadyBuy)
+		{
+			layer.open({
+				content:'您已经买过了哦。如需购买更多，请联系客服<a href="tel:000 000 000">000 000 000</a>。',
+				btn:['确定'],
+				yes:function(){
+					layer.closeAll();
+				}
+			});
+			return false;
+		}
+		
+		var num = 1;   //书本固定为1
+		//点击购买
+		//微支付请求包获取
+		$.ajax({
+			url: baseUrl + "pay.php",
+			type: "post",
+			data: {'bookNum':num},
+			dataType: 'json',
+			beforeSend:function(){
+				//
+			},
+			complete:function(){
+				//
+			},
+			success:function(data){
+				if(data['timeStamp']!=undefined){
+					callpay(data);				
+				}else{
+					layer.open({
+						content: data['msg']
+					});
+				}
+			},
+			error:function(reason){
+				layer.open({
+					content: '请求支付失败，请重试！',
+				});
+			},
+		});	
+	});
+});
+
+function callpay(packageInfo)
+{
+	if(packageInfo != null){
+		WeixinJSBridge.invoke(
+		    'getBrandWCPayRequest',
+			packageInfo,
+			function(res){
+				//WeixinJSBridge.log(res.err_msg);
+				if (res.err_msg == 'get_brand_wcpay_request:ok'){
+					//支付成功跳转我的订单页面
+					layer.open({
+						content:'支付成功！',
+						shadeClose: false,
+						btn:['确定'],
+						yes:function(){
+							location.href = 'index.php';	
+						}
+					})
+				}
+			}
+		);
+	}
+}
+</script>
+
+
+</body></html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<title></title>
+<link type="text/css" rel="stylesheet" href="css/base.css?1445578397">
+<link type="text/css" rel="stylesheet" href="css/style.css?1445578397">
+<link type="text/css" rel="stylesheet" href="css/menew.css?1445578397">
+<link type="text/css" rel="stylesheet" href="css/xsz_me.css?1445578397">
+<link type="text/css" rel="stylesheet" href="css/slither.css?1445578397">
+<script src="js/zepto.min.js?1445578397" type="text/javascript"></script>
+<script src="js/layer.m.js?1445578397" type="text/javascript"></script>
+<script type="text/javascript">
+var baseUrl = '';
+$(function(){
+	//同步微信资料
+	$("#sync").on('click',function(){
+		$.get(baseUrl+"/me/syncInfo",function(data){
+			layer.open({ content:data });
+			setTimeout(function(){location.reload();},1000);
+		})
+	})
+	
+	blinklink();
+	
+	//从付款成功页面过来的，弹框
+	})
+
+
+//开启关闭资料
+function closeOpenInfo(is_private)
+{
+	var msg,flag;
+	
+	if (is_private == '0') {
+		msg = '开启资料后其他会员可以在{$company}平台查找到您';
+		flag = 1;
+	} else {
+		msg = '关闭资料后其他会员将无法在{$company}平台查找到您';	
+        flag = 0;	
+	}
+	
+	var loadingLayer = layer.open({
+		content: msg,
+		btn: ['确认','取消'],
+		shadeClose: false,
+		yes: function(){							
+			//修改是否开启资料标识
+			$.ajax({
+				url: 'index.php',
+				type: "post", 
+				data:{'flag':flag,'g':'SwitchUserInfo'},
+				dataType: 'json',
+				success:function(data){	
+					if(data.status == 'success')
+					{
+						layer.open({
+							content: data.msg,
+							style:'text-align:center;'
+						});
+						setTimeout(function(){location.reload();},500);
+					} else {
+						layer.open({								
+							content: data.msg,
+							style:'text-align:center;'
+						});
+					}
+				}
+			});
+		}, no: function(){
+			layer.close(loadingLayer);
+		}
+	});
+}
+
+function blinklink()
+{
+	
+	if (document.getElementById('blink').style.color=="rgb(203, 53, 54)")
+	{
+		document.getElementById('blink').style.color="rgb(0, 0, 0)"
+	}
+	else
+	{
+		document.getElementById('blink').style.color="rgb(203, 53, 54)"
+	}
+	
+	timer=setTimeout("blinklink()",250)
+}
+
+function stoptimer()
+{
+clearTimeout(timer)
+}
+</script>
+</head><iframe id="__WeixinJSBridgeIframe_SetResult" style="display: none;"></iframe><iframe id="__WeixinJSBridgeIframe" style="display: none;"></iframe>
+<body>
+
+	<div>
+	  <!--顶部bar-->
+	  <div class="me_top">		
+		<div class="message">
+		  <div class="left">
+			<div class="head"> <img src="{$userInfo.headimgurl}"> </div>
+		  </div>
+		  <div class="right">
+			<ul>
+			  <li class="name"><i class="{if $userInfo.sex='1'}icon-man{elseif $userInfo.sex=='2'}icon-women{else}icon-man{/if}"></i>&nbsp;<label>{$userInfo.nick_name}</label>&nbsp;</li>
+			  <li><i class="icon-location"></i><label class="loc">&nbsp;{$userInfo.province}{$userInfo.city}</label></li>
+			   <li class="extension">董事长ID <font color="red" size="+0.1">{$userInfo.id}</font> </li>
+			</ul>
+		  </div>
+		</div>
+	   </div>
+		
+	   <div class="messbut" >
+		   <a href="javascript:;" id="sync"><div class="mess_left" >&nbsp;世纪车房</div></a>
+                    {if $userInfo.wx_pay=='1'}
+                    <div class="mess_right" >大数据电商</div>
+                    {else}
+                    <a href="bookbuy.php"><div class="mess_right1">未开启</div></a>
+                    {/if}
+		   		   
+                   
+                   
+		   		</div>
+	  
+	  
+	  <div class="clear"></div>
+	  <!--顶部bar结束-->
+	  <div class="me_mid">
+		<div class="melist">
+        <a href="http://www.selecar.cn/app/html/cadillac/activity.html?from=dyh">
+
+
+
+		<div class="meli_left">
+		<div class="melistimg"><img src="images/melist_1.png"></div>
+		<div id="blink" class="melisttxt" style="color: rgb(203, 53, 54);">积分商城</div>
+		 <div class="new" ><img src="images/new.png"></div>
+		</div> 
+		
+		
+		
+		
+		
+		
+		</a>
+<!--		<a href="javascrit:;" onClick="closeOpenInfo('{if $userInfo.login_status=='1'}1{else}0{/if}')">
+		<div class="meli_right">
+		  <div class="demo">
+			<div class="wrap" style="width: 85px;">
+			  <input id="sync" type="checkbox" class="chk_4" {if $userInfo.login_status=='1'}checked=""{else}{/if} >
+			  <label for="checkbox_d1"></label>
+			</div>
+		  </div>
+		 </div>
+		 </a>-->
+		</div>
+	  </div>
+	  
+	  
+	  <div class="clear"></div>
+	  
+	  <!--中部bar结束-->
+		<div class="tab-iteam" id="tab-iteam1">
+		<div class="tab-iteam-con" id="tabBox1-bd">
+			<div class="con active">
+				<ul>
+				
+				<li style="border-right:1px solid #e6e6e6;border-bottom:1px solid #e6e6e6;"><a href="getmycode.php"><img src="images/melist_06.png?111"><br>我的名片</a></li>	
+				
+
+				
+				<li style="border-right:1px solid #e6e6e6;border-bottom:1px solid #e6e6e6;"><a href="mycommission.php"><img src="images/melist_04.png"><br>公司总业绩</a></li>
+				
+				<li style="border-bottom:1px solid #e6e6e6;"><a href="mycomrades.php"><img src="images/comrades.png"><br>我的团队</a></li>
+					<!--<li style="border-bottom:1px solid #e6e6e6;"><a href="/me/contactKefu"><img src="/images/melist_03.png"><br>联系客服</a></li>-->
+				<!--<li style="border-right:1px solid #e6e6e6;"><a href="http://mp.weixin.qq.com/s?__biz=MzI1MzA3MzcyNQ==&mid=400486381&idx=1&sn=1ab915db22ab439b6000eb8f8cf9c97e#rd"><img src="images/melist_05.png"><br>经验分享</a></li>-->
+				<li style="border-right:1px solid #e6e6e6;"><a href="http://eqxiu.com/s/2aigOR1O"><img src="images/melist_05.png"><br>申请成为合伙人</a></li>
+				<li style="border-right:1px solid #e6e6e6;"><a href="uploadcode.php"><img src="images/melist_02.png"><br>上传我的二维码</a></li>
+					<!--<li style="border-right:1px solid #e6e6e6;"><a href="myorder.php"><img src="images/melist_05.png"><br>我的订单</a></li>
+					<li style="border-right:1px solid #e6e6e6;"><a href="http://www.weiqudao.net/mobile/microsite/microsite.jsp?pid=2903&wuid=255&openid=3edcvfr4"><img src="images/melist_02.png"><br>平台互动</a></li>-->
+				
+								<li style="border-right:1px solid #e6e6e6;"><a href="http://mp.weixin.qq.com/s?__biz=MzI1MzA3MzcyNQ==&mid=411412394&idx=1&sn=f2b4055894a40d76ffa035f84f73616e#rd"><img src="images/melist_01.png?111"><br>常见问题解答</a></li>
+					
+				</ul>
+			</div>
+		</div>
+		</div>	  	  
+
+      <div >
+	  
+
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+     
+	  
+      <!--
+      
+       <a id="grabMoney" href="http://qudao.365huaer.com/mobile/game/miraclepan/pan.jsp?panId=2508&wuid=255">
+		  <div class="strategy">
+			  <div class="melist" style="border-bottom: solid #e7e7e7 1px;">
+				<div class="meli_left">
+				  <div class="melistimg"><img src="images/earn.png"></div>
+				  <div id="blink" class="melisttxt" style="color: rgb(203, 53, 54);">每月抽IPhone6s</div>
+				  <div class="new"  ><img src="images/new.png"></div>
+				</div>
+				<div class="meli_right"><span><img src="images/jiantou2.png"></span></div>
+			  </div>
+		  </div>
+	  </a>
+	  
+	  
+	     <a id="grabMoney" href='fungroup.php'>
+		  <div class="strategy">
+			  <div class="melist" style="border-bottom: solid #e7e7e7 1px;">
+				<div class="meli_left">
+				  <div class="melistimg"><img src="images/earn.png"></div>
+				  <div id="blink" class="melisttxt" style="color: rgb(203, 53, 54);">高端会员交流中心</div>
+				  <div class="new" ><img src="images/new.png"></div>
+				</div>
+				<div class="meli_right"><span><img src="images/jiantou2.png"></span></div>
+			  </div>
+		  </div>
+	  </a>
+	  
+      
+      
+      
+      <a id="grabMoney" href="https://rmw.rrx-jdb.net/conRank/?icode=GYTTKFJ&from=singlemessage&isappinstalled=1">
+		  <div class="strategy">
+			  <div class="melist" style="border-bottom: solid #e7e7e7 1px;">
+				<div class="meli_left">
+				  <div class="melistimg"><img src="images/earn.png"></div>
+				  <div id="blink" class="melisttxt" style="color: rgb(203, 53, 54);">注册马上领取20元</div>
+				  <div class="new"><img src="images/new.png"></div>
+				</div>
+				<div class="meli_right"><span><img src="images/jiantou2.png"></span></div>
+			  </div>
+		  </div>
+	  </a>
+      
+      
+      <a id="grabMoney" href="http://www.weiqudao.net/mobile/microsite/microsite.jsp?pid=2897&wuid=255&openid=3edcvfr4">
+		  <div class="strategy" >
+			  <div class="melist" style="border-bottom: solid #e7e7e7 1px;">
+				<div class="meli_left">
+				  <div class="melistimg"><img src="images/earn.png"></div>
+				  <div id="blink" class="melisttxt" style="color: rgb(203, 53, 54);">牛人干货分享</div>
+				  <div class="new"><img src="images/new.png"></div>
+				</div>
+				<div class="meli_right"><span><img src="images/jiantou2.png"></span></div>
+			  </div>
+		  </div>
+	  </a>
+	  
+	        <a id="grabMoney" href="zywindex.php">
+		  <div class="strategy">
+			  <div class="melist" style="border-bottom: solid #e7e7e7 1px;">
+				<div class="meli_left">
+				  <div class="melistimg"><img src="images/earn.png"></div>
+				  <div id="blink" class="melisttxt" style="color: rgb(203, 53, 54);">金融服务提额技巧</div>
+				  <div class="new"><img src="images/new.png"></div>
+				</div>
+				<div class="meli_right"><span><img src="images/jiantou2.png"></span></div>
+			  </div>
+		  </div>
+	  </a>
+	  
+	  	  <a id="grabMoney" href='https://ssl.gongyi.qq.com/m/weixin/detail.htm?showwxpaytitle=1&et=bk#p%3Ddetail%26id%3D7758'>
+		  <div class="strategy">
+			  <div class="melist" style="border-bottom: solid #e7e7e7 1px;">
+				<div class="meli_left">
+				  <div class="melistimg"><img src="images/earn.png"></div>
+				  <div id="blink" class="melisttxt" style="color: rgb(203, 53, 54);">已为您捐0.1元</div>
+				  <div class="new" ><img src="images/new.png"></div>
+				</div>
+				<div class="meli_right"><span><img src="images/jiantou2.png"></span></div>
+			  </div>
+		  </div>
+	  </a>
+	  
+	  
+      
+       <div class="kongbai90">&nbsp;</div>
+      
+      
+      </div>
+      
+      
+	</div>
+    <div class="kongbai2" style="margin-bottom: 210px;">&nbsp;</div>
+    
+    
+    -->
+{include file="cs/foot_2.html"}
+
+
+</body></html>

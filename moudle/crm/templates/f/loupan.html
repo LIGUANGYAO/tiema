@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>楼盘</title>
+<link href="css/menu.css" rel="stylesheet" type="text/css" />
+<link href="css/module.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/jq.mshop.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+
+<script type="text/javascript" src="js/adddate.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+  <div class="content">
+    <div class="botable">
+
+{if $fall==1}  
+<table class="table" width="100%" border="0" style="margin-bottom: 7px;">
+    <form>
+        <tr>
+            <th style="text-align: left;border-right-style:none">
+        <input id="a_text" value="添加楼盘" type="button"  onclick="location='loupan.html?g=949e64acdc79e06fd'" />&nbsp; </th><th style="text-align: right; border-left-style:none">
+            楼盘用户:&nbsp<select name='yongtu' id='yongtu' ><option  value=''>全部</option><option  value='1'>住宅</option><option  value='2'>商业</option></select>&nbsp&nbsp&nbsp电梯:&nbsp<select name='dianti' id='dianti' ><option  value=''>全部</option><option  value='1'>无</option><option  value='2'>有</option></select>&nbsp&nbsp&nbsp     <input  type="text"  id="key" name="key"  placeholder="本页搜索" />&nbsp;<input  type="text"  placeholder="关键字"  id="m_key" name="m_key"/>&nbsp;<input  value="搜索" type="submit" />&nbsp;<input  value="excel导出" type="button" id="excel" /><input  value="导入" type="button" id="import_excel" />&nbsp;&nbsp;&nbsp;<input  type="button" value="刷新"   onclick="location='loupan.html'" />&nbsp;</th>
+        </tr>
+    </form>
+</table>
+
+
+<table class="table" width="100%" border="0">
+    <tr>
+        <th>楼盘代码</th>
+        <th>楼盘名称</th>
+        <th>楼盘用户</th>
+        <th>土地级别及类型</th>
+        <th>位置状况</th>
+        <th>电梯</th>
+        <th>多层住宅均价</th>
+        <th>住宅调整幅度</th>
+        <th>主街店面均价</th>
+        <th>店面调整幅度</th>
+        <th>多层</th>
+        <th>高层</th>
+        <th style="width:110px">操作</th>
+    </tr>
+    
+<tbody  id="table_t">
+{foreach from=$loupan_list item=loupan_list}
+    <tr>
+            <td >{$loupan_list.loupan_sn}</td>
+            <td >{$loupan_list.loupan_name}</td>
+            <td >{if $loupan_list.yongtu==""}{elseif $loupan_list.yongtu==""}<a  style="color:">全部</a>{elseif $loupan_list.yongtu=="1"}<a  style="color:">住宅</a>{elseif $loupan_list.yongtu=="2"}<a  style="color:">商业</a>{/if}</td>
+            <td >{$loupan_list.tudijb_lb}</td>
+            <td >{$loupan_list.weizhi}</td>
+            <td >{if $loupan_list.dianti==""}{elseif $loupan_list.dianti==""}<a  style="color:">全部</a>{elseif $loupan_list.dianti=="1"}<a  style="color:#000">无</a>{elseif $loupan_list.dianti=="2"}<a  style="color:#000">有</a>{/if}</td>
+            <td >{$loupan_list.duocengzhuzhai_junjia}</td>
+            <td >{$loupan_list.tiaozhengfudu}</td>
+            <td >{$loupan_list.zhudianmianjunjia}</td>
+            <td >{$loupan_list.dmtiaozhengfudu}</td>
+            <td >{$loupan_list.duoceng}</td>
+            <td >{$loupan_list.gaoceng}</td>
+            
+        <td > 
+        {if $loupan_list.tzsy==1}
+        <img  title="启用" name="{$loupan_list.loupan_sn}" id="tzsy_qy"  src="images/no.gif" />&nbsp;
+        <img  title="修改" name="{$loupan_list.loupan_sn}" id="edit"  src="images/icon_edit.gif" />&nbsp;
+        <img id="delete_code" name="{$loupan_list.loupan_sn}" title="删除" src="images/icon_drop.gif"/>
+        
+        {else if }
+        <img  title="禁用" name="{$loupan_list.loupan_sn}" id="tzsy_jy"  src="images/yes.gif" />&nbsp;
+        <img  title="修改" name="{$loupan_list.loupan_sn}" id="edit"  src="images/icon_edit.gif" />&nbsp;
+        <img id="delete_code" name="{$loupan_list.loupan_sn}" title="删除" src="images/icon_drop.gif"/>
+        
+        
+        {/if}
+        </td>
+    
+    </tr>
+{foreachelse}
+    <tr>
+        <td style="width:70px" colspan="20">无记录</td>
+    </tr>
+{/foreach}
+
+</tbody>
+</table>
+
+
+<table class="table" width="100%" border="0">
+    <tr>
+        <td style="text-align: right;">{include file="foot.tpl"}</td>
+    </tr> 
+</table>
+
+
+{/if}
+<script type="text/javascript">
+
+        $("#loupan_name").val("{$loupan_name}");
+        
+        $("#yongtu").val("{$yongtu}");
+        
+        $("#dianti").val("{$dianti}");
+        $("#m_key").val("{$m_key}");
+        $("#m_key").focus();
+         
+        $("#excel").click(function (){
+            var loupan_name =$("#loupan_name").val();
+            var yongtu =$("#yongtu").val();
+            var dianti =$("#dianti").val();
+	
+            window.open("excel.php?m=loupan&loupan_name="+loupan_name+"&yongtu="+yongtu+"&dianti="+dianti+""); 
+        })
+
+</script>
+    </div>
+   <!-- end .content --></div>
+<!-- end .container --></div>
+
+<input  type="hidden" value="0" id="lbxs_open"/>
+<input  type="hidden" value="d51d249cad20c82cc" id="g_e"/>
+<input  type="hidden" value="d9403941e30ed1ab2" id="g_d"/>
+<input  type="hidden" value="b19f4313cd91ea12c" id="g_xs"/>
+<input  type="hidden" value="loupan_sn" id="bianjisetf1"/>
+
+
+
+
+<div class="alert" style="display:none;">
+
+</div>
+
+<div id="leavemsg" style="display:none;">
+<input type="hidden" id="leaveid"/><input type="hidden" id="leavename"/>
+
+<form method="post" action="excel.php?m=dr_loupan" enctype= "multipart/form-data" >
+<table class="table" width="100%" border="0" style="margin-bottom: 7px;">
+<tr><th colspan="2" style="text-align: center;" >excel导入</th></tr>
+
+<tr>
+<td>选择excel文件:<br />
+<input  type="hidden" value="true" name="leadExcel"/>
+<input  type="file" name="inputExcel" /></td></tr>
+
+<tr ><td style="text-align: right;" colspan="2"><a href="phpexcel/tempfile/loupan.xls">格式下载</a>&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+
+<tr ><td style="text-align: right;" colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;<input  type="submit"  value="导入"/>&nbsp;&nbsp;&nbsp;<input  type="button" value="取消" id="msgquxiao" /></td></tr>
+
+
+<tr><th colspan="2" style="text-align: center;color:red;"  id="errmes"></th></tr>
+</table>
+</form>
+</div>
+
+
+</div>
+
+</body>
+</html>
+<script type="text/javascript">
+<!--
+$(document).ready(function ()
+{      
+        $("#import_excel").click(function(){
+            $(".alert").fadeIn();
+            $("#leavemsg").fadeIn();
+        })
+        $("#msgquxiao").click(function(){
+             $(".alert").fadeOut();
+             $("#leavemsg").fadeOut();
+        })
+
+        
+        
+        $("img[id='edit']").each(function (){
+           var  lbxs_open=$("#lbxs_open").val();
+           var  g_e=$("#g_e").val();
+           var  bianjisetf1=$("#bianjisetf1").val();
+           
+           $(this).click(function (){
+            if(lbxs_open==0)
+            {
+                window.location='loupan.html?g='+g_e+'&'+bianjisetf1+'='+encodeURI(encodeURI($(this).attr("name")));
+            }else
+            {
+                window.open('loupan.html?g='+g_e+'&'+bianjisetf1+'='+encodeURI(encodeURI($(this).attr("name"))));
+            }         
+           
+        })
+        })
+        
+        var  bianjisetf1=$("#bianjisetf1").val();
+         $("img[id='delete_code']").each(function (){
+            var  g_d=$("#g_d").val();
+            
+            $(this).click(function (){
+        
+            
+              if(confirm("删除"+$(this).attr("name")+"")){
+               htmlobj=$.ajax({url:"loupan.html?g="+g_d+"&"+bianjisetf1+"="+encodeURI(encodeURI($(this).attr("name"))),async:false});
+              //alert(htmlobj.responseText);
+              if(htmlobj.responseText==1)
+              {
+                window.location.reload();
+              }
+              else
+              {
+                alert('删除失败,存在关联数据');
+              }
+              
+              
+            }else return false;
+            
+            })
+        })
+        
+      
+        
+        var  g_xs=$("#g_xs").val();
+        $("img[id='tzsy_jy']").each(function (){
+            
+           $(this).click(function (){
+        
+           //if(confirm("禁用"+$(this).attr("name")+"")){
+             
+              htmlobj=$.ajax({url:"loupan.html?g="+g_xs+"&"+bianjisetf1+"="+encodeURI(encodeURI($(this).attr("name")))+"&alt=1",async:false});
+              //alert(htmlobj.responseText);
+              window.location.reload();
+            //}else return false;
+            
+          //alert($(this).attr("title"));
+           //$("#hide_img").colorToggle(200);
+           
+           
+        })
+        })
+        $("img[id='tzsy_qy']").each(function (){
+            
+           $(this).click(function (){
+        
+           //if(confirm("启用"+$(this).attr("name")+"")){
+             
+              htmlobj=$.ajax({url:"loupan.html?g="+g_xs+"&"+bianjisetf1+"="+encodeURI(encodeURI($(this).attr("name")))+"&alt=0",async:false});
+              //alert(htmlobj.responseText);
+              window.location.reload();
+            //}else return false;
+            
+          //alert($(this).attr("title"));
+           //$("#hide_img").colorToggle(200);
+           
+           
+        })
+        })
+         
+         
+         $("img[id='fuzhi']").each(function (){
+                
+                $(this).click(function(){
+                    
+                      window.clipboardData.setData("Text",$(this).attr("name"));
+                     
+                })
+               
+         })
+        
+        
+          $("img[id='yulan']").each(function (){
+                
+                $(this).click(function(){
+                   window.open($(this).attr("name"))
+                })
+               
+         })
+        
+        
+        
+
+    
+})
+-->
+</script>

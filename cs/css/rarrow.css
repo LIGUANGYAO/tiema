@@ -1,0 +1,86 @@
+﻿@font-face {
+	font-family: 'icomoon';
+	src:url('../fonts/rarrow.eot?g7vbgh');
+	src:url('../fonts/rarrow.eot?#iefixg7vbgh') format('embedded-opentype'),
+		url('../fonts/rarrow.woff?g7vbgh') format('woff'),
+		url('../fonts/rarrow.ttf?g7vbgh') format('truetype'),
+		url('../fonts/rarrow.svg?g7vbgh#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.icon-rarrow:before {
+	content: "\e600";
+	color:#898989;
+	height:40px;
+	line-height:40px;
+}
+
+.ptbaner{ background-color:#f5f5f5;}
+.ptbaner_bg{ background-color:#cc3534; height:60px; line-height:60px; text-align:center; font-size:22px; color:#fff; font-weight:bold;}
+.ptbaner ul{ width:90%; margin:17px auto;}
+.ptbaner img{ width:100%;}
+.ptdiv{ border-bottom:1px solid #c5c5c5; border-top:1px solid #c5c5c5; margin:5px 0; width:100%; background:#FFF;}
+.ptdiv ol{ list-style:none;}
+.ptdiv li{ height:50px; line-height:50px;}
+.ptdiv .libgc{background-color:#E1E1E1}
+.ptdiv span{ float:right; padding-right:25px; padding-top:5px;}
+.icon-youjiantou{height:40px; line-height:40px;font-size:20px;color:#898989;}
+.oliborder{ border-bottom:1px solid #c5c5c5;padding-left:5%; }
+.oliborder2{ padding-left:5%;}
+ol a{text-decoration:none; color:#000;}
+.ptfoot{ width:90%; margin:17px auto; background:#cc3534; font-size:16px; border:1px solid #cc3534;border-radius:6px; height:40px; line-height:40px; text-align:center; color:#FFF;}
+
+.ptbgimg{position:absolute;z-index:-1;width:100%;height:100%;top:0px;left:0px;}
+.imgdiv{ margin:0 auto;}
+/*8.6新增*/
+.imgdiv .title_pt{ width:90%; text-align:center; font-size:16px; font-weight:bold;margin:40px auto;}
+.imgdiv .answer_pt{ width:86%; margin:0 auto; font-size:14px; line-height:20px;}
+.imgdiv .answer_pt label{ font-size:16px; font-weight:bold;}
+.imgdiv .answer_pt p{ margin-top:10px;text-indent:25px}
+
+.imgdiv .img img{width:100%; height:auto;}
+
+.bgcolor3{background-color:#EAEAEA;}
+.wsqytit{ text-align:center; margin:0 auto; padding:20px; font-size:24px; background:#cc3534; color:#fff;font-family: "Microsoft Yahei",sans-serif;}
+.wsqyinfo{ width:100%;height:100%;padding-top:20px;padding-bottom:10px; border-bottom: solid #dadad8 1px; display:block; overflow:hidden;background:#fff;}
+.linebg{ background:#fff;}
+.wsqyinfo .infopic{width:25%; float:left; padding-left:10px; padding-right:15px;}
+.wsqyinfo .infopic img{width:90px; height:90px;border-radius:6px;}
+.wsqyinfo .infotxt{width:65%; float:left; text-align:left; margin:0 0 0 0;}
+.wsqyinfo .infotxt .name{ min-height:24px; text-align:left; font-size:18px; color:#424242; float:left;width:auto; display:block; overflow:hidden;}
+.wsqyinfo .infotxt .name span{ text-align:right; right:0px; padding-right:40px; font-size:12px;}
+.wsqyinfo .infotxt .title{ clear:both; min-height:22px; text-align:left; font-size:14px; color:#64623c; float:left;width:auto; display:block; overflow:hidden;}
+.wsqyinfo .infotxt .title a{color:#64623c;}
+.wsqyinfo .infotxt .title span{float:left;height:22px; line-height:22px; padding-right:6px; text-align:left; font-size:14px; color:#666666;}
+.wsqyinfo .infotxt .con_info{ clear:both;height:50px; text-align:left; font-size:12px; color:#64623c; float:left;width:auto; line-height:23px; margin-top:5px; overflow:hidden; padding-right:5px;}
+.wsqyinfo .infotxt .con_infomoney{ clear:both; text-align:left; font-size:10px; margin-top:5px; color:#f01965; float:left;width:auto; line-height:22px;overflow:hidden;}
+.wsqyinfo .infotxt .con_wxqyt{ clear:both; text-align:left; font-size:10px; margin-top:5px; color#CCC; float:left;width:auto; line-height:22px;overflow:hidden;}
+a .con_wxqyt{ color:#666;}
+.wsqyinfo .infotxt .con_infomoney span{ color:#ec700e;}
+.wstime{ background:#CECECE; width:35%; height:20px; line-height:20px; margin:15px auto 5px;border-radius:6px; text-align:center; font-size:12px;color:#fff;}
+
+.notice{ width:90%; margin:0 auto;}
+.notice li{ margin:5px auto 5px auto;}
+.notice img{ width:100%;}
+.noticetit{ font-size:18px;}
+.noticetime{ font-size:12px; color:#5c5c5c;}
+.noticetext{ font-size:14px; line-height:1.5;}
+.noticetext label{color:#cc3534; font-weight:bold; line-height:2;}
+.noticetext h1{color:#000; font-weight:bold; line-height:2;}
+.noticetext h2{font-weight:bold; }
+.noticetext .botm{text-align:right; padding:10px 10px 0 0; width:260px; float:right;}
+.noticetext .botm .time{text-align:center;}

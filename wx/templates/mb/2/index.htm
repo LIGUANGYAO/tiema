@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>泉州朝歌</title>
+<meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+<link type="text/css" rel="stylesheet" href="templates/mb/2/wiying/Tpl/Wap/wiying/Index/J-lvjianwu/default/index.css" />
+<script type="text/javascript" src="templates/mb/2/wiying/Tpl/Wap/wiying/common/jquery.js"></script>
+<script type="text/javascript" src="templates/mb/2/wiying/Tpl/Wap/wiying/common/jquery-1.2.6.pack.js"></script>
+<script type="text/javascript" src="templates/mb/2/wiying/Tpl/Wap/wiying/common/g.base.js"></script>
+<script type="text/javascript" src="templates/mb/2/wiying/Tpl/Wap/wiying/common/iscroll.js"></script>
+<script type="text/javascript" src="templates/mb/2/wiying/Tpl/Wap/wiying/common/alert.js"></script>
+<script type="text/javascript" src="templates/mb/2/wiying/Tpl/Wap/wiying/common/common.js"></script>
+<script type="text/javascript">
+    var myScroll;
+    function loaded() {
+        myScroll = new iScroll('wrapper', {
+            snap: true,
+            momentum: false,
+            hScrollbar: false,
+            onScrollEnd: function() {
+                document.querySelector('#indicator > li.active').className = '';
+                document.querySelector('#indicator > li:nth-child(' + (this.currPageX + 1) + ')').className = 'active';
+            }
+        });
+        
+        
+        var indicator=document.getElementById("indicator");
+        var dli=indicator.getElementsByTagName("li");
+        dli[0].className="active";
+        //alert(dli[0].className);
+    }
+    document.addEventListener('DOMContentLoaded', loaded, false);
+</script>
+</head>
+
+<body>
+<header>
+    <div class="banner">
+        <div id="wrapper" style="overflow: hidden; ">
+            <div id="scroller">
+                <ul id="thelist">
+                {foreach from=$slide_imgs22 item=slide_imgs22}
+                    <li><p>
+                    </p>
+                    <img src="../{$slide_imgs22.b_img_url}" width="300" height="180"/>
+                    </li>
+                {/foreach}    
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="nav">
+        <div id="prev" onClick="javascript:myScroll.scrollToPage('prev', 0);"></div>
+        <ul id="indicator">
+        {foreach from=$slide_imgs22 item=slide_imgs22}
+        <li ></li>
+         {/foreach}
+         </ul>
+        <div id="next" onClick="javascript:myScroll.scrollToPage('next', 0, 400, 2);"></div>
+    </div>
+    <div class="clr"></div>
+</header>
+<script>
+    var count = document.getElementById("thelist").getElementsByTagName("img").length;
+    for (i = 0; i < count; i++) {
+        document.getElementById("thelist").getElementsByTagName("img").item(i).style.cssText = " width:" + document.body.clientWidth + "px";
+    }
+    document.getElementById("scroller").style.cssText = " width:" + document.body.clientWidth * count + "px";
+    setInterval(function() {
+        myScroll.scrollToPage('next', 0, 400, count);
+    }, 3500);
+    window.onresize = function() {
+        for (i = 0; i < count; i++) {
+            document.getElementById("thelist").getElementsByTagName("img").item(i).style.cssText = " width:" + document.body.clientWidth + "px";
+        }
+        document.getElementById("scroller").style.cssText = " width:" + document.body.clientWidth * count + "px";
+    };
+</script>
+<div class="content">
+
+    <a href="{$slide2.0.action_url}" data-role="none">
+        <div class="img" style="background:url(images/13809673822754.png) center no-repeat; background-size:contain;"></div>
+        <div class="text">{$slide2.0.slide2_name}</div>
+    </a><a href="{$slide2.1.action_url}" data-role="none">
+        <div class="img" style="background:url(images/13809673974739.png) center no-repeat; background-size:contain;"></div>
+        <div class="text">{$slide2.1.slide2_name}</div>
+    </a><a href="{$slide2.2.action_url}" data-role="none">
+        <div class="img" style="background:url(images/13809674157426.png) center no-repeat; background-size:contain;"></div>
+        <div class="text">{$slide2.2.slide2_name}</div>
+    </a><a href="{$slide2.3.action_url}" data-role="none">
+        <div class="img" style="background:url(images/13809674319154.png) center no-repeat; background-size:contain;"></div>
+        <div class="text">{$slide2.3.slide2_name}</div>
+    </a><a href="{$slide2.4.action_url}" data-role="none">
+        <div class="img" style="background:url(images/13809674461949.png) center no-repeat; background-size:contain;"></div>
+        <div class="text">{$slide2.4.slide2_name}</div>
+    </a><a href="{$slide2.5.action_url}" data-role="none">
+        <div class="img" style="background:url(images/13809674651404.png) center no-repeat; background-size:contain;"></div>
+        <div class="text">{$slide2.5.slide2_name}</div>
+    </a><a href="{$slide2.6.action_url}" data-role="none">
+        <div class="img" style="background:url(images/13809674805918.png) center no-repeat; background-size:contain;"></div>
+        <div class="text">{$slide2.6.slide2_name}</div>
+    </a><a href="{$slide2.7.action_url}" data-role="none">
+        <div class="img" style="background:url(images/13809674974016.png) center no-repeat; background-size:contain;"></div>
+        <div class="text">{$slide2.7.slide2_name}</div>
+    </a></div>
+<div class="footer">
+<p class="footer-top">版权所有：铁马科技</p>
+<p class="footer-bottom" data-role="none">
+   <a href="http://api.map.baidu.com/marker?location=24.939924,118.673453&title=朝歌量贩式KTV&content=朝歌量贩式KTV&output=html&src=tiemal">地图导航</a>  
+</p>
+</div>
+</body>
+</html>

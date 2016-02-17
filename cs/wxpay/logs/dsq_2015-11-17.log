@@ -1,0 +1,109 @@
+[2015-11-17 16:14:58][debug] begin notify
+[2015-11-17 16:14:58][debug] begin notify
+[2015-11-17 16:14:58][debug] begin notify
+[2015-11-17 16:17:11][debug] begin notify
+[2015-11-17 16:17:11][debug] begin notify
+[2015-11-17 16:17:12][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"fq4Qpv7W4zahK9Us","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"558982EE27F3295C474ADE1524582495","trade_state":"SUCCESS"}
+[2015-11-17 16:17:12][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"SdTJDYsuDuQrXfs9","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"19FDC6637206E1A307D20E5FC156314C","trade_state":"SUCCESS"}
+[2015-11-17 16:17:12][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"mRtwrknZdblal6bw","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"2597B81727646BFAD8F62F336BD8CA9E","trade_state":"SUCCESS"}
+[2015-11-17 16:17:13][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"84ye2n3Yup1NP176","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"C17BD1C031D79C0E3D05727D786B1502","trade_state":"SUCCESS"}
+[2015-11-17 16:17:13][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"ecjfpdfHQ4hjdNwC","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"677F9D5E2A210EF27E76A067DAC17D4C","trade_state":"SUCCESS"}
+[2015-11-17 16:17:14][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"rL4tazdLa8cidwqx","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"075B25107A8C092F23B83FCC204575D6","trade_state":"SUCCESS"}
+[2015-11-17 16:17:14][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"rqOt0U0uytqjionm","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"28B616FB4492BA2E5AEEC3B9FAB787D5","trade_state":"SUCCESS"}
+[2015-11-17 16:17:14][debug] begin notify
+[2015-11-17 16:17:49][debug] begin notify
+[2015-11-17 16:17:49][debug] begin notify
+[2015-11-17 16:17:49][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"U5C5mTjHXRhd03dL","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"1DD18CCA4BD5F4CE502D0E065FC58FFC","trade_state":"SUCCESS"}
+[2015-11-17 16:17:49][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"ONbl3rqX15w5vAdb","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"FBF214B7CC3CA0B0AF488AEFEA68BBD1","trade_state":"SUCCESS"}
+[2015-11-17 16:17:50][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"UaKJkKknSLAEFwRw","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"E0FBE8E732EA3B28272084269FF551CA","trade_state":"SUCCESS"}
+[2015-11-17 16:17:50][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"JpDPnwOYXOb7NzVb","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"BEED3B6D43D998768769302053298B72","trade_state":"SUCCESS"}
+[2015-11-17 16:17:51][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"1vP5MnBrSmsymxCN","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"C83D6564DCE2FDCE5DD8DCDAAF4844EC","trade_state":"SUCCESS"}
+[2015-11-17 16:17:51][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"59y6Z4UVHYJDrj1b","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"24E4AA42C1A7A92127024323D8273371","trade_state":"SUCCESS"}
+[2015-11-17 16:17:52][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"ElTS9YyTbuHrneOE","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"E55737025AB62CF6EE4014A24C87C5E6","trade_state":"SUCCESS"}
+[2015-11-17 16:17:52][debug] begin notify
+[2015-11-17 16:20:56][debug] begin notify
+[2015-11-17 16:20:56][debug] begin notify
+[2015-11-17 16:20:57][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"6qSqTtnhWrb52ON8","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"C563C12A14FEA807F7882F5245B9BCCE","trade_state":"SUCCESS"}
+[2015-11-17 16:20:57][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"0ECTE6bb4WGYVXYl","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"2172992BE93099069FE407E9208FA85C","trade_state":"SUCCESS"}
+[2015-11-17 16:20:58][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"0rKLNp1dstmnPWDn","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"7C404A9E463C9B513FED80038F99FD85","trade_state":"SUCCESS"}
+[2015-11-17 16:20:58][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"ea3w6gSF0xplV8yN","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"6F1BFAC2E6D0B964031A7578DC9C444A","trade_state":"SUCCESS"}
+[2015-11-17 16:20:59][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"ch7Vpfb7YjFNJo5U","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"15244F7747E38B0D59F3E68A9E63E1FA","trade_state":"SUCCESS"}
+[2015-11-17 16:20:59][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"LOPQInojvsZZJ86z","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"BF25C3845F3CD04A92157BC2501256AA","trade_state":"SUCCESS"}
+[2015-11-17 16:20:59][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"vgwtJev6TwzrZRcH","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"16CCDA30FE6EFD918AF267077E80DE4F","trade_state":"SUCCESS"}
+[2015-11-17 16:20:59][debug] begin notify
+[2015-11-17 16:23:27][debug] begin notify
+[2015-11-17 16:23:27][debug] begin notify
+[2015-11-17 16:23:27][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"9VW6nqUqlC6YNgHa","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"E1E7C8DE808A8B68660988E6C6B365D2","trade_state":"SUCCESS"}
+[2015-11-17 16:23:28][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"BkOBVwHjsU01dJtk","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"FC677F1AA909507827B6A9F8392CBE3E","trade_state":"SUCCESS"}
+[2015-11-17 16:23:28][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"Yyikl0xKmboyOvJP","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"49661D5D145D7B2D57DAB0D337DB141E","trade_state":"SUCCESS"}
+[2015-11-17 16:23:28][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"S7fXzQl1XdLx2jyq","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"897376004D313B4294E88C4E03EC2678","trade_state":"SUCCESS"}
+[2015-11-17 16:23:29][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"82DCm70NWKXxOZHk","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"22940418357F05CBA9FB5FCE251E9E6E","trade_state":"SUCCESS"}
+[2015-11-17 16:23:29][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"cIyEGe4Hcq2yrBon","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"6B83B1E1EFF29C4947BB5F3CB6340630","trade_state":"SUCCESS"}
+[2015-11-17 16:23:30][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"LsxMVy7Q6960Gbsd","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"2BF294A3E32D427822AAC9678FDF5E3C","trade_state":"SUCCESS"}
+[2015-11-17 16:23:30][debug] begin notify
+[2015-11-17 16:30:08][debug] begin notify
+[2015-11-17 16:30:34][debug] begin notify
+[2015-11-17 16:31:25][debug] begin notify
+[2015-11-17 16:33:29][debug] begin notify
+[2015-11-17 16:33:37][debug] begin notify
+[2015-11-17 16:33:37][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"IY4BOj6S7XtE6L3G","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"D3A70ED2263C2CAA79A9077C87EEEC53","trade_state":"SUCCESS"}
+[2015-11-17 16:33:37][debug] begin notify
+[2015-11-17 16:33:38][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"pXmxy8cs2BnDp6D8","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"8A63FF1651CBDA6DD2963F0BF52C8D24","trade_state":"SUCCESS"}
+[2015-11-17 16:33:38][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"1ElxZ05XnwKnAGGx","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"DC0E66D7A731DAFE6210D8E705866498","trade_state":"SUCCESS"}
+[2015-11-17 16:33:39][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"TIKq5BXKs8lNVqzV","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"FCD110A07D94A40F7207C2CE216CC6CF","trade_state":"SUCCESS"}
+[2015-11-17 16:33:39][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"xAXco6UVYZVRkavr","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"DFC4BB523E10370FEB3279B2B8915F44","trade_state":"SUCCESS"}
+[2015-11-17 16:33:40][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"W4jg8XbpucaMg0Pg","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"4E476868953BA5328F8B02D0FE2AEB77","trade_state":"SUCCESS"}
+[2015-11-17 16:33:40][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"1yQPNM2BXHAq12P6","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"841B5FFA083B71262CE32893F9B96E01","trade_state":"SUCCESS"}
+[2015-11-17 16:33:40][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"X05fqvOHkntcaDCt","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"73DAEAC558F4C2E931D1299B4AA6D39C","trade_state":"SUCCESS"}
+[2015-11-17 16:33:40][debug] begin notify
+[2015-11-17 16:34:32][debug] begin notify
+[2015-11-17 16:41:08][debug] begin notify
+[2015-11-17 16:41:24][debug] begin notify
+[2015-11-17 16:43:50][debug] begin notify
+[2015-11-17 16:44:41][debug] begin notify
+[2015-11-17 16:44:41][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"EhvtULfIjryRQgD7","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"CD5DC66D8867EDD00325C53F1904FC7D","trade_state":"SUCCESS"}
+[2015-11-17 16:44:42][debug] begin notify
+[2015-11-17 16:44:42][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"Ngly1Iv1Pkvu40ls","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"757BE918AC26C205DF86963BEE5C9314","trade_state":"SUCCESS"}
+[2015-11-17 16:50:58][debug] begin notify
+[2015-11-17 16:52:23][debug] begin notify
+[2015-11-17 16:52:23][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"nLd69wHMDczvL7Rs","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"D7900078E782A19145F4D4A388E4C8CB","trade_state":"SUCCESS"}
+[2015-11-17 16:52:26][debug] begin notify
+[2015-11-17 16:52:26][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"h78enbOLds6QpzoX","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"CB00BB7B31D7FB70DF1E98E3DFD1357F","trade_state":"SUCCESS"}
+[2015-11-17 16:54:21][debug] begin notify
+[2015-11-17 16:54:22][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"hHyFURm3eJYCqyZz","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"9C9A0FAEE56DF050B84EBD3D77BB7FEC","trade_state":"SUCCESS"}
+[2015-11-17 17:00:02][debug] begin notify
+[2015-11-17 17:00:03][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"xqq2w8JIoqShU0lW","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"984CFD8854CAF9532344C19C37728C81","trade_state":"SUCCESS"}
+[2015-11-17 17:01:39][debug] begin notify
+[2015-11-17 17:01:40][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"GtNp28LKZOr8iy5o","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"F247A1F934D2E45CFE89963D080C9E24","trade_state":"SUCCESS"}
+[2015-11-17 17:01:42][debug] begin notify
+[2015-11-17 17:01:43][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"pHcIPswJfVnjdPRs","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"118C1B0044398A8AFEF162A967FF4111","trade_state":"SUCCESS"}
+[2015-11-17 17:01:56][debug] begin notify
+[2015-11-17 17:01:57][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"YmiVYn55NgcHY1y9","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"76081446A78C13FB9748B275976F0CBF","trade_state":"SUCCESS"}
+[2015-11-17 17:07:22][debug] begin notify
+[2015-11-17 17:07:23][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"ajNDOp5DpBsMjgIm","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"7DAC0AAEE076B005BDA61FC13DBA4E38","trade_state":"SUCCESS"}
+[2015-11-17 17:07:24][debug] begin notify
+[2015-11-17 17:07:24][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"mugEiDXLapKegKi8","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"AEC6D40F7B183236C8628B168C61E195","trade_state":"SUCCESS"}
+[2015-11-17 17:07:25][debug] begin notify
+[2015-11-17 17:07:26][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"wmQ0CWVM8d2A6O3x","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"FBDBE0F8C3C146AA4820971B5E76519E","trade_state":"SUCCESS"}
+[2015-11-17 17:07:26][debug] begin notify
+[2015-11-17 17:07:27][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"h57blJ427qeYFf3d","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"ABAEEFEABDD50D7151CF31654B4470F5","trade_state":"SUCCESS"}
+[2015-11-17 17:07:57][debug] begin notify
+[2015-11-17 17:07:58][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"OR9yiWWgboZETn3Z","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"FBF36ED96C0CFC682E25785118B04951","trade_state":"SUCCESS"}
+[2015-11-17 17:10:27][debug] begin notify
+[2015-11-17 17:10:27][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"YjGSrHgttg7inN5X","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"77595DCB65B6F200B2444D7D4599397B","trade_state":"SUCCESS"}
+[2015-11-17 17:10:56][debug] begin notify
+[2015-11-17 17:10:56][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"73WPdKQrtO2Karwh","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"061AF65E11DBD991AFEAD37E9B72E996","trade_state":"SUCCESS"}
+[2015-11-17 17:11:43][debug] begin notify
+[2015-11-17 17:11:44][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"NsrRnhVp0yo6z8iA","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"43098982D03933BCDF75C8319EFC9F7D","trade_state":"SUCCESS"}
+[2015-11-17 17:11:45][debug] begin notify
+[2015-11-17 17:11:45][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"qh13anlox30yKKYh","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"DE6CDD36CD554BD24A47321C8A2A1798","trade_state":"SUCCESS"}
+[2015-11-17 17:11:46][debug] begin notify
+[2015-11-17 17:11:47][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"TRANSACTION_ID_INVALID","err_code_des":"\u8ba2\u5355\u53f7\u975e\u6cd5","mch_id":"1279292901","nonce_str":"qynOvs7My5TTDi24","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"B7A37469AE6402002B46A8C3FD602D6F","trade_state":"SUCCESS"}
+[2015-11-17 17:12:18][debug] begin notify
+[2015-11-17 17:12:18][debug] query:{"appid":"wx9bd85e016d66c1ea","err_code":"ORDERNOTEXIST","err_code_des":"order not exist","mch_id":"1279292901","nonce_str":"eNnNbdGbg2hCwNUX","result_code":"FAIL","return_code":"SUCCESS","return_msg":"OK","sign":"DCC6FF7F88BB95A84C7202444D6E43B1","trade_state":"SUCCESS"}
+[2015-11-17 17:12:55][debug] begin notify
+[2015-11-17 17:12:57][debug] query:{"appid":"wx9bd85e016d66c1ea","mch_id":"1279292901","nonce_str":"DFNV8Bw1FjO1Hv7I","out_trade_no":"127929290120151117162426","result_code":"SUCCESS","return_code":"SUCCESS","return_msg":"OK","sign":"0997B70984C25755EC7C35A021DEDBCA","trade_state":"SUCCESS","trade_state_desc":"\u8ba2\u5355\u672a\u652f\u4ed8"}
+[2015-11-17 17:13:49][debug] begin notify
+[2015-11-17 17:13:50][debug] query:{"appid":"wx9bd85e016d66c1ea","mch_id":"1279292901","nonce_str":"GBCTs8R5jb4lecCJ","out_trade_no":"127929290120151117162426","result_code":"SUCCESS","return_code":"SUCCESS","return_msg":"OK","sign":"55640E0F32DD869ED104200E84AAAA9B","trade_state":"SUCCESS","trade_state_desc":"\u8ba2\u5355\u672a\u652f\u4ed8"}
+[2015-11-17 17:13:50][debug] begin notify
+[2015-11-17 17:13:50][debug] begin notify

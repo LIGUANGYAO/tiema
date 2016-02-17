@@ -1,0 +1,273 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>客户</title>
+<link href="css/menu.css" rel="stylesheet" type="text/css" />
+<link href="css/module.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/jq.mshop.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+
+<script type="text/javascript" src="js/adddate.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+  <div class="content">
+    <div class="botable">
+
+{if $fall==1}  
+<table class="table" width="100%" border="0" style="margin-bottom: 7px;">
+    <form>
+        <tr>
+            <th style="text-align: left;border-right-style:none">
+        <input id="a_text" value="添加客户" type="button"  onclick="location='kehu.html?g=af37727262206c493'" />&nbsp; </th><th style="text-align: right; border-left-style:none">
+            客户类型:&nbsp<select name='khlx' id='khlx' ><option  value=''>全部</option><option  value='0'>普通客户</option><option  value='1'>vip客户</option><option  value='2'>潜在客户</option><option  value='3'>失效客户</option></select>&nbsp&nbsp&nbsp数量&nbsp<input type='text' style='width: 50px;' name='sl_1' id='sl_1' onkeyup="value=value.replace(/[^0-9.]/g,'')" />&nbsp~&nbsp<input type='text' style='width: 50px;' name='sl_2' id='sl_2' onkeyup="value=value.replace(/[^0-9.]/g,'')" />     <input  type="text"  id="key" name="key"  placeholder="本页搜索" />&nbsp;<input  type="text"  placeholder="关键字"  id="m_key" name="m_key"/>&nbsp;<input  value="搜索" type="submit" />&nbsp;<input  value="excel导出" type="button" id="excel" /><input  value="导入" type="button" id="import_excel" />&nbsp;&nbsp;&nbsp;<input  type="button" value="刷新"   onclick="location='kehu.html'" />&nbsp;</th>
+        </tr>
+    </form>
+</table>
+
+
+<table class="table" width="100%" border="0">
+    <tr>
+        <th>客户代码</th>
+        <th>客户名称</th>
+        <th>固定电话</th>
+        <th>移动电话</th>
+        <th>客户备注</th>
+        <th>客户类型</th>
+        <th>数量</th>
+        <th style="width:110px">操作</th>
+    </tr>
+    
+<tbody  id="table_t">
+{foreach from=$kehu_list item=kehu_list}
+    <tr>
+            <td >{$kehu_list.kehu_sn}</td>
+            <td >{$kehu_list.kehu_name}</td>
+            <td >{$kehu_list.tel}</td>
+            <td >{$kehu_list.mobile}</td>
+            <td >{$kehu_list.bz}</td>
+            <td >{if $kehu_list.khlx==""}{elseif $kehu_list.khlx==""}<a  style="color:#000">全部</a>{elseif $kehu_list.khlx=="0"}<a  style="color:green">普通客户</a>{elseif $kehu_list.khlx=="1"}<a  style="color:#000">vip客户</a>{elseif $kehu_list.khlx=="2"}<a  style="color:#000">潜在客户</a>{elseif $kehu_list.khlx=="3"}<a  style="color:red">失效客户</a>{/if}</td>
+            <td >{$kehu_list.sl}</td>
+            
+        <td > 
+        {if $kehu_list.tzsy==1}
+        <img  title="启用" name="{$kehu_list.kehu_sn}" id="tzsy_qy"  src="images/no.gif" />&nbsp;
+        <img  title="修改" name="{$kehu_list.kehu_sn}" id="edit"  src="images/icon_edit.gif" />&nbsp;
+        <img id="delete_code" name="{$kehu_list.kehu_sn}" title="删除" src="images/icon_drop.gif"/>
+        
+        {else if }
+        <img  title="禁用" name="{$kehu_list.kehu_sn}" id="tzsy_jy"  src="images/yes.gif" />&nbsp;
+        <img  title="修改" name="{$kehu_list.kehu_sn}" id="edit"  src="images/icon_edit.gif" />&nbsp;
+        <img id="delete_code" name="{$kehu_list.kehu_sn}" title="删除" src="images/icon_drop.gif"/>
+        
+        
+        {/if}
+        </td>
+    
+    </tr>
+{foreachelse}
+    <tr>
+        <td style="width:70px" colspan="20">无记录</td>
+    </tr>
+{/foreach}
+
+</tbody>
+</table>
+
+
+<table class="table" width="100%" border="0">
+    <tr>
+        <td style="text-align: right;">{include file="foot.tpl"}</td>
+    </tr> 
+</table>
+
+
+{/if}
+<script type="text/javascript">
+
+        $("#khlx").val("{$khlx}");
+        
+        $("#sl_1").val("{$sl_1}");
+        $("#sl_2").val("{$sl_2}");
+        $("#m_key").val("{$m_key}");
+        $("#m_key").focus();
+         
+        $("#excel").click(function (){
+            var khlx =$("#khlx").val();
+            var sl =$("#sl").val();
+	
+            window.open("excel.php?m=kehu&khlx="+khlx+"&sl="+sl+""); 
+        })
+
+</script>
+    </div>
+   <!-- end .content --></div>
+<!-- end .container --></div>
+
+<input  type="hidden" value="0" id="lbxs_open"/>
+<input  type="hidden" value="d8864aff1b52fa689" id="g_e"/>
+<input  type="hidden" value="414aafcce9e10bcc5" id="g_d"/>
+<input  type="hidden" value="c3cb71ee4002b5311" id="g_xs"/>
+<input  type="hidden" value="kehu_sn" id="bianjisetf1"/>
+
+
+
+
+<div class="alert" style="display:none;">
+
+</div>
+
+<div id="leavemsg" style="display:none;">
+<input type="hidden" id="leaveid"/><input type="hidden" id="leavename"/>
+
+<form method="post" action="excel.php?m=dr_kehu" enctype= "multipart/form-data" >
+<table class="table" width="100%" border="0" style="margin-bottom: 7px;">
+<tr><th colspan="2" style="text-align: center;" >excel导入</th></tr>
+
+<tr>
+<td>选择excel文件:<br />
+<input  type="hidden" value="true" name="leadExcel"/>
+<input  type="file" name="inputExcel" /></td></tr>
+
+<tr ><td style="text-align: right;" colspan="2"><a href="phpexcel/tempfile/kehu.xls">格式下载</a>&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+
+<tr ><td style="text-align: right;" colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;<input  type="submit"  value="导入"/>&nbsp;&nbsp;&nbsp;<input  type="button" value="取消" id="msgquxiao" /></td></tr>
+
+
+<tr><th colspan="2" style="text-align: center;color:red;"  id="errmes"></th></tr>
+</table>
+</form>
+</div>
+
+
+</div>
+
+</body>
+</html>
+<script type="text/javascript">
+<!--
+$(document).ready(function ()
+{      
+        $("#import_excel").click(function(){
+            $(".alert").fadeIn();
+            $("#leavemsg").fadeIn();
+        })
+        $("#msgquxiao").click(function(){
+             $(".alert").fadeOut();
+             $("#leavemsg").fadeOut();
+        })
+
+        
+        
+        $("img[id='edit']").each(function (){
+           var  lbxs_open=$("#lbxs_open").val();
+           var  g_e=$("#g_e").val();
+           var  bianjisetf1=$("#bianjisetf1").val();
+           
+           $(this).click(function (){
+            if(lbxs_open==0)
+            {
+                window.location='kehu.html?g='+g_e+'&'+bianjisetf1+'='+encodeURI(encodeURI($(this).attr("name")));
+            }else
+            {
+                window.open('kehu.html?g='+g_e+'&'+bianjisetf1+'='+encodeURI(encodeURI($(this).attr("name"))));
+            }         
+           
+        })
+        })
+        
+        var  bianjisetf1=$("#bianjisetf1").val();
+         $("img[id='delete_code']").each(function (){
+            var  g_d=$("#g_d").val();
+            
+            $(this).click(function (){
+        
+            
+              if(confirm("删除"+$(this).attr("name")+"")){
+               htmlobj=$.ajax({url:"kehu.html?g="+g_d+"&"+bianjisetf1+"="+encodeURI(encodeURI($(this).attr("name"))),async:false});
+              //alert(htmlobj.responseText);
+              if(htmlobj.responseText==1)
+              {
+                window.location.reload();
+              }
+              else
+              {
+                alert('删除失败,存在关联数据');
+              }
+              
+              
+            }else return false;
+            
+            })
+        })
+        
+      
+        
+        var  g_xs=$("#g_xs").val();
+        $("img[id='tzsy_jy']").each(function (){
+            
+           $(this).click(function (){
+        
+           //if(confirm("禁用"+$(this).attr("name")+"")){
+             
+              htmlobj=$.ajax({url:"kehu.html?g="+g_xs+"&"+bianjisetf1+"="+encodeURI(encodeURI($(this).attr("name")))+"&alt=1",async:false});
+              //alert(htmlobj.responseText);
+              window.location.reload();
+            //}else return false;
+            
+          //alert($(this).attr("title"));
+           //$("#hide_img").colorToggle(200);
+           
+           
+        })
+        })
+        $("img[id='tzsy_qy']").each(function (){
+            
+           $(this).click(function (){
+        
+           //if(confirm("启用"+$(this).attr("name")+"")){
+             
+              htmlobj=$.ajax({url:"kehu.html?g="+g_xs+"&"+bianjisetf1+"="+encodeURI(encodeURI($(this).attr("name")))+"&alt=0",async:false});
+              //alert(htmlobj.responseText);
+              window.location.reload();
+            //}else return false;
+            
+          //alert($(this).attr("title"));
+           //$("#hide_img").colorToggle(200);
+           
+           
+        })
+        })
+         
+         
+         $("img[id='fuzhi']").each(function (){
+                
+                $(this).click(function(){
+                    
+                      window.clipboardData.setData("Text",$(this).attr("name"));
+                     
+                })
+               
+         })
+        
+        
+          $("img[id='yulan']").each(function (){
+                
+                $(this).click(function(){
+                   window.open($(this).attr("name"))
+                })
+               
+         })
+        
+        
+        
+
+    
+})
+-->
+</script>

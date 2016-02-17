@@ -1,0 +1,34 @@
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td,hr{margin:0;padding:0}
+body{line-height:1.333;font-size:12px}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-family:arial,'hiragino sans gb','microsoft yahei','Simsun',sans-serif}
+li{list-style:none}
+a:link,a:visited{text-decoration:none}
+
+
+.head-v3{position:relative;z-index:100;min-width:1000px; margin-bottom: 3px;}
+/*min-width:1000px;
+.head-v3 .navigation-inner{margin:0 auto;width:980px;position:relative;}
+ */
+.head-v3 .navigation-inner{margin:0 auto;width:100%;position:relative;}
+.navigation-up{height:40px;background:#102a49;  line-height: 40px; }
+.navigation-up .navigation-v3{margin-left:5px;left:195px; float:left;background:#e5effe ;position:absolute; }
+.navigation-up .navigation-v3 ul{float:left; }
+.navigation-up .navigation-v3 li{float:left;font: bolder 14px/50px "microsoft yahei";color:black; border-left:1px solid #bed5f3; border-right:1px solid #bed5f3;  }
+.navigation-up .navigation-v3 .nav-up-selected{background:#eef5fd;}
+.navigation-up .navigation-v3 .nav-up-selected-inpage{background:#e5effe ;}
+.navigation-up .navigation-v3 li h2{font-weight:normal;padding:0;margin:0}
+.navigation-up .navigation-v3 li h2 a{padding:0 25px;line-height:40px;color:black;display:inline-block;height:40px;font-family:"microsoft yahei" }
+
+.navigation-down{position:absolute;top:40px;left:0px;width:100%}
+.navigation-down .nav-down-menu{left:195px;width:60%;margin:0;background:#344157;position:absolute;top:0px;filter:alpha(opacity=90); 
+-moz-opacity:0.9; 
+opacity:0.9;}
+.navigation-down .nav-down-menu .navigation-down-inner{margin:auto;width:1200px;position:relative;}
+.navigation-down .nav-down-menu dl{float:left;margin:18px 80px 18px 0}
+.navigation-down .menu-1 dl{margin:5px 80px 5px 0}
+.navigation-down .menu-1 dt{font:normal 14px "microsoft yahei";color:#61789e;padding-bottom:10px;border-bottom:1px solid #61789e;margin-bottom:10px; }
+.navigation-down .menu-1 dd{margin:5px 0px 5px 0}
+.navigation-down .menu-1 dd a{color:#fff;font:normal 14px/30px "microsoft yahei"}
+.navigation-down .menu-1 dd a:hover{color:#60aff6}
+.navigation-down .menu-2 dd a,.navigation-down .menu-3 dd a{color:#fff;font:normal 14px "microsoft yahei"}

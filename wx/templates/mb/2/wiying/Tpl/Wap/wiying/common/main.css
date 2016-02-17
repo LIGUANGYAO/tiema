@@ -1,0 +1,102 @@
+
+
+
+
+
+
+/* 2013年5月23日 15:21
+ * 修改 font-size:15px; -> font-size:14px;
+ */
+
+
+.home_nav{background:#04182e;overflow:hidden;}
+.home_nav ul{width:100%;margin:5px 0;}
+.home_nav li{display:inline-block;text-align:center;padding:5px 0;width:15%;}
+.home_nav li.box_four{width:20%;}
+.home_nav a{color:#fff;font-size:16px;}
+
+.home_slide img{background:url(img01.jpg);width:100%;}
+.home_news_box,.b2c_con{width:90%;margin:0 auto;padding:14px 0;}
+/* 2013年5月23日 14:52
+ * 增加 padding-top:14px;
+ */
+.home_news_box li,.b2c_con li{border-bottom:solid 1px #cbcbcb;border-top:solid 1px #fff;padding:10px 0;}
+/* 2013年5月23日 15:03
+ * 删除 height:33px;line-height:33px;
+ * 2013年5月23日 15:11
+ * 增加 padding:10px 0;
+ */
+.home_news_box a,.b2c_con a{color:#333;}
+/* 2013年5月23日 14:57
+ * 删除 font-size:1em;
+ */
+.home_news_box li.nb_b,.b2c_con li.nb_b{border-bottom:none;}
+.home_news_box li.nb_t,.b2c_con li.nb_t{border-top:none;}
+
+.b2c_tit{background:#ededed;border-top:solid 1px #c5c7cb;border-bottom:solid 2px #0a315a;}
+/* 2013年5月23日 11:58
+ * 删除 height:41px;
+ */
+
+.b2c_news h2{font-size:16px;margin:10px 0 10px 14px;line-height:15px;}
+.b2c_news h2 a{color:#0a315a;}
+/* 2013年5月23日 11:53
+ * 修改 font-size:20px; -> font-size:16px;
+ * 
+ */
+
+.b2c_nav{margin-top:10px;}
+
+.b2c_nav span{border-right:solid 1px #cbcbcb;border-left:solid 1px #fff;padding:0 6px;float:left;line-height:15px;}
+.b2c_nav a{color:#000;}
+.b2c_nav span.nb_l{border-left:none;}
+.b2c_nav span.nb_r{border-right:none;}
+.b2c_con h3{text-align:center;font-size:18px;margin-top:16px;padding-bottom:16px;border-bottom:solid 1px #cbcbcb;}
+.b2c_con h3 a{color:#cc0000;}
+
+.b2c_link{display:-webkit-box;display:box;display:-moz-box;margin:20px 0 140px 0;width:100%;}
+.b2c_link p{-webkit-box-flex:1;box-flex:1-moz-box-flex:1;text-align:center;font-size:1em;}
+.b2c_link a{display:inline-block;border:solid 1px #9ca3ab;border-radius:5px;padding:9px 22px;font-size:14px;}
+
+.b2c_home_nav{background:#cedff2;font-size:16px;}
+.b2c_home_nav a{color:#0a315a;}
+.b2c_home_nav ul{display:block;margin-left:10%;width:90%;}
+.b2c_home_nav li{text-align:left;float:left;width:25%;}
+
+
+
+.b2c_show{border-radius:5px;margin-top:20px;width:100%;background:#ededed;border:solid 1px #ccc;display:inline-block;text-align:center;padding:10px 0;}
+
+.b2c_head{width:100%;background:#0a315a;height:36px;line-height:36px;font-size:14px;} 
+/* 2013年5月23日 10:40 
+ * 增加 width:100%; 
+ * 2013年5月23日 11:02
+ * 修改 height:33px; -> height:36px;
+ * 增加 font-size:14px;
+ * 增加 line-height:36px;
+*/
+
+
+.b2c_head a{font-size:14px;}
+/* 2013年5月23日 11:51
+ * 增加 .b2c_head a{font-size:14px;}
+ */
+
+
+/*.pub_nav{} 2013年5月23日
+ * 修改 height:88px; -> height:36px; 
+ * 删除 height:36px; 
+ * 删除 .pub_nav 样式
+ */
+
+
+/* 2013年5月23日 10:52
+ * 修改 line-height:33px; -> line-height:36px;
+ * 2013年5月23日 11:04
+ * 删除 line-height:36px;
+ */
+/**/
+
+
+
+

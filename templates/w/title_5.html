@@ -1,0 +1,9 @@
+
+<h2 class="title ui-border-b">
+    <a class="ui-btn" style="color: ;margin-right: 75%;" onclick="location.href='mcenter.php?act=fxfc_w&openid={$op}&yf={$yf.sy}&year={if $yf.by==1}{$yf.syear}{else}{$yf.year}{/if}'">{$yf.sy}月</a>
+    <a   style="margin-left: 30%;color: green;" onclick="location.href='mcenter.php?act=fxfc_w&openid={$op}'">{$yf.year}年{$yf.by}月店铺销售</a>
+    {if $unxy==1}
+    <a class="ui-btn"  style="color: ;" onclick="location.href='mcenter.php?act=fxfc_w&openid={$op}&yf={$yf.xy}&year={if $yf.by==12}{$yf.xyear}{else}{$yf.year}{/if}'">{$yf.xy}月</a>
+    {/if}
+</h2>
+  

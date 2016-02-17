@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>泉州朝歌</title>
+<meta name="viewport" content="width=device-width,user-scalable=no, initial-scale=1">
+<link type="text/css" rel="stylesheet" href="templates/mb/2/wiying/Tpl/Wap/wiying/common/public.css"/>
+<link href="templates/mb/2/wiying/Tpl/Wap/wiying/common/main.css" rel="stylesheet" type="text/css"/>
+<link type="text/css" rel="stylesheet" href="templates/mb/2/wiying/Tpl/Wap/wiying/Index/J-lvjianwu/default/style.css" />
+<script type="text/javascript" src="templates/mb/2/wiying/Tpl/Wap/wiying/common/jquery.js"></script>
+<script type="text/javascript" src="templates/mb/2/wiying/Tpl/Wap/wiying/common/alert.js"></script>
+<script type="text/javascript" src="templates/mb/2/wiying/Tpl/Wap/wiying/common/common.js"></script>
+</head>
+<style type="text/css">
+<!--
+	#activity-name{
+color:#000;font-size:20px;font-weight:bold;word-break:normal;word-wrap:break-word;text-align: ;
+}
+#post-date{color:#8c8c8c;font-size:11px;margin:0;}
+-->
+</style>
+<body>
+<div class="header">
+    <a data-rel="back" data-role="none" class="back" href="index.php"><p></p></a>
+    <a data-role="none" href="http://api.map.baidu.com/marker?location=24.939924,118.673453&title=朝歌量贩式KTV&content=朝歌量贩式KTV&output=html&src=tiemal"><p></p></a>
+    <a data-role="none" class="contect"><p></p></a>
+    <a data-role="none" class="links"><p></p></a>
+</div>
+<div class="content">
+ <br />
+<h1 id="activity-name">{$article.title}</h1>
+<span id="post-date">{$article.add_time}</span><br>
+{$article.article_note_1} <br>
+{if $article.is_tuig==1}
+{$article.article_note_2} <br>
+{else if }
+
+{/if}
+</div>
+<div class="footer">
+   <p class="footer-top">版权所有：铁马科技</p>
+<p class="footer-bottom" data-role="none">
+   <a href="http://api.map.baidu.com/marker?location=24.939924,118.673453&title=朝歌量贩式KTV&content=朝歌量贩式KTV&output=html&src=tiemal">地图导航</a>  
+</p>
+</div>
+
+<div class="touch" style="display:none">
+    <div class="touch-content">
+        <div class="touch-bj-1">
+             <a href="tel:059522612261" data-role="none">
+                <p class="icon tel"></p>
+                <p class="text">一键拨号</p>
+            </a>     </div>
+    </div>
+</div>
+
+<div class="sidebar">
+    <a href="index.php" data-role="none">
+        <p class="text">网站首页</p>
+        <p class="pic"></p>
+    </a>
+    
+     {foreach from=$slide2 item=slide2}
+    <a href="{$slide2.action_url}" data-role="none">
+            <p class="text">{$slide2.slide2_name}</p>
+            <p class="pic"></p>
+        </a>
+        {/foreach}  
+      </div>
+
+</body>
+</html>

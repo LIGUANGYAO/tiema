@@ -1,0 +1,530 @@
+﻿<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>新品关注</title>
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+	
+		<link href="templates/wxzan2/css/wx_bs.css"
+			type="text/css" rel="stylesheet" />
+		<!--<link href="css/getCoupon.css" type="text/css" rel="stylesheet"/>
+		<link href="css/cookbook.css" type="text/css" rel="stylesheet"/>-->
+                
+		<!--基本款 css样式-->
+        <link href="templates/wxzan2/css/cms.css" type="text/css" rel="stylesheet" />
+        <script type=text/javascript src="templates/wxzan/js/jquery.js"></script>
+        <script src="templates/wxzan/js/jquery-1.7.1.min.js"></script>
+        				<style>
+				.px {
+	margin: 10px;
+	background-color: #FFFFFF;
+	border-radius: 5px;
+	border: 1px solid #C6C6C6;
+	color: #333333;
+	text-shadow: 0 1px 0 #FFFFFF;
+	display: block;
+	width: 100%; 
+	padding:10px 10px 10px 10px;
+	font-size: 14px;
+	margin:0 auto;
+	font-family:Arial, Helvetica, sans-serif;
+}
+.txtbtn {
+	background: #f1f1f1;
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #DCDCDC ), to( #f1f1f1 )); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient( #ffffff , #DCDCDC ); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient( #ffffff , #DCDCDC ); /* FF3.6 */
+	background-image:     -ms-linear-gradient( #ffffff , #DCDCDC ); /* IE10 */
+	background-image:      -o-linear-gradient( #ffffff , #DCDCDC ); /* Opera 11.10+ */
+	background-image:         linear-gradient( #ffffff , #DCDCDC );
+	border: 1px solid #CCCCCC;
+	border-bottom: 1px solid #B4B4B4;
+	color: #555555;
+	font-weight: bold;
+	text-shadow: 0 1px 0 #FFFFFF;
+	border-radius: 0.6em 0.6em 0.6em 0.6em;
+	display: block;
+	width: 43%;
+	float:left;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 18px;
+	padding:6px;
+	margin:10px;
+}
+				</style>
+       </head>
+		<!-- cms内嵌页：新版cms详情页 -->
+
+	<body>
+    <input  value="{$openid}" type="hidden" id="openid"/>
+		<div class="clothShop">
+			<!--header start 文字版header-->
+			<header class="titleHead" style="background-color: #000; width: 100%; position:fixed; left:0px; top:0px;
+z-index:9999;">
+			
+				<h2>卡西龙--点赞活动&nbsp;<span id="tt1" style="color: #cae001;">{$z_sl}</span>/<span id="tt2" style="color: #fe5955;">{$zan_sl}</span>&nbsp;<span style="color: #fe5955;">({$max_sl}个新品)</span></h2>
+				</header>
+		
+<header class="titleHead" style="background-color: #cae001; width: 100%; height:180px; position:fixed; left:0px; top:50px; 
+z-index:9999; text-align: center; line-height: 10px; display: none;" id="max_aa" >
+{if $tj==0}
+                <br>
+                <span style="color:  #FFF; text-align: center;" id="txt">超过最大可赞数量,谢谢参与</span>
+			    <br>
+				<br>
+				<h2 ><input id="mu_name" class="px" type="text" placeholder="请输入您的姓名" /></h2>
+				<br>
+				<h2 ><input id="mu_tel" class="px" type="tel" placeholder="请输入您的手机号" /></h2>
+				<h2 ><input type="button" value="确 定" name="确 定" class="txtbtn" id="windowclosebutton"></h2><h2 > <input id="gb" type="button" value="关 闭" name="关 闭" class="txtbtn"></h2>
+
+{/if}			
+{if $tj==1}
+<br>
+<span style="color:  #FFF; text-align: center;">超过最大可赞数量,谢谢参与</span>
+<br>
+<h2><span style="color:#000000;">您已提交过信息，如下</span></h2>
+<strong><span style="color:#000000;">姓名:{$mu_name}</span></strong>
+<h2><span style="color:#000000;">手机:{$mu_tel}</span></h2>
+<h2> <input id="gb" type="button" value="关 闭" name="关 闭" class="txtbtn" style=" width:95%"></h2>
+{/if}
+</header>
+
+        
+        
+        
+				<div class="layout2">
+				<!--公告  下方文字  101  -->
+				<section class="first_banner" id="cms22640">
+					<aside>
+					  <span>游戏规则:<br/>
+					  <p>
+	<span style="font-size:14px;">
+	<strong>
+    {if $openid==''}
+    禁止刷新页面哦,请重新进入活动页面!
+    {else}
+	预评规则:
+    1、	每个会员拥有15个点赞机会，用完即止。
+    2、	每次预评挑选获赞次数最高的25个产品，凡点赞过这25款的用户，每点对一个商品，获得一颗心，点对15次将获得15颗心，以此类推。
+    3、	单次预评点赞活动中，获得10颗心以上才有机会获得奖励；
+    4、	每次评奖，通过获的心的数量以提交时间给予排名，获得心数量一样的用户按问卷提交时间排序，提交时间靠前者的排名居前；
+    5、	按照排名顺序，以及每个奖项人数限制，给予参与者不同级别的奖励；
+
+	
+	
+	
+    &nbsp;&nbsp;{$nickname},本次活动总共可以点{$zan_sl}个赞,卡西龙新品发布后,如果点赞结果和官方发布结果一致,将获得相应奖励,详情请关注卡西龙微信官网。点赞完毕后请输入自己的手机号,方便中奖后联系
+    {/if}
+    </strong>
+	</span>
+	</p>
+</span>
+            		</aside>
+            	</section>
+            	</div>	
+             {foreach from=$goods_list item=goods_list}
+             
+            
+            <div class="layout">
+             <input type="hidden" value="{$goods_list.id}" class="goods_sn"/>
+			<!--单个商品推荐  类似一闪团  112-->
+			<section class="goods_rec_one" id="cms22638">
+		       <span></span>
+			<div class="goods_box">
+		                <div class="head">
+		                	<a href="{$goods_list.img_list.0.b_img_url}">
+		                	<img src="{$goods_list.img_list.0.b_img_url}"/>
+	                        </a>
+		                		<span style="background-image: url(templates/wxzan2/images/xinpin1.png);"><em><s>新品</s></em></span>
+                            
+                            
+			            </div>
+                        
+                       <div class="con">
+		                	<a >
+		                    <h2>商品名称:{$goods_list.id}</h2>
+		                    <p></p>
+		                    </a>
+		                </div>
+                        
+                        
+		                <div class="func">
+		                    {if $goods_list.praise.praise==1}
+                             <div class="btn_box" >
+		                    <!-- 有货的情况下逻辑 -->
+                          
+		                        <a class="btn2" goods_sn="{$goods_list.goods_sn}" style="background-color: #cae001;" >
+		                            <span  >已赞</span>
+		                            <em></em>
+									</a>
+		                     </div>
+                        {else}
+		                    <div class="btn_box">
+		                    <!-- 有货的情况下逻辑 -->
+                          
+		                        <a class="btn" goods_sn="{$goods_list.goods_sn}" style="background-color: #ECECEC;" >
+		                            <span  ><img width="30px" height="30px" src="templates/wxzan2/images/details_praise_down.png"/></span>
+		                            <em></em>
+									</a>
+                                    
+                                   <!--  <a class="btn" goods_sn="{$goods_list.goods_sn}" > -->
+		                            <span  >赞</span>
+		                            <em></em>
+									 <!--</a>-->
+                                    
+                                    
+		                     </div>
+		                     {/if}
+		                </div>
+                        
+		                
+		            </div>
+              </div>
+              
+               {/foreach} 
+               
+               
+   </div>
+              <!--添加div加载中 -->
+              <div id="loader_container" style="display: none1;">
+    <div id="loader">
+    <div align="center" id="jiazai">页面正在加载中 ...</div>
+    <div id="loader_bg"><div id="progress"> </div></div>
+    </div>
+</div>
+             
+
+	
+</body>
+
+</html>
+
+<script type="text/javascript">
+<!--
+
+     
+      // alert(g_sn);
+       
+       //拖动加载
+   var can_scroll=1;
+       
+    $(window).bind('scroll',function(){show()});
+      
+    function show()
+    {
+        if($(window).scrollTop()+$(window).height()>=$(document).height() && can_scroll==1)
+        {
+            
+             $("#loader_container").show();
+            ajaxRead();
+            
+        }
+    }
+    var id=0;
+    var g_sn='';
+    //输出alert数量控制
+ 
+      
+    $(".clothShop").live("click",function(){
+
+        });
+    function ajaxRead()
+    {
+            
+      
+        $(".goods_sn").each(function (){
+            g_sn +=$(this).val()+",";
+        })
+           
+        //alert(g_sn);return;
+        var act;
+		var op=$("#openid").val();
+         id=id+1;
+        var html="";
+        
+        
+     
+        $.ajax({
+              type:'get',
+              dataType:'json',
+			  
+              url:'wx_praise.php?m=other_sn',
+              data:{'g_sn':g_sn,'openid':op},
+			  beforeSend:function(){console.log('loading...');},
+              success:function(data){
+                if(data.error==0)
+                {
+                      $("#jiazai").text("加载完毕");
+                      can_scroll=0;
+                      return false;
+                }
+                a=data;
+                
+           //   alert(data.goods_sn);
+			  $.each(data,function(i,item){
+
+
+html+='<div class="layout">';
+html+='<input type="hidden" value="'+item.id+'" class="goods_sn"/>';
+html+='<section class="goods_rec_one" id="cms22638">';
+html+='<span></span>';
+html+='<div class="goods_box">';
+html+='<div class="head">';
+html+='<a href="'+item.img_list[0].b_img_url+'">';
+html+='<img src="'+item.img_list[0].b_img_url+'"/>';
+html+='</a>';
+html+='<span style="background-image: url(templates/wxzan2/images/xinpin1.png);"><em><s>新品</s></em></span>';
+html+='</div>';
+html+='<div class="con">';
+html+='<a ><h2>商品名称:'+item.id+'</h2><p></p></a></div>';
+html+='<div class="func">';
+//alert(item.praise.praise);
+if(item.praise.praise=='1')
+{
+html+=' <div class="btn_box" >';
+html+='<a class="btn2" goods_sn="'+item.goods_sn+'" style="background-color: #cae001;">';
+html+=' <span>已赞</span><em></em></a></div> '; 
+}
+else
+{
+html+=' <div class="btn_box" >';
+html+='<a class="btn" goods_sn="'+item.goods_sn+'">';
+html+=' <span>赞</span><em></em></a></div> '; 
+}
+
+
+html+='</div> </div> </div>';
+ });
+            
+      $(".clothShop").append($(html));
+                
+                //获取
+                 var z_sl;
+	 $(".btn").each(function(){
+      
+        //$(this).click(function (){
+           $(this).live('click',function(){
+            
+                 if($("#tt1").text()=={$zan})
+       {
+        $("#max_aa").show();
+       }
+        else
+       {
+         $("#max_aa").hide();
+       }
+           
+           //alert(1);return;
+           var aaa;
+          
+            htmlobj2=$.ajax({
+                type:"POST",
+                dataType: 'json',
+                url:"wx_praise.php?m=click",
+                data:{"openid":$("#openid").val(),"zan":{$zan},"goods_sn":$(this).attr("goods_sn")},async:false,
+                beforeSend:function(XMLHttpRequest){
+                    
+                   
+                    },
+                    success:function(data,textStatus){
+                       aaa= data.errcode;
+                       z_sl=data.z_sl;
+                       
+                    //window.location.reload();
+                    },
+                    complete:function(XMLHttpRequest,textStatus){
+                    // alert('远程调用成功，状态文本值：'+textStatus);
+                   
+                   // $("#load_img").empty();
+                 
+                  
+                    },
+                    error:function(XMLHttpRequest,textStatus,errorThrown){
+                    // alert('error...状态文本值：'+textStatus+" 异常信息："+errorThrown);
+                    //$("#load_img").empty();
+                    }
+                
+                
+                
+                });
+               
+                if(aaa==5)
+                {
+                   
+                    //$("#max_aa").toggle();
+                   // alert("超过最大可赞数量,谢谢1参与");
+                  
+                
+                    
+                }else if(aaa==0)
+                {
+                       
+                    $(this).fadeOut(100);
+                      $(this).css("background-color","#cae001");
+                       $(this).fadeIn();
+                      $(this).find("span").text("已赞")
+                      $("#tt1").fadeOut(100);
+                      $("#tt1").text(z_sl);
+                      $("#tt1").fadeIn();
+                }
+                
+            //$("#max_aa").fadeToggle(2000,0);
+            
+        })
+       })
+        
+              
+               
+//                            $("#resText").append($(html));
+                },
+              complete:function(){
+             
+                console.log('mission acomplete.')}
+              
+        });
+    }
+
+        
+//alert($(".titleHead").height());
+//alert($(".titleHead").width());
+
+    
+     var z_sl;
+	 $(".btn").each(function(){
+      
+        $(this).click(function (){
+            
+        if($("#tt1").text()>={$zan}-1)
+       {
+         $("#max_aa").show();
+       }
+       else
+       {
+         $("#max_aa").hide();
+       }
+            
+           //$(this).live('click',function(){
+           
+           //alert(1);return;
+           var aaa;
+           
+            htmlobj=$.ajax({
+                type:"POST",
+                dataType: 'json',
+                url:"wx_praise.php?m=click",
+                data:{"openid":$("#openid").val(),"zan":{$zan},"goods_sn":$(this).attr("goods_sn")},async:false,
+                beforeSend:function(XMLHttpRequest){
+                    
+                   
+                    },
+                    success:function(data,textStatus){
+                       aaa= data.errcode;
+                       z_sl=data.z_sl;
+                    
+                    //window.location.reload();
+                    },
+                    complete:function(XMLHttpRequest,textStatus){
+                    // alert('远程调用成功，状态文本值：'+textStatus);
+                   
+                   // $("#load_img").empty();
+                 
+                  
+                    },
+                    error:function(XMLHttpRequest,textStatus,errorThrown){
+                    // alert('error...状态文本值：'+textStatus+" 异常信息："+errorThrown);
+                    //$("#load_img").empty();
+                    }
+                
+                
+                
+                });
+               
+                if(aaa==5)
+                {
+                   //$("#max_aa").toggle();
+                    //$("#max_aa").fadeToggle();
+              
+                   // alert("超过最大可赞数量,谢谢2参与");
+                }else if(aaa==0)
+                {
+                       
+                    $(this).fadeOut(50);
+                      $(this).css("background-color","#cae001");
+                       $(this).fadeIn();
+                      $(this).find("span").text("已赞")
+                      $("#tt1").fadeOut(50);
+                      $("#tt1").text(z_sl);
+                      $("#tt1").fadeIn();
+                }
+                //$("#max_aa").fadeToggle(2000,0);
+         })
+        
+       })
+       
+      
+       if($("#tt1").text()=={$zan})
+       {
+         $("#max_aa").show();
+       }
+      
+     
+        $("#gb").click(function(){
+             $("#max_aa").hide();
+        })
+       
+   function gb(){
+             $("#max_aa").hide();
+        }
+      
+-->
+</script>
+<script type="text/javascript"> 
+$("#windowclosebutton").click(function (){
+		var mu_name = $("#mu_name").val();
+		var mu_tel = $("#mu_tel").val();
+        var re = /^1[3|4|5|8][0-9]\d{8}$/gi;
+        if (mu_name==""){
+			$("#txt").html('<span style="color:red;">请输入您的姓名！</span>');
+            return false;
+        }
+        if (!re.test(mu_tel)){
+			$("#txt").html('<span style="color:red;">请输入正确的手机号！</span>');
+            return false;
+        }
+		
+        //var openid={$openid};
+		//var openid='1111111';
+        $.ajax({ 
+                type: "post", 
+                url: "sign.php?act=submit", 
+                dataType: "json",
+                data:{"openid":'{$openid}',"mu_name":mu_name,"mu_tel":mu_tel}, 
+                async:false,
+                success: function (data) { 
+                    $("#mu_id").text(data.openid);
+    				$(".user-name").text(data.mu_name);
+    				$(".user-tel").text(data.mu_tel);
+    				$("#txt").html(
+					'<span style="color:#000000;">提交成功!</span><span style="color:#000000;"n>姓名:'+data.mu_name+'</span><span style="color:#000000;">手机:'+data.mu_tel+'</span>'
+					);
+					$("#windowclosebutton").attr("disabled", "disabled");
+					setTimeout('gb()',5000);
+					//$("#alertclose").click();
+    				//TopScroll();
+                }, 
+                error: function (XMLHttpRequest, textStatus, errorThrown) { 
+                alert(errorThrown); 
+                        //location.reload();
+                } 
+                });
+	
+	});
+</script>

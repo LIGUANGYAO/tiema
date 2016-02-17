@@ -1,0 +1,1066 @@
+
+{include file="w/head.html"}
+
+{if $fall=='zichanpinggu'} 
+        {include file="w/title.html"}
+        <div class="content">
+
+<p><div  class="ui-searchbar-wrap ui-border-b focus">
+    
+    <div class="ui-searchbar">
+        <i class="ui-icon-search"></i>
+        <div class="ui-searchbar-text">输入资产评估值</div>
+        <div class="ui-searchbar-input"><input value="" onkeyup="value=value.replace(/[^0-9.]/g,'')"  type="tel" id="zcpgz" name="zcpgz" placeholder="输入资产评估值" autocapitalize="off"></div>
+        <i class="ui-icon-close" ></i>
+    </div>
+    
+     <button class="ui-searchbar-cancel"  id="zcjs" >计算</button>
+     
+     
+</div> 
+</p>
+
+<p><div  class="ui-searchbar-wrap ui-border-b focus">
+    
+    <div class="ui-searchbar">
+        <i class="ui-icon-search"></i>
+        <div class="ui-searchbar-text">输入房产评估值</div>
+        <div class="ui-searchbar-input"><input value="" onkeyup="value=value.replace(/[^0-9.]/g,'')" type="tel" id="fcpgz" name="fcpgz" placeholder="输入房产评估值" autocapitalize="off"></div>
+        <i class="ui-icon-close" ></i>
+    </div>
+    
+     <button class="ui-searchbar-cancel"  id="fcjs">计算</button>
+     
+     
+</div> 
+</p>
+
+<table class="ui-table ui-border-tb" style="margin-bottom: 10px;" > 
+    <thead>
+        <tr><th  colspan="5"><b>评估收费计算表</b></th></tr>
+    </thead>
+    <tbody>
+        
+        <tr><td>档次</td><td>额度(W)</td><td style="color: #749c18;">资产计费率</td><td><a>房产计费率</a></td><td>应收费金额</td></tr>
+        <tr><td>1</td><td style="color: #749c18;"><=100</td><td>0.8%</td><td></td><td id="sum" class="sumnl"></td></tr>
+        <tr><td>2</td><td style="color: #749c18;">101-1000</a></td><td>0.35%</td><td></td><td id="sum2" class="sumnl"></td></tr>
+        
+        <tr><td>3</td><td style="color: #749c18;">1001-5000</td><td>0.12%</td><td></td><td id="sum3" class="sumnl"></td></tr>
+        <tr ><td>4</td><td style="color: #749c18;">5001-10000</td><td>0.075%</td><td></td><td id="sum4" class="sumnl"></td></tr>
+        <tr><td>5</td><td style="color: #749c18;">10001-10w</td><td>0.015%</td><td></td><td id="sum5" class="sumnl"></td></tr>
+        <tr><td>6</td><td style="color: #749c18;">>10W</td><td>0.01%</td><td></td><td id="sum6" class="sumnl"></td></tr>
+        <tr><td>1</td><td><a><=100</a></td><td></td><td>0.4%</td><td id="fcsum" class="fcsumnl"></td></tr>
+        <tr><td>2</td><td><a>101-1000</a></td><td></td><td>0.2%</td><td id="fcsum2" class="fcsumnl"></td></tr>
+        <tr><td>3</td><td><a>1001-2000</a></td><td></td><td>0.14%</td><td id="fcsum3" class="fcsumnl"></td></tr>
+        <tr><td>4</td><td><a>2001-5000</a></td><td></td><td>0.07%</td><td id="fcsum4" class="fcsumnl"></td></tr>
+        <tr><td>5</td><td><a>5001-8000</a></td><td></td><td>0.04%</td><td id="fcsum5" class="fcsumnl"></td></tr>
+        <tr><td>6</td><td><a>8001-10000</a></td><td></td><td>0.02%</td><td id="fcsum6" class="fcsumnl"></td></tr>
+        <tr><td>7</td><td><a>10001-10w</a></td><td></td><td>0.01%</td><td id="fcsum7" class="fcsumnl"></td></tr>
+        <tr><td colspan="4"><b>合计</b></td><td id="sum_count"></td></tr>
+        <input  type="hidden" id="count1" value="0"/>
+        <input  type="hidden" id="count2" value="0"/>
+        <input type="hidden"  id="hid"/> 
+        <tr><td colspan="4"><b>按&nbsp;&nbsp;<input value="30" onkeyup="value=value.replace(/[^0-9]/g,'')"  type="tel" id="bili2" name="bili2" placeholder="输入比例" autocapitalize="off" maxlength="3"  style="width: 50px;" >%&nbsp;计算</b></td><td id="sanzhe2"></td></tr>
+    </tbody>
+</table>
+
+
+
+<!-- 第二部分土地评估率 -->
+
+<p><div  class="ui-searchbar-wrap ui-border-b focus">
+    
+    <div class="ui-searchbar">
+        <i class="ui-icon-search"></i>
+        <div class="ui-searchbar-text">输入土地评估值</div>
+        <div class="ui-searchbar-input"><input value="" onkeyup="value=value.replace(/[^0-9.]/g,'')"  type="tel" id="tdpgz" name="tdpgz" placeholder="输入土地评估值(万)" autocapitalize="off"></div>
+        <i class="ui-icon-close" ></i>
+    </div>
+    
+     <button class="ui-searchbar-cancel"  id="tdjs" >计算</button>
+     
+     
+</div> 
+</p>
+
+
+
+<table class="ui-table ui-border-tb" > 
+    <thead>
+        <tr><th  colspan="5"><b>评估土地计算表</b></th></tr>
+    </thead>
+    <tbody>
+        
+        <tr><td>档次</td><td>额度(W)</td><td style="color: #749c18;">土地计费率</td><td>应收费金额</td></tr>
+        <tr><td>1</td><td style="color: #749c18;"><=100</td><td>0.4%</td><td id="tdsum" class="tdsumnl"></td></tr>
+        <tr><td>2</td><td style="color: #749c18;">101-200</a></td><td>0.3%</td><td id="tdsum2" class="tdsumnl"></td></tr>
+        
+        <tr><td>3</td><td style="color: #749c18;">201-1000</td><td>0.2%</td><td id="tdsum3" class="tdsumnl"></td></tr>
+        <tr ><td>4</td><td style="color: #749c18;">1001-2000</td><td>0.15%</td><td id="tdsum4" class="tdsumnl"></td></tr>
+        <tr><td>5</td><td style="color: #749c18;">2001-5000</td><td>0.08%</td><td id="tdsum5" class="tdsumnl"></td></tr>
+        <tr><td>6</td><td style="color: #749c18;">5001-10000</td><td>0.04%</td><td id="tdsum6" class="tdsumnl"></td></tr>
+        <tr><td>7</td><td style="color: #749c18;">>10001</td><td>0.01%</td><td id="tdsum7" class="tdsumnl"></td></tr>
+        <tr><td colspan="3"><b>合计</b></td><td id="sum_count3"></td></tr>
+        <tr><td colspan="3"><b>按&nbsp;&nbsp;<input value="30" onkeyup="value=value.replace(/[^0-9]/g,'')"  type="tel" id="bili" name="bili" placeholder="输入比例" autocapitalize="off" maxlength="3"  style="width: 50px;" >%&nbsp;计算</b></td><td id="sanzhe"></td></tr>
+
+    </tbody>
+</table>
+
+</div>
+<div class="ui-btn-wrap">
+    <button class="ui-btn-lg ui-btn-danger" onclick="location.href='jslist.html'" >
+        返回业务费用列表
+    </button>
+</div>
+
+<script type="text/javascript">
+
+//$('.ui-searchbar').tap(function(){
+//    $('.ui-searchbar-wrap').addClass('focus');
+//    $('.ui-searchbar-input input').focus();
+//});
+//$('.ui-searchbar-cancel').tap(function(){
+//    $('.ui-searchbar-wrap').removeClass('focus');
+//});
+//$('.ui-icon-close').tap(function(){
+//    $("#zcpgz").val("");
+//})
+//$('.ui-searchbar-cancel').tap(function(){
+//    location.href='?m_key='+$("#m_key").val();
+//    
+//})
+//
+
+$('.ui-searchbar').each(function(){
+    $(this).tap(function(){
+        $(this).parent('.ui-searchbar-wrap').addClass('focus');
+        $(this).find('.ui-searchbar-input input').focus();
+    })
+})
+
+$('.ui-icon-close').each(function(){
+    $(this).tap(function(){
+        $(this).parent().find('input').val("");
+        
+    })
+})
+
+$('#zcjs').tap(function(){
+    
+    var zcpg_val=parseInt($("#zcpgz").val());
+    
+    if(zcpg_val>0)
+    {
+        $('.sumnl').each(function(){
+        $(this).parent().hide();
+        });
+        //zcpg_val=zcpg_val*10000;
+        zcpg_val=zcpg_val;
+    }
+    else
+    {
+        $('.sumnl').each(function(){
+        $(this).parent().show();
+        });  
+        //zcpg_val= 0;//以万为单位 
+        $('#count1').val(0);
+    
+    }
+    $('.sumnl').text('');
+    $('#sum_count').text('');
+    $('#sum').text('');
+    
+    $('#sum2').text('');
+    $('#sum3').text('');
+    $('#sum4').text('');
+    $('#sum5').text('');
+    $('#sum6').text('');
+    //隐藏
+    
+    
+    var sum_count=0;
+    if(zcpg_val>=0 && zcpg_val<=100*10000)  //100以下（含100）
+    {
+        var val=0;var jsl=0;
+        //100w以下
+        val=zcpg_val;jsl='0.8'/100;
+        sum=Math.ceil(val*jsl);
+        sum_count=sum;
+        $('#sum').text(sum);
+        $('#sum').parent().show();
+        $('#count1').val(sum_count);
+    }
+    else if(zcpg_val>100*10000 && zcpg_val<=1000*10000)  //101--1000（含1000）
+    {
+        //100w以下
+        var val=0;var jsl=0;var sum=0;       
+        val=100*10000;jsl='0.8'/100;
+        sum=Math.ceil(val*jsl);
+        
+        //100w-1000w以下
+        var val2=0;var jsl2=0;var zcpg_val_r=0;var sum2=0;
+        zcpg_val_r=zcpg_val-100*10000;
+        val2=zcpg_val_r;jsl2='0.35'/100;
+        sum2=Math.ceil(val2*jsl2);
+        
+        sum_count=sum+sum2;
+        $('#sum').text(sum);
+        $('#sum').parent().show();
+        $('#sum2').text(sum2);
+        $('#sum2').parent().show();
+        $('#count1').val(sum_count);
+    }
+    else if(zcpg_val>100*100000 && zcpg_val<=5000*10000) //1000-5000
+    {
+        //100w以下
+        var val=0;var jsl=0;var sum=0;       
+        val=100*10000;jsl='0.8'/100;
+        sum=Math.ceil(val*jsl);
+        
+         //100w-1000w以下
+        var val2=0;var jsl2=0;var sum2=0;
+        val2=900*10000;;jsl2='0.35'/100;
+        sum2=Math.ceil(val2*jsl2);
+        
+
+        //1000-5000
+        var val3=0;var jsl3=0;var zcpg_val_r=0;var sum3=0;
+        zcpg_val_r=zcpg_val-1000*10000;
+        val3=zcpg_val_r;jsl3='0.12'/100;
+        sum3=Math.ceil(val3*jsl3);
+        
+        sum_count=sum+sum2+sum3;
+        $('#sum').text(sum);
+        $('#sum').parent().show();
+        $('#sum2').text(sum2);
+        $('#sum2').parent().show();
+        $('#sum3').text(sum3);
+        $('#sum3').parent().show();
+        $('#count1').val(sum_count);
+    }
+    else if(zcpg_val>5000*10000 && zcpg_val<=10000*10000) //5000-10000
+    {
+        //100w以下
+        var val=0;var jsl=0;var sum=0;
+        val=100*10000;jsl='0.8'/100;
+        sum=Math.ceil(val*jsl);
+        
+        //100w-1000w以下
+        var val2=0;var jsl2=0;var sum2=0;
+        val2=900*10000;;jsl2='0.35'/100;
+        sum2=Math.ceil(val2*jsl2);
+        
+        
+        //1000-5000
+        var val3=0;var jsl3=0;var sum3=0;
+        val3=4000*10000;jsl3='0.12'/100;
+        sum3=Math.ceil(val3*jsl3);
+
+        
+        //5000-10000
+        var val4=0;var jsl4=0;var zcpg_val_r=0;var sum4=0;
+        zcpg_val_r=zcpg_val-5000*10000;
+        val4=zcpg_val_r;jsl4='0.075'/100;
+        sum4=Math.ceil(val4*jsl4);
+        
+        sum_count=sum+sum2+sum3+sum4;
+        $('#sum').text(sum);
+        $('#sum').parent().show();
+        $('#sum2').text(sum2);
+        $('#sum2').parent().show();
+        $('#sum3').text(sum3);
+        $('#sum3').parent().show();
+        $('#sum4').text(sum4);
+        $('#sum4').parent().show();
+        $('#count1').val(sum_count);
+    }
+    else if(zcpg_val>10000*10000 && zcpg_val<=100000*10000)  //10000-100000
+    {
+        //100w以下
+        var val=0;var jsl=0;var sum=0;
+        val=100*10000;jsl='0.8'/100;
+        sum=Math.ceil(val*jsl);
+        
+        //100w-1000w以下
+        var val2=0;var jsl2=0;var sum2=0;
+        val2=900*10000;;jsl2='0.35'/100;
+        sum2=Math.ceil(val2*jsl2);
+        
+        
+        //1000-5000
+        var val3=0;var jsl3=0;var sum3=0;
+        val3=4000*10000;jsl3='0.12'/100;
+        sum3=Math.ceil(val3*jsl3);
+        
+        //5000-10000
+        var val4=0;var jsl4=0;var sum4=0;
+        val4=5000*10000;;jsl4='0.075'/100;
+        sum4=Math.ceil(val4*jsl4);
+        
+        
+         //10000-100000
+        var val5=0;var jsl5=0;var zcpg_val_r=0;var sum5=0;
+        zcpg_val_r=zcpg_val-10000*10000;
+        val5=zcpg_val_r;jsl5='0.015'/100;
+        sum5=Math.ceil(val5*jsl5);
+        
+        
+        sum_count=sum+sum2+sum3+sum4+sum5;
+        $('#sum').text(sum);
+        $('#sum').parent().show();
+        $('#sum2').text(sum2);
+        $('#sum2').parent().show();
+        $('#sum3').text(sum3);
+        $('#sum3').parent().show();
+        $('#sum4').text(sum4);
+        $('#sum4').parent().show();
+        $('#sum5').text(sum5);
+        $('#sum5').parent().show();
+        $('#count1').val(sum_count);
+        
+    }
+    else if(zcpg_val>100000*10000)   //100000+
+    {
+        //100w以下
+        var val=0;var jsl=0;var sum=0;
+        val=100*10000;jsl='0.8'/100;
+        sum=Math.ceil(val*jsl);
+        
+        //100w-1000w以下
+        var val2=0;var jsl2=0;var sum2=0;
+        val2=900*10000;;jsl2='0.35'/100;
+        sum2=Math.ceil(val2*jsl2);
+        
+        
+        //1000-5000
+        var val3=0;var jsl3=0;var sum3=0;
+        val3=4000*10000;jsl3='0.12'/100;
+        sum3=Math.ceil(val3*jsl3);
+        
+        //5000-10000
+        var val4=0;var jsl4=0;var sum4=0;
+        val4=5000*10000;;jsl4='0.075'/100;
+        sum4=Math.ceil(val4*jsl4);
+        
+        
+         //10000-100000
+        var val5=0;var jsl5=0;var sum5=0;
+        val5=90000*10000;jsl5='0.015'/100;
+        sum5=Math.ceil(val5*jsl5);
+         
+        //100000+
+        var val6=0;var jsl6=0;var zcpg_val_r=0;var sum6=0;
+        zcpg_val_r=zcpg_val-100000*10000;
+        val6=zcpg_val_r;jsl6='0.01'/100;
+        sum6=Math.ceil(val6*jsl6);
+        
+        
+        sum_count=sum+sum2+sum3+sum4+sum5+sum6;
+        $('#sum').text(sum);
+        $('#sum').parent().show();
+        $('#sum2').text(sum2);
+        $('#sum2').parent().show();
+        $('#sum3').text(sum3);
+        $('#sum3').parent().show();
+        $('#sum4').text(sum4);
+        $('#sum4').parent().show();
+        $('#sum5').text(sum5);
+        $('#sum5').parent().show();
+        $('#sum6').text(sum6);
+        $('#sum6').parent().show();
+        $('#count1').val(sum_count);
+    }
+    $('#sum').click();
+    
+    co1=parseInt($('#count1').val());
+    co2=parseInt($('#count2').val());
+    $('#sum_count').text(co1+co2);
+    
+    var bili2=$("#bili2").val();
+    $("#sanzhe2").text((co1+co2)*bili2/100);
+})
+
+$('#fcjs').tap(function(){
+   
+    
+    var zcpg_val=parseInt($("#fcpgz").val());
+    
+    if(zcpg_val>0)
+    {
+        $('.fcsumnl').each(function(){
+        $(this).parent().hide();
+        });
+        //zcpg_val=zcpg_val*10000;
+        zcpg_val=zcpg_val;
+    }
+    else
+    {
+        $('.fcsumnl').each(function(){
+        $(this).parent().show();
+        });  
+        $('#count2').val(0);
+    }
+    $('.fcsumnl').text('');
+    $('#sum_count').text('');
+    $('#fcsum').text('');
+    
+    $('#fcsum2').text('');
+    $('#fcsum3').text('');
+    $('#fcsum4').text('');
+    $('#fcsum5').text('');
+    $('#fcsum6').text('');
+    //隐藏
+    
+    
+    var sum_count=0;
+    if(zcpg_val>=0 && zcpg_val<=100*10000)  //100以下（含100）
+    {
+        var val=0;var jsl=0;
+        //100w以下
+        val=zcpg_val;jsl='0.4'/100;
+        sum=Math.ceil(val*jsl);
+        sum_count=sum;
+        $('#fcsum').text(sum);
+        $('#fcsum').parent().show();
+        $('#count2').val(sum_count);
+    }
+    else if(zcpg_val>100*10000 && zcpg_val<=1000*10000)  //101--1000（含1000）
+    {
+        //100w以下
+        var val=0;var jsl=0;var sum=0;       
+        val=100*10000;jsl='0.4'/100;
+        sum=Math.ceil(val*jsl);
+        
+        //100w-1000w以下
+        var val2=0;var jsl2=0;var zcpg_val_r=0;var sum2=0;
+        zcpg_val_r=zcpg_val-100*10000;
+        val2=zcpg_val_r;jsl2='0.2'/100;
+        sum2=Math.ceil(val2*jsl2);
+        
+        sum_count=sum+sum2;
+        $('#fcsum').text(sum);
+        $('#fcsum').parent().show();
+        $('#fcsum2').text(sum2);
+        $('#fcsum2').parent().show();
+        $('#count2').val(sum_count);
+    }
+    else if(zcpg_val>100*100000 && zcpg_val<=2000*10000) //1000-2000
+    {
+        //100w以下
+        var val=0;var jsl=0;var sum=0;       
+        val=100*10000;jsl='0.4'/100;
+        sum=Math.ceil(val*jsl);
+        
+         //100w-1000w以下
+        var val2=0;var jsl2=0;var sum2=0;
+        val2=900*10000;;jsl2='0.2'/100;
+        sum2=Math.ceil(val2*jsl2);
+        
+
+        //1000-2000
+        var val3=0;var jsl3=0;var zcpg_val_r=0;var sum3=0;
+        zcpg_val_r=zcpg_val-1000*10000;
+        val3=zcpg_val_r;jsl3='0.14'/100;
+        sum3=Math.ceil(val3*jsl3);
+        
+        sum_count=sum+sum2+sum3;
+        $('#fcsum').text(sum);
+        $('#fcsum').parent().show();
+        $('#fcsum2').text(sum2);
+        $('#fcsum2').parent().show();
+        $('#fcsum3').text(sum3);
+        $('#fcsum3').parent().show();
+        $('#count2').val(sum_count);
+    }
+    else if(zcpg_val>2000*10000 && zcpg_val<=5000*10000) //2000-5000
+    {
+        //100w以下
+        var val=0;var jsl=0;var sum=0;
+        val=100*10000;jsl='0.4'/100;
+        sum=Math.ceil(val*jsl);
+        
+        //100w-1000w以下
+        var val2=0;var jsl2=0;var sum2=0;
+        val2=900*10000;;jsl2='0.2'/100;
+        sum2=Math.ceil(val2*jsl2);
+        
+        
+        //1000-2000
+        var val3=0;var jsl3=0;var sum3=0;
+        val3=1000*10000;jsl3='0.14'/100;
+        sum3=Math.ceil(val3*jsl3);
+
+        
+        //2000-5000
+        var val4=0;var jsl4=0;var zcpg_val_r=0;var sum4=0;
+        zcpg_val_r=zcpg_val-2000*10000;
+        val4=zcpg_val_r;jsl4='0.07'/100;
+        sum4=Math.ceil(val4*jsl4);
+        
+        sum_count=sum+sum2+sum3+sum4;
+        $('#fcsum').text(sum);
+        $('#fcsum').parent().show();
+        $('#fcsum2').text(sum2);
+        $('#fcsum2').parent().show();
+        $('#fcsum3').text(sum3);
+        $('#fcsum3').parent().show();
+        $('#fcsum4').text(sum4);
+        $('#fcsum4').parent().show();
+        $('#count2').val(sum_count);
+    }
+    else if(zcpg_val>5000*10000 && zcpg_val<=8000*10000)  //5000-8000
+    {
+        //100w以下
+        var val=0;var jsl=0;var sum=0;
+        val=100*10000;jsl='0.4'/100;
+        sum=Math.ceil(val*jsl);
+        
+        //100w-1000w以下
+        var val2=0;var jsl2=0;var sum2=0;
+        val2=900*10000;;jsl2='0.2'/100;
+        sum2=Math.ceil(val2*jsl2);
+        
+        
+        //1000-2000
+        var val3=0;var jsl3=0;var sum3=0;
+        val3=1000*10000;jsl3='0.14'/100;
+        sum3=Math.ceil(val3*jsl3);
+        
+        //2000-5000
+        var val4=0;var jsl4=0;var sum4=0;
+        val4=3000*10000;;jsl4='0.07'/100;
+        sum4=Math.ceil(val4*jsl4);
+        
+        
+         //5000-8000
+        var val5=0;var jsl5=0;var zcpg_val_r=0;var sum5=0;
+        zcpg_val_r=zcpg_val-5000*10000;
+        val5=zcpg_val_r;jsl5='0.04'/100;
+        sum5=Math.ceil(val5*jsl5);
+        
+        
+        sum_count=sum+sum2+sum3+sum4+sum5;
+        $('#fcsum').text(sum);
+        $('#fcsum').parent().show();
+        $('#fcsum2').text(sum2);
+        $('#fcsum2').parent().show();
+        $('#fcsum3').text(sum3);
+        $('#fcsum3').parent().show();
+        $('#fcsum4').text(sum4);
+        $('#fcsum4').parent().show();
+        $('#fcsum5').text(sum5);
+        $('#fcsum5').parent().show();
+        $('#count2').val(sum_count);
+        
+    }
+     else if(zcpg_val>8000*10000 && zcpg_val<=10000*10000)     //8000-1w
+    {
+         //100w以下
+        var val=0;var jsl=0;var sum=0;
+        val=100*10000;jsl='0.4'/100;
+        sum=Math.ceil(val*jsl);
+        
+        //100w-1000w以下
+        var val2=0;var jsl2=0;var sum2=0;
+        val2=900*10000;;jsl2='0.2'/100;
+        sum2=Math.ceil(val2*jsl2);
+        
+        
+        //1000-2000
+        var val3=0;var jsl3=0;var sum3=0;
+        val3=1000*10000;jsl3='0.14'/100;
+        sum3=Math.ceil(val3*jsl3);
+        
+        //2000-5000
+        var val4=0;var jsl4=0;var sum4=0;
+        val4=3000*10000;;jsl4='0.07'/100;
+        sum4=Math.ceil(val4*jsl4);
+        
+        
+        //5000-8000
+        var val5=0;var jsl5=0;var sum5=0;
+        val5=3000*10000;jsl5='0.04'/100;
+        sum5=Math.ceil(val5*jsl5);
+         
+        //8000-1w
+        var val6=0;var jsl6=0;var zcpg_val_r=0;var sum6=0;
+        zcpg_val_r=zcpg_val-8000*10000;
+        val6=zcpg_val_r;jsl6='0.02'/100;
+        sum6=Math.ceil(val6*jsl6);
+        
+        
+        sum_count=sum+sum2+sum3+sum4+sum5+sum6;
+        $('#fcsum').text(sum);
+        $('#fcsum').parent().show();
+        $('#fcsum2').text(sum2);
+        $('#fcsum2').parent().show();
+        $('#fcsum3').text(sum3);
+        $('#fcsum3').parent().show();
+        $('#fcsum4').text(sum4);
+        $('#fcsum4').parent().show();
+        $('#fcsum5').text(sum5);
+        $('#fcsum5').parent().show();
+        $('#fcsum6').text(sum6);
+        $('#fcsum6').parent().show();
+        $('#count2').val(sum_count);
+    }
+    else if(zcpg_val>10000*10000 && zcpg_val<=100000*10000)     //8000-1w
+    {
+         //100w以下
+        var val=0;var jsl=0;var sum=0;
+        val=100*10000;jsl='0.4'/100;
+        sum=Math.ceil(val*jsl);
+        
+        //100w-1000w以下
+        var val2=0;var jsl2=0;var sum2=0;
+        val2=900*10000;;jsl2='0.2'/100;
+        sum2=Math.ceil(val2*jsl2);
+        
+        
+        //1000-2000
+        var val3=0;var jsl3=0;var sum3=0;
+        val3=1000*10000;jsl3='0.14'/100;
+        sum3=Math.ceil(val3*jsl3);
+        
+        //2000-5000
+        var val4=0;var jsl4=0;var sum4=0;
+        val4=3000*10000;;jsl4='0.07'/100;
+        sum4=Math.ceil(val4*jsl4);
+        
+        
+        //5000-8000
+        var val5=0;var jsl5=0;var sum5=0;
+        val5=3000*10000;jsl5='0.04'/100;
+        sum5=Math.ceil(val5*jsl5);
+        
+        //8000-1w
+        var val6=0;var jsl6=0;var zcpg_val_r=0;var sum6=0;
+        val6=2000*10000;jsl6='0.02'/100;
+        sum6=Math.ceil(val6*jsl6);
+        
+         //1w+
+        var val7=0;var jsl7=0;var zcpg_val_r=0;var sum7=0;
+        zcpg_val_r=zcpg_val-10000*10000;
+        val7=zcpg_val_r;jsl7='0.01'/100;
+        sum7=Math.ceil(val7*jsl7);
+        
+        sum_count=sum+sum2+sum3+sum4+sum5+sum6+sum7;
+        $('#fcsum').text(sum);
+        $('#fcsum').parent().show();
+        $('#fcsum2').text(sum2);
+        $('#fcsum2').parent().show();
+        $('#fcsum3').text(sum3);
+        $('#fcsum3').parent().show();
+        $('#fcsum4').text(sum4);
+        $('#fcsum4').parent().show();
+        $('#fcsum5').text(sum5);
+        $('#fcsum5').parent().show();
+        $('#fcsum6').text(sum6);
+        $('#fcsum6').parent().show();
+        $('#fcsum7').text(sum7);
+        $('#fcsum7').parent().show();
+        $('#count2').val(sum_count);
+    }
+    $('#sum').click();
+    co1=parseInt($('#count1').val());
+    co2=parseInt($('#count2').val());
+    $('#sum_count').text(co1+co2);
+    
+    var bili2=$("#bili2").val();
+    $("#sanzhe2").text((co1+co2)*bili2/100);
+    
+    
+})
+
+
+var arr=new Array();
+arr['0']=new Array();
+arr['1']=new Array();
+arr['2']=new Array();
+arr['3']=new Array();
+arr['4']=new Array();
+arr['5']=new Array();
+arr['6']=new Array();
+//数组 上下额度，评估率
+arr['0']=[0,100*10000,'0.4'];
+arr['1']=[arr['0']['1'],200*10000,'0.3'];
+arr['2']=[arr['1']['1'],1000*10000,'0.2'];
+arr['3']=[arr['2']['1'],2000*10000,'0.15'];
+arr['4']=[arr['3']['1'],5000*10000,'0.08'];
+arr['5']=[arr['4']['1'],10000*10000,'0.04'];
+arr['6']=[arr['5']['1'],'','0.01'];
+
+
+
+$('#tdjs').tap(function(){
+    var tdpgz=parseInt($("#tdpgz").val());
+    
+    
+   var tdjscount=getnew(tdpgz,arr,6,'td');
+   $("#sum_count3").text(tdjscount);
+   var bili=$("#bili").val();
+   $("#sanzhe").text(tdjscount*bili/100);
+   
+})
+</script>
+{/if}
+
+
+{if $fall=='hejiashoufei'} 
+        {include file="w/title.html"}
+        <div class="content">
+
+<p><div  class="ui-searchbar-wrap ui-border-b focus">
+    
+    <div class="ui-searchbar">
+        <i class="ui-icon-search"></i>
+        <div class="ui-searchbar-text">输入核价总金额</div>
+        <div class="ui-searchbar-input"><input value="" onkeyup="value=value.replace(/[^0-9.]/g,'')"  type="tel" id="zongjiage" name="zongjiage" placeholder="输入核价总金额" autocapitalize="off"></div>
+        <i class="ui-icon-close" ></i>
+    </div>
+    
+     <button class="ui-searchbar-cancel"  id="kaishijs" >计算</button>
+     
+     
+</div> 
+</p>
+
+
+
+
+
+
+<table class="ui-table ui-border-tb" > 
+    <thead>
+        <tr><th  colspan="5"><b>核价收费计算表</b></th></tr>
+    </thead>
+    <tbody>
+        
+        <tr><td>档次</td><td>总金额(W)</td><td style="color: #749c18;">收费标准</td><td>应收费金额</td></tr>
+        <tr><td>1</td><td style="color: #749c18;"><=1</td><td>100</td><td id="tdsum" class="tdsumnl"></td></tr>
+        <tr><td>2</td><td style="color: #749c18;">1-10</a></td><td>1%</td><td id="tdsum2" class="tdsumnl"></td></tr>
+        
+        <tr><td>3</td><td style="color: #749c18;">10-50</td><td>0.5%</td><td id="tdsum3" class="tdsumnl"></td></tr>
+        <tr ><td>4</td><td style="color: #749c18;">>50</td><td>0.3%</td><td id="tdsum4" class="tdsumnl"></td></tr>
+        <!--<tr><td>5</td><td style="color: #749c18;">2001-5000</td><td>0.08%</td><td id="tdsum5" class="tdsumnl"></td></tr>
+        <tr><td>6</td><td style="color: #749c18;">5001-10000</td><td>0.04%</td><td id="tdsum6" class="tdsumnl"></td></tr>
+        <tr><td>7</td><td style="color: #749c18;">>10001</td><td>0.01%</td><td id="tdsum7" class="tdsumnl"></td></tr>-->
+        <tr><td colspan="3"><b>合计</b></td><td id="sum_count3"></td></tr>
+        <tr><td colspan="3"><b>按&nbsp;&nbsp;<input value="30" onkeyup="value=value.replace(/[^0-9]/g,'')"  type="tel" id="bili" name="bili" placeholder="输入比例" autocapitalize="off" maxlength="3"  style="width: 50px;" >%&nbsp;计算</b></td><td id="sanzhe"></td></tr>
+        <tr><td>备注</td><td colspan="3" style="color: blue;">以上收费标准依据:闽价[1993]事字180号文。</td></tr>
+    </tbody>
+</table>
+
+</div>
+<div class="ui-btn-wrap">
+    <button class="ui-btn-lg ui-btn-danger" onclick="location.href='jslist.html'" >
+        返回业务费用列表
+    </button>
+</div>
+
+<script type="text/javascript">
+
+//$('.ui-searchbar').tap(function(){
+//    $('.ui-searchbar-wrap').addClass('focus');
+//    $('.ui-searchbar-input input').focus();
+//});
+//$('.ui-searchbar-cancel').tap(function(){
+//    $('.ui-searchbar-wrap').removeClass('focus');
+//});
+//$('.ui-icon-close').tap(function(){
+//    $("#zcpgz").val("");
+//})
+//$('.ui-searchbar-cancel').tap(function(){
+//    location.href='?m_key='+$("#m_key").val();
+//    
+//})
+//
+
+$('.ui-searchbar').each(function(){
+    $(this).tap(function(){
+        $(this).parent('.ui-searchbar-wrap').addClass('focus');
+        $(this).find('.ui-searchbar-input input').focus();
+    })
+})
+
+$('.ui-icon-close').each(function(){
+    $(this).tap(function(){
+        $(this).parent().find('input').val("");
+        
+    })
+})
+
+
+
+var arr=new Array();
+arr['0']=new Array();
+arr['1']=new Array();
+arr['2']=new Array();
+arr['3']=new Array();
+arr['4']=new Array();
+arr['5']=new Array();
+arr['6']=new Array();
+//数组 上下额度，评估率
+arr['0']=[0,1*10000,100,2,0];
+arr['1']=[arr['0']['1'],10*10000,'1',1,0];
+arr['2']=[arr['1']['1'],50*10000,'0.5',1,0];
+arr['3']=[arr['2']['1'],90000000000*10000,'0.3',1,0];
+arr['4']=[arr['3']['1'],90000000000*10000,'0.3',1,0];
+arr['5']=[arr['4']['1'],90000000000*10000,'0.3',1,0];
+arr['6']=[arr['5']['1'],'','0.3',1,0];
+
+
+
+$('#kaishijs').tap(function(){
+    var tdpgz=parseInt($("#zongjiage").val());
+    
+    
+   var tdjscount=getnew_gd(tdpgz,arr,6,'td');
+   $("#sum_count3").text(tdjscount);
+   var bili=$("#bili").val();
+   $("#sanzhe").text(tdjscount*bili/100);
+   
+})
+</script>
+{/if}
+
+
+{if $fall=='yanzishoufei'} 
+        {include file="w/title.html"}
+        <div class="content">
+
+<p><div  class="ui-searchbar-wrap ui-border-b focus">
+    
+    <div class="ui-searchbar">
+        <i class="ui-icon-search"></i>
+        <div class="ui-searchbar-text">输入注册资本</div>
+        <div class="ui-searchbar-input"><input value="" onkeyup="value=value.replace(/[^0-9.]/g,'')"  type="tel" id="zongjiage" name="zongjiage" placeholder="输入注册资本" autocapitalize="off"></div>
+        <i class="ui-icon-close" ></i>
+    </div>
+    
+     <button class="ui-searchbar-cancel"  id="kaishijs" >计算</button>
+     
+     
+</div> 
+</p>
+
+
+
+
+
+
+<table class="ui-table ui-border-tb" > 
+    <thead>
+        <tr><th  colspan="5"><b>验资收费计算表</b></th></tr>
+    </thead>
+    <tbody>
+        
+        <tr><td>档次</td><td>注册资本(W)</td><td style="color: #749c18;">收费标准</td><td>速算加数</td><td>应收费金额</td></tr>
+        <tr><td>1</td><td style="color: #749c18;"><=100</td><td>1000</td><td></td><td id="tdsum" class="tdsumnl"></td></tr>
+        <tr><td>2</td><td style="color: #749c18;">100-300</a></td><td>1500</td><td></td><td id="tdsum2" class="tdsumnl"></td></tr>
+        
+        <tr><td>3</td><td style="color: #749c18;">300-500</td><td>0.05%</td><td></td><td id="tdsum3" class="tdsumnl"></td></tr>
+        <tr ><td>4</td><td style="color: #749c18;">500-1000</td><td>0.04%</td><td>500</td><td id="tdsum4" class="tdsumnl"></td></tr>
+        <tr><td>5</td><td style="color: #749c18;">>1000</td><td>0.03%</td><td>1500</td><td id="tdsum5" class="tdsumnl"></td></tr>
+        <!--<tr><td>6</td><td style="color: #749c18;">5001-10000</td><td>0.04%</td><td id="tdsum6" class="tdsumnl"></td></tr>
+        <tr><td>7</td><td style="color: #749c18;">>10001</td><td>0.01%</td><td id="tdsum7" class="tdsumnl"></td></tr>-->
+        <tr><td colspan="4"><b>合计</b></td><td id="sum_count3"></td></tr>
+        <tr><td colspan="4"><b>按&nbsp;&nbsp;<input value="30" onkeyup="value=value.replace(/[^0-9]/g,'')"  type="tel" id="bili" name="bili" placeholder="输入比例" autocapitalize="off" maxlength="3"  style="width: 50px;" >%&nbsp;计算</b></td><td id="sanzhe"></td></tr>
+        <tr><td colspan="5" style="color: blue;line-height:2em;"><p>备注:多次验证,首次按上述标准100%收费,以后每次按上述标准70%收费。企业投入资本年检,资产在50万元以下的,按300元收费;资产50—100万元,按600元收费;资产在100万元以上的,按验证投入资本收费标准60%收费,但不低于800元。</p></td></tr>
+    </tbody>
+</table>
+
+</div>
+<div class="ui-btn-wrap">
+    <button class="ui-btn-lg ui-btn-danger" onclick="location.href='jslist.html'" >
+        返回业务费用列表
+    </button>
+</div>
+
+<script type="text/javascript">
+
+//$('.ui-searchbar').tap(function(){
+//    $('.ui-searchbar-wrap').addClass('focus');
+//    $('.ui-searchbar-input input').focus();
+//});
+//$('.ui-searchbar-cancel').tap(function(){
+//    $('.ui-searchbar-wrap').removeClass('focus');
+//});
+//$('.ui-icon-close').tap(function(){
+//    $("#zcpgz").val("");
+//})
+//$('.ui-searchbar-cancel').tap(function(){
+//    location.href='?m_key='+$("#m_key").val();
+//    
+//})
+//
+
+$('.ui-searchbar').each(function(){
+    $(this).tap(function(){
+        $(this).parent('.ui-searchbar-wrap').addClass('focus');
+        $(this).find('.ui-searchbar-input input').focus();
+    })
+})
+
+$('.ui-icon-close').each(function(){
+    $(this).tap(function(){
+        $(this).parent().find('input').val("");
+        
+    })
+})
+
+
+
+var arr=new Array();
+arr['0']=new Array();
+arr['1']=new Array();
+arr['2']=new Array();
+arr['3']=new Array();
+arr['4']=new Array();
+arr['5']=new Array();
+arr['6']=new Array();
+//数组 上下额度，评估率,是否固定值,附加
+arr['0']=[0,100*10000,1000,2,0];
+arr['1']=[arr['0']['1'],300*10000,1500,2,0];
+arr['2']=[arr['1']['1'],500*10000,'0.05',1,0];
+arr['3']=[arr['2']['1'],1000*10000,'0.04',1,0];
+arr['4']=[arr['3']['1'],90000000000*10000,'0.03',1,0];
+arr['5']=[arr['4']['1'],90000000000*10000,'0.03',1,0];
+arr['6']=[arr['5']['1'],'','0.03',1,0];
+
+
+
+$('#kaishijs').tap(function(){
+    var tdpgz=parseInt($("#zongjiage").val());
+    
+    
+   var tdjscount=getnew_gd(tdpgz,arr,6,'td');
+   $("#sum_count3").text(tdjscount);
+   var bili=$("#bili").val();
+   $("#sanzhe").text(tdjscount*bili/100);
+   
+})
+</script>
+{/if}
+
+
+{if $fall=='nianzhongjiesuanshencha'} 
+        {include file="w/title.html"}
+        <div class="content">
+
+<p><div  class="ui-searchbar-wrap ui-border-b focus">
+    
+    <div class="ui-searchbar">
+        <i class="ui-icon-search"></i>
+        <div class="ui-searchbar-text">输入资产总额</div>
+        <div class="ui-searchbar-input"><input value="" onkeyup="value=value.replace(/[^0-9.]/g,'')"  type="tel" id="zongjiage" name="zongjiage" placeholder="输入资产总额" autocapitalize="off"></div>
+        <i class="ui-icon-close" ></i>
+    </div>
+    
+     <button class="ui-searchbar-cancel"  id="kaishijs" >计算</button>
+     
+     
+</div> 
+</p>
+
+
+
+
+
+
+<table class="ui-table ui-border-tb" > 
+    <thead>
+        <tr><th  colspan="5"><b>年终结算审查收费表</b></th></tr>
+    </thead>
+    <tbody>
+        
+        <tr><td>档次</td><td>资产总额(W)</td><td style="color: #749c18;">收费标准</td><td>速算加数</td><td>应收费金额</td></tr>
+        <tr><td>1</td><td style="color: #749c18;"><=500</td><td>0.06%</td><td></td><td id="tdsum" class="tdsumnl"></td></tr>
+        <tr><td>2</td><td style="color: #749c18;">500-1000</a></td><td>0.05%</td><td>500</td><td id="tdsum2" class="tdsumnl"></td></tr>
+        
+        <tr><td>3</td><td style="color: #749c18;">>1000</td><td>0.04%</td><td>1500</td><td id="tdsum3" class="tdsumnl"></td></tr>
+        <!--<tr ><td>4</td><td style="color: #749c18;">500-1000</td><td>0.04%</td><td>500</td><td id="tdsum4" class="tdsumnl"></td></tr>
+        <tr><td>5</td><td style="color: #749c18;">>1000</td><td>0.03%</td><td>1500</td><td id="tdsum5" class="tdsumnl"></td></tr>
+        <tr><td>6</td><td style="color: #749c18;">5001-10000</td><td>0.04%</td><td id="tdsum6" class="tdsumnl"></td></tr>
+        <tr><td>7</td><td style="color: #749c18;">>10001</td><td>0.01%</td><td id="tdsum7" class="tdsumnl"></td></tr>-->
+        <tr><td colspan="4"><b>合计</b></td><td id="sum_count3"></td></tr>
+        <tr><td colspan="4"><b>按&nbsp;&nbsp;<input value="30" onkeyup="value=value.replace(/[^0-9]/g,'')"  type="tel" id="bili" name="bili" placeholder="输入比例" autocapitalize="off" maxlength="3"  style="width: 50px;" >%&nbsp;计算</b></td><td id="sanzhe"></td></tr>
+        <tr><td colspan="5" style="color: blue;line-height:2em;"><p>备注:股份制企业年终决算审查按企业资产总额的万分之六收费,按这个比例计算的收费金额低于50000元的项目,按50000元收费.				
+</p></td></tr>
+    </tbody>
+</table>
+
+</div>
+<div class="ui-btn-wrap">
+    <button class="ui-btn-lg ui-btn-danger" onclick="location.href='jslist.html'" >
+        返回业务费用列表
+    </button>
+</div>
+
+<script type="text/javascript">
+
+//$('.ui-searchbar').tap(function(){
+//    $('.ui-searchbar-wrap').addClass('focus');
+//    $('.ui-searchbar-input input').focus();
+//});
+//$('.ui-searchbar-cancel').tap(function(){
+//    $('.ui-searchbar-wrap').removeClass('focus');
+//});
+//$('.ui-icon-close').tap(function(){
+//    $("#zcpgz").val("");
+//})
+//$('.ui-searchbar-cancel').tap(function(){
+//    location.href='?m_key='+$("#m_key").val();
+//    
+//})
+//
+
+$('.ui-searchbar').each(function(){
+    $(this).tap(function(){
+        $(this).parent('.ui-searchbar-wrap').addClass('focus');
+        $(this).find('.ui-searchbar-input input').focus();
+    })
+})
+
+$('.ui-icon-close').each(function(){
+    $(this).tap(function(){
+        $(this).parent().find('input').val("");
+        
+    })
+})
+
+
+
+var arr=new Array();
+arr['0']=new Array();
+arr['1']=new Array();
+arr['2']=new Array();
+arr['3']=new Array();
+arr['4']=new Array();
+arr['5']=new Array();
+arr['6']=new Array();
+//数组 上下额度，评估率,是否固定值,附加
+arr['0']=[0,500*10000,'0.06',1,0];
+arr['1']=[arr['0']['1'],1000*10000,'0.05',1,0];
+arr['2']=[arr['1']['1'],90000000000*10000,'0.04',1,0];
+arr['3']=[arr['2']['1'],90000000000*10000,'0.04',1,0];
+arr['4']=[arr['3']['1'],90000000000*10000,'0.04',1,0];
+arr['5']=[arr['4']['1'],90000000000*10000,'0.04',1,0];
+arr['6']=[arr['5']['1'],'','0.04',1,0];
+
+
+
+$('#kaishijs').tap(function(){
+    var tdpgz=parseInt($("#zongjiage").val());
+    
+    
+   var tdjscount=getnew_gd(tdpgz,arr,6,'td');
+   $("#sum_count3").text(tdjscount);
+    var bili=$("#bili").val();
+   $("#sanzhe").text(tdjscount*bili/100);
+   
+})
+</script>
+{/if}
+    </body>
+</html>

@@ -1,0 +1,336 @@
+<!Doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="description" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta content="" name="csrf-param">
+<meta content="" name="csrf-token">
+<title>问题反馈</title>
+<link type="text/css" rel="stylesheet" href='css/sendcard.css?1444794122' />
+<link type="text/css" rel="stylesheet" href='css/base.css?1444794122' />
+<script src="js/zepto.min.js?1444794122" type="text/javascript"></script>
+<script src="js/layer.m.js?1444794122" type="text/javascript"></script>
+</head>
+<body ontouchstart="">
+<!--主DIV-->
+<div data-role="page" class="page">
+  <header data-role="header" class="">
+    <h1> <i class="fontello-plane-outline"></i> {$company}使用问题反馈 </h1>
+  </header>
+  <div class="main" data-role="content">
+    <div class="main-content">
+      <form  action="" class="center" id="feedbackInfo-form" method="" novalidate>
+        <div style="margin:0;padding:0;display:inline">
+          <input name="utf8" type="hidden" value="✓">
+          <input name="authenticity_token" type="hidden" value="">
+        </div>
+        <fieldset>
+          <legend>
+          <div style="padding-top:15px;text-align:center"> <img id="invite_webimg" src="images/banner/fbbaner.jpg"> </div>
+          <small class="form-description">
+          <p>亲爱的{$company}用户：</p>
+          <p>请在这里直接填写您遇到的问题或意见建议，您的反馈对{$company}非常重要，并且{$company}的逐渐完善也能更好地为您提供服务。</p>
+          </small>
+          </legend>
+          <div class="form-content">
+            <div class="field" data-api-code="field_1">
+              <div class="control-group ">
+                <label class="control-label field_title" data-role="collapse_toggle" for="field_1"> 您现在遇到的问题是：<span style="color: red;">*</span> </label>
+                <div class="field_content">
+                  <div class="controls">
+                    <div data-valmsg-for="" data-valmsg-replace="false">
+                      <div class="clearfix checkbox-group" data-role="controlgroup">
+                        <label class="checkbox ">
+                          <input name="text[]" type="checkbox" value="无法同步头像及登陆系统" data-val="true" data-val-required="您现在遇到的问题是：不能为空！">
+                          无法同步头像及登陆系统 </label>
+                        <label  class="checkbox ">
+                          <input name="text[]" type="checkbox" value="登陆系统缓慢或出现乱码" data-val="true" data-val-required="您现在遇到的问题是：不能为空！">
+                          登陆系统缓慢或出现乱码 </label>
+                        <div class="other-choice-area ">
+                          <label  class="checkbox ">
+                            <input class="other_choice" name="text[]" type="checkbox" value="" data-val="true" data-val-required="您现在遇到的问题是：不能为空！">
+                            其它 </label>
+                          <input class="other-choice-input input-medium" data-field-key="field_1" id="field_1_other" name="data[problem]" size="30" type="text" value="">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="field" data-api-code="field_2">
+              <div class="control-group ">
+                <label class="control-label field_title" data-role="collapse_toggle" for="field_2"> 您的姓名是： <span style="color: red;">*</span> </label>
+                <div class="field_content">
+                  <div class="controls">
+                    <div data-valmsg-for="entry[field_2]" data-valmsg-replace="false">
+                      <input id="nickname" name="data[nickname]" step="any" type="text" value="" data-val="true" data-val-number="" data-val-required="您的是：不能为空！">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+             <div class="field" data-api-code="field_2">
+              <div class="control-group ">
+                <label class="control-label field_title" data-role="collapse_toggle" for="field_2"> 您的微信号是：</label>
+                <div class="field_content">
+                  <div class="controls">
+                    <div data-valmsg-for="entry[field_2]" data-valmsg-replace="false">
+                      <input id="field_2" name="data[weixin]" step="any" type="text" value="" data-val="true" data-val-number="" data-val-required="您的是：不能为空！">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="field" data-api-code="field_2">
+              <div class="control-group ">
+                <label class="control-label field_title" data-role="collapse_toggle" for="field_2"> 您的ID是： <span style="color: red;">*</span> </label>
+                <div class="field_content">
+                  <div class="controls">
+                    <div data-valmsg-for="entry[field_2]" data-valmsg-replace="false">
+                      <input id="user_id" name="data[user_id]" step="any" type="number" value="" data-val="true" data-val-number="必须输入数字" data-val-required="您的派卡会员编号是：不能为空！">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="field" data-api-code="field_3">
+              <div class="control-group ">
+                <label class="control-label field_title" data-role="collapse_toggle" for="field_3"> 您的联系电话是<span style="color: red;">*</span> </label>
+                <div class="field_content">
+                  <div class="help-block"> 分隔请用"-"或空格，国际电话请加"+" </div>
+                  <div class="controls">
+                    <div data-valmsg-for="entry[field_3]" data-valmsg-replace="false">
+                      <input id="tel" name="data[tel]" size="30" type="tel" value="" data-val="true" data-val-required="您的联系电话是：不能为空！" data-val-regex="手机格式不正确" data-val-regex-pattern="((\d{11})|^((\d{7,8})|(\d{4}|\d{3})-(\d{7,8})|(\d{4}|\d{3})-(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1})|(\d{7,8})-(\d{4}|\d{3}|\d{2}|\d{1}))$)">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="field" data-api-code="field_5">
+              <div class="control-group ">
+                <label class="control-label field_title" data-role="collapse_toggle" for="field_5"> 您的其他意见或建议： </label>
+                <div class="field_content">
+                  <div class="controls">
+                    <div data-valmsg-for="entry[field_5]" data-valmsg-replace="false">
+                      <textarea class="input-xxlarge" cols="40" id="field_5" name="data[opinion]" rows="3"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <input  type="button" class="submit" onclick="save();" value="提 交" />
+            </div>
+            <!--表单结束--> 
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+ <script language="JavaScript" type="text/javascript">
+	//ajax提交保存
+	var baseUrl = '';
+	function save()
+	{
+		if($("#nickname").val()==""){
+			layer.open({
+				content: '提交问题必须填写您的姓名',
+			});
+			return;		
+		}
+		if($("#tel").val()==""){
+			layer.open({
+				content: '提交问题必须填写您的手机号',
+			});
+			return;		
+		}
+		if($("input:checked").length==0&&$("#field_1_other").val()==""){
+			layer.open({
+				content: '提交问题必须填写反馈信息',
+			});
+			return;	
+		}
+		if($("#user_id").val()==""){
+			layer.open({
+				content: '提交问题必须您的ID号',
+			});
+			return;	
+		}
+			var postData = $('#feedbackInfo-form').serialize();
+			$.post(baseUrl+"/playRenlf/feedbackUp",postData,function(data){
+				if(data.status == 'success')
+				{
+					layer.open({
+						
+						content: '问题提交成功，感谢您提供的问题信息。',
+						btn: ['确定'],
+						yes: function(){
+							location.href = '/me/Index';
+						},
+					});
+				}else
+				{
+					layer.open({
+						
+						content: '编辑失败，'+data.msg,
+					});		
+				}
+			},'json');		
+		
+	}
+
+</script>
+<script type="text/javascript">
+window.onload = function(){
+	var linkUrl = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx79a5a3afef358f73&redirect_uri=http://wx.cc0571.com/weixin/share/do/playRenlf/action/feedback&response_type=code&scope=snsapi_base&state=10#wechat_redirect';
+	var dataForWeixin = {
+		title:document.title,
+		link: linkUrl,
+		imgUrl: "http://wx.cc0571.com/images/wzrlf.png", // 分享图标
+		desc:'http://wx.cc0571.com/playRenlf/feedback',
+	};	
+	weixin(dataForWeixin);
+}
+</script>
+
+
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+/*
+	微信js接口    demo:http://demo.open.weixin.qq.com/jssdk/
+*/
+wx.config({
+	//debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+	appId: '{$signPackage.appId}',
+	timestamp: '{$signPackage.timestamp}',
+	nonceStr: '{$signPackage.nonceStr}',
+	signature: '{$signPackage.signature}',
+   // 所有要调用的 API 都要加到这个列表中
+	jsApiList: [
+        'checkJsApi',
+        'onMenuShareTimeline',
+        'onMenuShareAppMessage',
+        'onMenuShareQQ',
+        'onMenuShareWeibo',
+        'hideMenuItems',
+        'showMenuItems',
+        'hideAllNonBaseMenuItem',
+        'showAllNonBaseMenuItem',
+        'translateVoice',
+        'startRecord',
+        'stopRecord',
+        'onRecordEnd',
+        'playVoice',
+        'pauseVoice',
+        'stopVoice',
+        'uploadVoice',
+        'downloadVoice',
+        'chooseImage',
+        'previewImage',
+        'uploadImage',
+        'downloadImage',
+        'getNetworkType',
+        'openLocation',
+        'getLocation',
+        'hideOptionMenu',
+        'showOptionMenu',
+        'closeWindow',
+        'scanQRCode',
+        //'chooseWXPay',
+        'openProductSpecificView',
+        'addCard',
+        'chooseCard',
+        'openCard'
+      ]
+});
+
+var weixin = function (dataForWeixin){
+	wx.ready(function () {
+		if(dataForWeixin != ''){
+			wx.onMenuShareTimeline(dataForWeixin);
+			wx.onMenuShareAppMessage(dataForWeixin);
+			wx.onMenuShareQQ(dataForWeixin);
+			wx.onMenuShareWeibo(dataForWeixin);			
+		}	  
+	});	
+};
+
+//wx.ready(function () {
+	// 在这里调用 API
+	//判断当前客户端版本是否支持指定JS接口      checkJsApi接口是客户端6.0.2新引入的一个预留接口，第一期开放的接口均可不使用checkJsApi来检测。
+	/*wx.checkJsApi({
+	  jsApiList: [
+		'onMenuShareTimeline',
+		'onMenuShareAppMessage'
+	  ],
+	  success: function (res) {
+		//alert(JSON.stringify(res));
+	  }
+	});*/
+
+	//获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
+	/*wx.onMenuShareTimeline({
+		title: dataForWeixin.title, // 分享标题
+		link: dataForWeixin.link, // 分享链接
+		imgUrl: dataForWeixin.imgUrl, // 分享图标
+		desc: dataForWeixin.desc,
+		trigger: function (res) {
+			//alert('用户点击分享到朋友圈');
+		},
+		success: function (res) {
+			//alert('已分享');
+		},
+		cancel: function (res) {
+			//alert('已取消');
+		},
+		fail: function (res) {
+			//alert(JSON.stringify(res));
+		}
+	});*/
+	
+	//分享到朋友圈
+	//wx.onMenuShareTimeline(dataForWeixin);
+	//发送给朋友
+	//wx.onMenuShareAppMessage(dataForWeixin);
+	//分享到QQ
+	//wx.onMenuShareQQ(dataForWeixin);
+	//分享到微博
+	//wx.onMenuShareWeibo(dataForWeixin);
+	
+	//隐藏右上角菜单
+	//wx.hideOptionMenu();
+	//显示右上角菜单
+	//wx.showOptionMenu();
+	
+	//批量隐藏菜单项
+	/*wx.hideMenuItems({
+		menuList: [
+			'menuItem:readMode', // 阅读模式
+			'menuItem:share:timeline', // 分享到朋友圈
+			'menuItem:copyUrl' // 复制链接
+		],
+		success: function (res) {
+			//alert('已隐藏“阅读模式”，“分享到朋友圈”，“复制链接”等按钮');
+		},
+		fail: function (res) {
+			//alert(JSON.stringify(res));
+		}
+	});*/
+	
+	//关闭当前窗口
+	//wx.closeWindow();
+//});
+
+wx.error(function(res){
+	// config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+	alert(res.errMsg);
+});
+</script>

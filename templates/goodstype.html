@@ -1,0 +1,179 @@
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+{literal}
+<script type="text/javascript">
+//屏蔽js报错
+/*
+  function killerrors() {
+          return true;
+  }
+  window.onerror = killerrors;
+  
+ */
+</script> 
+{/literal}
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+
+<!-- paste this code into your webpage -->
+
+<link href="css/app/mshop.css" rel="stylesheet" type="text/css" media="screen" />
+<script type="text/javascript" src="js/app/tablecloth.js"></script>
+<script type="text/javascript" src="js/app/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/app/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="js/app/jquery.Search.js"></script>
+<script type="text/javascript" src="js/app/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/app/jq.mshop.js">
+
+</script>
+<!-- end -->
+</head>
+ 
+
+</head>  
+<body  style="margin-top: -10px; padding-top: 0px;">   
+<!--
+<div id="dataLoad" style="display:block">
+   <table width="100%" height="100%" border="0" align="center" >
+    <tr height="50%"><td align="center">&nbsp;</td></tr>
+    
+    <tr><td align="center">数据载入中，请稍后......</td></tr>
+    <tr height="50%"><td align="center">&nbsp;</td></tr>
+   </table>
+  </div>
+-->
+
+
+
+
+<table class="table" width="99%" border="0" style="margin-bottom: 7px;">
+
+ <form id="form_1">
+ <tr>
+ <th style="text-align: left;border-right-style:none"><input id="a_text" value="添加属性" type="button" onclick="location='goodstype.php?act=add_goodstype_list'" />&nbsp;</th>
+ <th style="text-align: right; border-left-style:none">
+ <input  type="text"  id="key" name="key" />&nbsp;<input  type="text"  id="goodstype_key" name="goodstype_key"/>&nbsp;<input  value="搜索" type="submit" />&nbsp;&nbsp;</th>
+ 
+ </tr>
+
+
+ </form>
+</table>
+	
+<table id="table_1" width="99%" height="50" border="1" cellpadding="0" cellspacing="0" > 
+<thead><tr>
+
+    <td id="td2">属性代码</td>
+    <td>属性名称</td>
+    <td>排序</td>
+    <td>备注</td>
+    <td>外部编码</td>
+    <td>最后更新</td>
+    <td  width="70" align="center">是否启用</td>
+    
+    <td  align="center">操作&nbsp;</td>
+
+</tr>
+</thead> 
+<tbody id="tbody_1">
+  {foreach from=$goodstype_list item=goodstype}
+            <tr>
+            
+			<td  >{$goodstype.goodstype_sn}</td>
+            <td >{$goodstype.goodstype_name}</td>
+            <td >{$goodstype.sort_no}</td>
+            <td >{$goodstype.goodstype_note_1}</td>
+             <td >{$goodstype.outer_goodstype_code}</td>
+           <td >{$goodstype.last_update}</td>
+            <td align="center" width="40">{if $goodstype.tzsy==1}<img id="tzsy_qy" alt="0" title="{$goodstype.goodstype_sn}"  src="images/no.gif"/>{else}<img id="tzsy_jy"  title="{$goodstype.goodstype_sn}" alt="1" src="images/yes.gif"/>{/if}</td>
+     
+            
+        <td  align="center"  width="60">{if $goodstype.tzsy==1}<img  title="修改属性" name="{$goodstype.goodstype_sn}" id="edit"  src="images/icon_edit.gif" />&nbsp;<img  title="查看图片" name="{$goodstype.goodstype_sn}" id="img_img"  src="images/img_img.png" />&nbsp;<img id="delete_goodstype"  alt="{$goodstype.goodstype_sn}" name="{$goodstype.goodstype_sn}" title="删除" src="images/icon_drop.gif"/>{else if } <img  title="修改属性" name="{$goodstype.goodstype_sn}" id="edit"  src="images/icon_edit.gif" />&nbsp;<img  title="查看图片" name="{$goodstype.goodstype_sn}" id="img_img"  src="images/img_img.png" />&nbsp;{/if}</td>       
+          
+			</tr>
+     {foreachelse}
+    <tr><td class="no-records" colspan="4">无记录</td></tr>
+    {/foreach}
+</tbody>  
+
+</table>  
+<div  id="tfoot" ><span id="page_foot">
+        <a >共 {$p_Array.pager_Total} 条记录，本页显示 {$p_Array.now_PageNum} 条,  当前第 {$p_Array.pager_PageID}/{$p_Array.pager_Number} 页 </a>每页显示<input id="pager_Size" style="width: 20px;height: 20px; text-align: center; "   type="text" value="{$p_Array.pager_Size}"/>
+		<a href="{$p_Array.url}&pager_PageID=1">第一页</a>
+		<a href="{$p_Array.url}&pager_PageID={$p_Array.pager_PageID_ow}">上一页</a>
+		<a href="{$p_Array.url}&pager_PageID={$p_Array.pager_PageID_next}">下一页</a>
+		<a href="{$p_Array.url}&pager_PageID={$p_Array.pager_Number}">最末页</a>
+<input  type="hidden" id="now_url" value="{$p_Array.url}"/>
+		跳转到<input type='text' size='3' id='page_num' value="{$p_Array.pager_PageID}"  />页
+	</span>
+</div>
+</body>  
+</html>
+<script type="text/javascript">
+        $("img[id='edit']").each(function (){
+            
+            $(this).click(function (){
+               location.href = "goodstype.php?act=edit&goodstype_sn="+$(this).attr('name');
+            })
+        })
+           $("img[id='delete_goodstype']").each(function (){
+            
+            $(this).click(function (){
+        
+            
+              if(confirm("删除"+$(this).attr("name")+"属性？")){
+               htmlobj=$.ajax({url:"goodstype.php?act=delete_goodstype&goodstype_sn="+encodeURI(encodeURI($(this).attr("name"))),async:false});
+              alert(htmlobj.responseText);
+             window.location.reload();
+            }else return false;
+            
+            })
+        })
+         $("img[id='img_img']").each(function (){
+            
+           $(this).click(function (){
+            window.open('gallery.php?act=goodstype_img&goodstype_sn='+$(this).attr("name"));
+        })
+        })
+        
+      
+        
+        
+        $("img[id='tzsy_jy']").each(function (){
+            
+           $(this).click(function (){
+        
+           if(confirm("禁用"+$(this).attr("title")+"属性?")){
+             
+              htmlobj=$.ajax({url:"goodstype.php?act=goodstype_xs&goodstype_code="+encodeURI(encodeURI($(this).attr("title")))+"&alt="+$(this).attr("alt"),async:false});
+              alert(htmlobj.responseText);
+             window.location.reload();
+            }else return false;
+            
+          //alert($(this).attr("title"));
+           //$("#hide_img").slideToggle(200);
+           
+           
+        })
+        })
+        $("img[id='tzsy_qy']").each(function (){
+            
+           $(this).click(function (){
+        
+           if(confirm("启用"+$(this).attr("title")+"属性?")){
+             
+              htmlobj=$.ajax({url:"goodstype.php?act=goodstype_xs&goodstype_code="+encodeURI(encodeURI($(this).attr("title")))+"&alt="+$(this).attr("alt"),async:false});
+              alert(htmlobj.responseText);
+             window.location.reload();
+            }else return false;
+            
+          //alert($(this).attr("title"));
+           //$("#hide_img").slideToggle(200);
+           
+           
+        })
+        })
+       
+</script>

@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>儿童健康</title>
+<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no">
+<meta charset="utf-8">
+<link href="css/css.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/zepto.min.js"></script>
+</head>
+
+<body>
+<header>
+<div class="back" onClick="history.go(-1)" ></div>
+<div class="title">奇妙的人体</div>
+<div class="controls"><a href="m.html"><img src="images/icon-toggle.png"></a></div> 
+</header>
+<div class="block47"></div>
+<!--
+<div class="crumbs"><a href="#">首页</a><span>&gt;</span>
+<a href="#">十万个为什么</a><span>&gt;</span>
+奇妙的人体</div> 
+-->
+<div class="list">
+<ul>
+	<li><a href="show.html">为什么女子的肌肉没有男子的肌肉发达?</a></li>
+	<li><a href="show.html">为什么运动员的肌肉比普通人的力量大?</a></li>
+	<li><a href="show.html">为什么久坐久站脚会发麻?</a></li>
+	<li><a href="show.html">人的尾巴哪里去了?</a></li>
+	<li><a href="show.html">为什么手会比脚灵活?</a></li>
+	<li><a href="show.html">什么是平足?</a></li>
+	<li><a href="show.html">为什么人的大拇指只有两节?</a></li>
+	<li><a href="show.html">为什么大多数人右手的力气比左手大?</a></li>
+	<li><a href="show.html">为什么人在早上高，晚上矮?</a></li>
+	<li><a href="show.html">为什么骨骼是竖硬的?</a></li>
+	<li><a href="show.html">为什么人会分男女?</a></li>
+	<li><a href="show.html">为什么早产儿智力并不差?</a></li>
+	<li><a href="show.html">为什么婴儿生下来就会哭?</a></li>
+	<li><a href="show.html">为什么会有双胞胎?</a></li>
+	<li><a href="show.html">少女为什么会来月经?</a></li>
+	<li><a href="show.html">男人与女人的身体有什么差别?</a></li>
+	<li><a href="show.html">为什么人体的左右不对称?</a></li>
+	<li><a href="show.html">为什么男子会长胡子?</a></li>
+	<li><a href="show.html">为什么用嘴呼吸不利于健康?</a></li>
+	<li><a href="show.html">为什么人吸进氧气，呼出时变成了二氧化碳?</a></li>
+	<li><a href="show.html">为什么人的呼吸有节律?</a></li>
+	<li><a href="show.html">胆的大小与胆量有关系吗?</a></li>
+	<li><a href="show.html">为什么切掉一只肾的人还能活着?</a></li>
+	<li><a href="show.html">尿是怎么形成的?</a></li>
+	<li><a href="show.html">&quot;肝火&quot;就是肝上火吗?</a></li>
+	<li><a href="show.html">盲肠与阑尾是不是一回事?</a></li>
+	<li><a href="show.html">&quot;脾气&quot;和脾有关吗?</a></li>
+	<li><a href="show.html">为什么胃液是酸的?</a></li>
+	<li><a href="show.html">胃切除后为什么还能消化食物?</a></li>
+	<li><a href="show.html">为什么胃不会消化自己?</a></li>
+</ul>
+</div>
+
+
+<!--
+<div class="page">
+<div class="prev"><a href="javascript:;" class="disable">上页</a></div>
+<div class="block"></div>
+<div class="nums">共1/6页   跳至 <input type="text" class="num"><input type="button" value="" class="go"> 页 </div>
+<div class="block"></div>
+<div class="next"><a href="#">下页</a></div>  
+-->
+    <script>
+    $(function(){
+        $('.go').click(function(){
+    		var pages = $('.num').val();
+    		pages--;
+    		if(pages!==''){
+    		//	 window.location.href='list.php?page='+pages+'&style=0&classid=686&bclassid=685&totalnum=172';
+			window.location.href='#';
+    	    }
+        });
+
+    	$('.writecomment').on('click', function(){
+    		$('.text').toggle();
+    		$('.btn').toggle();
+	});
+
+	$(".list li").click(function(){
+		location =$(this).find('a').attr('href');
+	})
+    });
+ </script>
+
+</div>
+</body>
+</html>
+	

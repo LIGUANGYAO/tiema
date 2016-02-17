@@ -1,0 +1,16 @@
+[2015-11-20 20:10:03][debug] begin notify
+[2015-11-20 20:10:03][debug] call back:false
+[2015-11-20 20:10:03][debug] begin notify
+[2015-11-20 20:10:03][debug] call back:false
+[2015-11-20 20:10:03][debug] begin notify
+[2015-11-20 20:10:03][debug] call back:false
+[2015-11-20 20:10:04][debug] query:{"appid":"wx9bd85e016d66c1ea","mch_id":"1279292901","nonce_str":"OjJAlz3DEs3HY2o1","out_trade_no":"127929290120151118100553","result_code":"SUCCESS","return_code":"SUCCESS","return_msg":"OK","sign":"3AFE3710F422FDCD21A6209EA81C30C8","trade_state":"NOTPAY","trade_state_desc":"\u8ba2\u5355\u672a\u652f\u4ed8"}
+[2015-11-20 20:10:04][debug] query:{"appid":"wx9bd85e016d66c1ea","mch_id":"1279292901","nonce_str":"BODmmIN5rXcGFQ5C","out_trade_no":"127929290120151118100606","result_code":"SUCCESS","return_code":"SUCCESS","return_msg":"OK","sign":"2F74DD0F8F7DC5EBD377913B9836B437","trade_state":"NOTPAY","trade_state_desc":"\u8ba2\u5355\u672a\u652f\u4ed8"}
+[2015-11-20 20:37:23][debug] begin notify
+[2015-11-20 20:37:23][debug] call back:false
+[2015-11-20 20:37:23][debug] begin notify
+[2015-11-20 20:37:23][debug] call back:false
+[2015-11-20 20:37:23][debug] begin notify
+[2015-11-20 20:37:23][debug] call back:false
+[2015-11-20 20:37:24][debug] query:{"appid":"wx9bd85e016d66c1ea","mch_id":"1279292901","nonce_str":"ZnXvYZAXZ8LkMs5v","out_trade_no":"127929290120151118100553","result_code":"SUCCESS","return_code":"SUCCESS","return_msg":"OK","sign":"591E6BFB54D62BDC57B27190DB8A5B52","trade_state":"NOTPAY","trade_state_desc":"\u8ba2\u5355\u672a\u652f\u4ed8"}
+[2015-11-20 20:37:24][debug] query:{"appid":"wx9bd85e016d66c1ea","mch_id":"1279292901","nonce_str":"aaBVovB3DhiHoa2t","out_trade_no":"127929290120151118100606","result_code":"SUCCESS","return_code":"SUCCESS","return_msg":"OK","sign":"6B63A637D81F2FAAC438A4B16BAC5BBE","trade_state":"NOTPAY","trade_state_desc":"\u8ba2\u5355\u672a\u652f\u4ed8"}

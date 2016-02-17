@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>选择城市</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+<link href="templates/citylist/css/citylist.css" rel="stylesheet" type="text/css" />
+<script src="templates/citylist/js/zepto.js"></script>
+<script>
+    var MT = window.MT || {};
+ </script>
+</head>
+<body>
+<header>
+  <div class="left-box"><!-- <a class="hd-lbtn" href="#"><span>首页</span></a>--></div>
+  <h1>红色区域属于未开通微信或无网点</h1>
+</header>
+<div id="cityBox">
+  <div id="recently-city" style="display:none;" class="category-box">
+    <div class="category-btn" data-name="最近查看">
+      <h1>最近查看</h1>
+      <label class="arrow"><span class="bg icon"></span></label>
+    </div>
+    <ul>
+    </ul>
+</div>
+  
+<!--  
+  <div class="category-box show-cate">
+    <div class="category-btn  ">
+      <h1> 热门城市 </h1>
+      <span class="arrow"><span class="bg icon"></span></span> </div>
+    <ul>
+      <li> <a class="" gaevent="imt/selectCity/shanghai" href="/shanghai" data-citypinyin="shanghai">上海</a> </li>
+      <li> <a class="" gaevent="imt/selectCity/beijing" href="/beijing" data-citypinyin="beijing">北京</a> </li>
+      <li> <a class=" no-border-right" gaevent="imt/selectCity/chongqing" href="/chongqing" data-citypinyin="chongqing">重庆</a> </li>
+      <li> <a class="" gaevent="imt/selectCity/chengdu" href="/chengdu" data-citypinyin="chengdu">成都</a> </li>
+      <li> <a class="" gaevent="imt/selectCity/shenzhen" href="/shenzhen" data-citypinyin="shenzhen">深圳</a> </li>
+      <li> <a class=" no-border-right" gaevent="imt/selectCity/nanjing" href="/nanjing" data-citypinyin="nanjing">南京</a> </li>
+      <li> <a class="" gaevent="imt/selectCity/tianjin" href="/tianjin" data-citypinyin="tianjin">天津</a> </li>
+      <li> <a class="" gaevent="imt/selectCity/hangzhou" href="/hangzhou" data-citypinyin="hangzhou">杭州</a> </li>
+      <li> <a class=" no-border-right" gaevent="imt/selectCity/guangzhou" href="/guangzhou" data-citypinyin="guangzhou">广州</a> </li>
+      <li> <a class=" no-border-bottom" gaevent="imt/selectCity/xian" href="/xian" data-citypinyin="xian">西安</a> </li>
+      <li> <a class=" no-border-bottom" gaevent="imt/selectCity/wuhan" href="/wuhan" data-citypinyin="wuhan">武汉</a> </li>
+    </ul>
+  </div>
+-->  
+   {foreach from=$province_list item=province_list}
+  <div class="category-box">
+    <div class="category-btn">
+	{if $province_list.tzsy==1}
+	<h1><span style="color:#FF0000">{$province_list.region_name}</span></h1>
+	{else}
+	<h1>{$province_list.region_name}</h1>
+	{/if}
+	</div>
+	 {foreach from=$province_list.city item=province_list.city}
+	 <div class="abc">{$province_list.city.region_name}</div>
+    <ul>
+	  {foreach from=$province_list.city.district item=province_list.city.district}
+	  {if $province_list.city.district.tzsy==1}
+	  <li><a class="" gaevent="imt/selectCity/weixin/wxshoplist.php?id={$province_list.city.district.id}" href="wxshoplist.php?id={$province_list.city.district.id}"><span style="color:#FF0000">{$province_list.city.district.region_name}</span></a> </li>
+	  {else}
+	  <li><a class="" gaevent="imt/selectCity/weixin/wxshoplist.php?id={$province_list.city.district.id}" href="wxshoplist.php?id={$province_list.city.district.id}">{$province_list.city.district.region_name}</a> </li>
+	  {/if}
+	  {/foreach}
+    </ul>
+	 {/foreach}
+</div> 
+ {/foreach}
+
+
+
+
+
+
+</div>
+
+
+
+
+<script src="templates/citylist/js/citylist.js"></script>
+<script>
+    $(function() {
+        var opts = {
+            $itemsBox: $('#cityBox'),
+            $recentItemsBox: $('#recently-city'),
+            city: "quanzhou",
+            storageKey: 'imtRecentCity',
+            gaeventPrefix: 'imt/selectCity/',
+            maxItems: 9
+        };
+        $("#cityBox").on("click",".link a",function(){
+            var _href = $(this).attr("href"),_ul = $(this).parents(".link").next("ul"),_box = _ul.parent(".category-box");
+            if(!_ul.find("li").size()){
+                $.post(_href,function(city){
+                    _ul.html(city);
+                    _box.toggleClass("show-cate");
+                });
+            }else{
+                _box.toggleClass("show-cate");
+            }
+            return false;
+        });
+        var cityItems = new MT.widgets.ItemsFactory('city', opts);
+
+        cityItems.buildRecentItemsList();
+        cityItems.bindItemToggle();
+
+        /**
+        * 选择城市页自动定位
+        * 有个 110 是由后端输出的
+        */
+        MT.GEO.getLoc(function(pos) {
+            var lat = pos.coords.latitude, lng = pos.coords.longitude;
+            var url = MT.GEO.genURL(lat, lng);
+            $.getJSON(url, function(response) {
+                // 后端正确返回数据 且 返回城市与当前城市不同
+                if (response.status === 0 && response.data.id !== 110) {
+                    MT.GEO.popChangeCity(response.data.name, function() {
+                        location.href = "/" + response.data.pinyin;
+                    });
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

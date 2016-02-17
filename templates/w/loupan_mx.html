@@ -1,0 +1,94 @@
+{include file="w/head.html"}
+
+{if $fall==edit} 
+        {include file="w/title.html"}
+        <div class="content"><p><div  class="ui-searchbar-wrap ui-border-b">
+    
+   <table class="ui-table ui-border-tb">
+    <thead>
+        <tr><th colspan="3"><b>楼盘信息</b></th></tr>
+    </thead>
+    <tbody>
+     
+        <tr><td style="width: 100px;">楼盘代码</td><td><a >{$loupan_mx.loupan_sn}</a></td></tr>
+        <tr><td>楼盘名称</td><td><a >{$loupan_mx.loupan_name}</a></td></tr>
+       
+        
+        
+        <tr>
+            <td >住宅土地级别及类型:</td><td><a >{$loupan_mx.tudijibie}</a></td>
+        </tr>
+        <tr>
+            <td >建成年份:</td><td><a >{$loupan_mx.nianfen}</a></td>
+        </tr>
+        <tr>
+            <td >结构质式:</td><td><a >{$loupan_mx.jiegouzhishi}</a></td>
+        </tr>
+        <tr><td>电梯</td><td><a >{if $loupan_mx.dianti==1}无{elseif $loupan_mx.dianti==2}有{/if}</a></td></tr>
+        <tr>
+            <td >住宅价格范围:</td><td><a >{$loupan_mx.jiagefanwei}</a></td>
+        </tr>
+        <tr>
+            <td >商业土地级别及类型:</td><td><a >{$loupan_mx.shangyetudijibie}</a></td>
+        </tr>
+        <tr>
+            <td >临街状况:</td><td><a >{$loupan_mx.linjiezhuangkuang}</a></td>
+        </tr>
+        <tr>
+            <td >店面价格范围:</td><td><a >{$loupan_mx.dianmianjiagefanwei}</a></td>
+        </tr>
+        <tr>
+            <td >备注:</td><td><a >{$loupan_mx.bz}</a></td>
+        </tr>
+        <tr>
+            <td >经度:</td><td><a >{$loupan_mx.lbsjd}</a></td>
+        </tr>
+        <tr>
+            <td >纬度:</td><td><a >{$loupan_mx.lbswd}</a></td>
+        </tr>
+        <tr>
+            <td >地址:</td><td><a >{$loupan_mx.dizhi}</a></td>
+        </tr>
+        
+        <tr>
+            <td >地理坐标:</td><td><a >{$loupan_mx.lbsweizhi}</a></td>
+        </tr>
+        <tr><td colspan="2" onclick="location.href='loupan.html?g=tuwenxinxi&loupan_sn={$loupan_mx.loupan_sn}'" ><a >查看图片</a></td></tr>
+        
+    </tbody>
+</table>
+
+
+</div>
+</div>
+<div class="ui-btn-wrap">
+    <button class="ui-btn-lg ui-btn-danger" onclick="location.href='loupan.html'" >
+        返回楼盘搜索
+    </button>
+</div>
+{/if}
+
+
+{if $fall==tuwenxinxi} 
+        {include file="w/title.html"}
+        <div class="content">
+        
+<h3 class="title" style="background-color: #f5f5f5;"><b>图文信息</b></h3>
+<li class="ui-border-t" style="padding: 10px;">
+        <div >
+           {$loupan_mx.tuwen}
+        </div>
+    </li>
+</div>
+<div class="ui-btn-wrap">
+    <button class="ui-btn-lg ui-btn-danger" onclick="javascript:history.go(-1)" >
+        返回
+    </button>
+</div>
+{/if}
+<script src="frozenjs/1.0.1/frozen.js"></script>
+<script type="text/javascript">
+
+</script> 
+    </body>
+</html>

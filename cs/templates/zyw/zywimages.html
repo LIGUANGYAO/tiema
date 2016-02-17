@@ -1,0 +1,55 @@
+ <!doctype HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>儿童资源大全</title>
+<link href="templates/zyw/css/css.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="templates/zyw/js/zepto.min.js"></script>
+</head>
+ 
+<body>
+<header>
+<div class="back" onClick="history.go(-1)" ></div>
+<div class="title">{$wxfloor_name}</div>
+ 	<div class="controls"><a href="zywindex.php"><img src="templates/zyw/images/icon-toggle.png"></a> </div> 
+</header>
+<div class="block47"></div>
+<div class="list">
+<ul>
+ {foreach from=$wximages_list item=wximages_list}	
+	<a href="{$wximages_list.url}"><li>{$wximages_list.wximages_name}<!--<span><font>120665</font>点击</span>--></li></a>
+	{/foreach}
+</ul>
+</div>
+ 
+ 
+ 
+    <script>
+    
+    $(function(){
+ 
+
+ 
+    	$('.writecomment').on('click', function(){
+    		$('.text').toggle();
+    		$('.btn').toggle();
+	});
+ 
+	$(".list li").click(function(){
+		location =$(this).find('a').attr('href');
+	})
+    });
+ </script>
+ 
+</div>
+ 
+ 
+ 
+ 
+
+ 
+</body>
+</html>
+	
+

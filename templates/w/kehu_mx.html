@@ -1,0 +1,646 @@
+{include file="w/head.html"}
+
+{if $fall==edit} 
+        {include file="w/title_3.html"}
+        <div class="content">
+<input  type="hidden" value="{$g_e}" />
+
+
+
+
+<p><div class="ui-tab">
+    <ul class="ui-tab-nav ui-border-b">
+        <li class="current">客户信息</li>
+        
+        <li>评估记录</li>
+        <li>理财记录</li>
+        
+    </ul>
+    <ul class="ui-tab-content" style="width: 300%;">
+        <li>
+            <div  class="ui-searchbar-wrap ui-border-b">
+    
+   <table class="ui-table ui-border-tb">
+  
+    <tbody>
+     
+        <tr><td style="width: 100px;">客户代码</td><td><a >{$kehu_mx.kehu_sn}</a></td></tr>
+        <tr><td>客户名称</td><td><a >{$kehu_mx.kehu_name}</a></td></tr>
+        <tr><td>固定电话</td><td><a href="tel:{$kehu_mx.tel}">{$kehu_mx.tel}</a></td></tr>
+        <tr><td>移动电话</td><td><a href="tel:{$kehu_mx.mobile}">{$kehu_mx.mobile}</a></td></tr>
+        <tr><td>备注</td><td><a  >{$kehu_mx.bz}</a></td></tr>
+        {if $is_admin==1}
+        <tr><td>客户类型</td><td><a >{if $kehu_mx.khlx=='0'}普通客户{elseif $kehu_mx.khlx=='1'}vip客户{elseif $kehu_mx.khlx=='2'}潜在客户{elseif $kehu_mx.khlx=='3'}失效客户{else}普通客户{/if}</a></td></tr>
+        <tr><td>客户公司</td><td><a  >{$kehu_mx.gongsimingcheng}</a></td></tr>
+        <tr><td>职位</td><td><a  >{$kehu_mx.zhiwei}</a></td></tr>
+        <tr><td>email</td><td><a  >{$kehu_mx.email}</a></td></tr>
+        <tr><td>传真号</td><td><a  >{$kehu_mx.chuanzhen}</a></td></tr>
+        <tr><td>行业</td><td><a  >{$kehu_mx.hangye}</a></td></tr>
+        <tr><td>行业描述</td><td><a  >{$kehu_mx.hangye_bz}</a></td></tr>
+        {/if}
+        <tr><td colspan="2" onclick="location.href='kehuhuifang.html?kehu_id={$kehu_mx.id}'" ><a >查看回访记录</a></td></tr>
+        
+        
+    </tbody>
+</table>
+<input  type="hidden" value="{$g_e}" />
+
+
+
+</div>
+           <div class="ui-btn-wrap">
+    <button class="ui-btn-lg ui-btn-primary" onclick="location.href='msgsend.html?kehu_id={$kehu_mx.id}'" >
+        查看提醒信息
+    </button>
+</div>
+<div class="ui-btn-wrap">
+    <button class="ui-btn-lg ui-btn-danger" onclick="location.href='kehu.html'" >
+        返回客户搜索
+    </button>
+</div>
+        </li>
+        
+       
+        <li>
+            <ul class="ui-list ui-list-text ui-border-b">
+                
+                {foreach from=$pinggu item=pinggu}
+                <li class="ui-border-t" onclick="location.href='pinggu.html?g=e254730b5ccf08e6b&pinggu_sn={$pinggu.pinggu_sn}'">
+                    <div class="ui-list-info">
+                        <h4 class="ui-nowrap">{$pinggu.pinggu_sn}</h4>
+                        <h4 class="ui-nowrap">{$pinggu.pinggu_name}</h4>
+                    </div>
+                    
+                    <div class="ui-badge">{$pinggu.pinggu_time}</div>
+                </li>
+                {/foreach}
+                
+            </ul>
+        </li>
+        <li>
+           <ul class="ui-list ui-list-text ui-border-b">
+                {foreach from=$jinrong item=jinrong}
+                <li class="ui-border-t" onclick="location.href='jinrongbanli.html?g=945576b099767b508&jinrongbanli_sn={$jinrong.jinrongbanli_sn}'">
+                    <div class="ui-list-info">
+                        <h4 class="ui-nowrap">{$jinrong.jinrongbanli_sn}</h4>
+                        <h4 class="ui-nowrap">{$jinrong.jinrongbanli_name}</h4>
+                    </div>
+                    
+                    <div class="ui-badge">{$jinrong.banli_time}</div>
+                </li>
+                {/foreach}
+                
+            </ul>
+        </li>
+      
+    </ul>
+</div></p>
+
+
+</div>
+
+
+
+<script>
+var tab = new fz.Scroll('.ui-tab', {
+    role: 'tab',
+    interval: 3000
+    //autoplay: true
+});
+tab.currentPage = 0;
+$(tab.nav.children[0]).removeClass('current');
+$(tab.nav.children[tab.currentPage]).addClass('current');
+tab.scrollTo(-tab.itemWidth*tab.currentPage,0);
+tab.on('beforeScrollStart', function(fromIndex, toIndex) {
+    console.log(fromIndex, toIndex)
+});
+
+tab.on('scrollEnd', function() {
+    console.log('end')
+});  
+</script>
+{/if} 
+
+{if $fall==kehuhuifang} 
+        {include file="w/title_4.html"}
+        <div class="content">
+        <p><ul class="ui-list ui-list-text ui-list-link ui-border-b">
+    <li class="ui-border-t">
+        <h4>
+        <p>这是标题，加ui-nowrap可以超出长度截断</p>
+        <p>这是标题，加ui-nowrap可以超出长度截断</p>
+        <p>这是标题，加ui-nowrap可以超出长度截断这是标题，加ui-nowrap可以超出长度截断这是标题，加ui-nowrap可以超出长度截断</p>
+        <p>这是标题，加ui-nowrap可以超出长度截断</p>
+        </h4>
+        
+    </li>
+    <li class="ui-border-t">
+        <h4 class="ui-nowrap">这是标题，加ui-nowrap可以超出长度截断</h4>
+    </li>
+</ul></p>
+        
+</div>
+
+<script type="text/javascript">
+
+</script>
+{/if}
+
+
+{if $fall==tianjiakehuhuifang} 
+        {include file="w/title_4.html"}
+        <form name="myform" id="myform" method="post" action="kehu.html?g=bdff1a21dce686827" enctype="multipart/form-data">  
+<div class="ui-form">
+<div class="ui-form-item ui-form-item-l ui-border-b" style="text-align: center;">
+        <b>添加客户回访记录</b>
+            
+
+        
+        
+</div>
+<input  type="hidden" name="kehu_sn" value="{$sn}"/>
+
+
+<div class="ui-form-item ui-form-item-l ui-border-b">
+        <label class="ui-border-r">
+            客户代码
+        </label>
+    
+         <input value="{$kehu_mx.kehu_sn}" disabled="disabled"/>
+        <input name="kehu_sn" id="kehu_sn"   type="hidden" value="{$kehu_mx.kehu_sn}" />
+        
+</div>
+<div class="ui-form-item ui-form-item-l ui-border-b">
+        <label class="ui-border-r">
+            客户名称
+        </label>
+        <input type="text" placeholder="请输入客户名称" name="kehu_name" style="" id="kehu_name" value="{$kehu_mx.kehu_name}"/>
+        
+        
+</div>
+<div class="ui-form-item ui-form-item-l ui-border-b">
+        <label class="ui-border-r">
+            移动电话
+        </label>
+        <input type="text" placeholder="请输入移动电话"  name="mobile" style="" id="mobile" type="text" value="{$kehu_mx.mobile}"/>
+        
+      
+</div>
+<div class="ui-form-item ui-form-item-l ui-border-b">
+        <label class="ui-border-r">
+            固定电话
+        </label>
+        <input type="text" placeholder="请输入固定电话" name="tel" style="" id="tel" value="{$kehu_mx.tel}"/>
+        
+      
+</div>
+
+<div class="ui-form-item ui-form-item-textarea ui-border-b">
+        <label for="#" class="ui-border-r">
+            <a>客户备注</a>
+        </label>
+        <textarea placeholder="     请输入客户备注" name="bz" id="bz">{$kehu_mx.bz}</textarea>
+    </div>
+
+
+
+
+
+
+<ul class="ui-list ui-list-text ui-list-radio">
+    <li class="ui-border-t">
+        <label class="ui-radio" for="radio">
+            <input type="radio" name="khlx" class="khlx" value="0"  {if $kehu_mx.khlx=='0'}checked="checked" {/if} />
+        </label>
+        <p>
+            普通客户
+        </p>
+    </li>
+    <li class="ui-border-t">
+        <label class="ui-radio" for="radio">
+            <input type="radio"  name="khlx" class="khlx" value="1" {if $kehu_mx.khlx=='1'}checked="checked" {/if} />
+        </label>
+        <p>
+            vip客户
+        </p>
+    </li>
+    <li class="ui-border-t">
+        <label class="ui-radio" for="radio">
+            <input type="radio"  name="khlx" class="khlx" value="2" {if $kehu_mx.khlx=='2'}checked="checked" {/if} />
+        </label>
+        <p>
+            潜在客户
+        </p>
+    </li>
+    <li class="ui-border-t">
+        <label class="ui-radio" for="radio">
+            <input type="radio"  name="khlx" class="khlx" value="3" {if $kehu_mx.khlx=='3'}checked="checked" {/if}  />
+        </label>
+        <p>
+            失效客户
+        </p>
+    </li>
+</ul>
+    <input type="hidden" id="khlx_v" value="{$kehu_mx.khlx}" /></td>
+</div>
+
+
+</form>
+<div class="ui-btn-group-tiled ui-btn-wrap">
+    <button class="ui-btn-lg"  onclick="location.href='kehu.html'"  >
+        取消
+    </button>
+    <button class="ui-btn-lg ui-btn-primary" id="btn1">
+        确认
+    </button>
+</div>
+
+<script type="text/javascript">
+
+</script>
+{/if}
+
+
+{if $fall==edit2} 
+        {include file="w/title.html"}
+      
+
+<form name="myform" id="myform" method="post" action="kehu.html?g=bdff1a21dce686827" enctype="multipart/form-data">  
+<div class="ui-form">
+<div class="ui-form-item ui-form-item-l ui-border-b" style="text-align: center;">
+        <b>编辑客户</b>
+            
+
+        
+        
+</div>
+<input  type="hidden" name="kehu_sn" value="{$sn}"/>
+
+
+<div class="ui-form-item ui-form-item-l ui-border-b">
+        <label class="ui-border-r">
+            客户代码
+        </label>
+    
+         <input value="{$kehu_mx.kehu_sn}" disabled="disabled"/>
+        <input name="kehu_sn" id="kehu_sn"   type="hidden" value="{$kehu_mx.kehu_sn}" />
+        
+</div>
+<div class="ui-form-item ui-form-item-l ui-border-b">
+        <label class="ui-border-r">
+            客户名称
+        </label>
+        <input type="text" placeholder="请输入客户名称" name="kehu_name" style="" id="kehu_name" value="{$kehu_mx.kehu_name}"/>
+        
+        
+</div>
+<div class="ui-form-item ui-form-item-l ui-border-b">
+        <label class="ui-border-r">
+            移动电话
+        </label>
+        <input type="text" placeholder="请输入移动电话"  name="mobile" style="" id="mobile" type="text" value="{$kehu_mx.mobile}"/>
+        
+      
+</div>
+<div class="ui-form-item ui-form-item-l ui-border-b">
+        <label class="ui-border-r">
+            固定电话
+        </label>
+        <input type="text" placeholder="请输入固定电话" name="tel" style="" id="tel" value="{$kehu_mx.tel}"/>
+        
+      
+</div>
+
+<div class="ui-form-item ui-form-item-textarea ui-border-b">
+        <label for="#" class="ui-border-r">
+            <a>客户备注</a>
+        </label>
+        <textarea placeholder="     请输入客户备注" name="bz" id="bz">{$kehu_mx.bz}</textarea>
+    </div>
+
+
+<div class="ui-form-item ui-form-item-l ui-border-b">
+        <label class="ui-border-r">
+            客户公司
+        </label>
+        <input type="text" placeholder="请输入客户公司" name="gongsimingcheng" style="" id="gongsimingcheng" value="{$kehu_mx.gongsimingcheng}"/>
+        
+      
+</div>
+<div class="ui-form-item ui-form-item-l ui-border-b">
+        <label class="ui-border-r">
+            职位
+        </label>
+        <input type="text" placeholder="请输入职位" name="zhiwei" style="" id="zhiwei" value="{$kehu_mx.zhiwei}"/>
+        
+      
+</div>
+<div class="ui-form-item ui-form-item-l ui-border-b">
+        <label class="ui-border-r">
+            email
+        </label>
+        <input type="text" placeholder="请输入email" name="email" style="" id="email" value="{$kehu_mx.email}"/>
+        
+      
+</div>
+<div class="ui-form-item ui-form-item-l ui-border-b">
+        <label class="ui-border-r">
+            传真号
+        </label>
+        <input type="text" placeholder="请输入传真号" name="chuanzhen" style="" id="chuanzhen" value="{$kehu_mx.chuanzhen}"/>
+        
+      
+</div>
+<div class="ui-form-item ui-form-item-l ui-border-b">
+        <label class="ui-border-r">
+            行业
+        </label>
+        <input type="text" placeholder="请输入行业" name="hangye" style="" id="hangye" value="{$kehu_mx.hangye}"/>
+        
+      
+</div>
+<div class="ui-form-item ui-form-item-l ui-border-b">
+        <label class="ui-border-r">
+            行业描述
+        </label>
+        <input type="text" placeholder="请输入行业描述" name="hangye_bz" style="" id="hangye_bz" value="{$kehu_mx.hangye_bz}"/>
+        
+      
+</div>
+
+<ul class="ui-list ui-list-text ui-list-radio">
+    <li class="ui-border-t">
+        <label class="ui-radio" for="radio">
+            <input type="radio" name="khlx" class="khlx" value="0"  {if $kehu_mx.khlx=='0'}checked="checked" {/if} />
+        </label>
+        <p>
+            普通客户
+        </p>
+    </li>
+    <li class="ui-border-t">
+        <label class="ui-radio" for="radio">
+            <input type="radio"  name="khlx" class="khlx" value="1" {if $kehu_mx.khlx=='1'}checked="checked" {/if} />
+        </label>
+        <p>
+            vip客户
+        </p>
+    </li>
+    <li class="ui-border-t">
+        <label class="ui-radio" for="radio">
+            <input type="radio"  name="khlx" class="khlx" value="2" {if $kehu_mx.khlx=='2'}checked="checked" {/if} />
+        </label>
+        <p>
+            潜在客户
+        </p>
+    </li>
+    <li class="ui-border-t">
+        <label class="ui-radio" for="radio">
+            <input type="radio"  name="khlx" class="khlx" value="3" {if $kehu_mx.khlx=='3'}checked="checked" {/if}  />
+        </label>
+        <p>
+            失效客户
+        </p>
+    </li>
+</ul>
+    <input type="hidden" id="khlx_v" value="{$kehu_mx.khlx}" /></td>
+</div>
+
+
+</form>
+<div class="ui-btn-group-tiled ui-btn-wrap">
+    <button class="ui-btn-lg"  onclick="location.href='kehu.html'"  >
+        取消
+    </button>
+    <button class="ui-btn-lg ui-btn-primary" id="btn1">
+        确认
+    </button>
+</div>
+
+
+<script type="text/javascript">
+$("#btn1").tap(function(){
+    
+     if($("#kehu_name").val()=='')
+    {
+        $("#kehu_name").focus();
+    }else if($("#mobile").val()=='')
+    {
+        $("#mobile").focus();
+    }
+    else
+    {
+        $("#btn1").focus();
+    
+    var dia=$.dialog({
+        title:'确认编辑客户',
+        content:'',
+        button:["取消","确认"]
+    });
+
+    dia.on("dialog:action",function(e){
+        //alert(e.index);
+       
+        if(e.index==1){
+            $("#myform").submit();
+        }
+        console.log(e.index)
+    });
+    dia.on("dialog:hide",function(e){
+        
+        console.log("dialog hide")
+    });
+    }
+    
+    
+          
+})
+
+    
+</script>
+
+
+{/if} 
+
+
+
+{if $fall==add_list} 
+        {include file="w/title.html"}
+      
+
+<form name="myform" id="myform" method="post" action="kehu.html?g=95665e3855fc466fb" enctype="multipart/form-data">  
+<div class="ui-form">
+<div class="ui-form-item ui-form-item-l ui-border-b" style="text-align: center;">
+        <b>添加客户</b>
+            
+
+        
+        
+</div>
+<input  type="hidden" name="kehu_sn" value="{$sn}"/>
+<div class="ui-form-item ui-form-item-l ui-border-b">
+        <label class="ui-border-r">
+            客户名称
+        </label>
+        <input type="text" placeholder="请输入客户名称" name="kehu_name" style="" id="kehu_name" />
+        
+        
+</div>
+<div class="ui-form-item ui-form-item-l ui-border-b">
+        <label class="ui-border-r">
+            移动电话
+        </label>
+        <input type="text" placeholder="请输入移动电话"  name="mobile" style="" id="mobile" type="text"/>
+        
+      
+</div>
+<div class="ui-form-item ui-form-item-l ui-border-b">
+        <label class="ui-border-r">
+            固定电话
+        </label>
+        <input type="text" placeholder="请输入固定电话" name="tel" style="" id="tel"/>
+        
+      
+</div>
+
+<div class="ui-form-item ui-form-item-textarea ui-border-b">
+        <label for="#" class="ui-border-r">
+            <a>客户备注</a>
+        </label>
+        <textarea placeholder="     请输入客户备注" name="bz" id="bz"></textarea>
+    </div>
+
+<div class="ui-form-item ui-form-item-l ui-border-b">
+        <label class="ui-border-r">
+            客户公司
+        </label>
+        <input type="text" placeholder="请输入客户公司" name="gongsimingcheng" style="" id="gongsimingcheng" value="{$kehu_mx.gongsimingcheng}"/>
+        
+      
+</div>
+<div class="ui-form-item ui-form-item-l ui-border-b">
+        <label class="ui-border-r">
+            职位
+        </label>
+        <input type="text" placeholder="请输入职位" name="zhiwei" style="" id="zhiwei" value="{$kehu_mx.zhiwei}"/>
+        
+      
+</div>
+<div class="ui-form-item ui-form-item-l ui-border-b">
+        <label class="ui-border-r">
+            email
+        </label>
+        <input type="text" placeholder="请输入email" name="email" style="" id="email" value="{$kehu_mx.email}"/>
+        
+      
+</div>
+<div class="ui-form-item ui-form-item-l ui-border-b">
+        <label class="ui-border-r">
+            传真号
+        </label>
+        <input type="text" placeholder="请输入传真号" name="chuanzhen" style="" id="chuanzhen" value="{$kehu_mx.chuanzhen}"/>
+        
+      
+</div>
+<div class="ui-form-item ui-form-item-l ui-border-b">
+        <label class="ui-border-r">
+            行业
+        </label>
+        <input type="text" placeholder="请输入行业" name="hangye" style="" id="hangye" value="{$kehu_mx.hangye}"/>
+        
+      
+</div>
+<div class="ui-form-item ui-form-item-l ui-border-b">
+        <label class="ui-border-r">
+            行业描述
+        </label>
+        <input type="text" placeholder="请输入行业描述" name="hangye_bz" style="" id="hangye_bz" value="{$kehu_mx.hangye_bz}"/>
+        
+      
+</div>
+
+<ul class="ui-list ui-list-text ui-list-radio">
+    <li class="ui-border-t">
+        <label class="ui-radio" for="radio">
+            <input type="radio" name="khlx" class="khlx" value="0" checked  />
+        </label>
+        <p>
+            普通客户
+        </p>
+    </li>
+    <li class="ui-border-t">
+        <label class="ui-radio" for="radio">
+            <input type="radio"  name="khlx" class="khlx" value="1"  />
+        </label>
+        <p>
+            vip客户
+        </p>
+    </li>
+    <li class="ui-border-t">
+        <label class="ui-radio" for="radio">
+            <input type="radio"  name="khlx" class="khlx" value="2"  />
+        </label>
+        <p>
+            潜在客户
+        </p>
+    </li>
+    <li class="ui-border-t">
+        <label class="ui-radio" for="radio">
+            <input type="radio"  name="khlx" class="khlx" value="3"  />
+        </label>
+        <p>
+            失效客户
+        </p>
+    </li>
+</ul>
+    
+</div>
+
+
+</form>
+<div class="ui-btn-group-tiled ui-btn-wrap">
+    <button class="ui-btn-lg"  onclick="location.href='kehu.html'"  >
+        取消
+    </button>
+    <button class="ui-btn-lg ui-btn-primary" id="btn1">
+        确认
+    </button>
+</div>
+
+<script type="text/javascript">
+$("#btn1").tap(function(){
+    
+     if($("#kehu_name").val()=='')
+    {
+        $("#kehu_name").focus();
+    }else if($("#mobile").val()=='')
+    {
+        $("#mobile").focus();
+    }
+    else
+    {
+        $("#btn1").focus();
+    
+    var dia=$.dialog({
+        title:'确认添加客户',
+        content:'',
+        button:["取消","确认"]
+    });
+
+    dia.on("dialog:action",function(e){
+        //alert(e.index);
+       
+        if(e.index==1){
+            $("#myform").submit();
+        }
+        console.log(e.index)
+    });
+    dia.on("dialog:hide",function(e){
+        
+        console.log("dialog hide")
+    });
+    }
+})
+</script>
+{/if} 
+    </body>
+</html>

@@ -1,0 +1,95 @@
+@charset "utf-8";
+/*    __ 公共样式
+----------------------------------------------*/
+body,h1,h2,h3,h4,h5,h6,dl,dt,dd,ul,ol,li,from,fieldset,legend,button,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
+ul,ol{list-style:none;}
+img{ border:0 none;}
+h1,h2,h3,h4,h5,h6,button,input,select,textarea{font-size:100%;font-weight:normal;}
+a{text-decoration:none;color:#5d5d5d;} 
+a:hover{text-decoration:none;color:#fff;}
+body,button,input,select,textarea{font:12px/1.5 tahoma,arial,\5b8b\4f53,sans-serif;color:#5d5d5d;font-family:"Microsoft YaHei";}
+body{ background:#f5f5f5;}
+/*    __clr
+----------------------------------------------*/
+.clr:after{content:".";clear:both;display:block;height:0;visibility:hidden;}
+.clr{*zoom:1;}
+/*    __main
+----------------------------------------------*/
+.inputBox,.inputBox2,.bindingTop,.bindingBottom,.radius_left,.radius_right{ background:url(../images/bg.png) no-repeat;}
+.main{position:relative; padding:12px 10px 0 10px;}
+.title{ line-height:25px; font-size:17px; padding:6px 0 4px 3px; color:black;}
+.inputBox{ height:47px; background-repeat:repeat-x; position:relative;}
+
+.inputBox2{ height:47px; background-repeat:repeat-x; position:relative; width: 130px;}
+.radius_left,.radius_right{ width:10px; height:47px; background-position:0 -203px; position:absolute; top:0px;}
+.radius_left{ left:0px;}
+.radius_right{ background-position:-10px -203px; right:0px;}
+.text_in{ width:98%; height:47px; line-height:47px; font-size:18px; border:none; background:none; padding-left:18px; color:#000000;}
+.text_in2{ width:200px; height:47px; line-height:47px; font-size:18px; border:none; background:none; padding-left:18px; color:#000000;}
+.tel{ font-size:18px; text-align:center; padding-top:77px; padding-bottom:16px; color:#3c3c3c;}
+.tel .gray{ color:#5d5d5d; font-size:15px;}
+.smsText{ color:#808080; padding-top:6px;}
+.pt100{ padding-top:20px;color:#000000;}
+.boxCen{ border:1px solid #d6d6d6; border-radius:4px; background:#e4e4e4; padding:5px 10px; color:#808080; margin-bottom:8px;}
+.green{ color:#129e1e;}
+.box{ margin-bottom:-5px;}
+.retran{ padding-left:3px; margin-top:16px; margin-bottom:16px; font-size:14px;}
+i.ico {
+	display: inline-block;
+	height: 11px;
+	width: 11px;
+	margin-right: 7px;
+	vertical-align: middle;
+	background: url("../images/jt.png") no-repeat center;
+}
+.retran a{ color:#2c67bd;}
+.retran a:hover{color:#e1630c;}
+.mt15{ margin-top:15px;}
+.btn {
+	display: block;
+	padding: 0 14px;
+	font-size: 16px;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+	overflow: visible;
+	height: 38px;
+	line-height: 38px;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 1px solid rgba(0, 77, 6, 0.7);
+	box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.2), inset 0 1px 1px 0 rgba(255, 255, 255, 0.25);
+	-moz-box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.2), inset 0 1px 1px 0 rgba(255, 255, 255, 0.25);
+	-webkit-box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.2), inset 0 1px 1px 0 rgba(255, 255, 255, 0.25);
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+.btn_primary {
+	color: #ffffff;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+	background-color: #21a52b;
+	background-image: -moz-linear-gradient(top, #53c15c 0, #00920b 83%);
+	background-image: -webkit-gradient(linear, 0 0, 0 83%, from(#53c15c), to(#00920b));
+	background-image: -webkit-linear-gradient(top, #53c15c 0, #00920b 83%);
+	background-image: -o-linear-gradient(top, #53c15c 0, #00920b 83%);
+	background-image: linear-gradient(to bottom, #53c15c 0, #00920b 83%);
+}
+/*    __binding
+----------------------------------------------*/
+.binding{ width:260px; position:absolute; top:110px; left:50%; margin-left:-130px; z-index:1}
+.bindingTop{ width:260px; height:21px; background-position:0 -165px; margin:0 auto;}
+.bindingCen{ width:260px; background:url(../images/binding_bg.png) repeat-y; margin:0 auto;  padding-bottom:10px;}
+.bindingBottom{ width:260px; height:10px; overflow:hidden; background-position:0 -187px; margin:0 auto;}
+.cenPic,.cenText,.cenText02{ text-align:center;}
+.cenText{ padding:0 10px; font-size:15px; margin:5px 0 0px;}
+.cenText02{ padding:0 10px;}
+
+
+
+
+
+
+
+
+
+

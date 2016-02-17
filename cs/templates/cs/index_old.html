@@ -1,0 +1,185 @@
+<!DOCTYPE html><html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<title></title>
+<link type="text/css" rel="stylesheet" href="css/base.css?1445578397">
+<link type="text/css" rel="stylesheet" href="css/style.css?1445578397">
+<link type="text/css" rel="stylesheet" href="css/menew.css?1445578397">
+<link type="text/css" rel="stylesheet" href="css/xsz_me.css?1445578397">
+<link type="text/css" rel="stylesheet" href="css/slither.css?1445578397">
+<script src="js/zepto.min.js?1445578397" type="text/javascript"></script>
+<script src="js/layer.m.js?1445578397" type="text/javascript"></script>
+<script type="text/javascript">
+var baseUrl = '';
+$(function(){
+	//同步微信资料
+	$("#sync").on('click',function(){
+		$.get(baseUrl+"/me/syncInfo",function(data){
+			layer.open({ content:data });
+			setTimeout(function(){location.reload();},1000);
+		})
+	})
+	
+	blinklink();
+	
+	//从付款成功页面过来的，弹框
+	})
+
+
+//开启关闭资料
+function closeOpenInfo(is_private)
+{
+	var msg,flag;
+	
+	if (is_private == '0') {
+		msg = '开启资料后其他会员可以在{$company}平台查找到您';
+		flag = 1;
+	} else {
+		msg = '关闭资料后其他会员将无法在{$company}平台查找到您';	
+        flag = 0;	
+	}
+	
+	var loadingLayer = layer.open({
+		content: msg,
+		btn: ['确认','取消'],
+		shadeClose: false,
+		yes: function(){							
+			//修改是否开启资料标识
+			$.ajax({
+				url: 'index.php',
+				type: "post", 
+				data:{'flag':flag,'g':'SwitchUserInfo'},
+				dataType: 'json',
+				success:function(data){	
+					if(data.status == 'success')
+					{
+						layer.open({
+							content: data.msg,
+							style:'text-align:center;'
+						});
+						setTimeout(function(){location.reload();},500);
+					} else {
+						layer.open({								
+							content: data.msg,
+							style:'text-align:center;'
+						});
+					}
+				}
+			});
+		}, no: function(){
+			layer.close(loadingLayer);
+		}
+	});
+}
+
+function blinklink()
+{
+	
+	if (document.getElementById('blink').style.color=="rgb(203, 53, 54)")
+	{
+		document.getElementById('blink').style.color="rgb(0, 0, 0)"
+	}
+	else
+	{
+		document.getElementById('blink').style.color="rgb(203, 53, 54)"
+	}
+	
+	timer=setTimeout("blinklink()",250)
+}
+
+function stoptimer()
+{
+clearTimeout(timer)
+}
+</script>
+</head><iframe id="__WeixinJSBridgeIframe_SetResult" style="display: none;"></iframe><iframe id="__WeixinJSBridgeIframe" style="display: none;"></iframe>
+<body>
+
+	<div>
+	  <!--顶部bar-->
+	  <div class="me_top">		
+		<div class="message">
+		  <div class="left">
+			<div class="head"> <img src="{$userInfo.headimgurl}"> </div>
+		  </div>
+		  <div class="right">
+			<ul>
+			  <li class="name"><i class="{if $userInfo.sex='1'}icon-man{elseif $userInfo.sex=='2'}icon-women{else}icon-man{/if}"></i>&nbsp;<label>{$userInfo.nick_name}</label>&nbsp;</li>
+			  <li><i class="icon-location"></i><label class="loc">&nbsp;{$userInfo.province}{$userInfo.city}</label></li>
+			   <li class="extension">恭喜您是财神第 <font color="red" size="+1">{$userInfo.id}</font> 位眷顾</li>
+			</ul>
+		  </div>
+		</div>
+	   </div>
+		
+	   <div class="messbut" >
+		   <a href="javascript:;" id="sync"><div class="mess_left" >&nbsp;</div></a>
+                    {if $userInfo.wx_pay=='1'}
+                    <div class="mess_right" >已购书</div>
+                    {else}
+                    <a href="bookbuy.php"><div class="mess_right1">购书</div></a>
+                    {/if}
+		   		   
+                   
+                   
+		   		</div>
+	  
+	  
+	  <div class="clear"></div>
+	  <!--顶部bar结束-->
+	  <div class="me_mid">
+		<div class="melist">
+		<div class="meli_left"><div class="melistimg"><img src="images/melist_1.png"></div><div class="melisttxt">在线状态</div></div>
+		<a href="javascrit:;" onclick="closeOpenInfo('{if $userInfo.login_status=='1'}1{else}0{/if}')">
+		<div class="meli_right">
+		  <div class="demo">
+			<div class="wrap" style="width: 85px;">
+			  <input id="sync" type="checkbox" class="chk_4" {if $userInfo.login_status=='1'}checked=""{else}{/if} >
+			  <label for="checkbox_d1"></label>
+			</div>
+		  </div>
+		 </div>
+		 </a>
+		</div>
+	  </div>
+	  
+	  <a href="/me/grabMoney" id="grabMoney">
+		  <div class="strategy">
+			  <div class="melist" style="border-bottom: solid #e7e7e7 1px;">
+				<div class="meli_left">
+				  <div class="melistimg"><img src="images/earn.png"></div>
+				  <div id="blink" class="melisttxt" style="color: rgb(203, 53, 54);">抢钱攻略</div>
+				  <div class="new"><img src="images/new.png"></div>
+				</div>
+				<div class="meli_right"><span><img src="images/jiantou2.png"></span></div>
+			  </div>
+		  </div>
+	  </a>
+	  <div class="clear"></div>
+	  
+	  <!--中部bar结束-->
+		<div class="tab-iteam" id="tab-iteam1">
+		<div class="tab-iteam-con" id="tabBox1-bd">
+			<div class="con active">
+				<ul>
+					<li style="border-right:1px solid #e6e6e6;border-bottom:1px solid #e6e6e6;"><a href="uploadcode.php"><img src="images/melist_02.png"><br>上传我的微信二维码</a></li> 
+					<li style="border-right:1px solid #e6e6e6;border-bottom:1px solid #e6e6e6;"><a href="problemreply.php"><img src="images/melist_01.png?111"><br>常见问题回答</a></li>
+					<li style="border-bottom:1px solid #e6e6e6;"><a href="mycomrades.php"><img src="images/comrades.png"><br>我的战友团</a></li>
+					<!--<li style="border-bottom:1px solid #e6e6e6;"><a href="/me/contactKefu"><img src="/images/melist_03.png"><br>联系客服</a></li>-->
+					<li style="border-right:1px solid #e6e6e6;"><a href="mycommission.php"><img src="images/melist_04.png"><br>我的金库</a></li>
+					<li style="border-right:1px solid #e6e6e6;"><a href="myorder.php"><img src="images/melist_05.png"><br>我的订单</a></li>
+					<li><a href="getmycode.php"><img src="images/melist_06.png?111"><br>推广二维码</a></li>
+				</ul>
+			</div>
+		</div>
+		</div>	  	  
+	  <div class="kongbai90"></div>
+	</div>
+
+{include file="cs/foot_2.html"}
+
+
+</body></html>

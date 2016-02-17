@@ -1,0 +1,310 @@
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+	<meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=2.0,user-scalable=no" name="viewport" />
+	<meta content="240" name="MobileOptimized" />
+	<title>输入手机号码</title>
+	<link href="templates/exTel/css/css.css" rel="stylesheet" type="text/css" />
+	
+	<!-- 添加DWR功能 -->
+	<script type='text/javascript' src="templates/exTel/js/engine.js"></script>
+	<script type='text/javascript' src="templates/exTel/js/util.js"></script>
+	
+	<!-- 调用DWR自定义方法 -->
+	<script type="text/javascript"  src="templates/exTel/js/CheckMobileSection.js"></script>
+	<script src="templates/exTel/js/wxframe.js" type="text/javascript"></script>
+    <script src="templates/exTel/js/jquery.js" type="text/javascript"></script>
+    
+                
+	<script type="text/javascript">
+		(function ($) {
+		    function init() {
+		        $(document).on("WeixinJSBridgeReady", function () {
+		            try {
+		                WeixinJSBridge.call('hideToolbar');
+		                WeixinJSBridge.call('hideOptionMenu');
+		            } catch (e) {/*alert(e);*/
+		            }
+		        });
+		    }
+		
+		    init();
+		
+		})(jq);
+	</script>
+
+	<script type="text/javascript">
+		//var qquri = "http://wx.qq.com/cgi-bin/mmwebwx-bin/privilegeusersmsauthorize?act=ss&rurl=qunzu";
+        var qquri ="";
+		var intervalid = null;
+		
+		function G(e) {
+			return document.getElementById(e);
+		}
+		
+		function trim(val) {
+			return val.replace(/(^\s*)|(\s*$)/g, "");
+		}
+		
+		function goto1() {
+			var arr = ['1'];
+			var regx = /^[0-9]{11}$/g;
+			
+			var phone_val = trim(G("phone").value);
+			var openid_val = G("openid").value;
+			var random = trim(G("random").value);
+            
+            
+			if (phone_val == "") return;
+			
+            if (random == "") {	
+                
+                msg("请输入验证码");
+                return false;
+                }
+            
+			if (phone_val.length != 11) {
+				msg("手机号码长度不对");
+				return false;
+			}
+            if (random.length != 6) {
+				msg("验证码长度不对");
+				return false;
+			}
+			
+			if (!regx.test(phone_val)) {
+				msg("手机号码包含特殊字符");
+				return false;
+			}
+            
+            
+
+			var b = false;
+			for (i = 0; i < arr.length; i++) {
+				if (arr[i] == phone_val.substring(0, 1)) {
+					b = true;
+					break;
+				}
+			}
+
+			if (!b) {
+				msg("请输入1开头的手机号码");
+				return false;
+			}
+            
+            
+            $.ajax({
+        						url: "wxextel.php?m=telonly2",
+        						//dataType: "json",
+                                //async:false,
+        						data: {
+                                    "tel":phone_val,
+									 "openid":$("#openid").val(),
+                                     "random":random
+        						//	token:openid1,
+        //							ac: "activityuser",
+        //							tid: "387",
+        //							t: Math.random()
+        						},
+        						beforeSend: function() {
+        						
+        						},
+        						success: function(data) {
+        						     
+                                     if(data==1)
+                                     {
+                                        $("#mobile_phone").val(phone_val);
+                                        $("#id_bindform").submit();
+										//window.location.href='member.php?openid='+$("#openid").val();
+                                     }
+                                     else if(data==2)
+                                     {
+                                        msg("该手机号已经被注册,请重新输入");
+                                     }
+                                     else if(data==3)
+                                     {
+                                        msg("验证码错误");
+                                     }
+                                     else
+                                     {
+                                        msg(data);
+                                     }
+                                   
+                                  
+        						},
+        						error: function() {
+        						  //alert(1);
+        						  //alert(2);return;
+        						},
+        						
+        					})
+					
+		}
+        
+        function go_random() {
+			var arr = ['1'];
+			var regx = /^[0-9]{11}$/g;
+			
+			var phone_val = trim(G("phone").value);
+			var openid_val = G("openid").value;
+			
+            
+            
+			
+			
+            if (phone_val == "") {	
+                
+                msg("请输入手机号获取验证码");
+                return false;
+                }
+            
+			if (phone_val.length != 11) {
+				msg("手机号码长度不对");
+				return false;
+			}
+           
+			
+			if (!regx.test(phone_val)) {
+				msg("手机号码包含特殊字符");
+				return false;
+			}
+            
+
+			var b = false;
+			for (i = 0; i < arr.length; i++) {
+				if (arr[i] == phone_val.substring(0, 1)) {
+					b = true;
+					break;
+				}
+			}
+
+			if (!b) {
+				msg("请输入1开头的手机号码");
+				return false;
+			}
+             $.ajax({
+        						url: "wxextel.php?m=get_random",
+        						//dataType: "json",
+                                //async:false,
+        						data: {
+                                    "tel":phone_val,
+									 "openid":$("#openid").val(),
+                               
+        						//	token:openid1,
+        //							ac: "activityuser",
+        //							tid: "387",
+        //							t: Math.random()
+        						},
+        						beforeSend: function() {
+        						
+        						},
+        						success: function(data) {
+        						     
+                                     
+                                     if(data==1)
+                                     {
+                                        $("#mobile_phone").val(phone_val);
+                                        msg(data);
+                                        return false;
+                                     }
+                                     else if(data==2)
+                                     {
+                                        msg("该手机号已经被注册,请重新输入");
+                                     }else
+                                     {
+                                        msg(data);
+                                     }
+                                   
+                                  
+        						},
+        						error: function() {
+        						  //alert(1);
+        						  //alert(2);return;
+        						},
+        						
+        					})
+          
+					
+		}
+        
+		
+		function msg(e) {
+			new warn().alert(e);
+		}
+		
+		function warn() {
+			var msgobj = G("id_warn_pan");
+		
+			this.alert = function(msg) {
+				if(msg == ""){
+					return;
+				}
+				if (intervalid != null) {
+					window.clearTimeout(intervalid);
+					intervalid = null;
+				}
+				
+				G("id_warn_content").innerHTML = msg;
+				msgobj.style.display = "block";
+		
+				// 5s auto close
+				intervalid = window.setTimeout("new warn().close()", 2000);
+			}
+		
+			this.close = function() {
+				msgobj.style.display = "none";
+				G("id_warn_content").innerHTML = "";
+				intervalid = null;
+			}
+		}
+
+	</script>
+</head>
+<body>
+	<div class="main">
+		<!--提示框-->
+	    <div id="id_warn_pan" class="binding" style="display:none;">
+	    	<div class="bindingTop"></div>
+	        <div class="bindingCen">
+	        	<div class="cenPic"><img src="templates/exTel/images/warn.png" /></div>
+	            <div class="cenText" id="id_warn_content"></div>
+	            <div class="cenText02">&nbsp;</div>
+	        </div>
+	        <div class="bindingBottom"></div>
+	    </div>
+		<div class="title pt100">请输入手机号</div>
+	    <div class="inputBox">
+	    	<input type="number" name="phone" id="phone" class="text_in" maxlength="11"/>
+	        <div class="radius_left"></div>
+	        <div class="radius_right"></div>
+	    </div>
+        	<div class="title pt100">输入验证码<a style="color: #749c18;"  onclick="go_random()">&nbsp;&nbsp;获取验证码</a></div>
+        <div class="inputBox2">
+	    	<input type="number" name="random" id="random" class="text_in2"    maxlength="6"/>
+	       <div class="radius_left"></div>
+	        <div class="radius_right"></div>
+	    </div>
+	    <div class="button mt15" style="margin-top:30px;"><a href="javascript:void(null);" class="btn btn_primary" onclick="goto1()">下一步</a></div>
+	</div>
+	
+		<div class="title pt100" style="margin:20px; color:#FF0000;">
+	请输入您自己手机号码，免费领取会员卡，方便中奖记录的查询，以及兑换。<br>
+   {if $mcenter_int==1}
+    ★首次登陆可获得{$type_val},详情请查看-积分查询<br>
+    
+    {/if}
+     {if $mcenter_dyq==1}
+    ★首次登陆可获得{$note},详情请查看-实物券<br>
+    
+    {/if}
+	</div>
+	
+	<form id="id_bindform" action="wxextel.php?m=exOk" method="post">
+	
+        <input  type="hidden" name="openid"  id="openid" value="{$openid}"/>
+		<input type="hidden" id="mobile_phone" name="mobile_phone" value="" />
+	</form>
+</body>
+</html>

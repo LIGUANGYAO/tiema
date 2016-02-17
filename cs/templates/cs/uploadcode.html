@@ -1,0 +1,291 @@
+
+
+<!Doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<title>上传我的微信二维码</title>
+<link type="text/css" rel="stylesheet" href='css/base.css?1444793578' />
+<link type="text/css" rel="stylesheet" href='css/style.css?1444793578' />
+<link type="text/css" rel="stylesheet" href='css/layout.css?1444793578' />
+<script src="js/zepto.min.js?1444793578" type="text/javascript"></script>
+<script src="js/layer.m.js?1444793578" type="text/javascript"></script>
+<script src="js/spin.js?1444793578" type="text/javascript"></script>
+
+
+
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript">
+/*
+	微信js接口    demo:http://demo.open.weixin.qq.com/jssdk/
+*/
+wx.config({
+	//debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+	appId: '{$signPackage.appId}',
+    timestamp: {$signPackage.timestamp},
+    nonceStr: '{$signPackage.nonceStr}',
+    signature: '{$signPackage.signature}',
+   // 所有要调用的 API 都要加到这个列表中
+	jsApiList: [
+        'checkJsApi',
+        'onMenuShareTimeline',
+        'onMenuShareAppMessage',
+        'onMenuShareQQ',
+        'onMenuShareWeibo',
+        'hideMenuItems',
+        'showMenuItems',
+        'hideAllNonBaseMenuItem',
+        'showAllNonBaseMenuItem',
+        'translateVoice',
+        'startRecord',
+        'stopRecord',
+        'onRecordEnd',
+        'playVoice',
+        'pauseVoice',
+        'stopVoice',
+        'uploadVoice',
+        'downloadVoice',
+        'chooseImage',
+        'previewImage',
+        'uploadImage',
+        'downloadImage',
+        'getNetworkType',
+        'openLocation',
+        'getLocation',
+        'hideOptionMenu',
+        'showOptionMenu',
+        'closeWindow',
+        'scanQRCode',
+        //'chooseWXPay',
+        'openProductSpecificView',
+        'addCard',
+        'chooseCard',
+        'openCard'
+      ]
+});
+
+var weixin = function (dataForWeixin){
+	wx.ready(function () {
+		if(dataForWeixin != ''){
+			wx.onMenuShareTimeline(dataForWeixin);
+			wx.onMenuShareAppMessage(dataForWeixin);
+			wx.onMenuShareQQ(dataForWeixin);
+			wx.onMenuShareWeibo(dataForWeixin);			
+		}	  
+	});	
+};
+
+//wx.ready(function () {
+	// 在这里调用 API
+	//判断当前客户端版本是否支持指定JS接口      checkJsApi接口是客户端6.0.2新引入的一个预留接口，第一期开放的接口均可不使用checkJsApi来检测。
+	/*wx.checkJsApi({
+	  jsApiList: [
+		'onMenuShareTimeline',
+		'onMenuShareAppMessage'
+	  ],
+	  success: function (res) {
+		//alert(JSON.stringify(res));
+	  }
+	});*/
+
+	//获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
+	/*wx.onMenuShareTimeline({
+		title: dataForWeixin.title, // 分享标题
+		link: dataForWeixin.link, // 分享链接
+		imgUrl: dataForWeixin.imgUrl, // 分享图标
+		desc: dataForWeixin.desc,
+		trigger: function (res) {
+			//alert('用户点击分享到朋友圈');
+		},
+		success: function (res) {
+			//alert('已分享');
+		},
+		cancel: function (res) {
+			//alert('已取消');
+		},
+		fail: function (res) {
+			//alert(JSON.stringify(res));
+		}
+	});*/
+	
+	//分享到朋友圈
+	//wx.onMenuShareTimeline(dataForWeixin);
+	//发送给朋友
+	//wx.onMenuShareAppMessage(dataForWeixin);
+	//分享到QQ
+	//wx.onMenuShareQQ(dataForWeixin);
+	//分享到微博
+	//wx.onMenuShareWeibo(dataForWeixin);
+	
+	//隐藏右上角菜单
+	//wx.hideOptionMenu();
+	//显示右上角菜单
+	//wx.showOptionMenu();
+	
+	//批量隐藏菜单项
+	/*wx.hideMenuItems({
+		menuList: [
+			'menuItem:readMode', // 阅读模式
+			'menuItem:share:timeline', // 分享到朋友圈
+			'menuItem:copyUrl' // 复制链接
+		],
+		success: function (res) {
+			//alert('已隐藏“阅读模式”，“分享到朋友圈”，“复制链接”等按钮');
+		},
+		fail: function (res) {
+			//alert(JSON.stringify(res));
+		}
+	});*/
+	
+	//关闭当前窗口
+	//wx.closeWindow();
+//});
+
+wx.error(function(res){
+	// config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
+	alert(res.errMsg);
+});
+</script><script type="text/javascript">
+
+/*小众手机(android系统)  对input type=file 支持有缺陷  导致无法正确上传，
+  故改为调用微信图片接口形式
+*/
+var images = {
+	localId: [],
+	serverId: []
+};
+
+window.onload = function(){
+	weixin('');
+}
+var weixin = function (dataForWeixin){
+	wx.ready(function () {
+		if(dataForWeixin != ''){
+			wx.onMenuShareTimeline(dataForWeixin);
+			wx.onMenuShareAppMessage(dataForWeixin);
+			wx.onMenuShareQQ(dataForWeixin);
+			wx.onMenuShareWeibo(dataForWeixin);			
+		}
+		//选择图片上传
+		document.querySelector('#chooseImage').onclick = function () {
+			wx.chooseImage({
+				success: function (res) {
+					images.localId = res.localIds;
+					if(res.localIds.length > 1){
+						layer.open({content:'只需选择一张二维码图片！'});
+						return false;
+					}
+					//上传并下载二维码
+					uploadDown();
+					function uploadDown() {
+						wx.uploadImage({
+							localId: images.localId[0],
+							success: function (res) {
+								//images.serverId.push(res.serverId);
+								//下载图片
+								$.ajax({
+									url:'uploadcode.php',
+									type:'post',
+									data:{'serverId':res.serverId,'g':'upimg'},
+									dataType: 'json',
+									beforeSend:function(){
+										layer.open({
+											content:'<div id="foo"></div>'
+										});
+										var opts = {
+											lines: 13, // The number of lines to draw
+											length: 15, // The length of each line
+											width: 3, // The line thickness
+											radius: 15, // The radius of the inner circle
+											corners: 1, // Corner roundness (0..1)
+											rotate: 0, // The rotation offset
+											direction: 1, // 1: clockwise, -1: counterclockwise
+											color: '#fff', // #rgb or #rrggbb or array of colors
+											speed: 1, // Rounds per second
+											trail: 60, // Afterglow percentage
+											shadow: false, // Whether to render a shadow
+											hwaccel: false, // Whether to use hardware acceleration
+											className: 'spinner', // The CSS class to assign to the spinner
+											zIndex: 2e9, // The z-index (defaults to 2000000000)
+											top: 'auto', // Top position relative to parent in px
+											left: 'auto' // Left position relative to parent in px
+										};
+										var target = document.getElementById('foo');
+										var spinner = new Spinner(opts).spin(target);
+										$(".layermcont").css("padding","0px;");
+									},
+									complete:function(){
+										spinner.spin();
+									},
+									success:function(data){
+									   
+                                       
+                                        //alert(data);
+										if(data.status == 'error'){
+											layer.open({content:data.msg});
+											return false;											
+										}else{
+											layer.open({content:data.msg});
+											setTimeout(function(){ location.reload(); },1000);
+										}
+									}
+								});
+							},
+							fail: function (res) {
+								layer.open({content:JSON.stringify(res)});
+								return false;
+							}
+						});
+					}							  
+				},
+				fail:function (res) {
+					//选择图片失败
+					layer.open({content:JSON.stringify(res)});
+					return false;
+				}
+			});
+		};			  
+	});	
+};	
+</script>
+</head>
+<body>
+<div> 
+    <!--添加DIV-->
+    <div class="remind_04">
+	 <div class="up_know">学习交流社区</div>
+     <div class="up_knowt">团队裂变互动平台</div>
+  	点击下图中的“+”
+    <br>上传我的微信二维码
+	<div class="up_know">董事长俱乐部</div>
+    </div>
+    <!--添加DIV结束-->
+
+    <div class="upimg"> 
+		<a class="beautify" id="chooseImage" style="
+        {if $getqrcid['tg_erweimaup']==1 && $getqrcid['tg_userweima']!=''}
+        background-image:url({$getqrcid.tg_userweima})
+        {/if}">
+		  <!--<input type="file" class="inp_img" id="fileElem" accept="image/*"  onchange="handleFiles(this)">-->
+		</a> 
+		<a href="uploadcode.php?g=shuoming">
+    	<div class="me_explain">如何上传个人微信二维码 <img src="images/wenhao2.png"></div>
+		</a>
+    </div>
+    <div class="kongbai"></div>
+<!--底部导航-->
+<!--底部导航end--> 
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
